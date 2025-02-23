@@ -14,6 +14,6 @@ void fl_register_plugins(FlPluginRegistry* registry) {
       fl_plugin_registry_get_registrar_for_plugin(registry, "FlutterSecureStorageLinuxPlugin");
   flutter_secure_storage_linux_plugin_register_with_registrar(flutter_secure_storage_linux_registrar);
   g_autoptr(FlPluginRegistrar) nb_utils_registrar =
-      fl_plugin_registry_get_registrar_for_plugin(registry, "NbUtilsPlugin");
+      fl_plugin_registry_get_registrar_for_plugin(registry, "nb_utils_plugin");
   nb_utils_plugin_register_with_registrar(nb_utils_registrar);
 }
