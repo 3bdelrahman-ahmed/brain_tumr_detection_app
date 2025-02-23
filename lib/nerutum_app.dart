@@ -29,6 +29,7 @@ class _NeroTumAppState extends State<NeroTumApp> {
       initialRoute: AppRoutes.splashScreen,
       onGenerateRoute: AppRouter.onGenerateRoute,
       theme: appTheme,
+      navigatorObservers: [routeObserver],
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
