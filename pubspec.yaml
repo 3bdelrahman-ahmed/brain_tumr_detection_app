@@ -54,7 +54,7 @@ dependencies:
   geolocator: ^13.0.2
 
   # utils
-  nb_utils: 7.0.4
+  # nb_utils: 7.0.4
 
   # functional programming
   dartz: ^0.10.1
@@ -63,7 +63,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
 
   # animations
-  flutter_animate: 4.5.0
+  flutter_animate: ^4.5.0
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:nb_utils/nb_utils.dart';
-
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
 
 class AppRoutes {
@@ -11,12 +9,10 @@ class AppRoutes {
 class AppRouter {
   static Route<dynamic> animateRouteBuilder(
     Widget widget, {
-    PageRouteAnimation? pageRouteAnimation,
     Duration? duration,
   }) {
     return buildPageRoute(
         widget,
-        pageRouteAnimation ?? PageRouteAnimation.SlideBottomTop,
         duration ?? 300.ms);
   }
 
@@ -26,11 +22,27 @@ class AppRouter {
       case AppRoutes.splashScreen:
         return animateRouteBuilder(
           const SplashScreen(),
-          pageRouteAnimation: PageRouteAnimation.SlideBottomTop,
           duration: 300.ms,
         );
       default:
         return null;
     }
   }
+}
+
+Route buildPageRoute(Widget page, Duration duration) {
+  return PageRouteBuilder(
+    transitionDuration: duration,
+    pageBuilder: (context, animation, secondaryAnimation) => page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      /// **Custom animation: Slide from bottom**
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0, 1), // Start from bottom
+          end: Offset.zero, // End at normal position
+        ).animate(animation),
+        child: child,
+      );
+    },
+  );
 }
