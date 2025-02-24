@@ -6,8 +6,8 @@ import 'observers/bloc_oserver.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  startService();
   Bloc.observer = BlocObservers();
-  ServiceLocator.init();
   runApp(const NeroTumApp());
 }
 

@@ -303,10 +303,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_animate
-      sha256: "7c8a6594a9252dad30cc2ef16e33270b6248c4dedc3b3d06c86c4f3f4dc05ae5"
+      sha256: "7befe2d3252728afb77aecaaea1dec88a89d35b9b1d2eea6d04479e8af9117b5"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.0"
+    version: "4.5.2"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -327,10 +327,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_launcher_icons
-      sha256: "526faf84284b86a4cb36d20a5e45147747b7563d921373d4ee0559c54fcdbcea"
+      sha256: bfa04787c85d80ecb3f8777bde5fc10c3de809240c48fa061a2c2bf15ea5211c
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.1"
+    version: "0.14.3"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -517,6 +517,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.3"
+  injectable:
+    dependency: "direct main"
+    description:
+      name: injectable
+      sha256: "5e1556ea1d374fe44cbe846414d9bab346285d3d8a1da5877c01ad0774006068"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0"
+  injectable_generator:
+    dependency: "direct dev"
+    description:
+      name: injectable_generator
+      sha256: af403d76c7b18b4217335e0075e950cd0579fd7f8d7bd47ee7c85ada31680ba1
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.2"
   io:
     dependency: transitive
     description:
@@ -773,6 +789,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   rxdart:
     dependency: transitive
     description:
@@ -810,6 +834,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  source_gen:
+    dependency: transitive
+    description:
+      name: source_gen
+      sha256: "14658ba5f669685cd3d63701d01b31ea748310f7ab854e471962670abcf57832"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.0"
   source_span:
     dependency: transitive
     description:
