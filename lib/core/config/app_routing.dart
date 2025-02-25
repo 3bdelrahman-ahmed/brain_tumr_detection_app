@@ -1,9 +1,12 @@
+import 'package:brain_tumr_detection_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = "/splash";
+  static const String onBoardingScreen = "/onBoarding";
+
 }
 
 class AppRouter {
@@ -23,6 +26,11 @@ class AppRouter {
         return animateRouteBuilder(
           const SplashScreen(),
           duration: 300.ms,
+        );
+      case AppRoutes.onBoardingScreen:
+        return animateRouteBuilder(
+          const OnBoardingScreen(),
+          duration: 300.ms
         );
       default:
         return null;
