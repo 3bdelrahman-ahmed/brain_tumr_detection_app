@@ -20,35 +20,34 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     super.initState();
     navigateToHome();
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(colors:[
-                AppColors.gradientBackground,
-                AppColors.gradientBackground,
-                AppColors.background,
-                AppColors.gradientBackground,
-              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+              gradient: LinearGradient(colors:
+              [
+            AppColors.gradientBackground,
+            AppColors.gradientBackground,
+            AppColors.background,
+            AppColors.gradientBackground,
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         ),
         Center(
           child: CustomImageView(
-            imagePath: "assets/image/app_logo.png",
-            height: 200.h,
-          ).animate().fadeIn(
-            duration:Duration(seconds:3)
-          ),
+            imagePath: AssetsPng.appLogo.toPng(),
+            height: 250.h,
+          ).animate().fadeIn(duration: Duration(seconds: 2)),
         )
       ],
     );
   }
-
-  void navigateToHome() {
+  void navigateToHome(){
     Future.delayed(
-      const Duration(seconds: 3),
-          () async {
+      const Duration(seconds: 4),
+      () async{
         Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
       },
     );

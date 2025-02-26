@@ -1,6 +1,6 @@
-import 'package:brain_tumr_detection_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
 
 class AppRoutes {
@@ -8,7 +8,6 @@ class AppRoutes {
   static const String onBoardingScreen = "/onBoarding";
 
 }
-
 class AppRouter {
   static Route<dynamic> animateRouteBuilder(
     Widget widget, {
