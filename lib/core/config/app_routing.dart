@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/features/login/presentation/view/screens/login_screen.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
@@ -8,6 +9,7 @@ class AppRoutes {
   static const String splashScreen = "/splash";
   static const String onBoardingScreen = "/onBoarding";
   static const String loginScreen = "/login";
+  static const String registerScreen = '/rigester';
 }
 class AppRouter {
   static Route<dynamic> animateRouteBuilder(
@@ -35,6 +37,11 @@ class AppRouter {
         return animateRouteBuilder(
             const LoginScreen(),
             duration: 300.ms
+        );
+      case AppRoutes.registerScreen:
+        return animateRouteBuilder(
+          const RigesterScreen(),
+          duration: 300.ms
         );
       default:
         return null;

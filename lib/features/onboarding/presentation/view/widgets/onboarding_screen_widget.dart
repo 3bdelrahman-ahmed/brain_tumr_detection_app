@@ -96,7 +96,7 @@ class OnboardingScreenWidget extends StatelessWidget {
                     onTap: currentIndex != 5
                         ? cubit.nextScreen : () =>
                         Navigator.pushReplacementNamed(
-                            context, AppRoutes.loginScreen)),
+                            context, AppRoutes.registerScreen)),
                 20.toHeight,
               ],
             ),

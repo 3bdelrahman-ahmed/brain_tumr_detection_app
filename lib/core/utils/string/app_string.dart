@@ -4,6 +4,17 @@ class AppString {
   static const String appName = "NeuroTum AI";
   static const String next = " Next";
   static const String letsStart = "Let’s Start!";
+  static const String createYourAcc = "Create Your Account";
+  static const String welcomeAbroadSentence = "Welcome aboard! Let’s get you "
+      "set up so we can start helping you with your brain health journey.";
+  static const String fullName = "Full Name";
+  static const String enterYourFullName = "Enter your Full name";
+  static const String enterYourUserName = 'Enter your Username';
+  static const String userName = 'Username';
+  static const String email = 'Email';
+  static const String enterYourEmail = 'Enter your Email';
+  static const String password = 'Password';
+  static const String enterYourPassword = 'Enter your Password';
   static const String firstOnBoardingMessage = "Welcome to NeuroTum";
   static const String firstOnBoardingSentence =
       "Hello there! 🌟 You’ve just taken the first step toward understanding your health better."
@@ -31,8 +42,7 @@ class AppString {
       " it’s a great way to get insights and "
       "understand what’s happening. Ready to dive in?";
   static const String fifthOnBoardingMessage = " Privacy First";
-  static const String fifthOnBoardingSentence =
-      "Your privacy matters—always. "
+  static const String fifthOnBoardingSentence = "Your privacy matters—always. "
       "Your data is safe with us, encrypted,"
       " and only shared with your consent."
       " You’re in control, every step of the way.";
