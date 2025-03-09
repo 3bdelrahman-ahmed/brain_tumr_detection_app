@@ -5,4 +5,4 @@ sealed class RigesterScreenState {}
 
 final class RigesterScreenInitial extends RigesterScreenState {}
 
-final class RigesterScreenChangePage extends RigesterScreenState {}
+final class RigesterScreenChangeForm extends RigesterScreenState {}

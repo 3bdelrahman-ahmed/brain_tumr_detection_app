@@ -8,4 +8,5 @@ class AssetsPng {
   static const String fourthOnBoarding = 'fourth_onboarding';
   static const String fifthOnBoarding = 'fifth_onboarding';
   static const String sixthOnBoarding = 'sixth_onboarding';
+  static const String loginScreen = 'login_screen';
 }

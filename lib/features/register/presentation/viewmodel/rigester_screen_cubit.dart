@@ -23,7 +23,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   }
    void changeForm(int? index){
      currentIndex = index;
-    emit(RigesterScreenChangePage());
+    emit(RigesterScreenChangeForm());
    }
   @override
   Future<void> close() {
