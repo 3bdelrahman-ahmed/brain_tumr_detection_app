@@ -7,6 +7,9 @@ class AppString {
   static const String createYourAcc = "Create Your Account";
   static const String welcomeAbroadSentence = "Welcome aboard! Let’s get you "
       "set up so we can start helping you with your brain health journey.";
+  static const String forgotPassword = "Forgot Password?";
+  static const String forgetYourPassword = 'Forgot Your Password?';
+  static const String dontWorryPassword = "Don’t worry! We’ll help you get back into your account in no time";
   static const String fullName = "Full Name";
   static const String enterYourFullName = "Enter your Full name";
   static const String enterYourUserName = 'Enter your Username';

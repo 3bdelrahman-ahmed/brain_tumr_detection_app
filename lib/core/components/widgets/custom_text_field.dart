@@ -1,4 +1,3 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -31,6 +30,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: AppColors.typography,
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
@@ -54,7 +54,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.r),
           borderSide: BorderSide(color: AppColors.typographyLowOpacity),
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       ),
     );
   }

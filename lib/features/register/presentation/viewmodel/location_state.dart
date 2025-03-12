@@ -1,6 +1,9 @@
 part of 'location_cubit.dart';
 
-sealed class LocationState {}
+sealed class LocationState extends Equatable {
+@override
+List<Object?> get props => [];
+}
 
 final class LocationInitial extends LocationState {}
 

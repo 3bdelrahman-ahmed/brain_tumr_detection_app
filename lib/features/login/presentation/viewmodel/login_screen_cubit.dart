@@ -19,4 +19,7 @@ class LoginScreenCubit extends Cubit<LoginScreenState> {
       print("Form is not valid");
     }
   }
+  void showForgotPassword() {
+    emit(ShowForgotPasswordState()); // Notify UI to show the bottom sheet
+  }
 }
