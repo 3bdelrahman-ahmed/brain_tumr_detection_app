@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
@@ -85,7 +86,9 @@ class LoginScreenWidget extends StatelessWidget {
               ).paddingOnly(right: 20.w),
             ),
             50.toHeight,
-            CustomButton(text: AppString.next, onTap: cubit.login)
+            CustomButton(text: AppString.next, onTap: (){
+              Navigator.pushNamed(context,AppRoutes.homeScreen);
+            })
           ],
         ),
       ),

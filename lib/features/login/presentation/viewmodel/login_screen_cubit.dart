@@ -8,7 +8,6 @@ part 'login_screen_state.dart';
 class LoginScreenCubit extends Cubit<LoginScreenState> {
   LoginScreenCubit() : super(LoginScreenInitial());
   final formKey = GlobalKey<FormState>();
-
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   void login(){

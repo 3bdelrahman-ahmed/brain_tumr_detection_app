@@ -40,6 +40,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: AppTextStyles.font15LightGreenW500,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+        prefixIconColor: AppColors.typographyLowOpacity,
         suffixIcon: suffixIcon != null
             ? GestureDetector(
           onTap: onSuffixTap,
