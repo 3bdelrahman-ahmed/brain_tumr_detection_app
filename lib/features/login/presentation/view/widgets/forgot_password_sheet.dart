@@ -29,23 +29,23 @@ class ForgotPasswordSheet extends StatelessWidget {
           ),
           5.toHeight,
           Center(
-              child: Text(AppString.forgetYourPassword,
+              child: Text(AppStrings.forgetYourPassword,
                   style: AppTextStyles.font20GreenW500)),
           10.toHeight,
           Center(
             child: Text(
-              AppString.dontWorryPassword,
+              AppStrings.dontWorryPassword,
               style: AppTextStyles.font15LightGreenW500,
               textAlign: TextAlign.center,
             ),
           ),
           20.toHeight,
           buildInputField(
-              label: AppString.email, hintText: AppString.enterYourEmail),
+              label: AppStrings.email, hintText: AppStrings.enterYourEmail),
           20.toHeight,
           Center(
             child: CustomButton(
-              text: AppString.next,
+              text: AppStrings.next,
               onTap: () {
                 Navigator.pop(context);
               },

@@ -11,7 +11,6 @@ class RigesterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
       body: BlocProvider(
         create: (context) => getIt<RigesterScreenCubit>(),
         child: BlocBuilder<RigesterScreenCubit, RigesterScreenState>(

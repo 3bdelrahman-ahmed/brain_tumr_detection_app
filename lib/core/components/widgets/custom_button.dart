@@ -5,26 +5,41 @@ import '../../utils/theme/colors/app_colors.dart';
 import '../../utils/theme/text_styles/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text, required this.onTap});
+  final double? height;
+  final double? width;
+  final Color? backgroundColor;
+  final double? raduis;
+  final TextStyle? textStyle;
+  const CustomButton(
+      {super.key,
+      required this.text,
+      required this.onTap,
+      this.raduis,
+      this.backgroundColor,
+      this.textStyle,
+      this.height,
+      this.width});
 
   final String text;
-  final void Function()? onTap;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 300.w,
-        height: 55.h,
+        padding: EdgeInsets.symmetric(vertical: 12.h),
+        // width: width ?? 300.w,
+        // height: height ?? 55.h,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30.r),
-            color: AppColors.buttonsAndNav),
-        child: Center(
-            child: Text(
+            borderRadius: BorderRadius.circular(raduis ?? 30.r),
+            color: backgroundColor ?? AppColors.buttonsAndNav),
+        alignment: Alignment.center,
+        child: Text(
           text,
-          style: AppTextStyles.font20WhiteW500,
-        )),
+          textAlign: TextAlign.center,
+          style: textStyle ?? AppTextStyles.font20WhiteW500,
+        ),
       ),
     );
   }

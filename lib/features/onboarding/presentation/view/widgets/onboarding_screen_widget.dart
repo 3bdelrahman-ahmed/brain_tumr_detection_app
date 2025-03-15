@@ -24,81 +24,87 @@ class OnboardingScreenWidget extends StatelessWidget {
 
     return CustomOnboardingBackground(
       widget: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          200.toHeight,
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 800),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(1.0, 0.0),
-                  end: Offset.zero,
-                ).animate(animation),
-                child: FadeTransition(
-                  opacity: animation,
-                  child: child,
-                ),
-              );
-            },
-            child: CustomImageView(
-              key: ValueKey<String>(currentItem["image"]),
-              imagePath: currentItem["image"],
-              height: 250.h,
-            ),
-          ),
-          const Spacer(),
-          Container(
-            height: 340.h,
-            alignment: AlignmentDirectional.bottomCenter,
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.r),
-                topRight: Radius.circular(40.r),
+          Expanded(
+            flex: 5,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 800),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(animation),
+                  child: FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  ),
+                );
+              },
+              child: CustomImageView(
+                key: ValueKey<String>(currentItem["image"]),
+                imagePath: currentItem["image"],
+                height: 275.h,
               ),
             ),
-            child: Column(
-              children: [
-                30.toHeight,
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 800),
-                  transitionBuilder: (child, animation) =>
-                      FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      ),
-                  child: Text(
-                    currentItem["message"],
-                    key: ValueKey<String>(currentItem["message"]),
-                    style: AppTextStyles.font24GreenW500,
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 32.h),
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40.r),
+                  topRight: Radius.circular(40.r),
+                ),
+              ),
+              child: Column(
+                children: [
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 800),
+                    transitionBuilder: (child, animation) => FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    ),
+                    child: Text(
+                      currentItem["message"],
+                      key: ValueKey<String>(currentItem["message"]),
+                      style: AppTextStyles.font24GreenW500,
+                    ),
                   ),
-                ),
-                16.toHeight,
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 500),
-                  transitionBuilder: (child, animation) =>
-                      FadeTransition(
+                  8.toHeight,
+                  Expanded(
+                    flex: 5,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 500),
+                      transitionBuilder: (child, animation) => FadeTransition(
                         opacity: animation,
                         child: child,
                       ),
-                  child: Text(
-                    currentItem["sentence"],
-                    key: ValueKey<String>(currentItem["sentence"]),
-                    style: AppTextStyles.font16GreenW400,
-                    textAlign: TextAlign.center,
-                  ).paddingSymmetric(horizontal: 40.w),
-                ),
-                const Spacer(),
-                CustomButton(
-                    text:
-                    currentIndex != 5 ? AppString.next : AppString.letsStart,
-                    onTap: currentIndex != 5
-                        ? cubit.nextScreen : () =>
-                        Navigator.pushReplacementNamed(
-                            context, AppRoutes.registerScreen)),
-                20.toHeight,
-              ],
+                      child: Text(
+                        currentItem["sentence"],
+                        key: ValueKey<String>(currentItem["sentence"]),
+                        style: AppTextStyles.font16GreenW400,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  16.toHeight,
+                  Expanded(
+                    flex: 2,
+                    child: CustomButton(
+                        text: currentIndex != 5
+                            ? AppStrings.next
+                            : AppStrings.letsStart,
+                        onTap: currentIndex != 5
+                            ? cubit.nextScreen
+                            : () => Navigator.pushReplacementNamed(
+                                context, AppRoutes.registerScreen)),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

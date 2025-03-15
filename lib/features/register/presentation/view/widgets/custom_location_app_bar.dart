@@ -15,18 +15,17 @@ class CustomLocationAppBar extends StatelessWidget {
       child: Row(
         children: [
           InkWell(
-            onTap: () => Navigator.pop(context),
+              onTap: () => Navigator.pop(context),
               child: Icon(Icons.arrow_back)),
           10.toWidth,
-          Text(AppString.setYourLocation,style: AppTextStyles.font20GreenW500,),
+          Text(
+            AppStrings.setYourLocation,
+            style: AppTextStyles.font20GreenW500,
+          ),
           Spacer(),
-          InkWell(
-            onTap: () {
-
-            },
-              child: Icon(Icons.search))
+          InkWell(onTap: () {}, child: Icon(Icons.search))
         ],
-      ).paddingOnly(left: 20.w,right: 20.w, top: 10.h),
+      ).paddingOnly(left: 20.w, right: 20.w, top: 10.h),
     );
   }
 }

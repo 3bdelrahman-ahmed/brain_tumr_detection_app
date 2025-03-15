@@ -13,12 +13,12 @@ class WelcomeRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         Column(
           children: [
             Text(
-              AppString.welcomeBack,
+              AppStrings.welcomeBack,
               style: AppTextStyles.font15LightGreenW500,
             ),
             Text(

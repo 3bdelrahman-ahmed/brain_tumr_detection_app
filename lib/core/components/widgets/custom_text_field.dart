@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController? controller;
-  final bool obscureText;
+  final bool? obscureText;
+  final String? label;
   final TextInputType keyboardType;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final VoidCallback? onSuffixTap;
-  final String? Function(String?)? validator;
+  final FormFieldValidator<String>? validator;
   final Function(String)? onChanged;
 
   const CustomTextField({
@@ -19,44 +20,58 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.obscureText = false,
+    this.label,
     this.keyboardType = TextInputType.text,
     this.prefixIcon,
     this.suffixIcon,
     this.onSuffixTap,
-    this.validator,
-    this.onChanged,
+    required this.validator,
+   this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      cursorColor: AppColors.typography,
-      controller: controller,
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      validator: validator,
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: AppTextStyles.font15LightGreenW500,
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        prefixIconColor: AppColors.typographyLowOpacity,
-        suffixIcon: suffixIcon != null
-            ? GestureDetector(
-          onTap: onSuffixTap,
-          child: Icon(suffixIcon),
-        )
-            : null,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide(color: AppColors.typographyLowOpacity),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (label != null)
+          Text(
+            label!,
+            style: AppTextStyles.font15LightGreenW500
+                .copyWith(color: AppColors.typography),
+          ),
+        if (label != null) 4.toHeight,
+        TextFormField(
+          cursorColor: AppColors.typography, 
+          controller: controller,
+          obscureText: obscureText ?? false,
+          keyboardType: keyboardType,
+          validator: validator,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: AppTextStyles.font15LightGreenW500,
+            prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+            prefixIconColor: AppColors.typographyLowOpacity,
+            suffixIcon: suffixIcon != null
+                ? GestureDetector(
+                    onTap: onSuffixTap,
+                    child: Icon(suffixIcon),
+                  )
+                : null,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.r),
+              borderSide: BorderSide(color: AppColors.typographyLowOpacity),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.r),
+              borderSide: BorderSide(color: AppColors.typographyLowOpacity),
+            ),
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide(color: AppColors.typographyLowOpacity),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      ),
+      ],
     );
   }
 }

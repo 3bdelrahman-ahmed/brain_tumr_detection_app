@@ -19,32 +19,32 @@ class DoctorForm extends StatelessWidget {
       child: Column(
         children: [
           _buildInputField(
-            label: AppString.fullName,
-            hintText: AppString.enterYourFullName,
+            label: AppStrings.fullName,
+            hintText: AppStrings.enterYourFullName,
             controller: cubit.fullNameController,
             validator: Validators.nameValidate,
           ),
           _buildInputField(
             label: "Doctor",
-            hintText: AppString.enterYourFullName,
+            hintText: AppStrings.enterYourFullName,
             controller: cubit.fullNameController,
             validator: Validators.nameValidate,
           ),
           _buildInputField(
-            label: AppString.userName,
-            hintText: AppString.enterYourUserName,
+            label: AppStrings.userName,
+            hintText: AppStrings.enterYourUserName,
             controller: cubit.userNameController,
             validator: Validators.nameValidate,
           ),
           _buildInputField(
-            label: AppString.email,
-            hintText: AppString.enterYourEmail,
+            label: AppStrings.email,
+            hintText: AppStrings.enterYourEmail,
             controller: cubit.emailController,
             validator: Validators.emailValidate,
           ),
           _buildInputField(
-            label: AppString.password,
-            hintText: AppString.enterYourPassword,
+            label: AppStrings.password,
+            hintText: AppStrings.enterYourPassword,
             controller: cubit.passwordController,
             validator: Validators.passwordValidate,
             obscureText: true,

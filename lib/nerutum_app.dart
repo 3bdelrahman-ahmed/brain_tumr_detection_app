@@ -14,13 +14,14 @@ class NeroTumApp extends StatefulWidget {
 
 class _NeroTumAppState extends State<NeroTumApp> {
   @override
-   void didChangeDependencies() {
+  void didChangeDependencies() {
     super.didChangeDependencies();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       routeObserver
           .setInitialRoute(ModalRoute.of(context)?.settings.name ?? '');
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,8 +31,16 @@ class _NeroTumAppState extends State<NeroTumApp> {
       onGenerateRoute: AppRouter.onGenerateRoute,
       theme: appTheme,
       navigatorObservers: [routeObserver],
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).size.width > 600
+              ? MediaQuery.of(context)
+                  .copyWith(textScaler: TextScaler.linear(0.78))
+              : MediaQuery.of(context).copyWith(
+                  textScaler: TextScaler.linear(0.96)), // Adjust scale factor
+          child: child!,
+        );
+      },
     );
   }
 }
-

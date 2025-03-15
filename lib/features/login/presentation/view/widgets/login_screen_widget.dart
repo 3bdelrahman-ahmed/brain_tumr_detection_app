@@ -34,7 +34,7 @@ class LoginScreenWidget extends StatelessWidget {
               builder: (_) => ForgotPasswordSheet(),
             );
           }
-         },
+        },
         child: Column(
           children: [
             CustomImageView(
@@ -44,14 +44,14 @@ class LoginScreenWidget extends StatelessWidget {
             15.toHeight,
             Center(
               child: Text(
-                AppString.login,
+                AppStrings.login,
                 style: AppTextStyles.font20GreenW500,
               ),
             ),
             8.toHeight,
             Center(
               child: Text(
-                AppString.heyThereLogin,
+                AppStrings.heyThereLogin,
                 style: AppTextStyles.font15LightGreenW500,
                 textAlign: TextAlign.center,
               ),
@@ -62,14 +62,14 @@ class LoginScreenWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     _buildInputField(
-                        label: AppString.email,
-                        hintText: AppString.enterYourEmail,
+                        label: AppStrings.email,
+                        hintText: AppStrings.enterYourEmail,
                         controller: cubit.emailController,
                         validator: Validators.emailValidate),
                     30.toHeight,
                     _buildInputField(
-                        label: AppString.password,
-                        hintText: AppString.enterYourPassword,
+                        label: AppStrings.password,
+                        hintText: AppStrings.enterYourPassword,
                         controller: cubit.passwordController,
                         obscureText: true,
                         validator: Validators.passwordValidate),
@@ -80,15 +80,17 @@ class LoginScreenWidget extends StatelessWidget {
               child: Container(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  AppString.forgotPassword,
+                  AppStrings.forgotPassword,
                   style: AppTextStyles.font15LightGreenW500,
                 ),
               ).paddingOnly(right: 20.w),
             ),
             50.toHeight,
-            CustomButton(text: AppString.next, onTap: (){
-              Navigator.pushNamed(context,AppRoutes.homeScreen);
-            })
+            CustomButton(
+                text: AppStrings.next,
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.homeScreen);
+                })
           ],
         ),
       ),

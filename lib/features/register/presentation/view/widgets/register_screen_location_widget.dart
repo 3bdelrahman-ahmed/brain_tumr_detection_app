@@ -52,7 +52,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
             );
           },
         ),
-        CustomButton(text: AppString.next, onTap: () {})
+        CustomButton(text: AppStrings.next, onTap: () {})
             .alignBottom()
             .paddingOnly(bottom: 20.h),
       ],

@@ -18,37 +18,30 @@ class RigesterScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<RigesterScreenCubit>();
+    final cubit = context.watch<RigesterScreenCubit>();
     return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: Text(AppString.createYourAcc,
-                style: AppTextStyles.font20GreenW500),
+          Text(AppStrings.createYourAcc, style: AppTextStyles.font20GreenW500),
+          6.toHeight,
+          Text(
+            AppStrings.welcomeAbroadSentence,
+            style: AppTextStyles.font15LightGreenW500,
+            textAlign: TextAlign.center,
           ),
-          5.toHeight,
-          Center(
-            child: Text(
-              AppString.welcomeAbroadSentence,
-              style: AppTextStyles.font15LightGreenW500,
-              textAlign: TextAlign.center,
-            ),
-          ),
-          25.toHeight,
+          16.toHeight,
           _buildToggleSwitch(cubit),
-          15.toHeight,
-          cubit.currentIndex == 0
-              ? PatientFormFields().paddingSymmetric(horizontal: 15.w)
-              : DoctorForm().paddingSymmetric(horizontal: 15.w),
-          20.toHeight,
+          16.toHeight,
+          cubit.currentIndex == 0 ? PatientFormFields() : DoctorForm(),
+          24.toHeight,
           CustomButton(
-              text: AppString.next,
-              onTap: () => {
-                    Navigator.pushNamed(
-                        context, AppRoutes.loginScreen)
-                  }),
+              text: AppStrings.next,
+              onTap: () =>
+                  {Navigator.pushNamed(context, AppRoutes.loginScreen)}),
         ],
-      ).paddingOnly(top: 50.h),
+      ).paddingOnly(top: 32.h),
     );
   }
 }
@@ -66,7 +59,7 @@ Widget _buildToggleSwitch(cubit) {
     inactiveFgColor: AppColors.typography,
     initialLabelIndex: cubit.currentIndex,
     totalSwitches: 2,
-    labels: [AppString.asAPatient, AppString.asADoctor],
+    labels: [AppStrings.asAPatient, AppStrings.asADoctor],
     radiusStyle: true,
     animate: true,
     animationDuration: 200,

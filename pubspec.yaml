@@ -41,12 +41,19 @@ dependencies:
   bloc: ^9.0.0
   equatable: ^2.0.7
 
+  # premission handler
+  permission_handler: ^11.4.0
+
   # shimmer
   shimmer: ^3.0.0
 
   # Depndency Injection
   get_it: ^8.0.3
   injectable: ^2.5.0
+
+  # info plus
+  package_info_plus: ^8.3.0
+  
   # Images
   flutter_svg: ^2.0.17
   cached_network_image: ^3.4.1

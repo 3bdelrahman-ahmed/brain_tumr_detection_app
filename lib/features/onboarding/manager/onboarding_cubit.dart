@@ -7,40 +7,41 @@ import '../../../core/utils/assets/assets_png.dart';
 import '../../../core/utils/string/app_string.dart';
 
 part 'onboarding_state.dart';
+
 @injectable
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit() : super(OnboardingInitial());
   int currentIndex = 0;
   final List<Map<String, dynamic>> items = [
     {
-      "image":AssetsPng.welcomeOnBoarding.toPng(),
-      "message":AppString.firstOnBoardingMessage,
-      "sentence":AppString.firstOnBoardingSentence
+      "image": AssetsPng.welcomeOnBoarding.toPng(),
+      "message": AppStrings.firstOnBoardingMessage,
+      "sentence": AppStrings.firstOnBoardingSentence
     },
     {
-      "image":AssetsPng.secondOnBoarding.toPng(),
-      "message":AppString.secondOnBoardingMessage,
-      "sentence":AppString.secondOnBoardingSentence
+      "image": AssetsPng.secondOnBoarding.toPng(),
+      "message": AppStrings.secondOnBoardingMessage,
+      "sentence": AppStrings.secondOnBoardingSentence
     },
     {
-      "image":AssetsPng.thirdOnBoarding.toPng(),
-      "message":AppString.thirdOnBoardingMessage,
-      "sentence":AppString.thirdOnBoardingSentence
+      "image": AssetsPng.thirdOnBoarding.toPng(),
+      "message": AppStrings.thirdOnBoardingMessage,
+      "sentence": AppStrings.thirdOnBoardingSentence
     },
     {
-      "image":AssetsPng.fourthOnBoarding.toPng(),
-      "message":AppString.fourthOnBoardingMessage,
-      "sentence":AppString.fourthOnBoardingSentence
+      "image": AssetsPng.fourthOnBoarding.toPng(),
+      "message": AppStrings.fourthOnBoardingMessage,
+      "sentence": AppStrings.fourthOnBoardingSentence
     },
     {
-      "image":AssetsPng.fifthOnBoarding.toPng(),
-      "message":AppString.fifthOnBoardingMessage,
-      "sentence":AppString.fifthOnBoardingSentence
+      "image": AssetsPng.fifthOnBoarding.toPng(),
+      "message": AppStrings.fifthOnBoardingMessage,
+      "sentence": AppStrings.fifthOnBoardingSentence
     },
     {
-      "image":AssetsPng.sixthOnBoarding.toPng(),
-      "message":AppString.sixthOnBoardingMessage,
-      "sentence":AppString.sixthOnBoardingSentence
+      "image": AssetsPng.sixthOnBoarding.toPng(),
+      "message": AppStrings.sixthOnBoardingMessage,
+      "sentence": AppStrings.sixthOnBoardingSentence
     }
   ];
   void nextScreen() {
