@@ -4,7 +4,30 @@ class AppString {
   static const String appName = "NeuroTum AI";
   static const String next = " Next";
   static const String letsStart = "Let’s Start!";
+  static const String createYourAcc = "Create Your Account";
+  static const String welcomeAbroadSentence = "Welcome aboard! Let’s get you "
+      "set up so we can start helping you with your brain health journey.";
+  static const String forgotPassword = "Forgot Password?";
+  static const String forgetYourPassword = 'Forgot Your Password?';
+  static const String welcomeBack = 'welcome back,';
+  static const String dontWorryPassword = "Don’t worry! We’ll help you get back into your account in no time";
+  static const String fullName = "Full Name";
+  static const String enterYourFullName = "Enter your Full name";
+  static const String enterYourUserName = 'Enter your Username';
+  static const String userName = 'Username';
+  static const String email = 'Email';
+  static const String login = 'Log in';
+  static const String heyThereLogin = "Hey there! Ready to pick up where you left off ? "
+      "Log in to continue your health journey";
+  static const String enterYourEmail = 'Enter your Email';
+  static const String password = 'Password';
+  static const String enterYourPassword = 'Enter your Password';
+  static const String asAPatient = 'As a Patient';
+  static const String asADoctor = 'As a Physician';
   static const String firstOnBoardingMessage = "Welcome to NeuroTum";
+  static const String setYourLocation = 'Set Your Location';
+  static const String toHelpYouFindDoctors = 'To help you find doctors'
+      ' near you and provide recommendations, we need to know your location. ';
   static const String firstOnBoardingSentence =
       "Hello there! 🌟 You’ve just taken the first step toward understanding your health better."
       " Let’s uncover what’s going on in your brain—our smart technology is here"
@@ -31,8 +54,7 @@ class AppString {
       " it’s a great way to get insights and "
       "understand what’s happening. Ready to dive in?";
   static const String fifthOnBoardingMessage = " Privacy First";
-  static const String fifthOnBoardingSentence =
-      "Your privacy matters—always. "
+  static const String fifthOnBoardingSentence = "Your privacy matters—always. "
       "Your data is safe with us, encrypted,"
       " and only shared with your consent."
       " You’re in control, every step of the way.";

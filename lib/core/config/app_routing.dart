@@ -1,4 +1,7 @@
+import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/login/presentation/view/screens/login_screen.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester__location__screen.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
@@ -8,15 +11,18 @@ class AppRoutes {
   static const String splashScreen = "/splash";
   static const String onBoardingScreen = "/onBoarding";
   static const String loginScreen = "/login";
+  static const String registerScreen = '/rigester';
+  static const String locationScreen = 'location';
+  static const String homeScreen = '/home';
+
 }
+
 class AppRouter {
   static Route<dynamic> animateRouteBuilder(
     Widget widget, {
     Duration? duration,
   }) {
-    return buildPageRoute(
-        widget,
-        duration ?? 300.ms);
+    return buildPageRoute(widget, duration ?? 300.ms);
   }
 
   static Route? onGenerateRoute(RouteSettings routeSettings) {
@@ -27,15 +33,17 @@ class AppRouter {
           duration: 300.ms,
         );
       case AppRoutes.onBoardingScreen:
-        return animateRouteBuilder(
-          const OnBoardingScreen(),
-          duration: 300.ms
-        );
+        return animateRouteBuilder(const OnBoardingScreen(), duration: 300.ms);
       case AppRoutes.loginScreen:
-        return animateRouteBuilder(
-            const LoginScreen(),
-            duration: 300.ms
-        );
+        return animateRouteBuilder(const LoginScreen(), duration: 300.ms);
+      case AppRoutes.registerScreen:
+        return animateRouteBuilder(const RigesterScreen(), duration: 300.ms);
+      case AppRoutes.locationScreen:
+        return animateRouteBuilder(const RegisterLocationScreen(),
+            duration: 300.ms);
+      case AppRoutes.homeScreen:
+        return animateRouteBuilder( HomeScreen(),
+            duration: 300.ms);
       default:
         return null;
     }
