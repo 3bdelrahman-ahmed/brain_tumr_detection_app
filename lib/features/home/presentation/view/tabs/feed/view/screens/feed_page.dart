@@ -1,43 +1,67 @@
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
-import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/tabs/feed/view/widgets/post_card.dart';
-import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
-import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
-import 'package:brain_tumr_detection_app/features/home/presentation/view/tabs/feed/view/widgets/welcome_row.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
 import '../../../../../../../../core/components/widgets/custom_text_field.dart';
+import '../../../../../../../../core/utils/string/app_string.dart';
+import '../../../../../../../../foundations/validations.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.background,
-      child: Column(
-        children: [
-          WelcomeRow(),
-          20.toHeight,
-          // CustomTextField(
-          //   validator: (value) => checkFieldValidation(val: value, fieldName: AppStrings.search, fieldType: fieldType),
-          //   hintText: "Search for Posts",
-          //   prefixIcon: Icons.search,
-          // ),
-          45.toHeight,
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder:(context, index) {
-              return PostCard();
-              },),
+    return CustomScrollView(
+      shrinkWrap: true,
+      slivers: [
+        CustomWelcomeAppBar(),
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _SliverSearchBarDelegate(),
+        ),
+        SliverPadding(padding: EdgeInsets.only(bottom: 16.h)),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            addAutomaticKeepAlives: true,
+            (context, index) => Padding(
+              padding: EdgeInsets.only(top: 16.h, left: 20.w, right: 20.w),
+              child: PostCard(),
+            ),
+            childCount: 5,
           ),
-          70.toHeight
-        ],
-      ).paddingOnly(top: 40.h, left: 20.w, right: 20.w),
+        ),
+        SliverPadding(padding: EdgeInsets.only(bottom: 72.h)),
+      ],
     );
+  }
+}
+
+class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Theme.of(context)
+          .scaffoldBackgroundColor, // Ensures it's not transparent
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+      child: CustomTextField(
+        validator: (value) => checkFieldValidation(
+            val: value,
+            fieldName: AppStrings.search,
+            fieldType: ValidationType.text),
+        hintText: "Search for Posts",
+        prefixIcon: Icons.search,
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => 75.h; // Increased height for spacing
+  @override
+  double get minExtent => 75.h; // Same as max for consistency
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }

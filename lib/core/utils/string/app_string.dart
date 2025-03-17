@@ -65,18 +65,35 @@ class AppStrings {
       "All set to begin? We’ll need just a few details to "
       "personalize your experience. It’s quick and easy—let’s go!";
 
- /// [validation Strings]    
-  static const String pleaseEnter = 'Please enter '; 
+  /// [validation Strings]
+  static const String pleaseEnter = 'Please enter ';
   static const String invalidEmail = 'Invalid Email';
-  static const String passwordLenghtError = 'Password must be at least 8 characters';
-  static const String passwordMustContainAtLeastOneUpperCaseLetter = 'Password must contain at least one uppercase letter';
-  static const String passwordMustContainAtLeastOneDigit = 'Password must contain at least one number';
-  static const String passwordMustContainAtLeastOneSpecialCharacter = 'Password must contain at least one special character';
-  static const String confirmPasswordNotMatch = 'Confirm password does not match';
+  static const String passwordLenghtError =
+      'Password must be at least 8 characters';
+  static const String passwordMustContainAtLeastOneUpperCaseLetter =
+      'Password must contain at least one uppercase letter';
+  static const String passwordMustContainAtLeastOneDigit =
+      'Password must contain at least one number';
+  static const String passwordMustContainAtLeastOneSpecialCharacter =
+      'Password must contain at least one special character';
+  static const String confirmPasswordNotMatch =
+      'Confirm password does not match';
   static const String invalidPhoneNumber = 'Invalid Phone Number';
-  static const String verificationCodeError = 'Verification code must be 4 digits';
-  static const String nameMustNotContainNumbers = 'Name must not contain numbers';
-  static const String nameMustNotContainSpecialCharacters = 'Name must not contain special characters';
-  static const String dateError = 'Invalid date'; 
-  static const String phoneNumberMustBe11Digits = 'Phone number must be 11 digits';
+  static const String verificationCodeError =
+      'Verification code must be 4 digits';
+  static const String nameMustNotContainNumbers =
+      'Name must not contain numbers';
+  static const String nameMustNotContainSpecialCharacters =
+      'Name must not contain special characters';
+  static const String dateError = 'Invalid date';
+  static const String phoneNumberMustBe11Digits =
+      'Phone number must be 11 digits';
+
+  /// [post card Strings]
+  static const String comments = "Comments";
+  static const String likes = "Likes";
+  static const String save = "Save";
+  static const String like = "Like";
+  static const String comment = "Comment";
+  static const String search = "Search";
 }

@@ -6,7 +6,8 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../viewModel/navigation_cubit.dart';
+
+import '../../../../core/components/cubits/navigation_cubit/navigation_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

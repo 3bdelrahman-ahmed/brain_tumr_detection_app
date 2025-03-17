@@ -1,9 +1,9 @@
+import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_function.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-
-import '../../../../../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
@@ -17,8 +17,7 @@ class PostCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          width: 352.w,
-          height: 280.h,
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10.r),
@@ -53,7 +52,7 @@ class PostCard extends StatelessWidget {
                 child: Text(
                   "Hi everyone, I recently got my MRI results, and the AI flagged something unusual. Has anyone here had experience with a low-grade glioma?",
                   textAlign: TextAlign.center,
-                  maxLines: 3,
+                  // maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.font12LightGreenW500,
                 ),
@@ -64,12 +63,12 @@ class PostCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "74 Likes",
+                    "${reachFormat(480000000)} ${AppStrings.likes}",
                     style: AppTextStyles.font12cyanW400,
                   ),
                   10.toWidth,
                   Text(
-                    "69 Comments",
+                    "${reachFormat(690000000)} ${AppStrings.comments}",
                     style: AppTextStyles.font12cyanW400,
                   ),
                 ],
@@ -79,28 +78,33 @@ class PostCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildButton(Icons.favorite, "Like"),
-                  _buildButton(Icons.mode_comment_rounded, "Comment"),
-                  _buildButton(Icons.bookmark, "Save"),
+                  _buildButton(Icons.favorite, AppStrings.like),
+                  _buildButton(Icons.mode_comment_rounded, AppStrings.comment),
+                  _buildButton(Icons.bookmark, AppStrings.save),
                 ],
               ),
             ],
-          ).paddingOnly(top: 30.h),
+          ).paddingOnly(top: 24.h),
         ),
         // Profile Image Positioned Above the Card
-        Positioned(
-          top: -25.h,
-          left: (340.w / 2) - (50.w / 2),
-          child: CustomImageView(
-            imagePath: "assets/image/${AssetsPng.doctorTest}.jpg",
-            width: 50.w,
-            height: 50.h,
-            fit: BoxFit.cover,
-            radius: BorderRadius.circular(50.r),
-          ),
-        ),
+        PositionedDirectional(
+            top: -25.h,
+            start: 0,
+            end: 0,
+            child: Container(
+              height: 50.w,
+              width: 50.w,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage(
+                        AssetsPng.doctorTest.toPng(),
+                      ),
+                      fit: BoxFit.cover)),
+            )),
       ],
-    ).paddingOnly(bottom: 35.h);
+    ).paddingOnly(bottom: 32.h);
   }
 
   Widget _buildButton(IconData icon, String label) {
