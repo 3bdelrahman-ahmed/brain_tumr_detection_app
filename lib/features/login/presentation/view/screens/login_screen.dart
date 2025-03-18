@@ -1,5 +1,5 @@
 import 'package:brain_tumr_detection_app/core/services/service_locator/service_locator.dart';
-import 'package:brain_tumr_detection_app/features/login/presentation/viewmodel/login_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

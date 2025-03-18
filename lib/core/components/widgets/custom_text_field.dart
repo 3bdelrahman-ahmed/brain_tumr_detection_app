@@ -1,3 +1,5 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -9,8 +11,8 @@ class CustomTextField extends StatelessWidget {
   final bool? obscureText;
   final String? label;
   final TextInputType keyboardType;
-  final IconData? prefixIcon;
-  final IconData? suffixIcon;
+  final String? prefixIcon;
+  final String? suffixIcon;
   final VoidCallback? onSuffixTap;
   final FormFieldValidator<String>? validator;
   final Function(String)? onChanged;
@@ -26,7 +28,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.onSuffixTap,
     required this.validator,
-   this.onChanged,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -42,21 +44,42 @@ class CustomTextField extends StatelessWidget {
           ),
         if (label != null) 4.toHeight,
         TextFormField(
-          cursorColor: AppColors.typography, 
+          cursorColor: AppColors.typography,
           controller: controller,
           obscureText: obscureText ?? false,
           keyboardType: keyboardType,
           validator: validator,
+          mouseCursor: MouseCursor.uncontrolled,
+          cursorHeight: 24.h,
+          style: AppTextStyles.font15GreenW500
+              .copyWith(fontWeight: FontWeight.w600),
+          cursorWidth: 1.5.w,
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: AppTextStyles.font15LightGreenW500,
-            prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-            prefixIconColor: AppColors.typographyLowOpacity,
+            prefixIcon: prefixIcon != null
+                ? Padding(
+                    padding: EdgeInsets.all(8.w),
+                    child: CustomImageView(
+                      svgPath: prefixIcon!.toSVG(),
+                      width: 25.w,
+                      height: 25.w,
+                    ),
+                  )
+                : null,
+            // prefixIconColor: AppColors.typographyLowOpacity,
             suffixIcon: suffixIcon != null
                 ? GestureDetector(
                     onTap: onSuffixTap,
-                    child: Icon(suffixIcon),
+                    child: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: CustomImageView(
+                        svgPath: suffixIcon!.toSVG(),
+                        width: 25.w,
+                        height: 25.w,
+                      ),
+                    ),
                   )
                 : null,
             enabledBorder: OutlineInputBorder(
@@ -68,7 +91,7 @@ class CustomTextField extends StatelessWidget {
               borderSide: BorderSide(color: AppColors.typographyLowOpacity),
             ),
             contentPadding:
-                EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
           ),
         ),
       ],

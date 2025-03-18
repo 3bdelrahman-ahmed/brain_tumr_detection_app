@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
+import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
@@ -10,7 +11,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/extenstions/validators.dart';
 import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
-import 'package:brain_tumr_detection_app/features/login/presentation/viewmodel/login_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_screen_cubit.dart';
 
 import '../../../../../core/components/widgets/custom_text_field.dart';
 import 'forgot_password_sheet.dart';
@@ -26,6 +27,8 @@ class LoginScreenWidget extends StatelessWidget {
         listener: (context, state) {
           if (state is ShowForgotPasswordState) {
             showModalBottomSheet(
+              // showDragHandle: true,
+
               context: context,
               isScrollControlled: true,
               shape: RoundedRectangleBorder(
@@ -36,86 +39,79 @@ class LoginScreenWidget extends StatelessWidget {
           }
         },
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomImageView(
               imagePath: AssetsPng.loginScreen.toPng(),
               height: 350.h,
+              width: double.infinity,
             ),
             15.toHeight,
-            Center(
-              child: Text(
-                AppStrings.login,
-                style: AppTextStyles.font20GreenW500,
-              ),
+            Text(
+              AppStrings.login,
+              style: AppTextStyles.font20GreenW500,
             ),
             8.toHeight,
-            Center(
-              child: Text(
-                AppStrings.heyThereLogin,
-                style: AppTextStyles.font15LightGreenW500,
-                textAlign: TextAlign.center,
-              ),
+            Text(
+              AppStrings.heyThereLogin,
+              style: AppTextStyles.font15LightGreenW500,
+              textAlign: TextAlign.center,
             ).paddingSymmetric(horizontal: 10.w),
             10.toHeight,
             Form(
                 key: cubit.formKey,
-                child: Column(
-                  children: [
-                    _buildInputField(
-                        label: AppStrings.email,
-                        hintText: AppStrings.enterYourEmail,
-                        controller: cubit.emailController,
-                        validator: Validators.emailValidate),
-                    30.toHeight,
-                    _buildInputField(
-                        label: AppStrings.password,
-                        hintText: AppStrings.enterYourPassword,
-                        controller: cubit.passwordController,
-                        obscureText: true,
-                        validator: Validators.passwordValidate),
-                  ],
-                ).paddingSymmetric(horizontal: 20.w)),
-            InkWell(
-              onTap: () => cubit.showForgotPassword(),
-              child: Container(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  AppStrings.forgotPassword,
-                  style: AppTextStyles.font15LightGreenW500,
-                ),
-              ).paddingOnly(right: 20.w),
-            ),
-            50.toHeight,
-            CustomButton(
-                text: AppStrings.next,
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.homeScreen);
-                })
+                child: SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                            label: AppStrings.email,
+                            hintText: AppStrings.enterYourEmail,
+                            controller: cubit.emailController,
+                            validator: (value) => checkFieldValidation(
+                                val: cubit.emailController.text,
+                                fieldName: AppStrings.email,
+                                fieldType: ValidationType.email)),
+                        30.toHeight,
+                        CustomTextField(
+                            label: AppStrings.password,
+                            hintText: AppStrings.enterYourPassword,
+                            controller: cubit.passwordController,
+                            obscureText: true,
+                            validator: (value) => checkFieldValidation(
+                                val: cubit.passwordController.text,
+                                fieldName: AppStrings.password,
+                                fieldType: ValidationType.password)),
+                        TextButton(
+                            style: ButtonStyle(
+                              overlayColor: WidgetStateProperty.all(
+                                  Colors.transparent), // Removes tap effect
+                              splashFactory: NoSplash
+                                  .splashFactory, // Disables ripple effect
+                            ),
+                            isSemanticButton: false,
+                            onPressed: () => cubit.showForgotPassword(),
+                            child: Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: Text(
+                                AppStrings.forgotPassword,
+                                style: AppTextStyles.font15LightGreenW500,
+                              ),
+                            )),
+                        50.toHeight,
+                        CustomButton(
+                            text: AppStrings.login,
+                            onTap: () {
+                              cubit.login();
+                              // if()
+                              // Navigator.pushNamed(
+                              //     context, AppRoutes.homeScreen);
+                            })
+                      ],
+                    ))),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildInputField({
-    required String label,
-    required String hintText,
-    TextEditingController? controller,
-    String? Function(String?)? validator,
-    bool obscureText = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: AppTextStyles.font15GreenW500),
-        5.toHeight,
-        CustomTextField(
-          hintText: hintText,
-          controller: controller,
-          validator: validator,
-          obscureText: obscureText,
-        ),
-      ],
     );
   }
 }

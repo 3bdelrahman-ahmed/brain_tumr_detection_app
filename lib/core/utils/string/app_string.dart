@@ -3,6 +3,7 @@ class AppStrings {
 
   static const String appName = "NeuroTum AI";
   static const String next = " Next";
+  static const String searchForPosts = "Search for posts";
   static const String letsStart = "Let’s Start!";
   static const String createYourAcc = "Create Your Account";
   static const String welcomeAbroadSentence = "Welcome aboard! Let’s get you "
@@ -10,6 +11,7 @@ class AppStrings {
   static const String forgotPassword = "Forgot Password?";
   static const String forgetYourPassword = 'Forgot Your Password?';
   static const String welcomeBack = 'welcome back,';
+  
   static const String dontWorryPassword =
       "Don’t worry! We’ll help you get back into your account in no time";
   static const String fullName = "Full Name";

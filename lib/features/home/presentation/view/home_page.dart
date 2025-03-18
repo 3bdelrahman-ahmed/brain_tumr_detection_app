@@ -82,7 +82,8 @@ class HomeScreen extends StatelessWidget {
                                       ? AppColors.background
                                       : AppColors.navSecondary,
                                   width: 30.w,
-                                  height: 30.h,),
+                                  height: 30.h,
+                                ),
                                 label: ""),
                             BottomNavigationBarItem(
                                 icon: Icon(Icons.person), label: ""),

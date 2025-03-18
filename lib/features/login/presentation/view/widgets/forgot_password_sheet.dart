@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/widgets/custom_button.dart';
@@ -40,8 +41,13 @@ class ForgotPasswordSheet extends StatelessWidget {
             ),
           ),
           20.toHeight,
-          buildInputField(
-              label: AppStrings.email, hintText: AppStrings.enterYourEmail),
+          CustomTextField(
+              validator: (value) => checkFieldValidation(
+                  val: value,
+                  fieldName: AppStrings.email,
+                  fieldType: ValidationType.email),
+              label: AppStrings.email,
+              hintText: AppStrings.enterYourEmail),
           20.toHeight,
           Center(
             child: CustomButton(
@@ -59,28 +65,6 @@ class ForgotPasswordSheet extends StatelessWidget {
         top: 5.h,
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
-    );
-  }
-
-  Widget buildInputField({
-    required String label,
-    required String hintText,
-    TextEditingController? controller,
-    String? Function(String?)? validator,
-    bool obscureText = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: AppTextStyles.font15GreenW500),
-        5.toHeight,
-        CustomTextField(
-          hintText: hintText,
-          controller: controller,
-          validator: validator,
-          obscureText: obscureText,
-        ),
-      ],
     );
   }
 }

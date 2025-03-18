@@ -1,3 +1,5 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_like_button.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
@@ -5,6 +7,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../../../core/utils/assets/assets_png.dart';
+import '../../../../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
@@ -78,9 +81,10 @@ class PostCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildButton(Icons.favorite, AppStrings.like),
-                  _buildButton(Icons.mode_comment_rounded, AppStrings.comment),
-                  _buildButton(Icons.bookmark, AppStrings.save),
+                  LikeButton(onPressed: () {}, isLike: false),
+                  // _buildButton(Icons.favorite, AppStrings.like),
+                  _buildButton(AssetsSvg.commentIcon, AppStrings.comment),
+                  _buildButton(AssetsSvg.saveIcon, AppStrings.save),
                 ],
               ),
             ],
@@ -107,10 +111,14 @@ class PostCard extends StatelessWidget {
     ).paddingOnly(bottom: 32.h);
   }
 
-  Widget _buildButton(IconData icon, String label) {
+  Widget _buildButton(String icon, String label) {
     return Row(
       children: [
-        Icon(icon, color: AppColors.smallDetails, size: 18),
+        CustomImageView(
+          svgPath: icon.toSVG(),
+          width: 22.w,
+          height: 22.w,
+        ),
         5.toWidth,
         Text(
           label,

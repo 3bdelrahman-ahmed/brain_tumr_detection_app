@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/tabs/feed/view/widgets/post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
@@ -43,14 +44,14 @@ class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
     return Container(
       color: Theme.of(context)
           .scaffoldBackgroundColor, // Ensures it's not transparent
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
       child: CustomTextField(
         validator: (value) => checkFieldValidation(
             val: value,
             fieldName: AppStrings.search,
             fieldType: ValidationType.text),
-        hintText: "Search for Posts",
-        prefixIcon: Icons.search,
+        hintText: AppStrings.searchForPosts,
+        prefixIcon: AssetsSvg.searchIcon,
       ),
     );
   }
