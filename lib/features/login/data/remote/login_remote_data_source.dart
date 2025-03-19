@@ -3,9 +3,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/network_services/api_service.dart';
 import '../models/login_model.dart';
-
+@injectable
 class LoginRemoteDataSource {
-  @Injectable(as:LoginRemoteDataSource)
   Future<LoginResponseModel> login(LoginRequestModel parameters) async {
     final response =
         await AppDio().post(path: AppUrls.login, data: parameters.toJson());

@@ -7,7 +7,7 @@ import 'package:brain_tumr_detection_app/features/register/presentation/view/wid
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../../viewmodel/location_cubit.dart';
+import '../cubits/location_cubit/location_cubit.dart';
 
 class LocationMapScreen extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
                   onMapCreated: (GoogleMapController controller) {
                     _mapController = controller;
                   },
-                  onCameraMove: (CameraPosition position) {
+                  onCameraMove:(CameraPosition position) {
                     context
                         .read<LocationCubit>()
                         .updateLocation(position.target);

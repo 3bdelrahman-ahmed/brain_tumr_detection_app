@@ -1,11 +1,12 @@
 part of 'rigester_screen_cubit.dart';
 
 @immutable
-sealed class RigesterScreenState extends Equatable {
-  @override
-  List<Object?> get props => [];
-}
+sealed class RigesterScreenState{}
 
 final class RigesterScreenInitial extends RigesterScreenState {}
 
 final class RigesterScreenChangeForm extends RigesterScreenState {}
+
+final class RigesterScreenUpdateScreen extends RigesterScreenState {}
+
+

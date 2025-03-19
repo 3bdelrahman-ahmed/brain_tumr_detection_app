@@ -1,4 +1,5 @@
-part of 'location_cubit.dart';
+part of '../../../../core/components/cubits/location_cubit/location_cubit.dart';
+
 
 sealed class LocationState extends Equatable {
 @override

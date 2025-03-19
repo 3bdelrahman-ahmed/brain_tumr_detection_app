@@ -4,6 +4,17 @@ class AppStrings {
   static const String appName = "NeuroTum AI";
   static const String next = " Next";
   static const String searchForPosts = "Search for posts";
+  static const String searchForTherapist = "Search for therapist";
+  static const String upComing = "Upcoming";
+  static const String cancel = "Cancel";
+  static const String reScheduled = "Rescheduled";
+  static const String profileImage = 'Profile Image';
+  static const String gallery = 'Gallery';
+  static const String camera = "Camera";
+  static const String selectGender= 'select Gender';
+  static const String setLocation= 'set Location';
+  static const String selectDateOfBirth = 'Select Date of Birth';
+  static const String birthDate = 'Birth Date';
   static const String letsStart = "Let’s Start!";
   static const String createYourAcc = "Create Your Account";
   static const String welcomeAbroadSentence = "Welcome aboard! Let’s get you "

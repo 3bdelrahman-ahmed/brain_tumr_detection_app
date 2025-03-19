@@ -5,13 +5,13 @@ import 'package:meta/meta.dart';
 
 import '../../../../features/appointments/view/screens/appointments_page.dart';
 import '../../../../features/doctors/view/screens/doctors_page.dart';
+import '../../../../features/feed/view/screens/feed_page.dart';
 import '../../../../features/profle/view/screens/profile_page.dart';
 import '../../../../features/scan/view/screens/scan_page.dart';
-import '../../../../features/home/presentation/view/tabs/feed/view/screens/feed_page.dart';
 
 part 'navigation_state.dart';
 
-@injectable
+@singleton
 class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(NavigationInitial());
 

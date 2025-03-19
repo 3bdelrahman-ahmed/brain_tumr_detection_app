@@ -45,7 +45,7 @@ class DioService {
 
   static Dio get dio => instance._dio;
 
-  Future<Map<String, String>> getHeaders({bool withToken = true}) async {
+  Future<Map<String, String>> getHeaders({bool withToken = true}) async{
     final headers = <String, String>{
       'Content-Type': 'application/json',
       // 'app-version': await getAppVersion()

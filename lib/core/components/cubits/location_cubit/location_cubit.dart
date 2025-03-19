@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/services/location_service.dart';
+import '../../../services/location_service.dart';
 
-part 'location_state.dart';
+part '../../../../core/components/cubits/location_cubit/location_state.dart';
 
 @injectable
 class LocationCubit extends Cubit<LocationState> {

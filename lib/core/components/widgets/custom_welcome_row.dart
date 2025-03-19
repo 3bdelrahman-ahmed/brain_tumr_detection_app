@@ -51,14 +51,14 @@ class CustomWelcomeAppBar extends StatelessWidget {
               children: [
                 CustomImageView(
                   imagePath: AssetsPng.chat.toPng(),
-                  width: 35.w,
-                  height: 35.w,
+                  width: 30.w,
+                  height: 30.w,
                 ),
                 SizedBox(width: 10.w),
                 CustomImageView(
                   imagePath: AssetsPng.notifications.toPng(),
-                  width: 35.w,
-                  height: 35.w,
+                  width: 30.w,
+                  height: 30.w,
                 ),
               ],
             ),

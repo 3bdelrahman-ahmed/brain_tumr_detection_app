@@ -16,4 +16,5 @@ class AssetsPng {
   static const String notifications = 'notifications';
   static const String chat = 'chat';
   static const String doctorTest = 'doctor_test';
+  static const String appointmentTest = 'appointment_text';
 }

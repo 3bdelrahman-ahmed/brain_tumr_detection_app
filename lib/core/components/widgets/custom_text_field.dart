@@ -14,9 +14,10 @@ class CustomTextField extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final VoidCallback? onSuffixTap;
+  final VoidCallback? onTap;
   final FormFieldValidator<String>? validator;
+  final bool? readOnly ;
   final Function(String)? onChanged;
-
   const CustomTextField({
     Key? key,
     required this.hintText,
@@ -27,8 +28,8 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onSuffixTap,
-    required this.validator,
-    this.onChanged,
+     this.validator,
+    this.onChanged, this.readOnly, this.onTap,
   }) : super(key: key);
 
   @override
@@ -44,6 +45,8 @@ class CustomTextField extends StatelessWidget {
           ),
         if (label != null) 4.toHeight,
         TextFormField(
+          onTap: onTap,
+          readOnly: readOnly ?? false,
           cursorColor: AppColors.typography,
           controller: controller,
           obscureText: obscureText ?? false,
@@ -92,7 +95,16 @@ class CustomTextField extends StatelessWidget {
             ),
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.r),
+              borderSide: BorderSide(color: AppColors.typographyLowOpacity),
+            ),
+            focusedErrorBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.r),
+              borderSide: BorderSide(color: AppColors.typographyLowOpacity),
+            ),
           ),
+
         ),
       ],
     );

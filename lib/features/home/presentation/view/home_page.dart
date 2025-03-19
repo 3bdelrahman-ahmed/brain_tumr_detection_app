@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/services/service_locator/service_locator.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => NavigationCubit(),
+        create: (context) => getIt<NavigationCubit>(),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           body: BlocBuilder<NavigationCubit, NavigationState>(

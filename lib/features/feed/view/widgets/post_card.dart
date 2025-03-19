@@ -55,7 +55,7 @@ class PostCard extends StatelessWidget {
                 child: Text(
                   "Hi everyone, I recently got my MRI results, and the AI flagged something unusual. Has anyone here had experience with a low-grade glioma?",
                   textAlign: TextAlign.center,
-                  // maxLines: 3,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.font12LightGreenW500,
                 ),

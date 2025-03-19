@@ -1,6 +1,6 @@
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/login/presentation/view/screens/login_screen.dart';
-import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester__location__screen.dart';
+import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -39,7 +39,7 @@ class AppRouter {
       case AppRoutes.registerScreen:
         return animateRouteBuilder(const RigesterScreen(), duration: 300.ms);
       case AppRoutes.locationScreen:
-        return animateRouteBuilder(const RegisterLocationScreen(),
+        return animateRouteBuilder(const LocationScreen(),
             duration: 300.ms);
       case AppRoutes.homeScreen:
         return animateRouteBuilder( HomeScreen(),

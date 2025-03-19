@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
@@ -38,8 +39,10 @@ class RigesterScreenWidget extends StatelessWidget {
           24.toHeight,
           CustomButton(
               text: AppStrings.next,
-              onTap: () =>
-                  {Navigator.pushNamed(context, AppRoutes.loginScreen)}),
+              onTap: () => {
+                    NavigationExtensions.navigatorKey.currentState
+                        ?.pushNamed(AppRoutes.homeScreen)
+                  }),
         ],
       ).paddingOnly(top: 32.h),
     );

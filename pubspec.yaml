@@ -40,7 +40,8 @@ dependencies:
   flutter_bloc: ^9.0.0
   bloc: ^9.0.0
   equatable: ^2.0.7
-
+  #image_picker
+  image_picker: ^1.1.2
   # premission handler
   permission_handler: ^11.4.0
 
@@ -80,7 +81,6 @@ dependencies:
 
 
   # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
