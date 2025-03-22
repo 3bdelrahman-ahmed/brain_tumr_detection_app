@@ -6,13 +6,17 @@ class AppStrings {
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
+  static const String openLocationPermission =
+      "Hey there! To help you find the best doctors near you, we need location access. Please enable it in settings!";
   static const String cancel = "Cancel";
   static const String reScheduled = "Rescheduled";
   static const String profileImage = 'Profile Image';
+  static const String locationError = "Please enter your location";
   static const String gallery = 'Gallery';
   static const String camera = "Camera";
-  static const String selectGender= 'select Gender';
-  static const String setLocation= 'set Location';
+  static const String confirm = "Confirm";
+  static const String selectGender = 'select Gender';
+  static const String setLocation = 'set Location';
   static const String selectDateOfBirth = 'Select Date of Birth';
   static const String birthDate = 'Birth Date';
   static const String letsStart = "Let’s Start!";
@@ -22,7 +26,6 @@ class AppStrings {
   static const String forgotPassword = "Forgot Password?";
   static const String forgetYourPassword = 'Forgot Your Password?';
   static const String welcomeBack = 'welcome back,';
-  
   static const String dontWorryPassword =
       "Don’t worry! We’ll help you get back into your account in no time";
   static const String fullName = "Full Name";

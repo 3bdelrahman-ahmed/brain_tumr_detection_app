@@ -1,7 +1,7 @@
 
 import '../core/utils/string/app_string.dart';
 
-enum ValidationType {
+enum ValidationType{
   none,
   email,
   text,
@@ -16,7 +16,6 @@ enum ValidationType {
 
 bool isValidBirthdate(DateTime birthdate) {
   DateTime currentDate = DateTime.now();
-
   DateTime minBirthdate = currentDate.subtract(const Duration(days: 365 * 100));
   DateTime maxBirthdate = currentDate;
 
@@ -163,13 +162,13 @@ String? checkFieldValidation(
 
   if (fieldType == ValidationType.birthDate) {
     // must be in form YYYY-MM-DD.
-    // check is null or not
     if (isRequired(val!, fieldName) != null) {
       errorMsg = isRequired(val, fieldName);
     }
     String input = val;
     DateTime? parsedDate = DateTime.tryParse(input);
     if (parsedDate == null) {
+      print("input : $input");
       errorMsg = AppStrings.dateError;
     } else {
       // check it's in a range

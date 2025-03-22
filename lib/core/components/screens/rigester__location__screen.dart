@@ -9,10 +9,7 @@ class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<LocationCubit>(),
-        child: LocationMapScreen(),
-      ),
+      body: LocationMapScreen(),
     );
   }
 }

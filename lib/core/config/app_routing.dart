@@ -1,11 +1,14 @@
+import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/location_cubit.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/login/presentation/view/screens/login_screen.dart';
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
+import '../services/service_locator/service_locator.dart';
 
 class AppRoutes {
   static const String splashScreen = "/splash";
@@ -18,8 +21,7 @@ class AppRoutes {
 }
 
 class AppRouter {
-  static Route<dynamic> animateRouteBuilder(
-    Widget widget, {
+  static Route<dynamic> animateRouteBuilder(Widget widget, {
     Duration? duration,
   }) {
     return buildPageRoute(widget, duration ?? 300.ms);
@@ -39,10 +41,13 @@ class AppRouter {
       case AppRoutes.registerScreen:
         return animateRouteBuilder(const RigesterScreen(), duration: 300.ms);
       case AppRoutes.locationScreen:
-        return animateRouteBuilder(const LocationScreen(),
+        return animateRouteBuilder(BlocProvider(
+          create: (context) => getIt<LocationCubit>(),
+          child: LocationScreen(),
+        ),
             duration: 300.ms);
       case AppRoutes.homeScreen:
-        return animateRouteBuilder( HomeScreen(),
+        return animateRouteBuilder(HomeScreen(),
             duration: 300.ms);
       default:
         return null;

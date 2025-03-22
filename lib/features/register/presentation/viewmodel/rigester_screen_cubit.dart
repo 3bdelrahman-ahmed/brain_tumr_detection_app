@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,10 +19,19 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   final ImagePicker picker = ImagePicker();
   String? selectedGender;
   int? currentIndex = 0;
+  LatLng? position;
+  String? streetName;
+
+  void setUserLocation(LatLng location, String street) {
+    position = location;
+    streetName = street;
+    print("User Location Saved: $position, $streetName");
+    emit(RigesterScreenUpdateScreen());
+  }
   void register(){
     if (formKey.currentState!.validate()) {
       print("Form is valid! Proceed with registration...");
-      close();
+      clear();
     } else {
       print("Form is not valid");
     }
@@ -44,12 +54,11 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
     print(imagePath?.path);
     emit(RigesterScreenUpdateScreen());
   }
-  @override
-  Future<void> close() {
-    fullNameController.dispose();
-    userNameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    return super.close();
+
+  void clear(){
+    fullNameController.clear();
+    userNameController.clear();
+    emailController.clear();
+    passwordController.clear();
   }
 }
