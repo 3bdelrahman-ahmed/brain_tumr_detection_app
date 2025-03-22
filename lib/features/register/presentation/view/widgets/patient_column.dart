@@ -25,16 +25,26 @@ class PatientFormFields extends StatelessWidget {
           ProfileImagePicker(cubit: cubit),
           16.toHeight,
           CustomTextField(
+            focusNode: cubit.fullNameFocus,
+            onSubmit: (p0) {
+              FocusScope.of(context)
+                  .requestFocus(cubit.userNameFocus);
+            },
             label: AppStrings.fullName,
             hintText: AppStrings.enterYourFullName,
             controller: cubit.fullNameController,
             validator: (value) => checkFieldValidation(
                 val: value,
                 fieldName: AppStrings.fullName,
-                fieldType: ValidationType.name),
+                fieldType: ValidationType.fullName),
           ),
           16.toHeight,
           CustomTextField(
+            focusNode: cubit.userNameFocus,
+            onSubmit:  (p0) {
+              FocusScope.of(context)
+                  .requestFocus(cubit.emailFocus);
+            },
             label: AppStrings.userName,
             hintText: AppStrings.enterYourUserName,
             controller: cubit.userNameController,
@@ -46,6 +56,11 @@ class PatientFormFields extends StatelessWidget {
           16.toHeight,
           //Email Picker
           CustomTextField(
+            focusNode: cubit.emailFocus,
+            onSubmit:  (p0) {
+              FocusScope.of(context)
+                  .requestFocus(cubit.passwordFocus);
+            },
             label: AppStrings.email,
             hintText: AppStrings.enterYourEmail,
             controller: cubit.emailController,
@@ -97,6 +112,7 @@ class PatientFormFields extends StatelessWidget {
           SelectGender(),
           16.toHeight,
           CustomTextField(
+            focusNode: cubit.passwordFocus,
             label: AppStrings.password,
             hintText: AppStrings.enterYourPassword,
             controller: cubit.passwordController,

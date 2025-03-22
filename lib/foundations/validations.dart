@@ -10,6 +10,7 @@ enum ValidationType{
   confirmPassword,
   birthDate,
   name,
+  fullName,
   verificationCode,
 
 }
@@ -48,6 +49,11 @@ bool isContainNumbers(String input) {
     if ((ascii >= 48 && ascii <= 57)) return true;
   }
   return false;
+}
+bool isValidFullName(String fullName) {
+  // Regular expression to allow only letters (English & Arabic) and exactly one space between first & last name
+  RegExp regex = RegExp(r'^[a-zA-Z\u0600-\u06FF]+ [a-zA-Z\u0600-\u06FF]+$');
+  return regex.hasMatch(fullName);
 }
 
 RegExp emailRegex = RegExp(
@@ -153,8 +159,17 @@ String? checkFieldValidation(
   if (fieldType == ValidationType.name) {
     if (isRequired(val!, fieldName) != null) {
       errorMsg = isRequired(val, fieldName);
+    }
+  }
+
+
+  if (fieldType == ValidationType.fullName) {
+    if (isRequired(val!, fieldName) != null) {
+      errorMsg = isRequired(val, fieldName);
     } else if (isContainNumbers(val)) {
       errorMsg = AppStrings.nameMustNotContainNumbers;
+    }else if (!isValidFullName(val)){
+      errorMsg = AppStrings.fullNameMustContainOneSpace;
     } else if (isContainSpecialCharacters(val)) {
       errorMsg = AppStrings.nameMustNotContainSpecialCharacters;
     }

@@ -9,4 +9,11 @@ final class RigesterScreenChangeForm extends RigesterScreenState {}
 
 final class RigesterScreenUpdateScreen extends RigesterScreenState {}
 
+final class RigesterScreenLoadingState extends RigesterScreenState {}
+
+final class RigesterScreenErrorState extends RigesterScreenState {}
+
+final class RigesterScreenSuccessState extends RigesterScreenState {}
+
+
 

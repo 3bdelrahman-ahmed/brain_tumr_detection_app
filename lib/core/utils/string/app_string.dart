@@ -10,6 +10,8 @@ class AppStrings {
       "Hey there! To help you find the best doctors near you, we need location access. Please enable it in settings!";
   static const String cancel = "Cancel";
   static const String reScheduled = "Rescheduled";
+  static const String fullNameMustContainOneSpace =
+      " must contain letters and exactly one space between first and last name";
   static const String profileImage = 'Profile Image';
   static const String locationError = "Please enter your location";
   static const String gallery = 'Gallery';

@@ -19,6 +19,10 @@ import '../../../features/login/data/repository/login_repository.dart' as _i340;
 import '../../../features/login/presentation/view_model/login_cubit.dart'
     as _i638;
 import '../../../features/onboarding/manager/onboarding_cubit.dart' as _i379;
+import '../../../features/register/data/remote/register_remote_data_source.dart'
+    as _i301;
+import '../../../features/register/data/repository/register_repository.dart'
+    as _i558;
 import '../../../features/register/presentation/viewmodel/rigester_screen_cubit.dart'
     as _i1054;
 import '../../components/cubits/location_cubit/location_cubit.dart' as _i935;
@@ -38,14 +42,19 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
-    gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
     gh.factory<_i379.OnboardingCubit>(() => _i379.OnboardingCubit());
-    gh.factory<_i1054.RigesterScreenCubit>(() => _i1054.RigesterScreenCubit());
+    gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
+    gh.factory<_i301.RegisterRemoteDataSource>(
+        () => _i301.RegisterRemoteDataSource());
     gh.singleton<_i284.NavigationCubit>(() => _i284.NavigationCubit());
+    gh.factory<_i558.RegisterRepository>(() => _i558.RegisterRepository(
+        dataSource: gh<_i301.RegisterRemoteDataSource>()));
     gh.factory<_i935.LocationCubit>(
         () => _i935.LocationCubit(gh<_i458.LocationService>()));
+    gh.factory<_i1054.RigesterScreenCubit>(() => _i1054.RigesterScreenCubit(
+        registerRepository: gh<_i558.RegisterRepository>()));
     gh.factory<_i340.LoginRepository>(() =>
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
     gh.factory<_i638.LoginCubit>(

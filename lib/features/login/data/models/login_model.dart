@@ -1,4 +1,4 @@
-class LoginResponseModel {
+class LoginResponseModel{
   String? token;
   User? user;
 

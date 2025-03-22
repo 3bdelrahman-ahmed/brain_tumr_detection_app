@@ -17,7 +17,7 @@ class AppDio {
   AppDio._privateConstructor(); // Private constructor
   static final AppDio _instance =
       AppDio._privateConstructor(); // Singleton instance
-  factory AppDio() => _instance; // Factory to return the same instan
+  factory AppDio() => _instance; // Factory to return the same instance
 
   final ValueNotifier<int> _progressNotifier = ValueNotifier<int>(0);
 
@@ -79,10 +79,9 @@ class AppDio {
     }
   }
 
-  // Create (POST)
   Future<Response> post({
     required String path,
-    Map<String, dynamic>? data,
+    dynamic data,
     Map<String, dynamic>? queryParams,
   }) async {
     try {
@@ -93,11 +92,13 @@ class AppDio {
         queryParams: queryParams,
         headers: await DioService.instance.getHeaders(),
       );
+
       return response;
     } catch (e) {
       rethrow;
     }
   }
+
 
 // Read (GET)
   Future<Response> get({
@@ -119,7 +120,6 @@ class AppDio {
       rethrow;
     }
   }
-
   // for notification history made by laravel BE
 
   Future<Response> sendRequestWithCustomBaseUrl({

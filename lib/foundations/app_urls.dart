@@ -3,4 +3,6 @@ class AppUrls {
       "https://neurotumapi-cqf9e4f7ahaxdwbt.uaenorth-01.azurewebsites.net/api/";
 
   static const String login = "Auth/login";
+
+  static const String registerPatient = "Auth/register/patient";
 }

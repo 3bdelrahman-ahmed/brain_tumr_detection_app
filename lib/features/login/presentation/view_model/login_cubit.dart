@@ -6,8 +6,6 @@ import 'package:brain_tumr_detection_app/features/login/data/repository/login_re
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../core/data/local_services/app_caching_helper.dart';
 import '../../../../core/utils/extenstions/navigation_extenstions.dart';
 part 'login_state.dart';
 
@@ -32,7 +30,7 @@ class LoginCubit extends Cubit<LoginState> {
             email: emailController.text, password: passwordController.text),
       );
 
-      result.fold((l) {
+      result.fold((l){
         l.message!.showToast();
         emit(LoginErrorState());
       }, (r) async {
@@ -42,7 +40,6 @@ class LoginCubit extends Cubit<LoginState> {
         context.navigateTo(AppRoutes.homeScreen);
         AppConstants.setUser(r.user!);
         AppConstants.user = r.user;
-
         // // Navigate based on role
         // if (AppConst.user!.role == UserRoles.envoy.name) {
         //   Navigator.pushNamedAndRemoveUntil(

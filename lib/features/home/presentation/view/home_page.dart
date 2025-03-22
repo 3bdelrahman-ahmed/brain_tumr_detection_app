@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen>
                         onTap: () => cubit.changePage(4),
                         child: CustomProfileImage(
                           imageUrl: AppConstants.user?.profilePicture,
-                          size: 16.r,
+                          size: 18.r,
                         ),
                       ),
                     ],

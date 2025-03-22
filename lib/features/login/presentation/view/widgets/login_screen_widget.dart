@@ -114,8 +114,7 @@ class LoginScreenWidget extends StatelessWidget {
                                 isLoading: state is LoginLoadingState,
                                 text: AppStrings.login,
                                 onTap: () {
-                                  context.navigateTo(AppRoutes.homeScreen);
-                                  // cubit.login();
+                                  cubit.login();
                                 });
                           },
                         ).paddingOnly(bottom: 16.h)

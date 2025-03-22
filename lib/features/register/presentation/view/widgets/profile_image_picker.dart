@@ -12,7 +12,8 @@ import '../../viewmodel/rigester_screen_cubit.dart';
 
 class ProfileImagePicker extends StatelessWidget {
   const ProfileImagePicker({Key? key, required this.cubit}) : super(key: key);
- final RigesterScreenCubit cubit;
+  final RigesterScreenCubit cubit;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,7 +64,7 @@ void _showImagePickerOptions(BuildContext context, RigesterScreenCubit cubit) {
               final XFile? image =
                   await cubit.picker.pickImage(source: ImageSource.gallery);
               if (image != null) {
-                cubit.saveImage(image);
+                cubit.saveImage(File(image.path));
               }
             },
           ),
@@ -77,7 +78,7 @@ void _showImagePickerOptions(BuildContext context, RigesterScreenCubit cubit) {
               final XFile? image =
                   await cubit.picker.pickImage(source: ImageSource.camera);
               if (image != null) {
-                cubit.saveImage(image);
+                cubit.saveImage(File(image.path));
               }
             },
           ),
