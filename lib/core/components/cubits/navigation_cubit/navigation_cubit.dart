@@ -1,34 +1,51 @@
-import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/core/services/service_locator/service_locator.dart';
+import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/cubit/feed_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
-
 import '../../../../features/appointments/view/screens/appointments_page.dart';
 import '../../../../features/doctors/view/screens/doctors_page.dart';
-import '../../../../features/feed/view/screens/feed_page.dart';
+import '../../../../features/feed/presentation/view/screens/feed_page.dart';
 import '../../../../features/profle/view/screens/profile_page.dart';
 import '../../../../features/scan/view/screens/scan_page.dart';
-
 part 'navigation_state.dart';
 
 @singleton
 class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(NavigationInitial());
 
-   int currentIndex = 0;
-  final List<Widget> tabs =[
-    FeedPage(),
-    AppointmentsPage(),
-    ScanPage(),
-    DoctorsPage(),
-    ProfilePage()
-  ];
+  int currentIndex = 0;
 
-  void changePage(int index){
-    if(currentIndex != index)
-      {
-        currentIndex = index;
-        emit(ChangeTabNavigation());
-      }
+  final Map<int, ScrollController> scrollControllers = {};
+
+  ScrollController getScrollController(int index) {
+    if (!scrollControllers.containsKey(index)) {
+      scrollControllers[index] = ScrollController();
+    }
+    return scrollControllers[index]!;
+  }
+
+  final List<Widget> tabs = [];
+
+  void initializeTabs() {
+    tabs.addAll([
+      BlocProvider(
+        create: (context) => getIt<FeedCubit>(),
+        child: FeedPage(
+          controller: getScrollController(0),
+        ),
+      ),
+      AppointmentsPage(),
+      ScanPage(),
+      DoctorsPage(),
+      ProfilePage(),
+    ]);
+  }
+
+  void changePage(int index) {
+    if (currentIndex != index) {
+      currentIndex = index;
+      emit(ChangeTabNavigation());
+    }
   }
 }

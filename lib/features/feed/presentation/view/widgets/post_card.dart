@@ -6,10 +6,10 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
 import 'package:flutter/material.dart';
-import '../../../../../../../../core/utils/assets/assets_png.dart';
-import '../../../../../../../../core/utils/assets/assets_svg.dart';
-import '../../../../../../../../core/utils/theme/colors/app_colors.dart';
-import '../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../../../../../core/utils/assets/assets_png.dart';
+import '../../../../../../../../../core/utils/assets/assets_svg.dart';
+import '../../../../../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({Key? key}) : super(key: key);

@@ -7,4 +7,12 @@ class AssetsSvg {
   static const String datePicker = "datePicker";
   static const String location = "location";
 
+
+  ///[bottom nav bar icons]
+  static const String feed = "feed";
+  static const String history = "history";
+  static const String doctor = "doctor";
+    static const String upload = 'upload';
+
+
 }
