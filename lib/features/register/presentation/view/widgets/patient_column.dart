@@ -1,13 +1,14 @@
+import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/location_cubit.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/profile_image_picker.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/select_gender.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/viewmodel/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_text_field.dart';
 import '../../../../../core/config/app_routing.dart';
-import '../../../../../core/utils/extenstions/navigation_extenstions.dart';
 import '../../../../../core/utils/string/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
@@ -19,7 +20,7 @@ class PatientFormFields extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<RigesterScreenCubit>();
     return Form(
-      key: cubit.formKey, // Attach Form Key from Cubit
+      key: cubit.formKey,
       child: Column(
         children: [
           ProfileImagePicker(cubit: cubit),
@@ -44,6 +45,7 @@ class PatientFormFields extends StatelessWidget {
                 fieldType: ValidationType.name),
           ),
           16.toHeight,
+          //Email Picker
           CustomTextField(
             label: AppStrings.email,
             hintText: AppStrings.enterYourEmail,
@@ -54,62 +56,46 @@ class PatientFormFields extends StatelessWidget {
                 fieldType: ValidationType.email),
           ),
           16.toHeight,
+          //Location Picker
           CustomTextField(
-            hintText: cubit.pickedDate != null ? cubit.pickedDate.toString().substring(0,10) : AppStrings.selectDateOfBirth,
-            readOnly: true,
-            label: AppStrings.setLocation,
-            suffixIcon: AssetsSvg.location,
-            onTap: () {
-              NavigationExtensions.navigatorKey.currentState
-                  ?.pushNamed(AppRoutes.locationScreen);
-            }
-          ),
+              hintText: cubit.streetName != null
+                  ? cubit.streetName!
+                  : AppStrings.setLocation,
+              readOnly: true,
+              hintTextStyle: cubit.streetName != null
+                  ? AppTextStyles.font20GreenW500
+                  : AppTextStyles.font15LightGreenW500,
+              label: AppStrings.setLocation,
+              suffixIcon: AssetsSvg.location,
+              validator: (_) =>
+                  cubit.streetName != null ? null : AppStrings.locationError,
+              onTap: () async {
+                final result = await Navigator.pushNamed(
+                    context, AppRoutes.locationScreen);
+                if (result != null && result is Map<String, dynamic>) {
+                  final position = result["position"];
+                  final streetName = result["streetName"];
+                  cubit.setUserLocation(position, streetName);
+                }
+              }),
           16.toHeight,
           // Date Picker
           CustomTextField(
-            hintText: cubit.pickedDate != null ? cubit.pickedDate.toString().substring(0,10) : AppStrings.selectDateOfBirth,
+            hintText: cubit.pickedDate != null
+                ? cubit.pickedDate.toString().substring(0, 10)
+                : AppStrings.selectDateOfBirth,
             readOnly: true,
+            hintTextStyle: cubit.pickedDate != null
+                ? AppTextStyles.font20GreenW500
+                : AppTextStyles.font15LightGreenW500,
             label: AppStrings.birthDate,
             suffixIcon: AssetsSvg.datePicker,
-            onTap: () => _selectDate(context,cubit),
+            validator: (_) =>
+                cubit.pickedDate != null ? null : AppStrings.dateError,
+            onTap: () => _selectDate(context, cubit),
           ),
           16.toHeight,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                AppStrings.selectGender,
-                style: AppTextStyles.font15GreenW500,
-              ),
-              4.toHeight,
-              DropdownButtonFormField<String>(
-                value: cubit.selectedGender,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(color: AppColors.typographyLowOpacity),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(color: AppColors.typographyLowOpacity),
-                  ),
-                ),
-                items: ['Male', 'Female'].map((String gender){
-                  return DropdownMenuItem<String>(
-                    value: gender,
-                    child: Text(gender,style: AppTextStyles.font20GreenW500,),
-                  );
-                }).toList(),
-                onChanged: (value){
-                  if (value != null){
-                    cubit.setSelectedGender(value);
-                  }
-                },
-                validator: (value) =>
-                value == null ? 'Please select a gender' : null,
-              ),
-            ],
-          ),
+          SelectGender(),
           16.toHeight,
           CustomTextField(
             label: AppStrings.password,
@@ -126,7 +112,8 @@ class PatientFormFields extends StatelessWidget {
     );
   }
 
-  Future<void> _selectDate(BuildContext context, RigesterScreenCubit cubit) async {
+  Future<void> _selectDate(
+      BuildContext context, RigesterScreenCubit cubit) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),

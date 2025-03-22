@@ -10,5 +10,4 @@ class LoginRemoteDataSource {
         await AppDio().post(path: AppUrls.login, data: parameters.toJson());
     return LoginResponseModel.fromJson(response.data);
   }
-
 }

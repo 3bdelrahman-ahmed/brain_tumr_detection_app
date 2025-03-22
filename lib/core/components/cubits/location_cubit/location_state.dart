@@ -1,10 +1,7 @@
 part of '../../../../core/components/cubits/location_cubit/location_cubit.dart';
 
 
-sealed class LocationState extends Equatable {
-@override
-List<Object?> get props => [];
-}
+sealed class LocationState {}
 
 final class LocationInitial extends LocationState {}
 
@@ -14,9 +11,8 @@ final class LocationLoading extends LocationState {}
 final class LocationLoaded extends LocationState {
   final LatLng position;
   final CameraPosition cameraPosition;
-  final Marker marker;
-
-  LocationLoaded(this.position, this.cameraPosition, this.marker);
+  final String streetName;
+  LocationLoaded(this.position, this.cameraPosition, this.streetName);
 }
 
 final class LocationError extends LocationState {

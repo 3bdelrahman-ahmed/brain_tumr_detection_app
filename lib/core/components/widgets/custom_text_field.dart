@@ -14,6 +14,7 @@ class CustomTextField extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final VoidCallback? onSuffixTap;
+  final TextStyle? hintTextStyle ;
   final VoidCallback? onTap;
   final FormFieldValidator<String>? validator;
   final bool? readOnly ;
@@ -29,7 +30,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.onSuffixTap,
      this.validator,
-    this.onChanged, this.readOnly, this.onTap,
+    this.onChanged, this.readOnly, this.onTap, this.hintTextStyle,
   }) : super(key: key);
 
   @override
@@ -60,7 +61,7 @@ class CustomTextField extends StatelessWidget {
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: AppTextStyles.font15LightGreenW500,
+            hintStyle: hintTextStyle ?? AppTextStyles.font15LightGreenW500,
             prefixIcon: prefixIcon != null
                 ? Padding(
                     padding: EdgeInsets.all(8.w),
