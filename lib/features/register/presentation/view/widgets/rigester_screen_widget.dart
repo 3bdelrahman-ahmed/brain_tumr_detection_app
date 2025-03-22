@@ -37,11 +37,17 @@ class RigesterScreenWidget extends StatelessWidget {
           16.toHeight,
           cubit.currentIndex == 0 ? PatientFormFields() : DoctorForm(),
           24.toHeight,
-          CustomButton(
-              text: AppStrings.next,
-              onTap: () => {
-                cubit.register()
-                  }),
+          BlocBuilder<RigesterScreenCubit, RigesterScreenState>(
+            builder: (context, state) {
+              return CustomButton(
+                  isLoading: state is RigesterScreenLoadingState,
+                  text: AppStrings.next,
+                  onTap: () =>
+                  {
+                    cubit.register()
+                  });
+            },
+          ),
         ],
       ).paddingOnly(top: 32.h),
     );
