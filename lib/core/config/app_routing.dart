@@ -52,6 +52,8 @@ class AppRouter {
               create: (context) => getIt<NavigationCubit>(),
               child: HomeScreen(),
             ),
+            duration: 300.ms);
+            case AppRoutes.locationScreen:
         return animateRouteBuilder(BlocProvider(
           create: (context) => getIt<LocationCubit>(),
           child: LocationScreen(),

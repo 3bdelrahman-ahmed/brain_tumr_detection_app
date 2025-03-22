@@ -34,6 +34,7 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onSuffixTap,
+    this.hintTextStyle,
     this.onAction,
     this.validator,
     this.onChanged,
