@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/validators.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/profile_image_picker.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/select_gender.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/viewmodel/rigester_screen_cubit.dart';
@@ -64,11 +65,7 @@ class PatientFormFields extends StatelessWidget {
             label: AppStrings.email,
             hintText: AppStrings.enterYourEmail,
             controller: cubit.emailController,
-            validator: (value) => checkFieldValidation(
-                val: value,
-                fieldName: AppStrings.email,
-                fieldType: ValidationType.email),
-          ),
+            validator: Validators.emailValidate),
           16.toHeight,
           //Location Picker
           CustomTextField(

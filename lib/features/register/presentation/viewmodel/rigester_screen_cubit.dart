@@ -62,7 +62,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       result.fold((l) {
         l.message!.showToast();
         emit(RigesterScreenErrorState());
-      }, (r) async {
+      }, (r) async{
         context.navigateTo(AppRoutes.loginScreen);
         emit(RigesterScreenSuccessState());
       });

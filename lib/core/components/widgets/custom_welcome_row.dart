@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'custom_image_view.dart';
 import '../../utils/assets/assets_png.dart';
@@ -38,7 +39,7 @@ class CustomWelcomeAppBar extends StatelessWidget {
                 SizedBox(
                   width: 150.w,
                   child: Text(
-                    userName ?? "Lionel Messi 🐐",
+                    AppConstants.user?.userName ?? "Lionel Messi 🐐",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.font20GreenW700,
