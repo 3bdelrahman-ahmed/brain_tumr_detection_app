@@ -11,4 +11,5 @@ class AppColors {
   static const Color typography = Color(0xFF116D62);
   static const Color smallDetails = Color(0xFF7ED2FF);
   static Color typographyLowOpacity = Color(0xFF116D62).withOpacity(0.5);
+  static const Color error = Color(0xff8B0000);
 }

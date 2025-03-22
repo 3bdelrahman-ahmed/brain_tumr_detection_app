@@ -15,21 +15,29 @@ class CustomTextField extends StatelessWidget {
   final String? suffixIcon;
   final VoidCallback? onSuffixTap;
   final VoidCallback? onTap;
+  final TextInputAction? onAction;
   final FormFieldValidator<String>? validator;
-  final bool? readOnly ;
+  final bool? readOnly;
+  final FocusNode? focusNode;
   final Function(String)? onChanged;
+  final Function(String)? onSubmit;
   const CustomTextField({
     Key? key,
     required this.hintText,
     this.controller,
+    this.focusNode,
+    this.onSubmit,
     this.obscureText = false,
     this.label,
     this.keyboardType = TextInputType.text,
     this.prefixIcon,
     this.suffixIcon,
     this.onSuffixTap,
-     this.validator,
-    this.onChanged, this.readOnly, this.onTap,
+    this.onAction,
+    this.validator,
+    this.onChanged,
+    this.readOnly,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -45,6 +53,11 @@ class CustomTextField extends StatelessWidget {
           ),
         if (label != null) 4.toHeight,
         TextFormField(
+          onTapOutside: (event) {
+            FocusScope.of(context).unfocus();
+          },
+          onFieldSubmitted: onSubmit,
+          focusNode: focusNode,
           onTap: onTap,
           readOnly: readOnly ?? false,
           cursorColor: AppColors.typography,
@@ -97,14 +110,13 @@ class CustomTextField extends StatelessWidget {
                 EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.r),
-              borderSide: BorderSide(color: AppColors.typographyLowOpacity),
+              borderSide: BorderSide(color: AppColors.error),
             ),
-            focusedErrorBorder:  OutlineInputBorder(
+            focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.r),
               borderSide: BorderSide(color: AppColors.typographyLowOpacity),
             ),
           ),
-
         ),
       ],
     );

@@ -39,10 +39,7 @@ class RigesterScreenWidget extends StatelessWidget {
           24.toHeight,
           CustomButton(
               text: AppStrings.next,
-              onTap: () => {
-                    NavigationExtensions.navigatorKey.currentState
-                        ?.pushNamed(AppRoutes.homeScreen)
-                  }),
+              onTap: () => {context.navigateTo(AppRoutes.loginScreen)}),
         ],
       ).paddingOnly(top: 32.h),
     );

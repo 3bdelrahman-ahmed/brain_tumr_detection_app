@@ -39,18 +39,20 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(raduis ?? 30.r),
             color: backgroundColor ?? AppColors.buttonsAndNav),
         alignment: Alignment.center,
-        child: (isLoading ?? false) ? SizedBox(
-                      height: 20.h,
-                      width: 20.w,
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            circularInticatorColor ?? AppColors.background),
-                      ),
-                    ) : Text(
-          text,
-          textAlign: TextAlign.center,
-          style: textStyle ?? AppTextStyles.font20WhiteW500,
-        ),
+        child: (isLoading ?? false)
+            ? SizedBox(
+                height: 20.w,
+                width: 20.w,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      circularInticatorColor ?? AppColors.background),
+                ),
+              )
+            : Text(
+                text,
+                textAlign: TextAlign.center,
+                style: textStyle ?? AppTextStyles.font20WhiteW500,
+              ),
       ),
     );
   }

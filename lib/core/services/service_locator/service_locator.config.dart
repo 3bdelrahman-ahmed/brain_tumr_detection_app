@@ -11,11 +11,13 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
+    as _i1069;
 import '../../../features/login/data/remote/login_remote_data_source.dart'
     as _i609;
 import '../../../features/login/data/repository/login_repository.dart' as _i340;
-import '../../../features/login/presentation/view_model/login_screen_cubit.dart'
-    as _i322;
+import '../../../features/login/presentation/view_model/login_cubit.dart'
+    as _i638;
 import '../../../features/onboarding/manager/onboarding_cubit.dart' as _i379;
 import '../../../features/register/presentation/viewmodel/rigester_screen_cubit.dart'
     as _i1054;
@@ -36,6 +38,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
+    gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
     gh.factory<_i379.OnboardingCubit>(() => _i379.OnboardingCubit());
@@ -45,8 +48,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i935.LocationCubit(gh<_i458.LocationService>()));
     gh.factory<_i340.LoginRepository>(() =>
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
-    gh.factory<_i322.LoginScreenCubit>(
-        () => _i322.LoginScreenCubit(repository: gh<_i340.LoginRepository>()));
+    gh.factory<_i638.LoginCubit>(
+        () => _i638.LoginCubit(repository: gh<_i340.LoginRepository>()));
     return this;
   }
 }
