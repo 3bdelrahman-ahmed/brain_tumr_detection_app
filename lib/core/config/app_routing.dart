@@ -22,8 +22,7 @@ class AppRoutes {
 }
 
 class AppRouter {
-  static Route<dynamic> animateRouteBuilder(
-    Widget widget, {
+  static Route<dynamic> animateRouteBuilder(Widget widget, {
     Duration? duration,
   }) {
     return buildPageRoute(widget, duration ?? 300.ms);
@@ -47,18 +46,16 @@ class AppRouter {
             duration: 300.ms);
       case AppRoutes.registerScreen:
         return animateRouteBuilder(const RigesterScreen(), duration: 300.ms);
-      case AppRoutes.locationScreen:
-        return animateRouteBuilder(
-            BlocProvider(
-                create: (context) => getIt<LocationCubit>(),
-                child: const LocationScreen()),
-            duration: 300.ms);
       case AppRoutes.homeScreen:
         return animateRouteBuilder(
             BlocProvider(
               create: (context) => getIt<NavigationCubit>(),
               child: HomeScreen(),
             ),
+        return animateRouteBuilder(BlocProvider(
+          create: (context) => getIt<LocationCubit>(),
+          child: LocationScreen(),
+        ),
             duration: 300.ms);
       default:
         return null;

@@ -1,12 +1,17 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/custom_location_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../utils/extenstions/navigation_extenstions.dart';
 import '../cubits/location_cubit/location_cubit.dart';
 
 class LocationMapScreen extends StatefulWidget {
@@ -16,45 +21,97 @@ class LocationMapScreen extends StatefulWidget {
 
 class _LocationMapScreenState extends State<LocationMapScreen> {
   GoogleMapController? _mapController;
+  LatLng? _currentLocation;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CustomLocationAppBar().alignTop(),
         BlocBuilder<LocationCubit, LocationState>(
           builder: (context, state) {
             if (state is LocationLoading) {
-              return Container(
-                width: 350.w,
-                child: Center(child: CircularProgressIndicator()),
+              return Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.typography,
+                ),
               );
             }
             if (state is LocationLoaded) {
-              return Container(
-                child: GoogleMap(
-                  initialCameraPosition: state.cameraPosition,
-                  markers: {state.marker},
-                  myLocationEnabled: true,
-                  onMapCreated: (GoogleMapController controller) {
-                    _mapController = controller;
-                  },
-                  onCameraMove:(CameraPosition position) {
-                    context
-                        .read<LocationCubit>()
-                        .updateLocation(position.target);
-                  },
-                ),
-              ).paddingOnly(bottom: 85.h, top: 70.h);
+              return Stack(
+                children: [
+                  GoogleMap(
+                    initialCameraPosition: state.cameraPosition,
+                    myLocationEnabled: true,
+                    onMapCreated: (GoogleMapController controller) {
+                      _mapController = controller;
+                    },
+                    onCameraMove: (CameraPosition position) {
+                      _currentLocation = position.target;
+                    },
+                    onCameraIdle: () {
+                      // Update state when user stops moving the map
+                      if (_currentLocation != null) {
+                        context
+                            .read<LocationCubit>()
+                            .updateLocation(_currentLocation!);
+                      }
+                    },
+                  ).paddingOnly(top: 70.h),
+                  // Floating marker at the center
+                  Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8.r),
+                          decoration: BoxDecoration(
+                            color: AppColors.background,
+                            borderRadius: BorderRadius.circular(8.r),
+                            boxShadow: [
+                              BoxShadow(color: Colors.black26, blurRadius: 4)
+                            ],
+                          ),
+                          child: Text(
+                            state.streetName,
+                            style: AppTextStyles.font15GreenW500,
+                          ),
+                        ),
+                        8.toHeight,
+                        CustomImageView(
+                          svgPath: AssetsSvg.location.toSVG(),
+                          height: 40.h,
+                          width: 40.h,
+                        )
+                      ],
+                    ).paddingOnly(bottom: 50.h),
+                  ),
+                  CustomButton(
+                    text: AppStrings.confirm,
+                    onTap: () {
+                      if (_currentLocation != null) {
+                        context
+                            .read<LocationCubit>()
+                            .updateLocation(_currentLocation!);
+                        Navigator.pop(context, {
+                          "position": state.position,
+                          "streetName": state.streetName,
+                        });
+                      }
+                    },
+                  ).alignBottom().paddingOnly(bottom: 20.h)
+                ],
+              );
             }
             return Center(
-              child: Text("Choose Location in Other Time"),
+              child: Text(
+                AppStrings.openLocationPermission,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.font15GreenW500,
+              ),
             );
           },
         ),
-        CustomButton(text: AppStrings.next, onTap: () {})
-            .alignBottom()
-            .paddingOnly(bottom: 20.h),
+        CustomLocationAppBar().alignTop(),
       ],
     );
   }

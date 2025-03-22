@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import '../../../services/location_service.dart';
@@ -14,29 +16,41 @@ class LocationCubit extends Cubit<LocationState> {
     fetchLocation();
   }
 
-  // Fetch initial location
+  Future<Position> fetchLocationService() async{
+    return await _locationService.getCurrentLocation();
+  }
+
   Future<void> fetchLocation() async {
     emit(LocationLoading());
     try {
-      final position = await _locationService.getCurrentLocation();
-      LatLng latLng = LatLng(position.latitude, position.longitude);
-      CameraPosition cameraPosition = CameraPosition(target: latLng, zoom: 15);
-      Marker marker = Marker(
-        markerId: MarkerId("current_location"),
-        position: latLng,
-      );
-      emit(LocationLoaded(latLng, cameraPosition, marker));
+      final Position fetchedPosition = await fetchLocationService();
+      LatLng latLng =
+          LatLng(fetchedPosition.latitude, fetchedPosition.longitude);
+      String streetName = await fetchAddress(latLng);
+
+      CameraPosition cameraPosition = CameraPosition(target: latLng, zoom: 18);
+      emit(LocationLoaded(latLng, cameraPosition, streetName));
     } catch (e) {
       emit(LocationError("Error fetching location: $e"));
     }
   }
 
-  // Update marker position when user moves the map
-  void updateLocation(LatLng newPosition) {
-    Marker newMarker = Marker(
-      markerId: MarkerId("current_location"),
-      position: newPosition,
-    );
-    emit(LocationLoaded(newPosition, CameraPosition(target: newPosition, zoom: 15), newMarker));
+  Future<String> fetchAddress(LatLng position)async{
+    try {
+      final placeMarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+      return placeMarks.isNotEmpty
+          ? "${placeMarks.first.street}, ${placeMarks.first.administrativeArea}, ${placeMarks.first.country}"
+          : "Unknown Road";
+    } catch (e) {
+      return "Unknown Road";
+    }
+  }
+  void updateLocation(LatLng newPosition) async{
+    String streetName = await fetchAddress(newPosition);
+    CameraPosition newCameraPosition =
+        CameraPosition(target: newPosition, zoom: 15);
+    print("Long : ${newPosition.longitude} + Street : ${streetName}");
+    emit(LocationLoaded(newPosition, newCameraPosition, streetName));
   }
 }

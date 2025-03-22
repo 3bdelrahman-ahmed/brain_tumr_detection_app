@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,8 @@ class CustomLocationAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80.h,
+      height: 90.h,
+      color: AppColors.background,
       child: Row(
         children: [
           InkWell(
@@ -22,10 +24,8 @@ class CustomLocationAppBar extends StatelessWidget {
             AppStrings.setYourLocation,
             style: AppTextStyles.font20GreenW500,
           ),
-          Spacer(),
-          InkWell(onTap: () {}, child: Icon(Icons.search))
         ],
-      ).paddingOnly(left: 20.w, right: 20.w, top: 10.h),
+      ).paddingOnly(left: 20.w, right: 20.w, top: 20.h),
     );
   }
 }
