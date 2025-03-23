@@ -3,7 +3,7 @@ import 'package:brain_tumr_detection_app/foundations/app_urls.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/network_services/api_service.dart';
-@injectable
+@singleton
 class RegisterRemoteDataSource {
   Future<RegisterResponseModel> register(RegisterRequestModel parameters) async {
     final formData = await parameters.toFormData();

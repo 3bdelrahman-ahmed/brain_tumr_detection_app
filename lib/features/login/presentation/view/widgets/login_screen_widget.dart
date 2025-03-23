@@ -1,6 +1,7 @@
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
@@ -107,6 +108,21 @@ class LoginScreenWidget extends StatelessWidget {
                                 style: AppTextStyles.font15LightGreenW500,
                               ),
                             )),
+                        6.toHeight,
+                        RichText(
+                            text: TextSpan(
+                                text: AppStrings.dontHaveAnAccount,
+                                style: AppTextStyles.font15LightGreenW500,
+                                children: [
+                              TextSpan(
+                                  text: AppStrings.signUp,
+                                  style: AppTextStyles.font15GreenW500,
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      context
+                                          .navigateTo(AppRoutes.registerScreen);
+                                    })
+                            ])),
                         32.toHeight,
                         BlocBuilder<LoginCubit, LoginState>(
                           builder: (context, state) {

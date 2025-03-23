@@ -39,6 +39,7 @@ class _NeroTumAppState extends State<NeroTumApp> {
               : MediaQuery.of(context).copyWith(
                   textScaler: TextScaler.linear(0.96)), // Adjust scale factor
           child: child!,
+        
         );
       },
     );

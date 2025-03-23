@@ -3,8 +3,8 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/utils/assets/assets_png.dart';
-import '../../../core/utils/string/app_string.dart';
+import '../../../../core/utils/assets/assets_png.dart';
+import '../../../../core/utils/string/app_string.dart';
 
 part 'onboarding_state.dart';
 

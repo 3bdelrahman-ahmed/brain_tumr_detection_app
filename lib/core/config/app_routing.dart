@@ -5,12 +5,15 @@ import 'package:brain_tumr_detection_app/features/login/presentation/view/screen
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_cubit.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
-import 'package:brain_tumr_detection_app/features/register/presentation/viewmodel/rigester_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
+import '../../features/onboarding/presentation/view_model/onboarding_cubit.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
+import '../../features/verification_code/presentation/view/screens/verification_code_screen.dart';
 import '../services/service_locator/service_locator.dart';
 
 class AppRoutes {
@@ -20,10 +23,12 @@ class AppRoutes {
   static const String registerScreen = '/rigester';
   static const String locationScreen = 'location';
   static const String homeScreen = '/home';
+  static const String verificationCodeScreen = '/verification_code';
 }
 
 class AppRouter {
-  static Route<dynamic> animateRouteBuilder(Widget widget, {
+  static Route<dynamic> animateRouteBuilder(
+    Widget widget, {
     Duration? duration,
   }) {
     return buildPageRoute(widget, duration ?? 300.ms);
@@ -31,13 +36,25 @@ class AppRouter {
 
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
+      case AppRoutes.verificationCodeScreen:
+        return animateRouteBuilder(BlocProvider(
+          create: (context) => getIt<VerificationCodeCubit>(),
+          child:  VerificationCodeScreen(
+            email: routeSettings.arguments as String,
+          ),
+        ));
       case AppRoutes.splashScreen:
         return animateRouteBuilder(
           const SplashScreen(),
           duration: 300.ms,
         );
       case AppRoutes.onBoardingScreen:
-        return animateRouteBuilder(const OnBoardingScreen(), duration: 300.ms);
+        return animateRouteBuilder(
+            BlocProvider(
+              create: (context) => getIt<OnboardingCubit>(),
+              child: const OnBoardingScreen(),
+            ),
+            duration: 300.ms);
       case AppRoutes.loginScreen:
         return animateRouteBuilder(
             BlocProvider(
@@ -46,9 +63,12 @@ class AppRouter {
             ),
             duration: 300.ms);
       case AppRoutes.registerScreen:
-        return animateRouteBuilder( BlocProvider(
-            create: (context) => getIt<RigesterScreenCubit>(),
-            child: const RigesterScreen()), duration: 300.ms);
+        return animateRouteBuilder(
+            BlocProvider(
+              create: (context) => getIt<RigesterScreenCubit>(),
+              child: const RigesterScreen(),
+            ),
+            duration: 300.ms);
       case AppRoutes.homeScreen:
         return animateRouteBuilder(
             BlocProvider(
@@ -56,11 +76,12 @@ class AppRouter {
               child: HomeScreen(),
             ),
             duration: 300.ms);
-            case AppRoutes.locationScreen:
-        return animateRouteBuilder(BlocProvider(
-          create: (context) => getIt<LocationCubit>(),
-          child: LocationScreen(),
-        ),
+      case AppRoutes.locationScreen:
+        return animateRouteBuilder(
+            BlocProvider(
+              create: (context) => getIt<LocationCubit>(),
+              child: LocationScreen(),
+            ),
             duration: 300.ms);
       default:
         return null;
