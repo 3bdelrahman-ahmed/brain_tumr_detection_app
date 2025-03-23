@@ -20,6 +20,11 @@ class AppTextStyles {
     color: AppColors.typography,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle font15GreenW700 =TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.typography,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle font20GreenW700 =TextStyle(
     fontSize: 20.sp,
     color: AppColors.typography,

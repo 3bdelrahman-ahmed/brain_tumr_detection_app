@@ -3,7 +3,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/extenstions/validators.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/profile_image_picker.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/select_gender.dart';
-import 'package:brain_tumr_detection_app/features/register/presentation/viewmodel/rigester_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

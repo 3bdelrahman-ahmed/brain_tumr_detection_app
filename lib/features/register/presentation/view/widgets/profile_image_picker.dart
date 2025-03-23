@@ -8,7 +8,7 @@ import '../../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../../core/utils/string/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
-import '../../viewmodel/rigester_screen_cubit.dart';
+import '../../view_model/rigester_screen_cubit.dart';
 
 class ProfileImagePicker extends StatelessWidget {
   const ProfileImagePicker({Key? key, required this.cubit}) : super(key: key);

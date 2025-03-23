@@ -62,21 +62,13 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       result.fold((l) {
         l.message!.showToast();
         emit(RigesterScreenErrorState());
-      }, (r) async{
-        context.navigateTo(AppRoutes.loginScreen);
+      }, (r) async {
+        context.navigateTo(AppRoutes.verificationCodeScreen,
+            arguments: r.email);
+        clear();
+
         emit(RigesterScreenSuccessState());
       });
-      //   print("Image Path: ${imagePath}");
-      //   print("Full Name: ${fullNameController.text}");
-      //   print("Username: ${userNameController.text}");
-      //   print("Email: ${emailController.text}");
-      //   print("Date of Birth: ${ pickedDate?.toIso8601String().split("T")[0], // Converts to yyyy-MM-dd
-      // }");
-      //   print("Password: ${passwordController.text}");
-      //   print("Latitude: ${position!.latitude}");
-      //   print("Longitude: ${position!.longitude}");
-      //   print("Gender: ${selectedGender}");
-      clear();
     } else {
       print("Form is not valid");
     }
@@ -109,5 +101,9 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
     userNameController.clear();
     emailController.clear();
     passwordController.clear();
+    streetName = null;
+    selectedGender = null;
+    pickedDate = null;
+    emit(ClearAuthFieldsState());
   }
 }

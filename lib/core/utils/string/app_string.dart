@@ -6,10 +6,25 @@ class AppStrings {
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
+  static const String sucessOpertation = "Success Operation";
+  static const String didnotGetCode = "Didn't get the code? ";
+  static const String resendCodeAgain = "Resend code";
+  static const String submit = "Submit";
+  static const String pinFieldError = "Please enter verification code";
+  static const String enterVerificationCode = "Enter the Verification Code";
+  static const String uploadYourFileHere = "Upload your File here";
   static const String openLocationPermission =
       "Hey there! To help you find the best doctors near you, we need location access. Please enable it in settings!";
   static const String cancel = "Cancel";
   static const String reScheduled = "Rescheduled";
+  static const String supportedFiles = "Supported Files: pdf, png";
+  static const String yourFileIsBeingUploaded = "Your file is being uploaded";
+  static const String yourFileName = "Your File Name";
+  static const String mriFileUploaded = "MRI Uploaded Successfully!";
+  static const String returnPage = "Return";
+  static const String done = "done";
+  static const String youWillRecieveNotificationSoon =
+      "You will receive a notification once your report is ready.\nThank you for your patience.";
   static const String fullNameMustContainOneSpace =
       " must contain letters and exactly one space between first and last name";
   static const String profileImage = 'Profile Image';
@@ -17,15 +32,20 @@ class AppStrings {
   static const String gallery = 'Gallery';
   static const String camera = "Camera";
   static const String confirm = "Confirm";
+  static const String dontHaveAnAccount = "Don't have an account ? ";
   static const String selectGender = 'select Gender';
   static const String setLocation = 'set Location';
   static const String selectDateOfBirth = 'Select Date of Birth';
   static const String birthDate = 'Birth Date';
   static const String letsStart = "Let’s Start!";
+  static const String verificationCodeSenatce = """
+Almost there! We’ve sent a code to your email to verify your identity. Just enter it below to reset your password..
+""";
   static const String createYourAcc = "Create Your Account";
   static const String welcomeAbroadSentence = "Welcome aboard! Let’s get you "
       "set up so we can start helping you with your brain health journey.";
   static const String forgotPassword = "Forgot Password?";
+  static const String signUp = 'Sign Up';
   static const String forgetYourPassword = 'Forgot Your Password?';
   static const String welcomeBack = 'welcome back,';
   static const String dontWorryPassword =

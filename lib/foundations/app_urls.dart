@@ -5,4 +5,5 @@ class AppUrls {
   static const String login = "Auth/login";
 
   static const String registerPatient = "Auth/register/patient";
+  static const String verifyCode = "Auth/verifyEmail";
 }

@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/network_services/api_error_handler.dart';
-@injectable
+@singleton
 class RegisterRepository {
   final RegisterRemoteDataSource dataSource;
   RegisterRepository({required this.dataSource});
