@@ -6,7 +6,9 @@ class AssetsSvg {
   static const String commentIcon = "commentIcon";
   static const String datePicker = "datePicker";
   static const String location = "location";
-
+  static const String file = "file";
+  static const String cancel = "cancel";
+  static const String done = "done";
 
   ///[bottom nav bar icons]
   static const String feed = "feed";

@@ -5,6 +5,7 @@ import 'package:brain_tumr_detection_app/features/login/presentation/view/screen
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_cubit.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/viewmodel/rigester_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,9 @@ class AppRouter {
             ),
             duration: 300.ms);
       case AppRoutes.registerScreen:
-        return animateRouteBuilder(const RigesterScreen(), duration: 300.ms);
+        return animateRouteBuilder( BlocProvider(
+            create: (context) => getIt<RigesterScreenCubit>(),
+            child: const RigesterScreen()), duration: 300.ms);
       case AppRoutes.homeScreen:
         return animateRouteBuilder(
             BlocProvider(

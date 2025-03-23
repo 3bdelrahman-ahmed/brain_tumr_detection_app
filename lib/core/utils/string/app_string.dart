@@ -6,10 +6,19 @@ class AppStrings {
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
+  static const String uploadYourFileHere = "Upload your File here";
   static const String openLocationPermission =
       "Hey there! To help you find the best doctors near you, we need location access. Please enable it in settings!";
   static const String cancel = "Cancel";
   static const String reScheduled = "Rescheduled";
+  static const String supportedFiles = "Supported Files: pdf, png";
+  static const String yourFileIsBeingUploaded = "Your file is being uploaded";
+  static const String yourFileName = "Your File Name";
+  static const String mriFileUploaded = "MRI Uploaded Successfully!";
+  static const String returnPage = "Return";
+  static const String done = "done";
+  static const String youWillRecieveNotificationSoon =
+      "You will receive a notification once your report is ready.\nThank you for your patience.";
   static const String fullNameMustContainOneSpace =
       " must contain letters and exactly one space between first and last name";
   static const String profileImage = 'Profile Image';

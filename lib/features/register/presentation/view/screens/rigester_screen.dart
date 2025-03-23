@@ -11,13 +11,10 @@ class RigesterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<RigesterScreenCubit>(),
-        child: BlocBuilder<RigesterScreenCubit, RigesterScreenState>(
-          builder: (context, state) {
-            return RigesterScreenWidget();
-          },
-        ),
+      body: BlocBuilder<RigesterScreenCubit, RigesterScreenState>(
+        builder: (context, state) {
+          return RigesterScreenWidget();
+        },
       ),
     );
   }

@@ -42,6 +42,8 @@ dependencies:
   equatable: ^2.0.7
   #image_picker
   image_picker: ^1.1.2
+  file_picker: ^9.2.1
+  open_file: ^3.5.10
   # premission handler
   permission_handler: ^11.4.0
 

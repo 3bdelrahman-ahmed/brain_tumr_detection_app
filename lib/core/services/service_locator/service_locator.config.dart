@@ -25,6 +25,7 @@ import '../../../features/register/data/repository/register_repository.dart'
     as _i558;
 import '../../../features/register/presentation/viewmodel/rigester_screen_cubit.dart'
     as _i1054;
+import '../../../features/scan/viewmodel/scan_cubit.dart' as _i109;
 import '../../components/cubits/location_cubit/location_cubit.dart' as _i935;
 import '../../components/cubits/navigation_cubit/navigation_cubit.dart'
     as _i284;
@@ -48,6 +49,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i301.RegisterRemoteDataSource>(
         () => _i301.RegisterRemoteDataSource());
+    gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
     gh.singleton<_i284.NavigationCubit>(() => _i284.NavigationCubit());
     gh.factory<_i558.RegisterRepository>(() => _i558.RegisterRepository(
         dataSource: gh<_i301.RegisterRemoteDataSource>()));
