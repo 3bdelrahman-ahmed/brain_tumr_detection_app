@@ -15,5 +15,7 @@ final class RigesterScreenErrorState extends RigesterScreenState {}
 
 final class RigesterScreenSuccessState extends RigesterScreenState {}
 
+final class ClearAuthFieldsState extends RigesterScreenState {}
+
 
 

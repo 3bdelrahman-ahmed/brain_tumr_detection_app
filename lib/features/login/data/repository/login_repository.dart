@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/data/network_services/api_error_handler.dart';
 import '../models/login_model.dart';
 import '../remote/login_remote_data_source.dart';
-@injectable
+@singleton
 class LoginRepository {
   final LoginRemoteDataSource dataSource;
   LoginRepository({required this.dataSource});

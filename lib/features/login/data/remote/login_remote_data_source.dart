@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/network_services/api_service.dart';
 import '../models/login_model.dart';
-@injectable
+@singleton
 class LoginRemoteDataSource {
   Future<LoginResponseModel> login(LoginRequestModel parameters) async {
     final response =

@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen>
                         (_animation.value *
                             (ResponsiveHelper.isTablet(context)
                                 ? -14.h
-                                : -16.h)),
+                                : -15.h)),
                     child: GestureDetector(
                       onTap: () => cubit.changePage(2),
                       child: Container(

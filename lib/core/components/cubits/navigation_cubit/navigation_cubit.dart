@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../features/appointments/view/screens/appointments_page.dart';
 import '../../../../features/doctors/view/screens/doctors_page.dart';
 import '../../../../features/feed/presentation/view/screens/feed_page.dart';
-import '../../../../features/profle/view/screens/profile_page.dart';
+import '../../../../features/profle/presentation/view/screens/profile_page.dart';
 import '../../../../features/scan/view/screens/scan_page.dart';
 part 'navigation_state.dart';
 

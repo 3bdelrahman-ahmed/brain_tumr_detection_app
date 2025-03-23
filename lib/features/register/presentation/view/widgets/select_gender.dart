@@ -1,5 +1,5 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/features/register/presentation/viewmodel/rigester_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
