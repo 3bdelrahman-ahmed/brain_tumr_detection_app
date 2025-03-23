@@ -37,7 +37,7 @@ class PostCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Mazen Nigga",
+                "Ali Maaloul",
                 style: AppTextStyles.font10GreenW700,
               ),
               Text(

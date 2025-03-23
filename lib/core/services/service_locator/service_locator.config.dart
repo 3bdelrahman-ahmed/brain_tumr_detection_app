@@ -25,14 +25,14 @@ import '../../../features/register/data/remote/register_remote_data_source.dart'
 import '../../../features/register/data/repository/register_repository.dart'
     as _i558;
 import '../../../features/register/presentation/view_model/rigester_screen_cubit.dart'
-    as _i1054;
+    as _i5;
+import '../../../features/scan/viewmodel/scan_cubit.dart' as _i109;
 import '../../../features/verification_code/data/remote/verify_code_remote_data_source.dart'
     as _i790;
 import '../../../features/verification_code/data/repository/verify_code_repository.dart'
     as _i487;
 import '../../../features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart'
     as _i844;
-import '../../../features/scan/viewmodel/scan_cubit.dart' as _i109;
 import '../../components/cubits/location_cubit/location_cubit.dart' as _i935;
 import '../../components/cubits/navigation_cubit/navigation_cubit.dart'
     as _i284;
@@ -50,14 +50,9 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
-    gh.factory<_i609.LoginRemoteDataSource>(
-        () => _i609.LoginRemoteDataSource());
-    gh.factory<_i379.OnboardingCubit>(() => _i379.OnboardingCubit());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
-    gh.factory<_i301.RegisterRemoteDataSource>(
-        () => _i301.RegisterRemoteDataSource());
-    gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
+    gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
     gh.singleton<_i284.NavigationCubit>(() => _i284.NavigationCubit());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
@@ -71,7 +66,7 @@ extension GetItInjectableX on _i174.GetIt {
         dataSource: gh<_i301.RegisterRemoteDataSource>()));
     gh.factory<_i935.LocationCubit>(
         () => _i935.LocationCubit(gh<_i458.LocationService>()));
-    gh.factory<_i1054.RigesterScreenCubit>(() => _i1054.RigesterScreenCubit(
+    gh.factory<_i5.RigesterScreenCubit>(() => _i5.RigesterScreenCubit(
         registerRepository: gh<_i558.RegisterRepository>()));
     gh.singleton<_i340.LoginRepository>(() =>
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));

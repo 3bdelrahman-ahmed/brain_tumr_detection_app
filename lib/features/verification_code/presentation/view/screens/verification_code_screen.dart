@@ -35,6 +35,7 @@ class VerificationCodeScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 250.h,
                     ),
+                    16.toHeight,
                     const HeaderTextWidget().paddingSymmetric(horizontal: 24.w),
                     8.toHeight,
                     const SubHeaderTextWidget()
@@ -46,7 +47,7 @@ class VerificationCodeScreen extends StatelessWidget {
                     ).paddingSymmetric(horizontal: 24.w),
                     16.toHeight,
                     const ResendCodeWidget().paddingSymmetric(horizontal: 24.w),
-                    32.toHeight,
+                    50.toHeight,
                     CustomButton(
                         isLoading: state is SubmitVerificationCodeLoadingState,
                         text: AppStrings.submit,
