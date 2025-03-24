@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-
     context.read<NavigationCubit>().initializeTabs();
     currentScrollController =
         context.read<NavigationCubit>().getScrollController(0);

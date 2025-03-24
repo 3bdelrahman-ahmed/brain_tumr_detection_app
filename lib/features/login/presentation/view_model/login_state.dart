@@ -7,6 +7,8 @@ final class LoginInitial extends LoginState {}
 
 final class ShowForgotPasswordState extends LoginState {}
 
+final class ChangePasswordState extends LoginState {}
+
 final class LoginLoadingState extends LoginState {}
 
 final class LoginSuccessState extends LoginState {}

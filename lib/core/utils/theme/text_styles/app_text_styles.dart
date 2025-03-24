@@ -65,6 +65,11 @@ class AppTextStyles {
     color: AppColors.typographyLowOpacity,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle font12GreenW500 = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.typography,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle font12cyanW700 = TextStyle(
     fontSize: 12.sp,
     color: AppColors.smallDetails,

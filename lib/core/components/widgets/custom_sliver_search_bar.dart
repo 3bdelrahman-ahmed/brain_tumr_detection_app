@@ -33,7 +33,7 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
   double get minExtent => 75.h; // Same as max for consistency
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate){
     return false;
   }
 }

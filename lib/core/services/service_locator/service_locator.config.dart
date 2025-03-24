@@ -11,6 +11,8 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../../features/appointments/presentation/viewmodel/appointment_cubit.dart'
+    as _i656;
 import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
     as _i1069;
 import '../../../features/login/data/remote/login_remote_data_source.dart'
@@ -53,6 +55,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
+    gh.factory<_i656.AppointmentCubit>(() => _i656.AppointmentCubit());
     gh.singleton<_i284.NavigationCubit>(() => _i284.NavigationCubit());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());

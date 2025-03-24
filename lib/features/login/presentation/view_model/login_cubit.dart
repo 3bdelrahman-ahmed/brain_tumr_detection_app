@@ -14,6 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginRepository repository;
 
   LoginCubit({required this.repository}) : super(LoginInitial());
+   bool isObscure = true ;
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -21,10 +22,9 @@ class LoginCubit extends Cubit<LoginState> {
   final FocusNode passwordFocusNode = FocusNode();
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
 
-  Future<void> login() async {
+  Future<void> login() async{
     if (formKey.currentState!.validate()) {
       emit(LoginLoadingState());
-
       final result = await repository.login(
         LoginRequestModel(
             email: emailController.text, password: passwordController.text),
@@ -55,5 +55,10 @@ class LoginCubit extends Cubit<LoginState> {
 
   void showForgotPassword() {
     emit(ShowForgotPasswordState()); // Notify UI to show the bottom sheet
+  }
+
+  void changePassword(){
+    isObscure = !isObscure;
+    emit(ChangePasswordState());
   }
 }

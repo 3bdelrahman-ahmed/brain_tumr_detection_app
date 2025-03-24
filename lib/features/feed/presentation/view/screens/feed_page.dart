@@ -10,7 +10,7 @@ class FeedPage extends StatelessWidget {
    FeedPage({Key? key,required this.controller}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return CustomScrollView(
       controller: controller,
       shrinkWrap: true,

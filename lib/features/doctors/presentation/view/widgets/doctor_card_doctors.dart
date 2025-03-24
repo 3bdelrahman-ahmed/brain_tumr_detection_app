@@ -1,18 +1,20 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
+import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
-import 'package:flutter/material.dart';
+import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../core/utils/assets/assets_png.dart';
+import '../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
-import '../../../../core/components/widgets/custom_button.dart';
-import '../../../../core/components/widgets/custom_image_view.dart';
-import '../../../../core/utils/assets/assets_png.dart';
-import '../../../../core/utils/theme/colors/app_colors.dart';
-import '../../../../core/utils/theme/text_styles/app_text_styles.dart';
-
-class DoctorCardAppointment extends StatelessWidget {
-  const DoctorCardAppointment({Key? key, this.name}) : super(key: key);
+class DoctorCardDoctors extends StatelessWidget {
   final String? name;
+  final double rating; // Rating value (out of 5)
+
+  const DoctorCardDoctors({Key? key, this.name, this.rating = 4.5})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +37,14 @@ class DoctorCardAppointment extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: 157.w,
                 width: 134.w,
                 decoration: BoxDecoration(
-                  color: AppColors.buttonsAndNav,
                   borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 ),
                 child: CustomImageView(
                   imagePath: AssetsPng.appointmentTest.toPng(),
                   fit: BoxFit.cover,
-                ).paddingSymmetric(vertical: 7.h, horizontal: 7.h),
+                ),
               ),
               15.toWidth,
               Container(
@@ -58,39 +58,34 @@ class DoctorCardAppointment extends StatelessWidget {
                     ),
                     5.toHeight,
                     Text(
-                      AppStrings.upComing,
-                      style: AppTextStyles.font12LightGreenW500,
+                      AppStrings.arabic,
+                      style: AppTextStyles.font12GreenW500,
                     ),
                     5.toHeight,
-                    Text(
-                      "February 15, 2025 10:30 AM",
-                      style: AppTextStyles.font15LightGreenW500,
+                    Row(
+                      children: List.generate(5, (index) {
+                        return Icon(
+                          index < rating.floor()
+                              ? Icons.star
+                              : index < rating
+                              ? Icons.star_half
+                              : Icons.star_border,
+                          color: Colors.amber,
+                          size: 18.w,
+                        );
+                      }),
                     ),
-                    5.toHeight,
+                    20.toHeight,
+                    CustomButton(text:AppStrings.viewProfile , onTap: (){},
+                      textStyle: AppTextStyles.font15WhiteW500,
+                    height: 44.h,
+                    width: 130.w,)
                   ],
                 ),
               )
             ],
           ),
           25.toHeight,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(
-                text: AppStrings.cancel,
-                width: 140.w,
-                height: 50.h,
-                textStyle: AppTextStyles.font15WhiteW500,
-                onTap: () {},
-              ),
-              CustomButton(
-                  text: AppStrings.reScheduled,
-                  width: 140.w,
-                  height: 50.h,
-                  textStyle: AppTextStyles.font15WhiteW500,
-                  onTap: () {}),
-            ],
-          )
         ],
       ).paddingOnly(top: 5.h),
     );

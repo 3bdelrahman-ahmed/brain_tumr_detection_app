@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
+import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/gestures.dart';
@@ -74,24 +75,34 @@ class LoginScreenWidget extends StatelessWidget {
                               FocusScope.of(context)
                                   .requestFocus(cubit.passwordFocusNode);
                             },
-                            validator: (value) => checkFieldValidation(
-                                val: cubit.emailController.text,
-                                fieldName: AppStrings.email,
-                                fieldType: ValidationType.email)),
+                            validator: (value) =>
+                                checkFieldValidation(
+                                    val: cubit.emailController.text,
+                                    fieldName: AppStrings.email,
+                                    fieldType: ValidationType.email)),
                         30.toHeight,
-                        CustomTextField(
-                            label: AppStrings.password,
-                            hintText: AppStrings.enterYourPassword,
-                            controller: cubit.passwordController,
-                            obscureText: true,
-                            focusNode: cubit.passwordFocusNode,
-                            onSubmit: (p0) {
-                              cubit.login();
-                            },
-                            validator: (value) => checkFieldValidation(
-                                val: cubit.passwordController.text,
-                                fieldName: AppStrings.password,
-                                fieldType: ValidationType.password)),
+                        BlocBuilder<LoginCubit, LoginState>(
+                          builder: (context, state) {
+                            return CustomTextField(
+                                label: AppStrings.password,
+                                hintText: AppStrings.enterYourPassword,
+                                controller: cubit.passwordController,
+                                obscureText: cubit.isObscure,
+                                suffixIcon: AssetsSvg.password,
+                                onSuffixTap: () {
+                                cubit.changePassword();
+                                },
+                                focusNode: cubit.passwordFocusNode,
+                                onSubmit: (p0) {
+                                  cubit.login();
+                                },
+                                validator: (value) =>
+                                    checkFieldValidation(
+                                        val: cubit.passwordController.text,
+                                        fieldName: AppStrings.password,
+                                        fieldType: ValidationType.password));
+                          },
+                        ),
                         TextButton(
                             style: ButtonStyle(
                               overlayColor: WidgetStateProperty.all(
@@ -114,15 +125,16 @@ class LoginScreenWidget extends StatelessWidget {
                                 text: AppStrings.dontHaveAnAccount,
                                 style: AppTextStyles.font15LightGreenW500,
                                 children: [
-                              TextSpan(
-                                  text: AppStrings.signUp,
-                                  style: AppTextStyles.font15GreenW500,
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      context
-                                          .navigateTo(AppRoutes.registerScreen);
-                                    })
-                            ])),
+                                  TextSpan(
+                                      text: AppStrings.signUp,
+                                      style: AppTextStyles.font15GreenW500,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          context
+                                              .navigateTo(
+                                              AppRoutes.registerScreen);
+                                        })
+                                ])),
                         32.toHeight,
                         BlocBuilder<LoginCubit, LoginState>(
                           builder: (context, state) {

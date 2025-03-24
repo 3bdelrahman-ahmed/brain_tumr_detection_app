@@ -10,6 +10,8 @@ class AppStrings {
   static const String didnotGetCode = "Didn't get the code? ";
   static const String resendCodeAgain = "Resend code";
   static const String submit = "Submit";
+  static const String arabic = "Arabic";
+  static const String viewProfile = "View Profile";
   static const String pinFieldError = "Please enter verification code";
   static const String enterVerificationCode = "Enter the Verification Code";
   static const String uploadYourFileHere = "Upload your File here";

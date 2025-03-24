@@ -78,14 +78,16 @@ class CustomTextField extends StatelessWidget {
             hintText: hintText,
             hintStyle: hintTextStyle ?? AppTextStyles.font15LightGreenW500,
             prefixIcon: prefixIcon != null
-                ? Padding(
-                    padding: EdgeInsets.all(8.w),
-                    child: CustomImageView(
-                      svgPath: prefixIcon!.toSVG(),
-                      width: 25.w,
-                      height: 25.w,
+                ? InkWell(
+                  child: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: CustomImageView(
+                        svgPath: prefixIcon!.toSVG(),
+                        width: 25.w,
+                        height: 25.w,
+                      ),
                     ),
-                  )
+                )
                 : null,
             // prefixIconColor: AppColors.typographyLowOpacity,
             suffixIcon: suffixIcon != null

@@ -9,6 +9,7 @@ class AssetsSvg {
   static const String file = "file";
   static const String cancel = "cancel";
   static const String done = "done";
+  static const String password = "password";
 
   ///[bottom nav bar icons]
   static const String feed = "feed";

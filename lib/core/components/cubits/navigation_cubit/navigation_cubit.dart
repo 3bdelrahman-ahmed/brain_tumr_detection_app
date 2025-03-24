@@ -4,8 +4,8 @@ import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../features/appointments/view/screens/appointments_page.dart';
-import '../../../../features/doctors/view/screens/doctors_page.dart';
+import '../../../../features/appointments/presentation/view/screens/appointments_page.dart';
+import '../../../../features/doctors/presentation/view/screens/doctors_page.dart';
 import '../../../../features/feed/presentation/view/screens/feed_page.dart';
 import '../../../../features/profle/presentation/view/screens/profile_page.dart';
 import '../../../../features/scan/view/screens/scan_page.dart';
