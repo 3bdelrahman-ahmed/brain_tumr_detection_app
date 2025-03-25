@@ -27,7 +27,7 @@ class _NeroTumAppState extends State<NeroTumApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigationExtensions.navigatorKey,
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.homeScreen,
       onGenerateRoute: AppRouter.onGenerateRoute,
       theme: appTheme,
       navigatorObservers: [routeObserver],

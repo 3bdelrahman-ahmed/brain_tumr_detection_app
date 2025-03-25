@@ -46,7 +46,6 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
         ),
       );
     } else {
-      print('ffffffffffffffffffffffffffsssssff');
       return CircleAvatar(
         radius: widget.size ?? 18.r,
         backgroundColor:

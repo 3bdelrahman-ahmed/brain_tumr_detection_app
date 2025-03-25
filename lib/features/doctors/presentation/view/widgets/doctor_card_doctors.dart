@@ -1,4 +1,6 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/stars_generator.dart';
+import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
@@ -62,24 +64,19 @@ class DoctorCardDoctors extends StatelessWidget {
                       style: AppTextStyles.font12GreenW500,
                     ),
                     5.toHeight,
-                    Row(
-                      children: List.generate(5, (index) {
-                        return Icon(
-                          index < rating.floor()
-                              ? Icons.star
-                              : index < rating
-                              ? Icons.star_half
-                              : Icons.star_border,
-                          color: Colors.amber,
-                          size: 18.w,
-                        );
-                      }),
-                    ),
+                    StarsGenerator(rating: rating),
                     20.toHeight,
-                    CustomButton(text:AppStrings.viewProfile , onTap: (){},
+                    CustomButton(
+                      text: AppStrings.viewProfile,
+                      onTap: () {
+                        // In Future we will send the Doctor to this Screen as an Argument
+                        Navigator.pushNamed(
+                            context, AppRoutes.doctorProfileScreen);
+                      },
                       textStyle: AppTextStyles.font15WhiteW500,
-                    height: 44.h,
-                    width: 130.w,)
+                      height: 44.h,
+                      width: 130.w,
+                    )
                   ],
                 ),
               )

@@ -10,7 +10,16 @@ class AppStrings {
   static const String didnotGetCode = "Didn't get the code? ";
   static const String resendCodeAgain = "Resend code";
   static const String submit = "Submit";
+  static const String reviews = "Reviews";
+  static const String availability = "Availability";
+  static const String bookNow = "Book Now";
+  static const String clickOnTheDayToShow = "Click on a day to show available time slots";
   static const String arabic = "Arabic";
+  static const String location = "Location: ";
+  static const String sessions = "Sessions: ";
+  static const String country = "Country: ";
+  static const String experience = "Experience: ";
+  static const String education = "Education";
   static const String viewProfile = "View Profile";
   static const String pinFieldError = "Please enter verification code";
   static const String enterVerificationCode = "Enter the Verification Code";
