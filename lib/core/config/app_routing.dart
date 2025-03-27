@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/location_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit/navigation_cubit.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/login/presentation/view/screens/login_screen.dart';
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
@@ -21,9 +22,10 @@ class AppRoutes {
   static const String onBoardingScreen = "/onBoarding";
   static const String loginScreen = "/login";
   static const String registerScreen = '/rigester';
-  static const String locationScreen = 'location';
+  static const String locationScreen = '/location';
   static const String homeScreen = '/home';
   static const String verificationCodeScreen = '/verification_code';
+  static const String doctorProfileScreen = '/doctorProfile';
 }
 
 class AppRouter {
@@ -39,7 +41,7 @@ class AppRouter {
       case AppRoutes.verificationCodeScreen:
         return animateRouteBuilder(BlocProvider(
           create: (context) => getIt<VerificationCodeCubit>(),
-          child:  VerificationCodeScreen(
+          child: VerificationCodeScreen(
             email: routeSettings.arguments as String,
           ),
         ));
@@ -62,6 +64,8 @@ class AppRouter {
               child: const LoginScreen(),
             ),
             duration: 300.ms);
+      case AppRoutes.doctorProfileScreen:
+        return animateRouteBuilder(const DoctorsProfile(), duration: 300.ms);
       case AppRoutes.registerScreen:
         return animateRouteBuilder(
             BlocProvider(

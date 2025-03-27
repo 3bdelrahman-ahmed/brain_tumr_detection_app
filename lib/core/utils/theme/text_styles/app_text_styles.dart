@@ -35,6 +35,11 @@ class AppTextStyles {
     color: AppColors.typography,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle font12GreenW700 = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.typography,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle font20WhiteW500 = TextStyle(
     fontSize: 20.sp,
     color: AppColors.background,
@@ -80,5 +85,15 @@ class AppTextStyles {
     fontSize: 12.sp,
     color: AppColors.smallDetails,
     fontWeight: FontWeight.w400,
+  );
+  static TextStyle font12BlueW700 = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.buttonsAndNav,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle font16BlueW700 = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.buttonsAndNav,
+    fontWeight: FontWeight.w700,
   );
 }

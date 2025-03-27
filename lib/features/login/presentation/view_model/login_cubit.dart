@@ -5,6 +5,7 @@ import 'package:brain_tumr_detection_app/features/login/data/models/login_model.
 import 'package:brain_tumr_detection_app/features/login/data/repository/login_repository.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/utils/extenstions/navigation_extenstions.dart';
 part 'login_state.dart';
@@ -40,6 +41,7 @@ class LoginCubit extends Cubit<LoginState> {
         context.navigateTo(AppRoutes.homeScreen);
         AppConstants.setUser(r.user!);
         AppConstants.user = r.user;
+        setLocation();
         // // Navigate based on role
         // if (AppConst.user!.role == UserRoles.envoy.name) {
         //   Navigator.pushNamedAndRemoveUntil(
@@ -51,6 +53,12 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginSuccessState());
       });
     }
+  }
+
+  Future<void> setLocation ()async
+  {
+     List<Placemark> placeMarks = await placemarkFromCoordinates(AppConstants.user!.latitude!, AppConstants.user!.longitude!);
+     AppConstants.location = "${placeMarks.first.locality} ,${placeMarks.first.country}";
   }
 
   void showForgotPassword() {
