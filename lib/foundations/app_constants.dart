@@ -7,7 +7,7 @@ class AppConstants {
   static bool onBoarding = false;
   static String accessToken = '';
   static User? user;
-
+  static String? location;
 
     static setToken(String token) async {
     await AppCacheHelper.setSecuredString(

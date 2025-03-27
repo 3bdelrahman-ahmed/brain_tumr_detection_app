@@ -11,8 +11,14 @@ class AppStrings {
   static const String resendCodeAgain = "Resend code";
   static const String submit = "Submit";
   static const String reviews = "Reviews";
+  static const String posts = "Posts";
+  static const String savedPosts = "Saved Posts";
+  static const String settings = "Settings";
   static const String availability = "Availability";
   static const String bookNow = "Book Now";
+  static const String gender = "Gender: ";
+  static const String medicalHistory = "Medical History ";
+  static const String dateOfBirth = "Date of birth:";
   static const String clickOnTheDayToShow = "Click on a day to show available time slots";
   static const String arabic = "Arabic";
   static const String location = "Location: ";

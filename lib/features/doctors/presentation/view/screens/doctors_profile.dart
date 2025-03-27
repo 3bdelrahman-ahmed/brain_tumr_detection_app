@@ -1,6 +1,4 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/register_screen_location_widget.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';

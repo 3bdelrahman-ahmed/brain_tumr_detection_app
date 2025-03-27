@@ -14,7 +14,10 @@ class AssetsSvg {
   static const String locationBlue = "locationBlue";
   static const String country = "country";
   static const String experience = "experience";
-
+  static const String date = "date";
+  static const String gender = "gender";
+  static const String edit = "edit";
+  static const String settings = "settings";
   ///[bottom nav bar icons]
   static const String feed = "feed";
   static const String history = "history";
