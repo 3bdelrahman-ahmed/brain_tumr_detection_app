@@ -1,10 +1,15 @@
 import 'dart:io';
 
+import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../core/components/widgets/custom_upload_image_icon.dart';
+import '../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../core/utils/string/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
@@ -24,23 +29,47 @@ class ProfileImagePicker extends StatelessWidget {
         Center(
           child: GestureDetector(
             onTap: () => _showImagePickerOptions(context, cubit),
-            child: CircleAvatar(
-              radius: 50.r,
-              backgroundColor: AppColors.typographyLowOpacity,
-              child: cubit.imagePath != null
-                  ? ClipOval(
+            child: cubit.imagePath != null
+                ? Stack(clipBehavior: Clip.none, children: [
+                    ClipOval(
                       child: CustomImageView(
                         file: File(cubit.imagePath!.path),
                         width: 100.w,
                         height: 100.w,
                       ),
-                    )
-                  : Icon(
-                      Icons.add_a_photo,
-                      size: 30,
-                      color: AppColors.typography,
                     ),
-            ),
+                    PositionedDirectional(
+                      bottom: 0,
+                      end: -2.w,
+                      child: CustomImageView(
+                        svgPath: AssetsSvg.uploadImage.toSVG(),
+                        width: 40.w,
+                        height: 40.w,
+                      ),
+                    )
+                  ]).animate().flipH(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeIn,
+                    )
+                : CustomUploadImageIcon(),
+
+            //  CircleAvatar(
+            //   radius: 50.r,
+            //   backgroundColor: AppColors.typographyLowOpacity,
+            //   child: cubit.imagePath != null
+            //       ? ClipOval(
+            //           child: CustomImageView(
+            //             file: File(cubit.imagePath!.path),
+            //             width: 100.w,
+            //             height: 100.w,
+            //           ),
+            //         )
+            //       : Icon(
+            //           Icons.add_a_photo,
+            //           size: 30,
+            //           color: AppColors.typography,
+            //         ),
+            // ),
           ),
         ),
       ],

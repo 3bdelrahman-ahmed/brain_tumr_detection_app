@@ -3,10 +3,10 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/components/widgets/custom_button.dart';
-import '../../../../../core/components/widgets/custom_text_field.dart';
-import '../../../../../core/utils/string/app_string.dart';
-import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../../../core/components/widgets/custom_button.dart';
+import '../../../../../../../core/components/widgets/custom_text_field.dart';
+import '../../../../../../../core/utils/string/app_string.dart';
+import '../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
 class ForgotPasswordSheet extends StatelessWidget {
   const ForgotPasswordSheet({Key? key}) : super(key: key);

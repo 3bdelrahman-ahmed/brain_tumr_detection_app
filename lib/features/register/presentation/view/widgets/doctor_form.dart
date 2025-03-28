@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_auth_container.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:flutter/material.dart';
@@ -8,48 +9,50 @@ import '../../../../../core/utils/string/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
 class DoctorForm extends StatelessWidget {
-  const DoctorForm();
+  const DoctorForm({required Key Key}) : super(key: Key);
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<RigesterScreenCubit>();
 
-    return Form(
-      key: cubit.formKey, // Attach Form Key from Cubit
-      child: Column(
-        children: [
-          _buildInputField(
-            label: AppStrings.fullName,
-            hintText: AppStrings.enterYourFullName,
-            controller: cubit.fullNameController,
-            validator: Validators.nameValidate,
-          ),
-          _buildInputField(
-            label: "Doctor",
-            hintText: AppStrings.enterYourFullName,
-            controller: cubit.fullNameController,
-            validator: Validators.nameValidate,
-          ),
-          _buildInputField(
-            label: AppStrings.userName,
-            hintText: AppStrings.enterYourUserName,
-            controller: cubit.userNameController,
-            validator: Validators.nameValidate,
-          ),
-          _buildInputField(
-            label: AppStrings.email,
-            hintText: AppStrings.enterYourEmail,
-            controller: cubit.emailController,
-            validator: Validators.emailValidate,
-          ),
-          _buildInputField(
-            label: AppStrings.password,
-            hintText: AppStrings.enterYourPassword,
-            controller: cubit.passwordController,
-            validator: Validators.passwordValidate,
-            obscureText: true,
-          ),
-        ],
+    return CustomAuthContainerWidget(
+      child: Form(
+        key: cubit.formKey, // Attach Form Key from Cubit
+        child: Column(
+          children: [
+            _buildInputField(
+              label: AppStrings.fullName,
+              hintText: AppStrings.enterYourFullName,
+              controller: cubit.fullNameController,
+              validator: Validators.nameValidate,
+            ),
+            _buildInputField(
+              label: "Doctor",
+              hintText: AppStrings.enterYourFullName,
+              controller: cubit.fullNameController,
+              validator: Validators.nameValidate,
+            ),
+            _buildInputField(
+              label: AppStrings.userName,
+              hintText: AppStrings.enterYourUserName,
+              controller: cubit.userNameController,
+              validator: Validators.nameValidate,
+            ),
+            _buildInputField(
+              label: AppStrings.email,
+              hintText: AppStrings.enterYourEmail,
+              controller: cubit.emailController,
+              validator: Validators.emailValidate,
+            ),
+            _buildInputField(
+              label: AppStrings.password,
+              hintText: AppStrings.enterYourPassword,
+              controller: cubit.passwordController,
+              validator: Validators.passwordValidate,
+              obscureText: true,
+            ),
+          ],
+        ),
       ),
     );
   }

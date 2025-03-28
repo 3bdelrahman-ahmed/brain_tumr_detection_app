@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_auth_container.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/validators.dart';
@@ -14,112 +15,114 @@ import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 
 class PatientFormFields extends StatelessWidget {
-  const PatientFormFields();
+  const PatientFormFields({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<RigesterScreenCubit>();
-    return Form(
-      key: cubit.formKey,
-      child: Column(
-        children: [
-          ProfileImagePicker(cubit: cubit),
-          16.toHeight,
-          CustomTextField(
-            focusNode: cubit.fullNameFocus,
-            onSubmit: (p0) {
-              FocusScope.of(context)
-                  .requestFocus(cubit.userNameFocus);
-            },
-            label: AppStrings.fullName,
-            hintText: AppStrings.enterYourFullName,
-            controller: cubit.fullNameController,
-            validator: (value) => checkFieldValidation(
-                val: value,
-                fieldName: AppStrings.fullName,
-                fieldType: ValidationType.fullName),
-          ),
-          16.toHeight,
-          CustomTextField(
-            focusNode: cubit.userNameFocus,
-            onSubmit:  (p0) {
-              FocusScope.of(context)
-                  .requestFocus(cubit.emailFocus);
-            },
-            label: AppStrings.userName,
-            hintText: AppStrings.enterYourUserName,
-            controller: cubit.userNameController,
-            validator: (value) => checkFieldValidation(
-                val: value,
-                fieldName: AppStrings.userName,
-                fieldType: ValidationType.name),
-          ),
-          16.toHeight,
-          //Email Picker
-          CustomTextField(
-            focusNode: cubit.emailFocus,
-            onSubmit:  (p0) {
-              FocusScope.of(context)
-                  .requestFocus(cubit.passwordFocus);
-            },
-            label: AppStrings.email,
-            hintText: AppStrings.enterYourEmail,
-            controller: cubit.emailController,
-            validator: Validators.emailValidate),
-          16.toHeight,
-          //Location Picker
-          CustomTextField(
-              hintText: cubit.streetName != null
-                  ? cubit.streetName!
-                  : AppStrings.setLocation,
+    return CustomAuthContainerWidget(
+      child: Form(
+        key: cubit.formKey,
+        child: Column(
+          children: [
+            ProfileImagePicker(cubit: cubit),
+            16.toHeight,
+            CustomTextField(
+              focusNode: cubit.fullNameFocus,
+              onSubmit: (p0) {
+                FocusScope.of(context)
+                    .requestFocus(cubit.userNameFocus);
+              },
+              label: AppStrings.fullName,
+              hintText: AppStrings.enterYourFullName,
+              controller: cubit.fullNameController,
+              validator: (value) => checkFieldValidation(
+                  val: value,
+                  fieldName: AppStrings.fullName,
+                  fieldType: ValidationType.fullName),
+            ),
+            16.toHeight,
+            CustomTextField(
+              focusNode: cubit.userNameFocus,
+              onSubmit:  (p0) {
+                FocusScope.of(context)
+                    .requestFocus(cubit.emailFocus);
+              },
+              label: AppStrings.userName,
+              hintText: AppStrings.enterYourUserName,
+              controller: cubit.userNameController,
+              validator: (value) => checkFieldValidation(
+                  val: value,
+                  fieldName: AppStrings.userName,
+                  fieldType: ValidationType.name),
+            ),
+            16.toHeight,
+            //Email Picker
+            CustomTextField(
+              focusNode: cubit.emailFocus,
+              onSubmit:  (p0) {
+                FocusScope.of(context)
+                    .requestFocus(cubit.passwordFocus);
+              },
+              label: AppStrings.email,
+              hintText: AppStrings.enterYourEmail,
+              controller: cubit.emailController,
+              validator: Validators.emailValidate),
+            16.toHeight,
+            //Location Picker
+            CustomTextField(
+                hintText: cubit.streetName != null
+                    ? cubit.streetName!
+                    : AppStrings.setLocation,
+                readOnly: true,
+                hintTextStyle: cubit.streetName != null
+                    ? AppTextStyles.font20GreenW500
+                    : AppTextStyles.font15LightGreenW500,
+                label: AppStrings.setLocation,
+                suffixIcon: AssetsSvg.location,
+                validator: (_) =>
+                    cubit.streetName != null ? null : AppStrings.locationError,
+                onTap: () async {
+                  final result = await Navigator.pushNamed(
+                      context, AppRoutes.locationScreen);
+                  if (result != null && result is Map<String, dynamic>) {
+                    final position = result["position"];
+                    final streetName = result["streetName"];
+                    cubit.setUserLocation(position, streetName);
+                  }
+                }),
+            16.toHeight,
+            // Date Picker
+            CustomTextField(
+              hintText: cubit.pickedDate != null
+                  ? cubit.pickedDate.toString().substring(0, 10)
+                  : AppStrings.selectDateOfBirth,
               readOnly: true,
-              hintTextStyle: cubit.streetName != null
+              hintTextStyle: cubit.pickedDate != null
                   ? AppTextStyles.font20GreenW500
                   : AppTextStyles.font15LightGreenW500,
-              label: AppStrings.setLocation,
-              suffixIcon: AssetsSvg.location,
+              label: AppStrings.birthDate,
+              suffixIcon: AssetsSvg.datePicker,
               validator: (_) =>
-                  cubit.streetName != null ? null : AppStrings.locationError,
-              onTap: () async {
-                final result = await Navigator.pushNamed(
-                    context, AppRoutes.locationScreen);
-                if (result != null && result is Map<String, dynamic>) {
-                  final position = result["position"];
-                  final streetName = result["streetName"];
-                  cubit.setUserLocation(position, streetName);
-                }
-              }),
-          16.toHeight,
-          // Date Picker
-          CustomTextField(
-            hintText: cubit.pickedDate != null
-                ? cubit.pickedDate.toString().substring(0, 10)
-                : AppStrings.selectDateOfBirth,
-            readOnly: true,
-            hintTextStyle: cubit.pickedDate != null
-                ? AppTextStyles.font20GreenW500
-                : AppTextStyles.font15LightGreenW500,
-            label: AppStrings.birthDate,
-            suffixIcon: AssetsSvg.datePicker,
-            validator: (_) =>
-                cubit.pickedDate != null ? null : AppStrings.dateError,
-            onTap: () => _selectDate(context, cubit),
-          ),
-          16.toHeight,
-          SelectGender(),
-          16.toHeight,
-          CustomTextField(
-            focusNode: cubit.passwordFocus,
-            label: AppStrings.password,
-            hintText: AppStrings.enterYourPassword,
-            controller: cubit.passwordController,
-            validator: (value) => checkFieldValidation(
-                val: value,
-                fieldName: AppStrings.password,
-                fieldType: ValidationType.password),
-            obscureText: true,
-          ),
-        ],
+                  cubit.pickedDate != null ? null : AppStrings.dateError,
+              onTap: () => _selectDate(context, cubit),
+            ),
+            16.toHeight,
+            SelectGender(),
+            16.toHeight,
+            CustomTextField(
+              focusNode: cubit.passwordFocus,
+              label: AppStrings.password,
+              hintText: AppStrings.enterYourPassword,
+              controller: cubit.passwordController,
+              validator: (value) => checkFieldValidation(
+                  val: value,
+                  fieldName: AppStrings.password,
+                  fieldType: ValidationType.password),
+              obscureText: true,
+            ),
+          ],
+        ),
       ),
     );
   }

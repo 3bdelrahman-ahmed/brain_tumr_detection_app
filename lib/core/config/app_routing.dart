@@ -2,15 +2,15 @@ import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/l
 import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit/navigation_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
-import 'package:brain_tumr_detection_app/features/login/presentation/view/screens/login_screen.dart';
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
-import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_cubit.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/login/presentation/view/screens/login_screen.dart';
+import '../../features/login/presentation/view_model/login_cubit.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import '../../features/onboarding/presentation/view_model/onboarding_cubit.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
