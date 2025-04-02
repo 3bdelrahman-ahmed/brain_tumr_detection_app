@@ -41,12 +41,11 @@ class RigesterScreenWidget extends StatelessWidget {
                 _buildToggleSwitch(cubit),
                 16.toHeight,
                 AnimatedSwitcher(
-                  duration: Duration(milliseconds: 300),
+                  duration: Duration(milliseconds: 400),
                   transitionBuilder: (widget, animation) {
                     final isMovingRight = cubit.currentIndex! > prevoiusIndex;
                     final beginOffset =
                         isMovingRight ? Offset(1.0, 0.0) : Offset(-1.0, 0.0);
-
                     return SlideTransition(
                       position: Tween<Offset>(
                         begin: beginOffset,
@@ -56,15 +55,18 @@ class RigesterScreenWidget extends StatelessWidget {
                     );
                   },
                   child: cubit.currentIndex == 0
-                      ? PatientFormFields(key: ValueKey(0))
-                      : DoctorForm(
-                          Key: ValueKey(1)), // Fix: Add key parameter here
+                      ? PatientFormFields()
+                      : DoctorForm(), // Fix: Add key parameter here
                 ),
                 24.toHeight,
                 CustomButton(
                         isLoading: state is RigesterScreenLoadingState,
                         text: AppStrings.next,
-                        onTap: () => {cubit.register()}).animate().flipV(
+                        onTap: () => {
+                              cubit.currentIndex == 0
+                                  ? cubit.registerPatient()
+                                  : cubit.registerDoctor()
+                            }).animate().flipV(
                       duration: Duration(milliseconds: 500),
                       curve: Curves.easeIn,
                     ),
@@ -82,7 +84,6 @@ Widget _buildToggleSwitch(cubit) {
   return LayoutBuilder(
     builder: (context, constraints) {
       double switchWidth = constraints.maxWidth / 2; // Divide width for 3 tabs
-
       return Stack(
         children: [
           Container(
@@ -95,11 +96,12 @@ Widget _buildToggleSwitch(cubit) {
 
           /// Highlighted selected tab
           AnimatedPositionedDirectional(
-            duration: Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 400),
             curve: Curves.easeInOut,
             top: ResponsiveHelper.isTablet(context) ? 5 : 3.5,
-            start: (switchWidth * cubit.currentIndex).clamp(0.0,
-                constraints.maxWidth - switchWidth), // Moves with selection
+            start: (switchWidth * cubit.currentIndex)
+                .clamp(0.0, constraints.maxWidth - switchWidth),
+            // Moves with selection
             child: Container(
               padding: EdgeInsets.symmetric(
                   horizontal: ResponsiveHelper.isTablet(context) ? 14 : 12,
@@ -119,11 +121,11 @@ Widget _buildToggleSwitch(cubit) {
             minHeight: 40.h,
             fontSize: 14.sp,
             cornerRadius: 30.0.w,
-            activeBgColors: List.generate(
-                2, (_) => [Colors.transparent]), // Transparent active bg
+            activeBgColors: List.generate(2, (_) => [Colors.transparent]),
+            // Transparent active bg
             activeFgColor: AppColors.background,
-            inactiveBgColor:
-                Colors.transparent, // Keep unselected tabs transparent
+            inactiveBgColor: Colors.transparent,
+            // Keep unselected tabs transparent
             inactiveFgColor: AppColors.typography,
             initialLabelIndex: cubit.currentIndex,
             doubleTapDisable: true,

@@ -22,7 +22,7 @@ class PatientFormFields extends StatelessWidget {
     final cubit = context.read<RigesterScreenCubit>();
     return CustomAuthContainerWidget(
       child: Form(
-        key: cubit.formKey,
+        key: cubit.patientFormKey,
         child: Column(
           children: [
             ProfileImagePicker(cubit: cubit),

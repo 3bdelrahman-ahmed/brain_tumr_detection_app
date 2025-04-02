@@ -20,6 +20,7 @@ class AssetsSvg {
   static const String settings = "settings";
   static const String person = "person";
   static const String uploadImage = "uploadImage";
+  static const String plus = "plus";
   ///[bottom nav bar icons]
   static const String feed = "feed";
   static const String history = "history";

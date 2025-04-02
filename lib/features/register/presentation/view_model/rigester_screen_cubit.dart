@@ -20,7 +20,8 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
 
   RigesterScreenCubit({required this.registerRepository})
       : super(RigesterScreenInitial());
-  final formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> patientFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> doctorFormKey = GlobalKey<FormState>();
   File? imagePath;
 
   DateTime? pickedDate;
@@ -48,8 +49,34 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
     emit(RigesterScreenUpdateScreen());
   }
 
-  Future<void> register() async {
-    if (formKey.currentState!.validate()) {
+  Future<void> registerPatient() async {
+    if (patientFormKey.currentState!.validate()) {
+      emit(RigesterScreenLoadingState());
+      final result = await registerRepository.register(RegisterRequestModel(
+          imagePath,
+          fullNameController.text,
+          userNameController.text,
+          emailController.text,
+          pickedDate.toString(),
+          passwordController.text,
+          position!.latitude,
+          position!.longitude,
+          selectedGender.text));
+      result.fold((l) {
+        l.message!.showToast();
+        emit(RigesterScreenErrorState());
+      }, (r) async {
+        context.navigateTo(AppRoutes.loginScreen);
+        clear();
+
+        emit(RigesterScreenSuccessState());
+      });
+    } else {
+      print("Form is not valid");
+    }
+  }
+  Future<void> registerDoctor() async {
+    if (patientFormKey.currentState!.validate()) {
       emit(RigesterScreenLoadingState());
       final result = await registerRepository.register(RegisterRequestModel(
           imagePath,

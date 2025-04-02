@@ -9,7 +9,7 @@ import '../../../../../core/utils/string/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
 class DoctorForm extends StatelessWidget {
-  const DoctorForm({required Key Key}) : super(key: Key);
+  const DoctorForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class DoctorForm extends StatelessWidget {
 
     return CustomAuthContainerWidget(
       child: Form(
-        key: cubit.formKey, // Attach Form Key from Cubit
+        key: cubit.doctorFormKey, // Attach Form Key from Cubit
         child: Column(
           children: [
             _buildInputField(

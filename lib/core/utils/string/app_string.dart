@@ -17,6 +17,9 @@ class AppStrings {
   static const String posts = "Posts";
   static const String savedPosts = "Saved Posts";
   static const String settings = "Settings";
+  static const String title = "Title";
+  static const String post = "Post";
+  static const String whatIsHappening= "What is happening?";
   static const String availability = "Availability";
   static const String bookNow = "Book Now";
   static const String gender = "Gender: ";
