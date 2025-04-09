@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
-import 'package:brain_tumr_detection_app/features/login/data/models/login_model.dart';
-import 'package:brain_tumr_detection_app/features/login/data/repository/login_repository.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/utils/extenstions/navigation_extenstions.dart';
+import '../../../../../../core/utils/extenstions/navigation_extenstions.dart';
+import '../../data/models/login_model.dart';
+import '../../data/repository/login_repository.dart';
 part 'login_state.dart';
 
 @injectable
@@ -61,9 +61,7 @@ class LoginCubit extends Cubit<LoginState> {
      AppConstants.location = "${placeMarks.first.locality} ,${placeMarks.first.country}";
   }
 
-  void showForgotPassword() {
-    emit(ShowForgotPasswordState()); // Notify UI to show the bottom sheet
-  }
+
 
   void changePassword(){
     isObscure = !isObscure;

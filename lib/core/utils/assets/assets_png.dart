@@ -13,6 +13,7 @@ class AssetsPng {
   static const String community = 'community';
   static const String notifications = 'notifications';
   static const String chat = 'chat';
+  static const String person = 'person';
   static const String doctorTest = 'doctor_test';
   static const String appointmentTest = 'appointment_text';
 }

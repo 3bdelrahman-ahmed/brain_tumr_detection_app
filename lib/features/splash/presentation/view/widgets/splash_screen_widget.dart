@@ -3,6 +3,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_onboardi
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../../core/utils/assets/assets_png.dart';
@@ -36,6 +37,10 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     Future.delayed(
       const Duration(seconds: 4),
       () async {
+        if (AppConstants.user != null) {
+          Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
+          return;
+        }
         Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
       },
     );

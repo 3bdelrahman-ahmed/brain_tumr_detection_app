@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final VoidCallback? onSuffixTap;
-  final TextStyle? hintTextStyle ;
+  final TextStyle? hintTextStyle;
   final VoidCallback? onTap;
   final TextInputAction? onAction;
   final FormFieldValidator<String>? validator;
@@ -40,7 +40,6 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.readOnly,
     this.onTap,
-
   }) : super(key: key);
 
   @override
@@ -78,8 +77,8 @@ class CustomTextField extends StatelessWidget {
             hintText: hintText,
             hintStyle: hintTextStyle ?? AppTextStyles.font15LightGreenW500,
             prefixIcon: prefixIcon != null
-                ? InkWell(
-                  child: Padding(
+                ? GestureDetector(
+                    child: Padding(
                       padding: EdgeInsets.all(8.w),
                       child: CustomImageView(
                         svgPath: prefixIcon!.toSVG(),
@@ -87,9 +86,8 @@ class CustomTextField extends StatelessWidget {
                         height: 25.w,
                       ),
                     ),
-                )
+                  )
                 : null,
-            // prefixIconColor: AppColors.typographyLowOpacity,
             suffixIcon: suffixIcon != null
                 ? GestureDetector(
                     onTap: onSuffixTap,
@@ -104,21 +102,21 @@ class CustomTextField extends StatelessWidget {
                   )
                 : null,
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.r),
+              borderRadius: BorderRadius.circular(16.r),
               borderSide: BorderSide(color: AppColors.typographyLowOpacity),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.r),
+              borderRadius: BorderRadius.circular(16.r),
               borderSide: BorderSide(color: AppColors.typographyLowOpacity),
             ),
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.r),
+              borderRadius: BorderRadius.circular(16.r),
               borderSide: BorderSide(color: AppColors.error),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.r),
+              borderRadius: BorderRadius.circular(16.r),
               borderSide: BorderSide(color: AppColors.typographyLowOpacity),
             ),
           ),

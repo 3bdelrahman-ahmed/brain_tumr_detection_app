@@ -9,17 +9,24 @@ class AppStrings {
   static const String sucessOpertation = "Success Operation";
   static const String didnotGetCode = "Didn't get the code? ";
   static const String resendCodeAgain = "Resend code";
+  static const String tapToSelectYourGender = "tap to select your gender";
   static const String submit = "Submit";
+  static const String male = "Male";
+  static const String female = "Female";
   static const String reviews = "Reviews";
   static const String posts = "Posts";
   static const String savedPosts = "Saved Posts";
   static const String settings = "Settings";
+  static const String title = "Title";
+  static const String post = "Post";
+  static const String whatIsHappening= "What is happening?";
   static const String availability = "Availability";
   static const String bookNow = "Book Now";
   static const String gender = "Gender: ";
   static const String medicalHistory = "Medical History ";
   static const String dateOfBirth = "Date of birth:";
-  static const String clickOnTheDayToShow = "Click on a day to show available time slots";
+  static const String clickOnTheDayToShow =
+      "Click on a day to show available time slots";
   static const String arabic = "Arabic";
   static const String location = "Location: ";
   static const String sessions = "Sessions: ";

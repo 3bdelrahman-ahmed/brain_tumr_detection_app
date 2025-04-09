@@ -70,6 +70,9 @@ dependencies:
   # toast
   fluttertoast: ^8.2.12
 
+  # animated switch toggles
+  animated_toggle_switch: ^0.8.4
+
   # utils
   # nb_utils: 7.0.4
 
