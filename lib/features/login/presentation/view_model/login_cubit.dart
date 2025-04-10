@@ -15,7 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginRepository repository;
 
   LoginCubit({required this.repository}) : super(LoginInitial());
-   bool isObscure = true ;
+  bool isObscure = true;
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -23,7 +23,7 @@ class LoginCubit extends Cubit<LoginState> {
   final FocusNode passwordFocusNode = FocusNode();
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
 
-  Future<void> login() async{
+  Future<void> login() async {
     if (formKey.currentState!.validate()) {
       emit(LoginLoadingState());
       final result = await repository.login(
@@ -31,7 +31,7 @@ class LoginCubit extends Cubit<LoginState> {
             email: emailController.text, password: passwordController.text),
       );
 
-      result.fold((l){
+      result.fold((l) {
         l.message!.showToast();
         emit(LoginErrorState());
       }, (r) async {
@@ -55,15 +55,15 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  Future<void> setLocation ()async
-  {
-     List<Placemark> placeMarks = await placemarkFromCoordinates(AppConstants.user!.latitude!, AppConstants.user!.longitude!);
-     AppConstants.location = "${placeMarks.first.locality} ,${placeMarks.first.country}";
+  Future<void> setLocation() async {
+    List<Placemark> placeMarks = await placemarkFromCoordinates(
+        AppConstants.user?.latitude ?? 90.0,
+        AppConstants.user?.longitude ?? 180.0);
+    AppConstants.location =
+        "${placeMarks.first.locality} ,${placeMarks.first.country}";
   }
 
-
-
-  void changePassword(){
+  void changePassword() {
     isObscure = !isObscure;
     emit(ChangePasswordState());
   }

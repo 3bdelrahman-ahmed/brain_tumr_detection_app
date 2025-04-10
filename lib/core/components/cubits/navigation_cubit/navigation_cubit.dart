@@ -12,7 +12,7 @@ import '../../../../features/scan/view/screens/scan_page.dart';
 
 part 'navigation_state.dart';
 
-@singleton
+@injectable
 class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(NavigationInitial());
 

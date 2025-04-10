@@ -51,12 +51,12 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.factory<_i284.NavigationCubit>(() => _i284.NavigationCubit());
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
     gh.factory<_i656.AppointmentCubit>(() => _i656.AppointmentCubit());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
-    gh.singleton<_i284.NavigationCubit>(() => _i284.NavigationCubit());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
     gh.singleton<_i301.RegisterRemoteDataSource>(
