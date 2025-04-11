@@ -6,6 +6,10 @@ class AppStrings {
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
+  static const String biometricAuthenticationEnabled = "Biometric Authentication Enabled";
+  static const String remmberMe = "Remmber Me";
+  static const String gotIt = "Got it";
+  static const String nextTimeYouLogin = "Next time you login, you can use your fingerprint or face ID to access your account.";
   static const String sucessOpertation = "Success Operation";
   static const String didnotGetCode = "Didn't get the code? ";
   static const String resendCodeAgain = "Resend code";
