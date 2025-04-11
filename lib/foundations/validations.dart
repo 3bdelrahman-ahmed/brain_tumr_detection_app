@@ -1,5 +1,5 @@
 
-import '../core/utils/string/app_string.dart';
+import '../core/utils/strings/app_string.dart';
 
 enum ValidationType{
   none,
