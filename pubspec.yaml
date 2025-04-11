@@ -34,16 +34,21 @@ dependencies:
   # API calls
   dio: ^5.8.0+1
   pretty_dio_logger: ^1.4.0
+  
   #switch
   toggle_switch: ^2.3.0
+
   # Bloc
   flutter_bloc: ^9.0.0
   bloc: ^9.0.0
   equatable: ^2.0.7
+
   #image_picker
   image_picker: ^1.1.2
   file_picker: ^9.2.1
   open_file: ^3.5.10
+
+
   # premission handler
   permission_handler: ^11.4.0
   #Table Calendar
@@ -73,6 +78,9 @@ dependencies:
   # animated switch toggles
   animated_toggle_switch: ^0.8.4
 
+  # lotties 
+  lottie: ^3.2.0
+
   # utils
   # nb_utils: 7.0.4
 
@@ -85,6 +93,8 @@ dependencies:
   # animations
   flutter_animate: ^4.5.2
 
+  # local auth
+  local_auth: ^2.3.0
 
   # The following adds the Cupertino Icons font to your application.
   cupertino_icons: ^1.0.8
@@ -126,6 +136,7 @@ flutter:
   assets:
     - assets/image/
     - assets/svg/
+    - assets/lotties/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
