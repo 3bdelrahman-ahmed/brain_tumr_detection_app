@@ -5,7 +5,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/doctor_data_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 import '../widgets/availabilty_canlendar.dart';
 
 class DoctorsProfile extends StatelessWidget {

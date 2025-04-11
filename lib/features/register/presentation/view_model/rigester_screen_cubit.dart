@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:brain_tumr_detection_app/features/register/data/models/register_model.dart';
 import 'package:brain_tumr_detection_app/features/register/data/repository/register_repository.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_state.dart';

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_file/open_file.dart';
 import '../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../core/utils/assets/assets_svg.dart';
-import '../../../../core/utils/string/app_string.dart';
+import '../../../../core/utils/strings/app_string.dart';
 import '../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../viewmodel/scan_cubit.dart';

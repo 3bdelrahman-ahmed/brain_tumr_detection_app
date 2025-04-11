@@ -7,7 +7,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
-import '../../../../../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/components/widgets/custom_sliver_search_bar.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../widgets/post_card.dart';
@@ -39,7 +39,7 @@ class FeedPage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 16.h, left: 20.w, right: 20.w),
                   child: PostCard(),
                 ),
-                childCount: 5,
+                childCount: 15,
               ),
             ),
             SliverPadding(padding: EdgeInsets.only(bottom: 72.h)),
@@ -54,19 +54,15 @@ class FeedPage extends StatelessWidget {
             message: "Add a new post",
             textStyle: AppTextStyles.font12BlueW700,
             preferBelow: false,
-            decoration: BoxDecoration(
-              color: AppColors.background
-            ),
+            decoration: BoxDecoration(color: AppColors.background),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context,AppRoutes.addPostScreen);
+                Navigator.pushNamed(context, AppRoutes.addPostScreen);
               },
               child: Container(
                 padding: EdgeInsets.all(10.r),
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.buttonsAndNav
-                ),
+                    shape: BoxShape.circle, color: AppColors.buttonsAndNav),
                 child: CustomImageView(
                   svgPath: AssetsSvg.plus.toSVG(),
                 ),

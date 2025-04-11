@@ -5,7 +5,7 @@ import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view/widgets/resend_code_widget.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view/widgets/sub_header_text_widget.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';

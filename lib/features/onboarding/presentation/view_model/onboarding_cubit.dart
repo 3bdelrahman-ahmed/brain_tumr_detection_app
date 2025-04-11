@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../core/utils/assets/assets_png.dart';
-import '../../../../core/utils/string/app_string.dart';
+import '../../../../core/utils/strings/app_string.dart';
 
 part 'onboarding_state.dart';
 

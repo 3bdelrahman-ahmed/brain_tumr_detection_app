@@ -19,7 +19,10 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   @override
   void initState() {
     super.initState();
-    navigateToHome();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      navigateToHome();
+    });
+    // navigateToHome();
   }
 
   @override
@@ -37,11 +40,19 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     Future.delayed(
       const Duration(seconds: 4),
       () async {
-        if (AppConstants.user != null) {
-          Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
-          return;
-        }
-        Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
+        AppConstants.getOnBoardingBooalean().then((value) {
+          if (!value) {
+            Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
+          } else {
+            AppConstants.getToken().then((val) {
+              if (val.toString().isNotEmpty && AppConstants.getUser() != null) {
+                Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
+              } else {
+                Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
+              }
+            });
+          }
+        });
       },
     );
   }

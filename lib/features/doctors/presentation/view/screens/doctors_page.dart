@@ -7,7 +7,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/doctor_card_doctors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 
 class DoctorsPage extends StatelessWidget {
   const DoctorsPage({Key? key}) : super(key: key);

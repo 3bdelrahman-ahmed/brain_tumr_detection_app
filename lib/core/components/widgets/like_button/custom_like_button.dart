@@ -1,7 +1,7 @@
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../utils/theme/text_styles/app_text_styles.dart';

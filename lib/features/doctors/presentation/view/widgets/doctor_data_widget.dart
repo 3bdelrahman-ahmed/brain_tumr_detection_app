@@ -7,7 +7,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets/assets_png.dart';
-import '../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
 class DoctorDataWidget extends StatelessWidget {

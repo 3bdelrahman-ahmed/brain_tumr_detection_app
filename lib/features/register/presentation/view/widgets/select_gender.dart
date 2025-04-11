@@ -5,7 +5,7 @@ import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 
 class SelectGender extends StatelessWidget {
   const SelectGender({Key? key}) : super(key: key);

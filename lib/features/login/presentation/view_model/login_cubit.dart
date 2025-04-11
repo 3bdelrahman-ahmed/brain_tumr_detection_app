@@ -2,10 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
+import 'package:local_auth/local_auth.dart';
 import '../../../../../../core/utils/extenstions/navigation_extenstions.dart';
+import '../../../../core/data/local_services/app_caching_helper.dart';
 import '../../data/models/login_model.dart';
 import '../../data/repository/login_repository.dart';
 part 'login_state.dart';
@@ -21,6 +24,10 @@ class LoginCubit extends Cubit<LoginState> {
   final passwordController = TextEditingController();
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
+  final LocalAuthentication auth = LocalAuthentication();
+
+  bool rememberMe = false;
+  bool isBiometricAvailable = false;
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
 
   Future<void> login() async {
@@ -35,23 +42,71 @@ class LoginCubit extends Cubit<LoginState> {
         l.message!.showToast();
         emit(LoginErrorState());
       }, (r) async {
-        // AppCacheHelper.cacheString(
-        //     key: AppCacheHelper.rememberMe, value: rememberMe);
-        await AppConstants.setToken(r.token!);
-        context.navigateTo(AppRoutes.homeScreen);
+        if (rememberMe) {
+          AppConstants.setBiometricToken(r.token!);
+          AppConstants.setBiometricUser(r.user!);
+        }
+        AppConstants.cacheString(
+            key: AppCacheHelper.rememberMe, value: rememberMe.toString());
+        AppConstants.setToken(r.token!);
         AppConstants.setUser(r.user!);
         AppConstants.user = r.user;
-        setLocation();
-        // // Navigate based on role
-        // if (AppConst.user!.role == UserRoles.envoy.name) {
-        //   Navigator.pushNamedAndRemoveUntil(
-        //       context, AppRouting.previewRequestsResultsScreen, (_) => false);
-        // } else {
-        //   Navigator.pushNamedAndRemoveUntil(
-        //       context, AppRouting.homeScreen, (_) => false);
-        // }
+        await setLocation();
+        context.navigateTo(AppRoutes.homeScreen);
+
         emit(LoginSuccessState());
       });
+    }
+  }
+
+  void toggleRememberMe() {
+    rememberMe = !rememberMe;
+    emit(ChangeRememberMeState(rememberMe: rememberMe));
+  }
+
+  Future<void> checkBiometricAvailability() async {
+    try {
+      isBiometricAvailable = await auth.canCheckBiometrics;
+      emit(BiometricAvailabilityState(
+          isBiometricAvailable: isBiometricAvailable));
+    } catch (e) {
+      isBiometricAvailable = false;
+    }
+  }
+
+  Future<void> authenticateWithBiometrics() async {
+    try {
+      // Retrieve user token and data from secure storage
+      String? userToken = await AppConstants.getBiometricToken();
+      User? userDataJson = await AppConstants.getBiometricUser();
+
+      if (userToken == null || userDataJson == null) {
+        emit(LoginErrorState());
+        return;
+      }
+
+      bool authenticated = await auth.authenticate(
+        localizedReason: 'welcome back ${userDataJson.fullName}',
+        options: const AuthenticationOptions(
+          useErrorDialogs: true,
+          sensitiveTransaction: true,
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
+      );
+
+      if (authenticated) {
+        await AppConstants.setToken(userToken);
+        await AppConstants.setUser(userDataJson);
+
+        Navigator.pushNamedAndRemoveUntil(
+            context, AppRoutes.homeScreen, (_) => false);
+
+        emit(LoginSuccessState());
+      }
+    } catch (e) {
+      emit(LoginErrorState());
+      print("Biometric authentication failed: $e");
     }
   }
 

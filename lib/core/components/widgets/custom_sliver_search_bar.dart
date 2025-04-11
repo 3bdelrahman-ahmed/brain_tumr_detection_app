@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../foundations/validations.dart';
 import '../../utils/assets/assets_svg.dart';
-import '../../utils/string/app_string.dart';
+import '../../utils/strings/app_string.dart';
 import 'custom_text_field.dart';
 
 class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
