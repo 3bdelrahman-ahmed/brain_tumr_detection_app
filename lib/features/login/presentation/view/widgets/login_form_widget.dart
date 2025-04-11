@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/login/presentation/view/widgets/rember_me_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -8,14 +9,32 @@ import '../../../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../../../core/components/widgets/custom_text_field.dart';
 import '../../../../../../../core/config/app_routing.dart';
 import '../../../../../../../core/utils/assets/assets_svg.dart';
-import '../../../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../../../foundations/validations.dart';
 import '../../view_model/login_cubit.dart';
 import 'forgot_password_sheet.dart';
 
-class LoginFormWidget extends StatelessWidget {
+class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({super.key});
+
+  @override
+  State<LoginFormWidget> createState() => _LoginFormWidgetState();
+}
+
+class _LoginFormWidgetState extends State<LoginFormWidget> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var cubit = context.read<LoginCubit>();
+      await cubit.checkBiometricAvailability();
+      if (cubit.isBiometricAvailable) {
+        await cubit.authenticateWithBiometrics();
+      }
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,31 +76,37 @@ class LoginFormWidget extends StatelessWidget {
                         val: cubit.passwordController.text,
                         fieldName: AppStrings.password,
                         fieldType: ValidationType.password)),
-                TextButton(
-                    style: ButtonStyle(
-                      overlayColor: WidgetStateProperty.all(
-                          Colors.transparent), // Removes tap effect
-                      splashFactory:
-                          NoSplash.splashFactory, // Disables ripple effect
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RemberMeWidget(
+                      remmberMeClicked: cubit.rememberMe,
+                      onChanged: cubit.toggleRememberMe,
                     ),
-                    isSemanticButton: false,
-                    onPressed: () => showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(30.r)),
-                          ),
-                          builder: (_) => ForgotPasswordSheet(),
+                    TextButton(
+                        style: ButtonStyle(
+                          overlayColor: WidgetStateProperty.all(
+                              Colors.transparent), // Removes tap effect
+                          splashFactory:
+                              NoSplash.splashFactory, // Disables ripple effect
                         ),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: Text(
-                        AppStrings.forgotPassword,
-                        style: AppTextStyles.font15LightGreenW500,
-                      ),
-                    )),
-                8.toHeight,
+                        isSemanticButton: false,
+                        onPressed: () => showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(30.r)),
+                              ),
+                              builder: (_) => ForgotPasswordSheet(),
+                            ),
+                        child: Text(
+                          AppStrings.forgotPassword,
+                          style: AppTextStyles.font15LightGreenW500,
+                        )),
+                  ],
+                ),
+                6.toHeight,
                 RichText(
                     text: TextSpan(
                         text: AppStrings.dontHaveAnAccount,
@@ -97,14 +122,14 @@ class LoginFormWidget extends StatelessWidget {
                     ])),
                 24.toHeight,
                 CustomButton(
-                    isLoading: state is LoginLoadingState,
-                    text: AppStrings.login,
-                    onTap: () {
-                      cubit.login();
-                    }).animate().flipV(
-            duration: Duration(milliseconds: 500),
-            curve: Curves.easeIn,
-          )
+                        isLoading: state is LoginLoadingState,
+                        text: AppStrings.login,
+                        onTap: () {
+                          cubit.login();
+                        }).animate().flipV(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeIn,
+                    )
               ],
             );
           },

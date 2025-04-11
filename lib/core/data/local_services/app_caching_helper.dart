@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppCacheHelper {
-  // private constructor as I don't want to allow creating an instance of this class itself.
   AppCacheHelper._();
 
   ///key for caching
@@ -23,6 +22,7 @@ class AppCacheHelper {
     await flutterSecureStorage.write(key: key, value: value);
   }
 
+  
   /// Gets an String value from FlutterSecureStorage with given [key].
   static getSecuredString({required String key}) async {
     const flutterSecureStorage = FlutterSecureStorage();

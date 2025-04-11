@@ -22,7 +22,6 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
   @override
   void initState() {
     image = widget.imageUrl ?? "";
-    image = widget.imageUrl ?? "";
     super.initState();
   }
 
@@ -48,17 +47,17 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
     } else {
       return CircleAvatar(
         radius: widget.size ?? 18.r,
-        backgroundColor:
-            Colors.grey.shade300,
+        backgroundColor: Colors.grey.shade300,
         backgroundImage: CachedNetworkImageProvider(widget.imageUrl ?? ""),
         onBackgroundImageError: (_, __) {}, // Prevents crashes
         child: ClipOval(
+          
           child: CachedNetworkImage(
             imageUrl: widget.imageUrl ?? "",
             fit: BoxFit.cover,
             placeholder: (context, url) => _buildePlaceHolder(),
             errorWidget: (context, url, error) => Image.asset(
-              'assets/image/appointment_text.png', 
+              'assets/image/appointment_text.png',
               fit: BoxFit.cover,
             ),
           ),
@@ -81,7 +80,6 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
           child: CircularProgressIndicator(
             color: AppColors.buttonsAndNav,
             backgroundColor: AppColors.buttonsAndNav.withAlpha(55),
-
             strokeCap: StrokeCap.round,
           ),
         ),

@@ -1,14 +1,14 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_like_button.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
-import '../../../../../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../../../../../core/utils/assets/assets_svg.dart';
-import '../../../../../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 
 class PostCard extends StatelessWidget {
@@ -92,21 +92,14 @@ class PostCard extends StatelessWidget {
         ),
         // Profile Image Positioned Above the Card
         PositionedDirectional(
-            top: -25.h,
-            start: 0,
-            end: 0,
-            child: Container(
-              height: 50.w,
-              width: 50.w,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage(
-                        AssetsPng.doctorTest.toPng(),
-                      ),
-                      fit: BoxFit.cover)),
-            )),
+          top: -25.h,
+          start: 0,
+          end: 0,
+          child: CustomProfileImage(
+            size: 32,
+            imageUrl: AppConstants.user!.profilePicture,
+          ),
+        ),
       ],
     ).paddingOnly(bottom: 32.h);
   }

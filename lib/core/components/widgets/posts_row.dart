@@ -2,7 +2,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/string/app_string.dart';
+import '../../utils/strings/app_string.dart';
 import '../../utils/theme/text_styles/app_text_styles.dart';
 
 class PostsRow extends StatelessWidget {

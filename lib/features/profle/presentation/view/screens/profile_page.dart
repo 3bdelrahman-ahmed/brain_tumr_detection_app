@@ -6,7 +6,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/profle/presentation/view/widgets/patient_data_widget.dart';
-import '../../../../../core/utils/string/app_string.dart';
+import '../../../../../core/utils/strings/app_string.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
   @override

@@ -10,7 +10,7 @@ import 'package:brain_tumr_detection_app/features/scan/view/widgets/file_data_ro
 import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/string/app_string.dart';
+import '../../../../core/utils/strings/app_string.dart';
 
 class ScanPage extends StatelessWidget {
   const ScanPage({Key? key}) : super(key: key);

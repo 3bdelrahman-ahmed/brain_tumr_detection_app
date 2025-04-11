@@ -1,5 +1,5 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/string/app_string.dart';
+import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/gender_container_widget.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_state.dart';
