@@ -8,6 +8,7 @@ part 'reports_state.dart';
 @injectable
 class ReportsCubit extends Cubit<ReportsState> {
   ReportsCubit() : super(ReportsInitial());
+
   List<Report> reports = [
     Report(patientName: "Youssef Ibrahim Marzouk", profileUrl: ''),
     Report(patientName: "Mohamed Akram Tawfik", profileUrl: ''),
@@ -29,4 +30,6 @@ class ReportsCubit extends Cubit<ReportsState> {
     reports[index].isViewed = !reports[index].isViewed;
     emit(ReportsViewReport());
   }
+
+
 }

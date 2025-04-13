@@ -26,10 +26,13 @@ class AppStrings {
   static const String chat = "Chat";
   static const String title = "Title";
   static const String post = "Post";
+  static const String name = "Name: ";
   static const String whatIsHappening = "What is happening?";
   static const String availability = "Availability";
   static const String bookNow = "Book Now";
   static const String gender = "Gender: ";
+  static const String submitted = "Submitted: ";
+  static const String age = "Age: ";
   static const String medicalHistory = "Medical History ";
   static const String dateOfBirth = "Date of birth:";
   static const String clickOnTheDayToShow =
@@ -45,6 +48,7 @@ class AppStrings {
   static const String session = "Sessions(s)";
   static const String pinFieldError = "Please enter verification code";
   static const String viewProf = "View Profile";
+  static const String openPdf = "Open PDF";
   static const String viewReport = "View Report";
   static const String reportIsReady = "Report Is Ready!";
   static const String enterVerificationCode = "Enter the Verification Code";
@@ -60,9 +64,15 @@ class AppStrings {
   static const String returnPage = "Return";
   static const String done = "done";
   static const String doctor = "Doctor";
-  static const String documentError ="Please enter your medical certificate";
+  static const String diagnosis = "Diagnosis";
+  static const String result = "Result";
+  static const String findings = "Findings";
+  static const String contactPatient = "Contact Patient";
+  static const String reasoning = "Reasoning";
+  static const String documentError = "Please enter your medical certificate";
   static const String credentials = "Credentials";
-  static const String uploadYourNationalMedical = "Upload your national medical certificate";
+  static const String uploadYourNationalMedical =
+      "Upload your national medical certificate";
   static const String medicalCertificate = "Medical Certificate";
   static const String pleaseUploadYourCredentials =
       "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status.";
@@ -169,6 +179,14 @@ Almost there! We’ve sent a code to your email to verify your identity. Just en
   static const String dateError = 'Invalid date';
   static const String phoneNumberMustBe11Digits =
       'Phone number must be 11 digits';
+
+  //test
+
+  static const String firstDiagnosisContainer = "Positive for Brain Tumor";
+  static const String secondDiagnosisContainer =
+      "The MRI scan analysis reveals an abnormal mass in the left frontal lobe, measuring approximately 3.2 cm x 2.8 cm. The segmented region exhibits irregular borders and heterogeneous intensity, indicating possible malignancy. The tumor appears hyperintense on T2-weighted imaging and hypointense on T1-weighted imaging, which is characteristic of glioblastoma multiforme (GBM). Additionally, peritumoral edema and midline shift (3mm) suggest increased intracranial pressure.";
+  static const String thirdDiagnosisContainer =
+      "Reasoning Irregular shape and non-uniform intensity  → Suggests malignancy rather than a benign tumor.Hyperintensity on T2-weighted images   → Indicates fluid content, common in aggressive tumors.Presence of peritumoral edema → Often associated with high-grade gliomas.Midline shift  → Suggests significant mass effect, warranting urgent medical intervention.";
 
   /// [post card Strings]
   static const String comments = "Comments";

@@ -5,4 +5,5 @@ sealed class ReportsState {}
 
 final class ReportsInitial extends ReportsState {}
 final class ReportsViewReport extends ReportsState {}
+final class ReportsExpandedDiagnosis extends ReportsState {}
 
