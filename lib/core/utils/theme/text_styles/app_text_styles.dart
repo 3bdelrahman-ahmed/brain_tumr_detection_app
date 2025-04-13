@@ -106,6 +106,11 @@ class AppTextStyles {
     color: AppColors.buttonsAndNav,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle font14BlueW700 = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.buttonsAndNav,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle font24BlueW700 = TextStyle(
     fontSize: 24.sp,
     color: AppColors.buttonsAndNav,
