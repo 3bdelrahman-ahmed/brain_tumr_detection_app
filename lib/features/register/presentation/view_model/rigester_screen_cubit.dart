@@ -41,6 +41,18 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
   bool isSelectMaleGenders = false;
   bool isSelectFemaleGenders = false;
+  File? documentFile;
+ String? doctorFileName;
+  String? documentError;
+  void setDocumentFile(File file,String fileName) {
+    documentFile = file;
+    doctorFileName = fileName;
+    documentError = null;
+    emit(RigesterScreenSuccessState());
+  }
+  void setDocumentError(String error) {
+    documentError = error;
+  }
 
   void setUserLocation(LatLng location, String street) {
     position = location;
@@ -76,7 +88,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
     }
   }
   Future<void> registerDoctor() async {
-    if (patientFormKey.currentState!.validate()) {
+    if (doctorFormKey.currentState!.validate()) {
       emit(RigesterScreenLoadingState());
       final result = await registerRepository.register(RegisterRequestModel(
           imagePath,

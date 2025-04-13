@@ -103,7 +103,7 @@ class OnboardingScreenWidget extends StatelessWidget {
                               // () => Navigator.pushReplacementNamed(
                               //    context, AppRoutes.registerScreen))
                               : () {
-                                  AppConstants.setOnBoadrdingBooalean(true);
+                                  AppConstants.setOnBoardingBoolean(true);
                                   Navigator.pushReplacementNamed(
                                       context, AppRoutes.loginScreen);
                                 }),

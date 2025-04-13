@@ -6,10 +6,12 @@ class AppStrings {
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
-  static const String biometricAuthenticationEnabled = "Biometric Authentication Enabled";
+  static const String biometricAuthenticationEnabled =
+      "Biometric Authentication Enabled";
   static const String remmberMe = "Remmber Me";
   static const String gotIt = "Got it";
-  static const String nextTimeYouLogin = "Next time you login, you can use your fingerprint or face ID to access your account.";
+  static const String nextTimeYouLogin =
+      "Next time you login, you can use your fingerprint or face ID to access your account.";
   static const String sucessOpertation = "Success Operation";
   static const String didnotGetCode = "Didn't get the code? ";
   static const String resendCodeAgain = "Resend code";
@@ -23,7 +25,7 @@ class AppStrings {
   static const String settings = "Settings";
   static const String title = "Title";
   static const String post = "Post";
-  static const String whatIsHappening= "What is happening?";
+  static const String whatIsHappening = "What is happening?";
   static const String availability = "Availability";
   static const String bookNow = "Book Now";
   static const String gender = "Gender: ";
@@ -38,7 +40,11 @@ class AppStrings {
   static const String experience = "Experience: ";
   static const String education = "Education";
   static const String viewProfile = "View Profile";
+  static const String viewed = "Viewed";
   static const String pinFieldError = "Please enter verification code";
+  static const String viewProf = "View Profile";
+  static const String viewReport = "View Report";
+  static const String reportIsReady = "Report Is Ready!";
   static const String enterVerificationCode = "Enter the Verification Code";
   static const String uploadYourFileHere = "Upload your File here";
   static const String openLocationPermission =
@@ -51,6 +57,13 @@ class AppStrings {
   static const String mriFileUploaded = "MRI Uploaded Successfully!";
   static const String returnPage = "Return";
   static const String done = "done";
+  static const String doctor = "Doctor";
+  static const String documentError ="Please enter your medical certificate";
+  static const String credentials = "Credentials";
+  static const String uploadYourNationalMedical = "Upload your national medical certificate";
+  static const String medicalCertificate = "Medical Certificate";
+  static const String pleaseUploadYourCredentials =
+      "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status.";
   static const String youWillRecieveNotificationSoon =
       "You will receive a notification once your report is ready.\nThank you for your patience.";
   static const String fullNameMustContainOneSpace =
