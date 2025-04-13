@@ -40,7 +40,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     Future.delayed(
       const Duration(seconds: 4),
       () async {
-        AppConstants.getOnBoardingBooalean().then((value) {
+        AppConstants.getOnBoardingBoolean().then((value) {
           if (!value) {
             Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
           } else {

@@ -15,7 +15,7 @@ class DoctorsProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [
+        slivers:[
           CustomWelcomeAppBar(),
           SliverPadding(padding: EdgeInsets.symmetric(vertical: 40.h)),
           SliverToBoxAdapter(

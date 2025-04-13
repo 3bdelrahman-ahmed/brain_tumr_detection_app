@@ -6,6 +6,7 @@ import 'package:brain_tumr_detection_app/features/home/presentation/view/home_pa
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/reports/presentation/view/screens/view_report_screen.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String verificationCodeScreen = '/verification_code';
   static const String doctorProfileScreen = '/doctorProfile';
   static const String addPostScreen = '/addPost';
+  static const String viewReportScreen = '/viewReport';
 }
 
 class AppRouter {
@@ -55,6 +57,11 @@ class AppRouter {
       case AppRoutes.addPostScreen:
         return animateRouteBuilder(
           const AddPost(),
+          duration: 300.ms,
+        );
+      case AppRoutes.viewReportScreen:
+        return animateRouteBuilder(
+          const ViewReportScreen(),
           duration: 300.ms,
         );
       case AppRoutes.onBoardingScreen:

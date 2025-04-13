@@ -15,7 +15,7 @@ class AppConstants {
   static String accessToken = '';
   static User? user;
   static String? location;
-
+  static String? userRole = 'doctor';
   static cacheString({required String key, required dynamic value}) async {
     await AppCacheHelper.setSecuredString(key: key, value: value);
   }
@@ -26,14 +26,14 @@ class AppConstants {
     accessToken = token;
   }
 
-  static setOnBoadrdingBooalean(bool value) async {
+  static setOnBoardingBoolean(bool value) async {
     print("setting boolean value ${value.toString()}");
     await AppCacheHelper.setSecuredString(
         key: AppCacheHelper.onBoardingKey, value: value.toString());
     onBoarding = value;
   }
 
-  static Future<bool> getOnBoardingBooalean() async {
+  static Future<bool> getOnBoardingBoolean() async {
     String? onBoardingValue = await AppCacheHelper.getSecuredString(
       key: AppCacheHelper.onBoardingKey,
     );
@@ -103,5 +103,15 @@ class AppConstants {
     await AppCacheHelper.setSecuredString(
         key: AppCacheHelper.biometricTokenKey, value: token);
     accessToken = token;
+  }
+  static setUserRole(String role) async {
+    await AppCacheHelper.setSecuredString(key: AppCacheHelper.userRole, value:role);
+    userRole = role;
+  }
+
+  static Future<String?> getUserRole() async {
+    return await AppCacheHelper.getSecuredString(
+      key: AppCacheHelper.userRole,
+    );
   }
 }

@@ -127,8 +127,7 @@ class PatientFormFields extends StatelessWidget {
     );
   }
 
-  Future<void> _selectDate(
-      BuildContext context, RigesterScreenCubit cubit) async {
+  Future<void> _selectDate(BuildContext context, RigesterScreenCubit cubit) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),

@@ -13,6 +13,7 @@ class AppCacheHelper {
   static const String onesignalId = "onesignalId";
   static const String biometricEnabled = "biometricEnabled";
   static const String rememberMe = "rememberMe";
+  static const String userRole = "userRole";
 
   /// Saves a [value] with a [key] in the FlutterSecureStorage.
   static setSecuredString({required String key, required dynamic value}) async {

@@ -29,9 +29,14 @@ class _HomeScreenState extends State<HomeScreen>
   Timer? _scrollStopTimer;
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
-    context.read<NavigationCubit>().initializeTabs();
+    if (AppConstants.userRole == 'doctor'){
+      context.read<NavigationCubit>().initializeDoctorTabs();
+    }
+    else {
+      context.read<NavigationCubit>().initializePatientTabs();
+    }
     currentScrollController =
         context.read<NavigationCubit>().getScrollController(0);
     currentScrollController.addListener(_onScroll);
@@ -91,7 +96,6 @@ class _HomeScreenState extends State<HomeScreen>
             alignment: Alignment.bottomCenter,
             children: [
               cubit.tabs[cubit.currentIndex],
-
               // Animated Bottom Navigation Bar
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 300),
@@ -158,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                         alignment: Alignment.center,
                         child: CustomImageView(
-                          svgPath: AssetsSvg.upload.toSVG(),
+                          svgPath: AppConstants.userRole == 'doctor' ?  AssetsSvg.doctorScan.toSVG() :AssetsSvg.upload.toSVG(),
                           width: 48.w,
                           height: 48.w,
                           color: cubit.currentIndex == 2

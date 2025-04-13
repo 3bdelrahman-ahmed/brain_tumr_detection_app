@@ -11,7 +11,7 @@ class RegisterResponseModel{
   }
 }
 
-class RegisterRequestModel {
+class RegisterRequestModel{
   final File? profileProfile;
   final String fullName;
   final String userName;
@@ -44,7 +44,7 @@ class RegisterRequestModel {
       "longitude": longitude,
       "gender": gender,
     });
-    if (profileProfile != null) {
+    if (profileProfile != null){
       formData.files.add(
         MapEntry(
           "profilePicture",

@@ -28,6 +28,8 @@ import '../../../features/register/data/repository/register_repository.dart'
     as _i558;
 import '../../../features/register/presentation/view_model/rigester_screen_cubit.dart'
     as _i5;
+import '../../../features/reports/presentation/viewmodel/reports_cubit.dart'
+    as _i187;
 import '../../../features/scan/viewmodel/scan_cubit.dart' as _i109;
 import '../../../features/verification_code/data/remote/verify_code_remote_data_source.dart'
     as _i790;
@@ -56,6 +58,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.AppointmentCubit>(() => _i656.AppointmentCubit());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
+    gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
     gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());

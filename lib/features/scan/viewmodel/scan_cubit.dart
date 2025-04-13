@@ -16,7 +16,6 @@ class ScanCubit extends Cubit<ScanState> {
 
   void pickFile() async {
     isCancelled = false;
-
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png'],
