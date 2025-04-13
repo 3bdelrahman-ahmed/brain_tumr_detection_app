@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../core/config/app_routing.dart';
 import '../../../../../core/utils/responsive_helper.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
@@ -20,7 +21,6 @@ class ViewPatientsReport extends StatelessWidget {
   const ViewPatientsReport(
       {Key? key, required this.report, required this.index})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     DateTime dateTime = DateTime.now();
@@ -65,7 +65,7 @@ class ViewPatientsReport extends StatelessWidget {
                           SizedBox(
                               width: 120.w,
                               child: Text(
-                                "Youssef Ibrahim Marzouk Ramadan",
+                                cubit.reports[index].patientName,
                                 style: AppTextStyles.font12BlueW700,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -102,7 +102,10 @@ class ViewPatientsReport extends StatelessWidget {
                         text: report.isViewed
                             ? AppStrings.viewed
                             : AppStrings.viewReport,
-                        onTap: () => cubit.onViewReport(index),
+                        onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.viewReportScreen);
+                        cubit.onViewReport(index);
+                        },
                         backgroundColor: report.isViewed
                             ? AppColors.typography
                             : AppColors.buttonsAndNav,

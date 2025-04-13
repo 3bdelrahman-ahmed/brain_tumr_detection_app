@@ -1,6 +1,4 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_logo_container.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_auth_container.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/profile_image_picker.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/select_gender.dart';

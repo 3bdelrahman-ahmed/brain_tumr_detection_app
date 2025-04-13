@@ -3,6 +3,7 @@ import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/c
 import 'package:brain_tumr_detection_app/features/reports/presentation/viewmodel/reports_cubit.dart';
 import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart';
 import 'package:brain_tumr_detection_app/features/slots/presentation/screens/slots_screen.dart';
+import 'package:brain_tumr_detection_app/features/view_patients/presentation/view/screens/view_patients_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -45,7 +46,7 @@ class NavigationCubit extends Cubit<NavigationState> {
         create: (context) => getIt<ReportsCubit>(),
         child: ReportsScreen(),
       ),
-      DoctorsPage(),
+      ViewPatientsScreen(),
       ProfilePage(),
     ]);
   }

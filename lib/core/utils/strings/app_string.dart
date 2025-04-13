@@ -23,6 +23,7 @@ class AppStrings {
   static const String posts = "Posts";
   static const String savedPosts = "Saved Posts";
   static const String settings = "Settings";
+  static const String chat = "Chat";
   static const String title = "Title";
   static const String post = "Post";
   static const String whatIsHappening = "What is happening?";
@@ -41,6 +42,7 @@ class AppStrings {
   static const String education = "Education";
   static const String viewProfile = "View Profile";
   static const String viewed = "Viewed";
+  static const String session = "Sessions(s)";
   static const String pinFieldError = "Please enter verification code";
   static const String viewProf = "View Profile";
   static const String viewReport = "View Report";
