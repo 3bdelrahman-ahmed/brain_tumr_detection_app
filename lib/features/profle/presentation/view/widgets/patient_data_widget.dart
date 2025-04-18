@@ -67,8 +67,11 @@ class PatientDataWidget extends StatelessWidget {
                 child: Container(
                   height: 110.w,
                   width: 110.w,
-                  child: CustomProfileImage(
-                    imageUrl: AppConstants.user?.profilePicture,
+                  child: Center(
+                    child: CustomProfileImage(
+                      size: 50.w,
+                      imageUrl: AppConstants.user?.profilePicture,
+                    ),
                   ),
                 ),
               ),

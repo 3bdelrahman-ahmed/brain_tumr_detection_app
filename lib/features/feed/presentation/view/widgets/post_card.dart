@@ -103,9 +103,11 @@ class PostCard extends StatelessWidget {
           top: -25.h,
           start: 0,
           end: 0,
-          child: CustomProfileImage(
-            size: 32,
-            imageUrl: AppConstants.user!.profilePicture,
+          child: Center(
+            child: CustomProfileImage(
+              size: 32,
+              imageUrl: AppConstants.user!.profilePicture,
+            ),
           ),
         ),
       ],

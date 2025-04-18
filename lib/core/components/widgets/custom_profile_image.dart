@@ -32,40 +32,46 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
 
   Widget _buildImage() {
     final isSvg = (widget.imageUrl?.toLowerCase().endsWith('.svg')) ?? false;
+    final size = widget.size ?? (isSvg ? 38 : 18.r);
 
     if (isSvg) {
       return CircleAvatar(
         backgroundColor: Colors.transparent,
-        radius: widget.size ?? 38,
+        radius: size,
         child: SvgPicture.network(
           widget.imageUrl ?? "",
-          //  placeholderBuilder: (BuildContext context) => CircularProgressIndicator(),
-          width: widget.size != null ? widget.size! * 2 : 76,
-          height: widget.size != null ? widget.size! * 2 : 76,
+          width: size * 2,
+          height: size * 2,
         ),
       );
     } else {
       return CircleAvatar(
         radius: widget.size ?? 18.r,
         backgroundColor: Colors.grey.shade300,
-        backgroundImage: CachedNetworkImageProvider(widget.imageUrl ?? ""),
-        onBackgroundImageError: (_, __) {}, // Prevents crashes
         child: ClipOval(
-          
           child: CachedNetworkImage(
             imageUrl: widget.imageUrl ?? "",
-            fit: BoxFit.cover,
             placeholder: (context, url) => _buildePlaceHolder(),
             errorWidget: (context, url, error) => Image.asset(
               'assets/image/appointment_text.png',
               fit: BoxFit.cover,
+            ),
+            imageBuilder: (context, imageProvider) => Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                ),
+              ),
             ),
           ),
         ),
       );
     }
   }
-
   Widget _buildePlaceHolder() {
     return Container(
       width: widget.size ?? 24.w,
