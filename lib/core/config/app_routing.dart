@@ -42,7 +42,7 @@ class AppRouter {
 
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case AppRoutes.verificationCodeScreen:
+      case AppRoutes.verificationCodeScreen:  
         return animateRouteBuilder(BlocProvider(
           create: (context) => getIt<VerificationCodeCubit>(),
           child: VerificationCodeScreen(

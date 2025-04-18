@@ -6,6 +6,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
+import 'package:brain_tumr_detection_app/features/feed/presentation/view/widgets/comment_widgets/comment_card_widget.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../../../../core/utils/assets/assets_svg.dart';
@@ -87,6 +88,13 @@ class PostCard extends StatelessWidget {
                   _buildButton(AssetsSvg.saveIcon, AppStrings.save),
                 ],
               ),
+              12.toHeight,
+              Divider(
+                color: Colors.grey.withOpacity(0.5),
+                height: 1,
+              ),
+              12.toHeight,
+              CommentCardWidget()
             ],
           ).paddingOnly(top: 24.h),
         ),

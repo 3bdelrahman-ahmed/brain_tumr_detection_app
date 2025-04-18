@@ -31,7 +31,7 @@ class _NeroTumAppState extends State<NeroTumApp> {
       onGenerateRoute: AppRouter.onGenerateRoute,
       theme: appTheme,
       navigatorObservers: [routeObserver],
-      builder: (context, child) {
+      builder: (context, child) { 
         return MediaQuery(
           data: MediaQuery.of(context).size.width > 600
               ? MediaQuery.of(context)
