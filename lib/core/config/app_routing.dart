@@ -1,5 +1,8 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/location_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit/navigation_cubit.dart';
+import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
+import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
+import 'package:brain_tumr_detection_app/features/chats/presentation/viewmodel/chats_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
@@ -30,6 +33,8 @@ class AppRoutes {
   static const String doctorProfileScreen = '/doctorProfile';
   static const String addPostScreen = '/addPost';
   static const String viewReportScreen = '/viewReport';
+  static const String chatsScreen = '/chatsScreen';
+  static const String chatsListScreen = '/chatsListScreen';
 }
 
 class AppRouter {
@@ -64,6 +69,17 @@ class AppRouter {
           const ViewReportScreen(),
           duration: 300.ms,
         );
+      case AppRoutes.chatsScreen:
+        return animateRouteBuilder(
+          BlocProvider(
+            create: (context) => getIt<ChatsCubit>(),
+            child: ChatsScreen(chat:routeSettings.arguments as ChatPreview),
+          ),
+        );case AppRoutes.chatsListScreen:
+        return animateRouteBuilder(BlocProvider(
+          create: (context) => getIt<ChatsCubit>(),
+          child: ChatListScreen(),
+        ));
       case AppRoutes.onBoardingScreen:
         return animateRouteBuilder(
             BlocProvider(

@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
+import '../../config/app_routing.dart';
 import 'custom_image_view.dart';
 import '../../utils/assets/assets_png.dart';
 import '../../utils/strings/app_string.dart';
@@ -9,6 +10,7 @@ import '../../utils/theme/text_styles/app_text_styles.dart';
 
 class CustomWelcomeAppBar extends StatelessWidget {
   final String? userName;
+
   const CustomWelcomeAppBar({Key? key, this.userName}) : super(key: key);
 
   @override
@@ -50,10 +52,14 @@ class CustomWelcomeAppBar extends StatelessWidget {
             const Spacer(),
             Row(
               children: [
-                CustomImageView(
-                  imagePath: AssetsPng.chat.toPng(),
-                  width: 30.w,
-                  height: 30.w,
+                GestureDetector(
+                  onTap: () =>
+                      Navigator.pushNamed(context, AppRoutes.chatsListScreen),
+                  child: CustomImageView(
+                    imagePath: AssetsPng.chat.toPng(),
+                    width: 30.w,
+                    height: 30.w,
+                  ),
                 ),
                 SizedBox(width: 10.w),
                 CustomImageView(

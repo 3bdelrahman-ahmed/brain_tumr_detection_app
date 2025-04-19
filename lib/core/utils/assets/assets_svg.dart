@@ -24,6 +24,8 @@ class AssetsSvg {
   static const String plus = "plus";
   static const String uploadDoc = "upload_doc";
   static const String report = "report";
+  static const String checkMark = "checkMark";
+  static const String pending = "pending";
   ///[bottom nav bar icons]
   static const String feed = "feed";
   static const String history = "history";
