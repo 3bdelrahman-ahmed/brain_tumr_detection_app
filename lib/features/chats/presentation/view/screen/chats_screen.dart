@@ -4,7 +4,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/widgets/custom_messages_text_field.dart';
-import 'package:brain_tumr_detection_app/features/chats/presentation/viewmodel/chats_cubit.dart';
+import 'package:brain_tumr_detection_app/features/chats/presentation/view_model/chats_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

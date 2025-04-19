@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool? obscureText;
   final String? label;
+  final String? subLabel;
   final TextInputType keyboardType;
   final String? prefixIcon;
   final String? suffixIcon;
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.focusNode,
+    this.subLabel,
     this.onSubmit,
     this.obscureText = false,
     this.label,
@@ -53,7 +55,14 @@ class CustomTextField extends StatelessWidget {
             style: AppTextStyles.font15LightGreenW500
                 .copyWith(color: AppColors.typography),
           ),
-        if (label != null) 4.toHeight,
+        label != null ? 2.toHeight : 4.toHeight,
+        if (subLabel != null)
+          Text(
+            subLabel!,
+            style: AppTextStyles.font12LightGreenW500
+                .copyWith(color: AppColors.typographyLowOpacity),
+          ),
+        if (subLabel != null) 4.toHeight,
         TextFormField(
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
@@ -74,6 +83,7 @@ class CustomTextField extends StatelessWidget {
           cursorWidth: 1.5.w,
           onChanged: onChanged,
           decoration: InputDecoration(
+            errorMaxLines: 3,
             hintText: hintText,
             hintStyle: hintTextStyle ?? AppTextStyles.font15LightGreenW500,
             prefixIcon: prefixIcon != null

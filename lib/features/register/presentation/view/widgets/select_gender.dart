@@ -31,6 +31,10 @@ class SelectGender extends StatelessWidget {
       child: AbsorbPointer(
         child: CustomTextField(
           readOnly: true,
+          focusNode: cubit.genderFocus,
+          onSubmit: (p0) {
+            FocusScope.of(context).requestFocus(cubit.passwordFocus);
+          },
           controller: cubit.selectedGender,
           validator: (value) => checkFieldValidation(
               val: cubit.selectedGender.text,
