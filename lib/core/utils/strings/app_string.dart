@@ -10,10 +10,12 @@ class AppStrings {
       "Biometric Authentication Enabled";
   static const String remmberMe = "Remmber Me";
   static const String gotIt = "Got it";
+  static const String messages = "Messages";
   static const String nextTimeYouLogin =
       "Next time you login, you can use your fingerprint or face ID to access your account.";
   static const String sucessOpertation = "Success Operation";
   static const String didnotGetCode = "Didn't get the code? ";
+  static const String writeAMessage = "Write a message...";
   static const String resendCodeAgain = "Resend code";
   static const String tapToSelectYourGender = "tap to select your gender";
   static const String submit = "Submit";

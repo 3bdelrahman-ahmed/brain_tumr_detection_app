@@ -13,6 +13,8 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../../features/appointments/presentation/viewmodel/appointment_cubit.dart'
     as _i656;
+import '../../../features/chats/presentation/viewmodel/chats_cubit.dart'
+    as _i98;
 import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
     as _i1069;
 import '../../../features/login/data/remote/login_remote_data_source.dart'
@@ -56,6 +58,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i284.NavigationCubit>(() => _i284.NavigationCubit());
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
     gh.factory<_i656.AppointmentCubit>(() => _i656.AppointmentCubit());
+    gh.factory<_i98.ChatsCubit>(() => _i98.ChatsCubit());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
