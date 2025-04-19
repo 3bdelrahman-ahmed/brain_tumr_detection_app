@@ -10,7 +10,7 @@ class RegisterRemoteDataSource {
     final response = await AppDio().post(
       path: AppUrls.registerPatient,
       data: formData,
-    );
+    );      
     return RegisterResponseModel.fromJson(response.data);
   }
 }

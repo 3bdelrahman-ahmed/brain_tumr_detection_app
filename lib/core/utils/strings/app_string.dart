@@ -6,6 +6,7 @@ class AppStrings {
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
+  static const String tapToAttachFile = "Tap to attach file";
   static const String biometricAuthenticationEnabled =
       "Biometric Authentication Enabled";
   static const String remmberMe = "Remmber Me";
@@ -74,7 +75,7 @@ class AppStrings {
   static const String documentError = "Please enter your medical certificate";
   static const String credentials = "Credentials";
   static const String uploadYourNationalMedical =
-      "Upload your national medical certificate";
+      "Upload your medical license (e.g. MOH, DHA, HAAD, SCFHS, or equivalent)";
   static const String medicalCertificate = "Medical Certificate";
   static const String pleaseUploadYourCredentials =
       "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status.";

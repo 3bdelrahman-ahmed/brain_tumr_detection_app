@@ -29,9 +29,14 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final licenseController = TextEditingController();
   final FocusNode emailFocus = FocusNode();
   final FocusNode fullNameFocus = FocusNode();
   final FocusNode userNameFocus = FocusNode();
+  final FocusNode birthDateFocus = FocusNode();
+  final FocusNode genderFocus = FocusNode();
+  final FocusNode imageFocus = FocusNode();
+  final FocusNode locationFocus = FocusNode();
   final FocusNode passwordFocus = FocusNode();
   final ImagePicker picker = ImagePicker();
   final selectedGender = TextEditingController();
@@ -42,14 +47,16 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   bool isSelectMaleGenders = false;
   bool isSelectFemaleGenders = false;
   File? documentFile;
- String? doctorFileName;
+  String? doctorFileName;
   String? documentError;
-  void setDocumentFile(File file,String fileName) {
+  void setDocumentFile(File file, String fileName) {
     documentFile = file;
     doctorFileName = fileName;
     documentError = null;
+    licenseController.text = fileName;
     emit(RigesterScreenSuccessState());
   }
+
   void setDocumentError(String error) {
     documentError = error;
   }
@@ -87,6 +94,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       print("Form is not valid");
     }
   }
+
   Future<void> registerDoctor() async {
     if (doctorFormKey.currentState!.validate()) {
       emit(RigesterScreenLoadingState());
@@ -145,6 +153,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   }
 
   void clear() {
+    imagePath = null;
     fullNameController.clear();
     userNameController.clear();
     emailController.clear();
