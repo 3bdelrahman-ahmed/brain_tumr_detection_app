@@ -1,4 +1,4 @@
-class LoginResponseModel{
+class LoginResponseModel {
   String? token;
   User? user;
 
@@ -26,6 +26,7 @@ class User {
   String? userName;
   String? email;
   String? dateOfBirth;
+  String? role;
   String? gender;
   double? latitude;
   double? longitude;
@@ -38,6 +39,7 @@ class User {
       this.userName,
       this.email,
       this.dateOfBirth,
+      this.role,
       this.gender,
       this.latitude,
       this.longitude,
@@ -47,6 +49,7 @@ class User {
     id = json['id'];
     profilePicture = json['profilePicture'];
     fullName = json['fullName'];
+    role = json['role'];
     userName = json['userName'];
     email = json['email'];
     dateOfBirth = json['dateOfBirth'];
@@ -68,6 +71,7 @@ class User {
     data['latitude'] = this.latitude;
     data['longitude'] = this.longitude;
     data['age'] = this.age;
+    data['role'] = this.role;
     return data;
   }
 }

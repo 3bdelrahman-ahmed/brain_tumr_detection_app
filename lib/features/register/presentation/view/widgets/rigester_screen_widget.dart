@@ -56,12 +56,12 @@ class RigesterScreenWidget extends StatelessWidget {
                   },
                   child: cubit.currentIndex == 0
                       ? PatientFormFields()
-                      : DoctorForm(), // Fix: Add key parameter here
+                      : DoctorForm(),
                 ),
                 24.toHeight,
                 CustomButton(
                         isLoading: state is RigesterScreenLoadingState,
-                        text: AppStrings.next,
+                        text: AppStrings.submit,
                         onTap: () => {
                               cubit.currentIndex == 0
                                   ? cubit.registerPatient()
@@ -139,6 +139,7 @@ Widget _buildToggleSwitch(cubit) {
             onToggle: (index) {
               if (index != null && cubit.currentIndex != index) {
                 cubit.changeForm(index);
+                cubit.clear();
               }
             },
           ),

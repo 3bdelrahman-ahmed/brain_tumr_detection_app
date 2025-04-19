@@ -13,7 +13,7 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../../features/appointments/presentation/viewmodel/appointment_cubit.dart'
     as _i656;
-import '../../../features/chats/presentation/viewmodel/chats_cubit.dart'
+import '../../../features/chats/presentation/view_model/chats_cubit.dart'
     as _i98;
 import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
     as _i1069;

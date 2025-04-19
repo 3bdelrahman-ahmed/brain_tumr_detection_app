@@ -41,14 +41,27 @@ class DoctorForm extends StatelessWidget {
               validator: (value) => checkFieldValidation(
                   val: value,
                   fieldName: AppStrings.fullName,
-                  fieldType: ValidationType.fullName),
+                  fieldType: ValidationType.name),
             ),
             16.toHeight,
-            //Email Picker
+            CustomTextField(
+              focusNode: cubit.userNameFocus,
+              onSubmit: (p0) {
+                FocusScope.of(context).requestFocus(cubit.emailFocus);
+              },
+              label: AppStrings.userName,
+              hintText: AppStrings.enterYourUserName,
+              controller: cubit.userNameController,
+              validator: (value) => checkFieldValidation(
+                  val: value,
+                  fieldName: AppStrings.userName,
+                  fieldType: ValidationType.name),
+            ),
+            16.toHeight,
             CustomTextField(
                 focusNode: cubit.emailFocus,
                 onSubmit: (p0) {
-                  FocusScope.of(context).requestFocus(cubit.passwordFocus);
+                  FocusScope.of(context).requestFocus(cubit.imageFocus);
                 },
                 label: AppStrings.email,
                 hintText: AppStrings.enterYourEmail,
@@ -56,17 +69,23 @@ class DoctorForm extends StatelessWidget {
                 validator: Validators.emailValidate),
             16.toHeight,
             CustomTextField(
-              hintText: cubit.doctorFileName != null ?  cubit.doctorFileName! : AppStrings.uploadYourNationalMedical,
+              subLabel: AppStrings.uploadYourNationalMedical,
+              controller: cubit.licenseController,
+              focusNode: cubit.imageFocus,
+              hintText: AppStrings.tapToAttachFile,
               label: AppStrings.medicalCertificate,
               readOnly: true,
+              onSubmit: (p0) {
+                FocusScope.of(context).requestFocus(cubit.locationFocus);
+              },
               suffixIcon: AssetsSvg.uploadDoc,
-              validator:  (_) =>
-              cubit.documentFile != null ? null : AppStrings.documentError,
+              validator: (_) =>
+                  cubit.documentFile != null ? null : AppStrings.documentError,
               onTap: () => _pickDocument(cubit),
             ),
             16.toHeight,
-            //Location Picker
             CustomTextField(
+                focusNode: cubit.locationFocus,
                 hintText: cubit.streetName != null
                     ? cubit.streetName!
                     : AppStrings.setLocation,
@@ -90,6 +109,10 @@ class DoctorForm extends StatelessWidget {
             16.toHeight,
             // Date Picker
             CustomTextField(
+              focusNode: cubit.birthDateFocus,
+              onSubmit: (p0) {
+                FocusScope.of(context).requestFocus(cubit.genderFocus);
+              },
               hintText: cubit.pickedDate != null
                   ? cubit.pickedDate.toString().substring(0, 10)
                   : AppStrings.selectDateOfBirth,
@@ -157,8 +180,8 @@ class DoctorForm extends StatelessWidget {
 
       if (result != null) {
         File file = File(result.files.single.path!);
-       String  fileName = result.files.single.name;
-        cubit.setDocumentFile(file,fileName);
+        String fileName = result.files.single.name;
+        cubit.setDocumentFile(file, fileName);
       }
     } catch (e) {
       cubit.setDocumentError('Error picking document: $e');

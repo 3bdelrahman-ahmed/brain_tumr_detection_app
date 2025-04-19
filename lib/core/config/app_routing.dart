@@ -2,7 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/l
 import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit/navigation_cubit.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
-import 'package:brain_tumr_detection_app/features/chats/presentation/viewmodel/chats_cubit.dart';
+import 'package:brain_tumr_detection_app/features/chats/presentation/view_model/chats_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
