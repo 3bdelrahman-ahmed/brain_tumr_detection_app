@@ -71,15 +71,9 @@ class AppRouter {
         );
       case AppRoutes.chatsScreen:
         return animateRouteBuilder(
-          BlocProvider(
-            create: (context) => getIt<ChatsCubit>(),
-            child: ChatsScreen(chat:routeSettings.arguments as ChatPreview),
-          ),
+           ChatsScreen(chat:routeSettings.arguments as ChatPreview),
         );case AppRoutes.chatsListScreen:
-        return animateRouteBuilder(BlocProvider(
-          create: (context) => getIt<ChatsCubit>(),
-          child: ChatListScreen(),
-        ));
+        return animateRouteBuilder(ChatListScreen());
       case AppRoutes.onBoardingScreen:
         return animateRouteBuilder(
             BlocProvider(

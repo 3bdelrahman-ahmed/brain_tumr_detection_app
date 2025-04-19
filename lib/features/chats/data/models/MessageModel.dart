@@ -18,10 +18,32 @@ class MessageModel {
     required this.timestamp,
     required this.isSentByMe,
   });
+
+  MessageModel copyWith({
+    String? id,
+    String? chatId,
+    String? senderId,
+    String? receiverId,
+    String? message,
+    DateTime? timestamp,
+    bool? isSentByMe,
+    MessageStatus? status,
+  }) {
+    return MessageModel(
+      id: id ?? this.id,
+      chatId: chatId ?? this.chatId,
+      senderId: senderId ?? this.senderId,
+      receiverId: receiverId ?? this.receiverId,
+      message: message ?? this.message,
+      timestamp: timestamp ?? this.timestamp,
+      isSentByMe: isSentByMe ?? this.isSentByMe,
+      status: status ?? this.status,
+    );
+  }
 }
 
 enum MessageStatus {
-  sent,
-  delivered,
-  failed,
+  SENT,
+  PENDING,
+  FAILED,
 }

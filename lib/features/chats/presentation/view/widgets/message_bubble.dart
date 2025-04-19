@@ -1,10 +1,7 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_logo_container.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/posts_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -20,16 +17,17 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMe = message.isSentByMe;
     return Row(
-      mainAxisAlignment:message.isSentByMe ? MainAxisAlignment.end : MainAxisAlignment.start,
-      children: message.isSentByMe
+      mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: isMe
           ? [
-            _buildMessageBubble(context, message),
-        10.toWidth,
-      CustomProfileImage(
-        size: 15.h,
-        imageUrl: AppConstants.user?.profilePicture,
-      )
+              _buildMessageBubble(context, message),
+              10.toWidth,
+              CustomProfileImage(
+                size: 15.h,
+                imageUrl: AppConstants.user?.profilePicture,
+              )
             ]
           : [
               CustomProfileImage(
@@ -37,7 +35,7 @@ class MessageBubble extends StatelessWidget {
                 imageUrl: AppConstants.user?.profilePicture,
               ),
               10.toWidth,
-        _buildMessageBubble(context, message)
+              _buildMessageBubble(context, message)
             ],
     );
   }
@@ -45,15 +43,20 @@ class MessageBubble extends StatelessWidget {
 
 Widget _buildMessageBubble(BuildContext context, MessageModel message) {
   return Column(
-    crossAxisAlignment: message.isSentByMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+    crossAxisAlignment:
+        message.isSentByMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
     children: [
       Container(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width -
+              MediaQuery.of(context).size.width * .3,
+        ),
         padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-        width: MediaQuery.of(context).size.width -
-            MediaQuery.of(context).size.width * .3,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
-          color: message.isSentByMe ? AppColors.typography : AppColors.buttonsAndNav,
+          color: message.isSentByMe
+              ? AppColors.typography
+              : AppColors.buttonsAndNav,
         ),
         child: Text(
           message.message,
@@ -67,10 +70,25 @@ Widget _buildMessageBubble(BuildContext context, MessageModel message) {
             DateFormat('hh:mm a').format(message.timestamp),
           ),
           5.toWidth,
-          CustomImageView(
-              width: 15.w, height: 15.w, svgPath: AssetsSvg.checkMark.toSVG())
+          if (message.isSentByMe)...[_buildStatusMessage(message.status)]
         ],
       )
     ],
   );
+}
+
+Widget _buildStatusMessage(MessageStatus status) {
+  switch (status) {
+    case MessageStatus.SENT:
+      return CustomImageView(
+          width: 15.w, height: 15.w, svgPath: AssetsSvg.checkMark.toSVG());
+    case MessageStatus.PENDING:
+      return CustomImageView(
+          width: 15.w, height: 15.w, svgPath: AssetsSvg.pending.toSVG());
+    case MessageStatus.FAILED:
+      return CustomImageView(
+          width: 15.w, height: 15.w, svgPath: AssetsSvg.failed.toSVG());
+    default:
+      return Container();
+  }
 }
