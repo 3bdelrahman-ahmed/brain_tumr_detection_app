@@ -7,8 +7,9 @@ import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 
 class CustomMessagesTextField extends StatelessWidget {
-  const CustomMessagesTextField({Key? key, required this.controller}) : super(key: key);
+  const CustomMessagesTextField({Key? key, required this.controller, required this.onSend}) : super(key: key);
   final TextEditingController controller;
+  final VoidCallback onSend;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,6 +24,7 @@ class CustomMessagesTextField extends StatelessWidget {
                 )
             ),
             child: TextField(
+              onEditingComplete: onSend,
               controller: controller,
               decoration: InputDecoration(
                 hintText: AppStrings.writeAMessage,
@@ -38,7 +40,7 @@ class CustomMessagesTextField extends StatelessWidget {
         8.toWidth,
         IconButton(
           icon: const Icon(Icons.send, color: AppColors.buttonsAndNav),
-          onPressed: () {},
+          onPressed: onSend,
         )
       ],
     );

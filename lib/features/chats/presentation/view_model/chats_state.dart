@@ -4,3 +4,7 @@ part of 'chats_cubit.dart';
 sealed class ChatsState {}
 
 final class ChatsInitial extends ChatsState {}
+
+class MessagesUpdated extends ChatsState {}
+
+class MessageOpened extends ChatsState {}

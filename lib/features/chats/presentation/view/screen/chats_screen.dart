@@ -18,7 +18,6 @@ class ChatsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ChatsCubit>();
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -31,7 +30,6 @@ class ChatsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // ✅ Chat ListView
           Expanded(
             child: BlocBuilder<ChatsCubit, ChatsState>(
               builder: (context, state) {
@@ -39,7 +37,7 @@ class ChatsScreen extends StatelessWidget {
                     .where((msg) => msg.chatId == chat.chatId)
                     .toList()
                     .reversed
-                    .toList(); // latest at the bottom
+                    .toList();
                 return ListView.builder(
                   padding:EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                   reverse: true,
@@ -54,7 +52,8 @@ class ChatsScreen extends StatelessWidget {
               },
             ),
           ),
-          CustomMessagesTextField(controller: cubit.messageController),
+          CustomMessagesTextField(controller: cubit.messageController ,onSend: ()=>
+              cubit.sendMessage(chat.chatId, cubit.messageController.text),),
         ],
       ),
     );
