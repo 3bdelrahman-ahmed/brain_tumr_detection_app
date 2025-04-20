@@ -3,13 +3,13 @@ import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/responsive_helper.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
-import 'package:brain_tumr_detection_app/features/chats/presentation/viewmodel/chats_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../foundations/app_constants.dart';
+import '../../view_model/chats_cubit.dart';
 import '../screen/chat_list_screen.dart';
 
 class ChatTile extends StatelessWidget {

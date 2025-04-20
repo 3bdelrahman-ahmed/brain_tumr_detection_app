@@ -5,7 +5,7 @@ import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'core/services/service_locator/service_locator.dart';
 import 'core/utils/extenstions/navigation_extenstions.dart';
 import 'core/utils/theme/app_theme/app_theme.dart';
-import 'features/chats/presentation/viewmodel/chats_cubit.dart';
+import 'features/chats/presentation/view_model/chats_cubit.dart';
 import 'observers/route_observer.dart';
 
 class NeroTumApp extends StatefulWidget {
