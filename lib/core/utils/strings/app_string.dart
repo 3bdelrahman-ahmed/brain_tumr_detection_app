@@ -16,7 +16,13 @@ class AppStrings {
   static const String biometricAuthenticationEnabled =
       "Biometric Authentication Enabled";
   static const String remmberMe = "Remmber Me";
+  static const String newSlot = "New Slot";
+  static const String addSlots = "Add Slots";
+  static const String slotRemoved = "Slot removed";
+  static const String setYourDate = "Set Your Time";
   static const String gotIt = "Got it";
+  static const String edit = "Edit";
+  static const String remove = "Remove";
   static const String messages = "Messages";
   static const String nextTimeYouLogin =
       "Next time you login, you can use your fingerprint or face ID to access your account.";

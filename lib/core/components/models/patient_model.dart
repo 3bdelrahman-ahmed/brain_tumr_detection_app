@@ -1,8 +1,14 @@
 import 'package:brain_tumr_detection_app/core/components/models/user_model.dart';
 
-class PatientModel extends User{
-
-  PatientModel({required super.id, required super.userName, required super.name, required super.email, required super.image, required super.token, required super.location});
+class PatientModel extends User {
+  PatientModel(
+      {required super.id,
+      required super.userName,
+      required super.name,
+      required super.email,
+      required super.image,
+      required super.token,
+      required super.location});
 
   factory PatientModel.fromJson(Map<String, dynamic> json) {
     return PatientModel(
@@ -15,5 +21,4 @@ class PatientModel extends User{
       location: json['location'] as String,
     );
   }
-  
 }

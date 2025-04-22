@@ -14,7 +14,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../../features/appointments/presentation/viewmodel/appointment_cubit.dart'
     as _i656;
 import '../../../features/chats/presentation/view_model/chats_cubit.dart'
-    as _i98;
+    as _i1039;
 import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
     as _i1069;
 import '../../../features/login/data/remote/login_remote_data_source.dart'
@@ -33,6 +33,8 @@ import '../../../features/register/presentation/view_model/rigester_screen_cubit
 import '../../../features/reports/presentation/viewmodel/reports_cubit.dart'
     as _i187;
 import '../../../features/scan/viewmodel/scan_cubit.dart' as _i109;
+import '../../../features/slots/presentation/view_model/slots_cubit.dart'
+    as _i354;
 import '../../../features/verification_code/data/remote/verify_code_remote_data_source.dart'
     as _i790;
 import '../../../features/verification_code/data/repository/verify_code_repository.dart'
@@ -62,13 +64,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
     gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
-    gh.singleton<_i98.ChatsCubit>(() => _i98.ChatsCubit());
+    gh.factory<_i354.SlotsCubit>(() => _i354.SlotsCubit());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
     gh.singleton<_i301.RegisterRemoteDataSource>(
         () => _i301.RegisterRemoteDataSource());
     gh.singleton<_i790.VerifyCodeRemoteDataSource>(
         () => _i790.VerifyCodeRemoteDataSource());
+    gh.singleton<_i1039.ChatsCubit>(() => _i1039.ChatsCubit());
     gh.singleton<_i487.VerifyCodeRepository>(() => _i487.VerifyCodeRepository(
         dataSource: gh<_i790.VerifyCodeRemoteDataSource>()));
     gh.singleton<_i558.RegisterRepository>(() => _i558.RegisterRepository(

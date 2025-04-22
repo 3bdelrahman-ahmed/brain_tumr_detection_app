@@ -2,7 +2,7 @@ import 'package:brain_tumr_detection_app/core/services/service_locator/service_l
 import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/cubit/feed_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/viewmodel/reports_cubit.dart';
 import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart';
-import 'package:brain_tumr_detection_app/features/slots/presentation/screens/slots_screen.dart';
+import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/slots_cubit.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view/screens/view_patients_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +13,7 @@ import '../../../../features/feed/presentation/view/screens/feed_page.dart';
 import '../../../../features/profle/presentation/view/screens/profile_page.dart';
 import '../../../../features/reports/presentation/view/screens/reports_screen.dart';
 import '../../../../features/scan/view/screens/scan_page.dart';
+import '../../../../features/slots/presentation/view/screens/slots_screen.dart';
 
 part 'navigation_state.dart';
 
@@ -41,7 +42,10 @@ class NavigationCubit extends Cubit<NavigationState> {
           controller: getScrollController(0),
         ),
       ),
-      SlotsScreen(),
+      BlocProvider(
+        create: (context) => SlotsCubit(),
+        child: SlotsScreen(),
+      ),
       BlocProvider(
         create: (context) => getIt<ReportsCubit>(),
         child: ReportsScreen(),

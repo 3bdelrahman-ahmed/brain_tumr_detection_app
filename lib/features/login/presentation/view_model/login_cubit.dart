@@ -112,13 +112,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> setLocation() async {
     List<Placemark> placeMarks = await placemarkFromCoordinates(
-        AppConstants.user?.latitude ?? 90.0,
-        AppConstants.user?.longitude ?? 180.0);
+        AppConstants.user?.latitude ?? 30.033333,
+        AppConstants.user?.longitude ?? 31.233334);
     AppConstants.location =
         "${placeMarks.first.locality} ,${placeMarks.first.country}";
   }
 
-  void changePassword() {
+  void changePassword(){
     isObscure = !isObscure;
     emit(ChangePasswordState());
   }
