@@ -45,7 +45,6 @@ class FeedPage extends StatelessWidget {
             SliverPadding(padding: EdgeInsets.only(bottom: 72.h)),
           ],
         ),
-
         /// Floating Action Button (FAB)
         Positioned(
           bottom: 100.h,

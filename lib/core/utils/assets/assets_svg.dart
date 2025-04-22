@@ -24,7 +24,7 @@ class AssetsSvg {
   static const String plus = "plus";
   static const String uploadDoc = "upload_doc";
   static const String report = "report";
-
+  static const String clock = "clock";
   // Messages Status
   static const String checkMark = "checkMark";
   static const String pending = "pending";
