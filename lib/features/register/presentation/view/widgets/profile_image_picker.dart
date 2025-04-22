@@ -29,11 +29,11 @@ class ProfileImagePicker extends StatelessWidget {
         Center(
           child: GestureDetector(
             onTap: () => _showImagePickerOptions(context, cubit),
-            child: cubit.imagePath != null
+            child: cubit.profileImage != null
                 ? Stack(clipBehavior: Clip.none, children: [
                     ClipOval(
                       child: CustomImageView(
-                        file: File(cubit.imagePath!.path),
+                        file: File(cubit.profileImage!.path),
                         width: 100.w,
                         height: 100.w,
                       ),

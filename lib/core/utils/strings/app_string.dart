@@ -2,7 +2,13 @@ class AppStrings {
   AppStrings._();
 
   static const String appName = "NeuroTum AI";
+  static const String kindlyCompleteTheForm =
+      "Kindly complete the fields below with the relevant details of your clinic.";
   static const String next = " Next";
+  static const String clinicLicense = "Clinic License";
+  static const String clinicPhoneNumber = "Clinic Phone Number";
+  static const String enterYourClinicPhoneNumber =
+      "Enter your Clinic Phone Number";
   static const String searchForPosts = "Search for posts";
   static const String searchForTherapist = "Search for therapist";
   static const String upComing = "Upcoming";
@@ -76,7 +82,8 @@ class AppStrings {
   static const String credentials = "Credentials";
   static const String uploadYourNationalMedical =
       "Upload your medical license (e.g. MOH, DHA, HAAD, SCFHS, or equivalent)";
-  static const String medicalCertificate = "Medical Certificate";
+  static const String medicalCertificateFrontImage = "Medical Certificate Front Image";
+  static const String medicalCertificateBackImage = "Medical Certificate Back Image";
   static const String pleaseUploadYourCredentials =
       "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status.";
   static const String youWillRecieveNotificationSoon =

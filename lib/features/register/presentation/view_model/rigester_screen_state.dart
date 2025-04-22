@@ -28,6 +28,17 @@ final class RigesterScreenSuccessState extends RigesterScreenState {}
 
 final class ClearAuthFieldsState extends RigesterScreenState {}
 
+final class SetClinicLiscenseState extends RigesterScreenState {}
+
+final class SetDoctorLicenseState extends RigesterScreenState {
+  final String fileName;
+
+  SetDoctorLicenseState({required this.fileName});
+
+  @override
+  List<Object?> get props => [fileName]; // Ensure equality checks are based on fileName
+}
+
 final class SelectGenderState extends RigesterScreenState {
   final String gender;
 
