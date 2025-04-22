@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
 import '../../../../../core/components/widgets/custom_text_field.dart';
-import '../../../../../core/config/app_routing.dart';
 import '../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../core/utils/extenstions/validators.dart';
 import '../../../../../core/utils/strings/app_string.dart';
@@ -16,8 +15,8 @@ import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../foundations/validations.dart';
 
-class DoctorForm extends StatelessWidget {
-  const DoctorForm({Key? key}) : super(key: key);
+class DoctorFormWidget extends StatelessWidget {
+  const DoctorFormWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class DoctorForm extends StatelessWidget {
 
     return CustomAuthContainerWidget(
       child: Form(
-        key: cubit.doctorFormKey,
+        key: cubit.formKeys[1],
         child: Column(
           children: [
             ProfileImagePicker(cubit: cubit),
@@ -70,43 +69,47 @@ class DoctorForm extends StatelessWidget {
             16.toHeight,
             CustomTextField(
               subLabel: AppStrings.uploadYourNationalMedical,
-              controller: cubit.licenseController,
-              focusNode: cubit.imageFocus,
+              controller: cubit.licenseFrontController,
               hintText: AppStrings.tapToAttachFile,
-              label: AppStrings.medicalCertificate,
+              label: AppStrings.medicalCertificateFrontImage,
+              readOnly: true,
+              suffixIcon: AssetsSvg.uploadDoc,
+              validator: (v) => checkFieldValidation(
+                  val: cubit.licenseFrontController.text,
+                  fieldName: AppStrings.medicalCertificateFrontImage,
+                  fieldType: ValidationType.text),
+              onTap: () {
+                cubit.pickDocument().then((v) {
+                  if (v != null) {
+                    cubit.setDoctorLicenseFrontFile(v);
+                  }
+                });
+              },
+            ),
+            16.toHeight,
+            CustomTextField(
+              controller: cubit.licenseBackController,
+              hintText: AppStrings.tapToAttachFile,
+              label: AppStrings.medicalCertificateBackImage,
               readOnly: true,
               onSubmit: (p0) {
                 FocusScope.of(context).requestFocus(cubit.locationFocus);
               },
               suffixIcon: AssetsSvg.uploadDoc,
-              validator: (_) =>
-                  cubit.documentFile != null ? null : AppStrings.documentError,
-              onTap: () => _pickDocument(cubit),
+              validator: (v) => checkFieldValidation(
+                  val: cubit.licenseBackController.text,
+                  fieldName: AppStrings.medicalCertificateBackImage,
+                  fieldType: ValidationType.text),
+              onTap: () {
+                cubit.pickDocument().then((v) {
+                  if (v != null) {
+                    cubit.setDoctorLicenseBackFile(v);
+                  }
+                });
+              },
             ),
             16.toHeight,
-            CustomTextField(
-                focusNode: cubit.locationFocus,
-                hintText: cubit.streetName != null
-                    ? cubit.streetName!
-                    : AppStrings.setLocation,
-                readOnly: true,
-                hintTextStyle: cubit.streetName != null
-                    ? AppTextStyles.font20GreenW500
-                    : AppTextStyles.font15LightGreenW500,
-                label: AppStrings.setLocation,
-                suffixIcon: AssetsSvg.location,
-                validator: (_) =>
-                    cubit.streetName != null ? null : AppStrings.locationError,
-                onTap: () async {
-                  final result = await Navigator.pushNamed(
-                      context, AppRoutes.locationScreen);
-                  if (result != null && result is Map<String, dynamic>) {
-                    final position = result["position"];
-                    final streetName = result["streetName"];
-                    cubit.setUserLocation(position, streetName);
-                  }
-                }),
-            16.toHeight,
+
             // Date Picker
             CustomTextField(
               focusNode: cubit.birthDateFocus,
@@ -168,23 +171,6 @@ class DoctorForm extends StatelessWidget {
     );
     if (picked != null) {
       cubit.setSelectedDate(picked);
-    }
-  }
-
-  Future<void> _pickDocument(RigesterScreenCubit cubit) async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf', 'jpg', 'png', 'doc', 'docx'],
-      );
-
-      if (result != null) {
-        File file = File(result.files.single.path!);
-        String fileName = result.files.single.name;
-        cubit.setDocumentFile(file, fileName);
-      }
-    } catch (e) {
-      cubit.setDocumentError('Error picking document: $e');
     }
   }
 }

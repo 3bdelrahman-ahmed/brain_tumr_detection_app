@@ -4,8 +4,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/responsive_helper.dart';
 import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
-import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/doctor_form.dart';
-import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/patient_column.dart';
+import 'package:brain_tumr_detection_app/features/register/presentation/view/widgets/doctor_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +12,8 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../view_model/rigester_screen_cubit.dart';
 import '../../view_model/rigester_screen_state.dart';
+import 'clinc_form_widget.dart';
+import 'patient_form_widget.dart';
 
 class RigesterScreenWidget extends StatelessWidget {
   RigesterScreenWidget({Key? key}) : super(key: key);
@@ -22,60 +23,84 @@ class RigesterScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.watch<RigesterScreenCubit>();
-    return SafeArea(
-      child: BlocBuilder<RigesterScreenCubit, RigesterScreenState>(
-        builder: (context, state) {
-          return SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(AppStrings.createYourAcc,
-                    style: AppTextStyles.font20GreenW500),
-                6.toHeight,
-                Text(
-                  AppStrings.welcomeAbroadSentence,
-                  style: AppTextStyles.font15LightGreenW500,
-                  textAlign: TextAlign.center,
-                ),
-                16.toHeight,
-                _buildToggleSwitch(cubit),
-                16.toHeight,
-                AnimatedSwitcher(
-                  duration: Duration(milliseconds: 400),
-                  transitionBuilder: (widget, animation) {
-                    final isMovingRight = cubit.currentIndex! > prevoiusIndex;
-                    final beginOffset =
-                        isMovingRight ? Offset(1.0, 0.0) : Offset(-1.0, 0.0);
-                    return SlideTransition(
-                      position: Tween<Offset>(
-                        begin: beginOffset,
-                        end: Offset(0.0, 0.0),
-                      ).animate(animation),
-                      child: widget,
-                    );
-                  },
-                  child: cubit.currentIndex == 0
-                      ? PatientFormFields()
-                      : DoctorForm(),
-                ),
-                24.toHeight,
-                CustomButton(
-                        isLoading: state is RigesterScreenLoadingState,
-                        text: AppStrings.submit,
-                        onTap: () => {
-                              cubit.currentIndex == 0
-                                  ? cubit.registerPatient()
-                                  : cubit.registerDoctor()
-                            }).animate().flipV(
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeIn,
-                    ),
-                16.toHeight,
-              ],
-            ),
-          );
-        },
-      ).paddingOnly(top: 24.h, left: 24.w, right: 24.w),
+    return WillPopScope(
+      onWillPop: () {
+        if (cubit.currentIndex == 0) {
+          return Future.value(true);
+        } else {
+          cubit.changeForm(1);
+          return Future.value(false);
+        }
+      },
+      child: SafeArea(
+        child: BlocBuilder<RigesterScreenCubit, RigesterScreenState>(
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(AppStrings.createYourAcc,
+                      style: AppTextStyles.font20GreenW500),
+                  6.toHeight,
+                  Text(
+                    AppStrings.welcomeAbroadSentence,
+                    style: AppTextStyles.font15LightGreenW500,
+                    textAlign: TextAlign.center,
+                  ),
+                  16.toHeight,
+                  cubit.currentIndex != 2
+                      ? _buildToggleSwitch(cubit)
+                      : SizedBox.shrink(),
+                  if (cubit.currentIndex != 2) 16.toHeight,
+                  AnimatedSwitcher(
+                    duration: Duration(milliseconds: 400),
+                    transitionBuilder: (widget, animation) {
+                      final isMovingRight = cubit.currentIndex > prevoiusIndex;
+                      final beginOffset =
+                          isMovingRight ? Offset(1.0, 0.0) : Offset(-1.0, 0.0);
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: beginOffset,
+                          end: Offset(0.0, 0.0),
+                        ).animate(animation),
+                        child: widget,
+                      );
+                    },
+                    child: cubit.currentIndex == 0
+                        ? PatientFormFields()
+                        : cubit.currentIndex == 1
+                            ? DoctorFormWidget()
+                            : ClincFormWidget(),
+                  ),
+                  24.toHeight,
+                  CustomButton(
+                          isLoading: state is RigesterScreenLoadingState,
+                          text:
+                              cubit.currentIndex == 0 || cubit.currentIndex == 2
+                                  ? AppStrings.submit
+                                  : AppStrings.next,
+                          onTap: () => {
+                                if (cubit
+                                    .formKeys[cubit.currentIndex].currentState!
+                                    .validate())
+                                  {
+                                    cubit.currentIndex == 0
+                                        ? cubit.registerPatient()
+                                        : cubit.currentIndex == 1
+                                            ? cubit.changeForm(2)
+                                            : cubit.registerDoctor()
+                                  }
+                              }).animate().flipV(
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      ),
+                  16.toHeight,
+                ],
+              ),
+            );
+          },
+        ).paddingOnly(top: 24.h, left: 24.w, right: 24.w),
+      ),
     );
   }
 }
@@ -132,6 +157,7 @@ Widget _buildToggleSwitch(cubit) {
             totalSwitches: 2,
             labels: [
               AppStrings.asAPatient,
+              AppStrings.asADoctor,
               AppStrings.asADoctor,
             ],
             dividerColor: Colors.transparent,
