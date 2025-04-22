@@ -17,16 +17,15 @@ class DaySelector extends StatelessWidget {
       builder: (context, state) {
         final cubit = context.read<SlotsCubit>();
         return Container(
-          height: 50.h,
+          height: 45.h,
           decoration: BoxDecoration(
             color: AppColors.buttonsAndNav.withOpacity(0.6),
-            borderRadius: BorderRadius.circular(20.r),
+            borderRadius: BorderRadius.circular(32.r),
           ),
           child: Row(
             children: List.generate(5, (index) {
               final day = cubit.startDate.add(Duration(days: index));
-              final isSelected = cubit.selectedDay != null &&
-                  DateFormat('yyyy-MM-dd').format(cubit.selectedDay!) ==
+              final isSelected = DateFormat('yyyy-MM-dd').format(cubit.selectedDay) ==
                       DateFormat('yyyy-MM-dd').format(day);
               return Expanded(
                 child: GestureDetector(
@@ -36,7 +35,7 @@ class DaySelector extends StatelessWidget {
                       color: isSelected
                           ? AppColors.buttonsAndNav
                           : Colors.transparent,
-                      borderRadius: BorderRadius.circular(20.r),
+                      borderRadius: BorderRadius.circular(25.r),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +46,7 @@ class DaySelector extends StatelessWidget {
                               ? AppTextStyles.font10WhiteW600
                               : AppTextStyles.font10BlueW600,
                         ),
-                        5.toWidth,
+                        2.toWidth,
                         Text(
                           DateFormat('d').format(day),
                           style: isSelected
@@ -55,8 +54,8 @@ class DaySelector extends StatelessWidget {
                               : AppTextStyles.font10BlueW600,
                         ),
                       ],
-                    ).paddingSymmetric(vertical: 10.h),
-                  ),
+                    ).paddingSymmetric(vertical: 7.h),
+                  ).paddingSymmetric(horizontal: 5.w),
                 ),
               );
             }),
