@@ -3,6 +3,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/strings/app_string.dart';
+import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import 'diagnosis_container.dart';
 
@@ -26,7 +27,7 @@ class _DiagnosisExpandableSectionState extends State<DiagnosisExpandableSection>
               Text(AppStrings.diagnosis, style: AppTextStyles.font16BlueW700),
               Icon(
                 isExpanded ? Icons.expand_less : Icons.expand_more,
-                color: Colors.blue,
+                color: AppColors.buttonsAndNav,
               ),
             ],
           ),

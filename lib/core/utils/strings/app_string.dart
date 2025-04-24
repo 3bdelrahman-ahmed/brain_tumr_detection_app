@@ -83,6 +83,11 @@ class AppStrings {
   static const String result = "Result";
   static const String findings = "Findings";
   static const String contactPatient = "Contact Patient";
+  static const String accountSetting = "Account Settings";
+  static const String notificationsSettings = "Notifications Settings";
+  static const String medicalDataManagement = "Medical Data Management";
+  static const String supportFeedback = "Support & Feedback";
+  static const String logOut = "Log out";
   static const String reasoning = "Reasoning";
   static const String documentError = "Please enter your medical certificate";
   static const String credentials = "Credentials";

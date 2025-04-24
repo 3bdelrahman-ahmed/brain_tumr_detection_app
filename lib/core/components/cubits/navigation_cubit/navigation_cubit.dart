@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/services/service_locator/service_locator.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/cubit/feed_cubit.dart';
+import 'package:brain_tumr_detection_app/features/profle/presentation/viewmodel/settings_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/viewmodel/reports_cubit.dart';
 import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart';
 import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/slots_cubit.dart';
@@ -69,7 +70,10 @@ class NavigationCubit extends Cubit<NavigationState> {
         child: ScanPage(),
       ),
       DoctorsPage(),
-      ProfilePage(),
+      BlocProvider(
+        create: (context) => getIt<SettingsCubit>(),
+        child: ProfilePage(),
+      ),
     ]);
   }
 
