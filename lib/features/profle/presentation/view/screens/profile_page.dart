@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
@@ -6,7 +7,10 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/profle/presentation/view/widgets/patient_data_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/strings/app_string.dart';
+import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../viewmodel/settings_cubit.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
   @override
@@ -30,7 +34,7 @@ class ProfilePage extends StatelessWidget {
                 ],
               ).paddingSymmetric(horizontal: 19.w, vertical: 10.h),
             ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
+            SliverPadding(padding: EdgeInsets.symmetric(vertical: 15.h)),
             SliverToBoxAdapter(
               child: PatientDataWidget().paddingSymmetric(horizontal: 19.w),
             ),
@@ -60,6 +64,7 @@ class ProfilePage extends StatelessWidget {
   // Drawer Widget
   Widget _buildDrawer(BuildContext context){
     return Drawer(
+      width: MediaQuery.of(context).size.width - MediaQuery.of(context).size.width*.2 ,
       child: ListView(
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 12.w),
         children: [
@@ -72,7 +77,16 @@ class ProfilePage extends StatelessWidget {
             onTap: () {
               Navigator.pop(context); // Close Drawer
             },
-          ),],
+          ).paddingSymmetric(vertical: 20.h),
+        _buildSettingsRow(title: AppStrings.accountSetting),
+          _buildSettingsRow(title: AppStrings.notificationsSettings),
+          _buildSettingsRow(title: AppStrings.medicalDataManagement),
+          _buildSettingsRow(title: AppStrings.supportFeedback),
+        CustomButton(text: AppStrings.logOut, onTap: (){},
+        textStyle: AppTextStyles.font16BlueW700,
+        backgroundColor:Colors.white,
+        width: 130.w,
+        raduis: 10.r,)],
       ),
     );
   }
@@ -101,4 +115,49 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+  Widget _buildSettingsRow ({required String title}) {
+    return  Container(
+      padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 10.w),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.r),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                offset: Offset(0, 2),
+                blurRadius: 6,
+                spreadRadius: 2
+            )
+          ]
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title,style: AppTextStyles.font16BlueW700,),
+          Icon(
+            Icons.chevron_right,
+            color: AppColors.buttonsAndNav,
+          ),
+        ],
+      ),
+    ).paddingOnly(bottom: 10.h);
+  }
+  // Widget _buildToggleOption(String label, BuildContext context , bool isOn) {
+  //   final cubit = context.watch<SettingsCubit>();
+  //
+  //   return Padding(
+  //     padding: EdgeInsets.only(top: 10.h),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       children: [
+  //         Text(label, style: AppTextStyles.font16BlueW700),
+  //         Switch(
+  //           value: isOn,
+  //           activeColor: AppColors.buttonsAndNav,
+  //           onChanged: (_) {},
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
