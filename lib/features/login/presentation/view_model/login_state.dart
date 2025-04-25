@@ -10,7 +10,13 @@ sealed class LoginState extends Equatable {
 
 final class LoginInitial extends LoginState {}
 
-final class ChangePasswordState extends LoginState {}
+final class ChangePasswordState extends LoginState {
+  final bool visibilty;
+  ChangePasswordState(this.visibilty);
+  @override
+  List<Object> get props => [visibilty];
+
+}
 
 final class LoginLoadingState extends LoginState {}
 

@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/utils/extenstions/navigation_extenstions.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/verification_code_model.dart';
 import '../../../data/repository/verify_code_repository.dart';
 
@@ -31,7 +32,7 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
         emit(SubmitVerificationCodeErrorState());
       },
       (r){
-        AppStrings.sucessOpertation.showToast();
+        S.of(context).sucessOpertation.showToast();
         context.navigateTo(AppRoutes.loginScreen);
         emit(SubmitVerificationCodeSuccessState());
       },

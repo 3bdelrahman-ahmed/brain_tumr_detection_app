@@ -10,6 +10,7 @@ import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class DoctorCardDoctors extends StatelessWidget {
   final String? name;
@@ -60,14 +61,14 @@ class DoctorCardDoctors extends StatelessWidget {
                     ),
                     5.toHeight,
                     Text(
-                      AppStrings.arabic,
+                      S.of(context).arabic,
                       style: AppTextStyles.font12GreenW500,
                     ),
                     5.toHeight,
                     StarsGenerator(rating: rating),
                     20.toHeight,
                     CustomButton(
-                      text: AppStrings.viewProfile,
+                      text: S.of(context).viewProfile,
                       onTap: () {
                         // In Future we will send the Doctor to this Screen as an Argument
                         Navigator.pushNamed(

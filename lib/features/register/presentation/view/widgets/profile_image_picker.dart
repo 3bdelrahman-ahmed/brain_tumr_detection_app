@@ -13,6 +13,7 @@ import '../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/rigester_screen_cubit.dart';
 
 class ProfileImagePicker extends StatelessWidget {
@@ -24,7 +25,7 @@ class ProfileImagePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(AppStrings.profileImage, style: AppTextStyles.font15GreenW500),
+        Text(S.of(context).profileImage, style: AppTextStyles.font15GreenW500),
         10.toHeight,
         Center(
           child: GestureDetector(
@@ -87,7 +88,7 @@ void _showImagePickerOptions(BuildContext context, RigesterScreenCubit cubit) {
             leading:
                 const Icon(Icons.photo_library, color: AppColors.typography),
             title:
-                Text(AppStrings.gallery, style: AppTextStyles.font15GreenW500),
+                Text(S.of(context).gallery, style: AppTextStyles.font15GreenW500),
             onTap: () async {
               Navigator.of(context).pop();
               final XFile? image =
@@ -101,7 +102,7 @@ void _showImagePickerOptions(BuildContext context, RigesterScreenCubit cubit) {
             leading:
                 const Icon(Icons.photo_camera, color: AppColors.typography),
             title:
-                Text(AppStrings.camera, style: AppTextStyles.font15GreenW500),
+                Text(S.of(context).camera, style: AppTextStyles.font15GreenW500),
             onTap: () async {
               Navigator.of(context).pop();
               final XFile? image =

@@ -8,6 +8,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 
 class DoctorCalendarScreen extends StatefulWidget {
   @override
@@ -63,7 +64,7 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.availability,
+                S.of(context).availability,
                 style: AppTextStyles.font16BlueW700,
               ).paddingOnly(left: 10.w),
               TableCalendar(
@@ -102,7 +103,7 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
               ),
               10.toHeight,
               Text(
-                AppStrings.clickOnTheDayToShow,
+                S.of(context).clickOnTheDayToShow,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font15GreenW500,
               ),
@@ -128,7 +129,7 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
             ),
           ),
           10.toHeight,
-          CustomButton(text: AppStrings.bookNow, onTap: () {})
+          CustomButton(text: S.of(context).bookNow, onTap: () {})
               .paddingOnly(bottom: 30.h),
         ]
       ],

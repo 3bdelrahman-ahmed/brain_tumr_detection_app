@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/onboarding_cubit.dart';
 
 class OnboardingScreenWidget extends StatelessWidget {
@@ -20,8 +21,24 @@ class OnboardingScreenWidget extends StatelessWidget {
     final cubit = context
         .watch<OnboardingCubit>(); // Use watch to rebuild on state change
     int currentIndex = cubit.currentIndex;
-    var currentItem = cubit.items[currentIndex];
+    var currentItem = cubit.images[currentIndex];
+    final messages = [
+      S.of(context).firstOnBoardingMessage,
+      S.of(context).secondOnBoardingMessage,
+      S.of(context).thirdOnBoardingMessage,
+      S.of(context).fourthOnBoardingMessage,
+      S.of(context).fifthOnBoardingMessage,
+      S.of(context).sixthOnBoardingMessage,
+    ];
 
+    final sentences = [
+      S.of(context).firstOnBoardingSentence,
+      S.of(context).secondOnBoardingSentence,
+      S.of(context).thirdOnBoardingSentence,
+      S.of(context).fourthOnBoardingSentence,
+      S.of(context).fifthOnBoardingSentence,
+      S.of(context).sixthOnBoardingSentence,
+    ];
     return CustomOnboardingBackground(
       widget: BlocBuilder<OnboardingCubit, OnboardingState>(
         builder: (context, state) {
@@ -43,8 +60,8 @@ class OnboardingScreenWidget extends StatelessWidget {
                   );
                 },
                 child: CustomImageView(
-                  key: ValueKey<String>(currentItem["image"]),
-                  imagePath: currentItem["image"],
+                  key: ValueKey<String>(currentItem),
+                  imagePath: currentItem,
                   height: 275.h,
                 ),
               ),
@@ -69,8 +86,8 @@ class OnboardingScreenWidget extends StatelessWidget {
                         child: child,
                       ),
                       child: Text(
-                        currentItem["message"],
-                        key: ValueKey<String>(currentItem["message"]),
+                        messages[currentIndex],
+                        key: ValueKey<String>(messages[currentIndex]),
                         style: AppTextStyles.font24GreenW500,
                       ),
                     ),
@@ -84,8 +101,8 @@ class OnboardingScreenWidget extends StatelessWidget {
                           child: child,
                         ),
                         child: Text(
-                          currentItem["sentence"],
-                          key: ValueKey<String>(currentItem["sentence"]),
+                          sentences[currentIndex],
+                          key: ValueKey<String>(sentences[currentIndex]),
                           style: AppTextStyles.font16GreenW400,
                           textAlign: TextAlign.center,
                         ),
@@ -96,8 +113,8 @@ class OnboardingScreenWidget extends StatelessWidget {
                       flex: 2,
                       child: CustomButton(
                           text: currentIndex != 5
-                              ? AppStrings.next
-                              : AppStrings.letsStart,
+                              ? S.of(context).next
+                              : S.of(context).letsStart,
                           onTap: currentIndex != 5
                               ? cubit.nextScreen
                               // () => Navigator.pushReplacementNamed(

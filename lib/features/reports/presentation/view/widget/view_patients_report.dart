@@ -11,6 +11,7 @@ import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../foundations/app_constants.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/model/ReportsDm.dart';
 import '../../viewmodel/reports_cubit.dart';
 
@@ -71,7 +72,7 @@ class ViewPatientsReport extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               )),
                           Text(
-                            AppStrings.reportIsReady,
+                            S.of(context).reportIsReady,
                             style: AppTextStyles.font12BlueW700,
                           ),
                         ],
@@ -89,7 +90,7 @@ class ViewPatientsReport extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomButton(
-                        text: AppStrings.viewProfile,
+                        text: S.of(context).viewProfile,
                         onTap: () {},
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
@@ -100,8 +101,8 @@ class ViewPatientsReport extends StatelessWidget {
                           : 20.toWidth,
                       CustomButton(
                         text: report.isViewed
-                            ? AppStrings.viewed
-                            : AppStrings.viewReport,
+                            ? S.of(context).viewed
+                            : S.of(context).viewReport,
                         onTap: () {
                         Navigator.pushNamed(context, AppRoutes.viewReportScreen);
                         cubit.onViewReport(index);

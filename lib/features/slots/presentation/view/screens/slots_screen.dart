@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/slots_cubit.dart';
 
 class SlotsScreen extends StatelessWidget {
@@ -28,7 +29,7 @@ class SlotsScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  AppStrings.slotRemoved,
+                  S.of(context).slotRemoved,
                   style: AppTextStyles.font16BlueW700,
                 ),
                 backgroundColor: AppColors.background,
@@ -68,9 +69,9 @@ class SlotsScreen extends StatelessWidget {
               ),
               SliverToBoxAdapter(
                 child: CustomButton(
-                  text: AppStrings.addSlots,
+                  text: S.of(context).addSlots,
                   onTap: () {
-                    showBottomSheet(context,cubit);
+                    showBottomSheet(context, cubit);
                   },
                 ).paddingSymmetric(horizontal: 20.w, vertical: 20.h),
               ),
@@ -82,12 +83,16 @@ class SlotsScreen extends StatelessWidget {
     );
   }
 }
-void showBottomSheet(BuildContext context , SlotsCubit cubit){
+
+void showBottomSheet(BuildContext context, SlotsCubit cubit) {
   BottomPicker.time(
-    pickerTitle: Text(
-        AppStrings.setYourDate,
-        style:AppTextStyles.font16BlueW700
-    ),
+    pickerTitle:
+        Text(S.of(context).setYourDate, style: AppTextStyles.font16BlueW700),
+    buttonContent: Center(
+        child: Text(
+      S.of(context).select,
+      style: AppTextStyles.font15WhiteW500,
+    )),
     onSubmit: (index) {
       cubit.addSlot(index);
     },

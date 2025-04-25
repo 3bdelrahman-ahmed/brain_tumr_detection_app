@@ -11,6 +11,7 @@ import 'package:brain_tumr_detection_app/features/register/presentation/view/wid
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../generated/l10n.dart';
 import '../../utils/extenstions/navigation_extenstions.dart';
 import '../cubits/location_cubit/location_cubit.dart';
 
@@ -86,7 +87,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
                     ).paddingOnly(bottom: 50.h),
                   ),
                   CustomButton(
-                    text: AppStrings.confirm,
+                    text: S.of(context).confirm,
                     onTap: () {
                       if (_currentLocation != null) {
                         context
@@ -104,7 +105,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
             }
             return Center(
               child: Text(
-                AppStrings.openLocationPermission,
+                S.of(context).openLocationPermission,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font15GreenW500,
               ),

@@ -105,8 +105,8 @@ class CustomTextField extends StatelessWidget {
                       padding: EdgeInsets.all(8.w),
                       child: CustomImageView(
                         svgPath: suffixIcon!.toSVG(),
-                        width: 25.w,
-                        height: 25.w,
+                        width: 20.w,
+                        height: 20.w,
                       ),
                     ),
                   )

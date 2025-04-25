@@ -1,4 +1,6 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
+import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
@@ -10,9 +12,12 @@ import 'package:brain_tumr_detection_app/features/profle/presentation/view/widge
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../viewmodel/settings_cubit.dart';
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,18 +46,18 @@ class ProfilePage extends StatelessWidget {
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
             SliverToBoxAdapter(
               child: _buildCard(
-                title: AppStrings.medicalHistory,
+                title: S.of(context).medicalHistory,
                 icon: AssetsSvg.edit.toSVG(),
               ).paddingSymmetric(horizontal: 19.w),
             ),
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
             SliverToBoxAdapter(
-              child: _buildCard(title: AppStrings.posts)
+              child: _buildCard(title: S.of(context).posts)
                   .paddingSymmetric(horizontal: 19.w),
             ),
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
             SliverToBoxAdapter(
-              child: _buildCard(title: AppStrings.savedPosts)
+              child: _buildCard(title: S.of(context).savedPosts)
                   .paddingSymmetric(horizontal: 19.w),
             ),
           ],
@@ -62,9 +67,10 @@ class ProfilePage extends StatelessWidget {
   }
 
   // Drawer Widget
-  Widget _buildDrawer(BuildContext context){
+  Widget _buildDrawer(BuildContext context) {
     return Drawer(
-      width: MediaQuery.of(context).size.width - MediaQuery.of(context).size.width*.2 ,
+      width: MediaQuery.of(context).size.width -
+          MediaQuery.of(context).size.width * .2,
       child: ListView(
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 12.w),
         children: [
@@ -73,23 +79,31 @@ class ProfilePage extends StatelessWidget {
               svgPath: AssetsSvg.settings.toSVG(),
             ),
             title:
-                Text(AppStrings.settings, style: AppTextStyles.font16BlueW700),
+                Text(S.of(context).settings, style: AppTextStyles.font16BlueW700),
             onTap: () {
               Navigator.pop(context); // Close Drawer
             },
           ).paddingSymmetric(vertical: 20.h),
-        _buildSettingsRow(title: AppStrings.accountSetting),
-          _buildSettingsRow(title: AppStrings.notificationsSettings),
-          _buildSettingsRow(title: AppStrings.medicalDataManagement),
-          _buildSettingsRow(title: AppStrings.supportFeedback),
-        CustomButton(text: AppStrings.logOut, onTap: (){},
-        textStyle: AppTextStyles.font16BlueW700,
-        backgroundColor:Colors.white,
-        width: 130.w,
-        raduis: 10.r,)],
+          _buildSettingsRow(title: S.of(context).accountSetting),
+          _buildSettingsRow(title: S.of(context).notificationsSettings),
+          _buildSettingsRow(title: S.of(context).medicalDataManagement),
+          _buildSettingsRow(title: S.of(context).supportFeedback),
+          CustomButton(
+            text: S.of(context).logOut,
+            onTap: (){
+              AppConstants.clearLogin();
+              Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
+            },
+            textStyle: AppTextStyles.font16BlueW700,
+            backgroundColor: Colors.white,
+            width: 130.w,
+            raduis: 10.r,
+          )
+        ],
       ),
     );
   }
+
   Widget _buildCard({required String title, String? icon}) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
@@ -115,9 +129,10 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
-  Widget _buildSettingsRow ({required String title}) {
-    return  Container(
-      padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 10.w),
+
+  Widget _buildSettingsRow({required String title}) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: Colors.white,
@@ -126,14 +141,15 @@ class ProfilePage extends StatelessWidget {
                 color: Colors.black.withOpacity(0.1),
                 offset: Offset(0, 2),
                 blurRadius: 6,
-                spreadRadius: 2
-            )
-          ]
-      ),
+                spreadRadius: 2)
+          ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title,style: AppTextStyles.font16BlueW700,),
+          Text(
+            title,
+            style: AppTextStyles.font16BlueW700,
+          ),
           Icon(
             Icons.chevron_right,
             color: AppColors.buttonsAndNav,
@@ -142,22 +158,22 @@ class ProfilePage extends StatelessWidget {
       ),
     ).paddingOnly(bottom: 10.h);
   }
-  // Widget _buildToggleOption(String label, BuildContext context , bool isOn) {
-  //   final cubit = context.watch<SettingsCubit>();
-  //
-  //   return Padding(
-  //     padding: EdgeInsets.only(top: 10.h),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: [
-  //         Text(label, style: AppTextStyles.font16BlueW700),
-  //         Switch(
-  //           value: isOn,
-  //           activeColor: AppColors.buttonsAndNav,
-  //           onChanged: (_) {},
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+// Widget _buildToggleOption(String label, BuildContext context , bool isOn) {
+//   final cubit = context.watch<SettingsCubit>();
+//
+//   return Padding(
+//     padding: EdgeInsets.only(top: 10.h),
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       children: [
+//         Text(label, style: AppTextStyles.font16BlueW700),
+//         Switch(
+//           value: isOn,
+//           activeColor: AppColors.buttonsAndNav,
+//           onChanged: (_) {},
+//         ),
+//       ],
+//     ),
+//   );
+// }
 }

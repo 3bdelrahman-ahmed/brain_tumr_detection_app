@@ -3,7 +3,6 @@
 
   class AppCacheHelper {
     AppCacheHelper._();
-
     ///key for caching
     static const String tokenKey = "token";
     static const String biometricTokenKey = "biometricToken";

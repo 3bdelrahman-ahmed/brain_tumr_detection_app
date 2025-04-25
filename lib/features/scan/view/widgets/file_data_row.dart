@@ -9,6 +9,7 @@ import '../../../../core/utils/assets/assets_svg.dart';
 import '../../../../core/utils/strings/app_string.dart';
 import '../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../generated/l10n.dart';
 import '../../viewmodel/scan_cubit.dart';
 
 class FileDataRow extends StatelessWidget {
@@ -47,7 +48,7 @@ class FileDataRow extends StatelessWidget {
                     child: Text(
                       state is ScanFilePicked
                           ? cubit.fileName
-                          : AppStrings.yourFileName,
+                          : S.of(context).yourFileName,
                       textAlign: TextAlign.start,
                       style: AppTextStyles.font15GreenW700,
                     ),

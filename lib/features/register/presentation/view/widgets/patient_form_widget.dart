@@ -13,6 +13,7 @@ import '../../../../../core/config/app_routing.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 
 class PatientFormFields extends StatelessWidget {
   const PatientFormFields({Key? key}) : super(key: key);
@@ -33,12 +34,12 @@ class PatientFormFields extends StatelessWidget {
                 FocusScope.of(context)
                     .requestFocus(cubit.userNameFocus);
               },
-              label: AppStrings.fullName,
-              hintText: AppStrings.enterYourFullName,
+              label: S.of(context).fullName,
+              hintText: S.of(context).enterYourFullName,
               controller: cubit.fullNameController,
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.fullName,
+                  fieldName: S.of(context).fullName,
                   fieldType: ValidationType.fullName),
             ),
             16.toHeight,
@@ -48,12 +49,12 @@ class PatientFormFields extends StatelessWidget {
                 FocusScope.of(context)
                     .requestFocus(cubit.emailFocus);
               },
-              label: AppStrings.userName,
-              hintText: AppStrings.enterYourUserName,
+              label: S.of(context).userName,
+              hintText: S.of(context).enterYourUserName,
               controller: cubit.userNameController,
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.userName,
+                  fieldName: S.of(context).userName,
                   fieldType: ValidationType.name),
             ),
             16.toHeight,
@@ -64,8 +65,8 @@ class PatientFormFields extends StatelessWidget {
                 FocusScope.of(context)
                     .requestFocus(cubit.passwordFocus);
               },
-              label: AppStrings.email,
-              hintText: AppStrings.enterYourEmail,
+              label: S.of(context).email,
+              hintText: S.of(context).enterYourEmail,
               controller: cubit.emailController,
               validator: Validators.emailValidate),
             16.toHeight,
@@ -73,15 +74,15 @@ class PatientFormFields extends StatelessWidget {
             CustomTextField(
                 hintText: cubit.streetName != null
                     ? cubit.streetName!
-                    : AppStrings.setLocation,
+                    : S.of(context).setLocation,
                 readOnly: true,
                 hintTextStyle: cubit.streetName != null
                     ? AppTextStyles.font20GreenW500
                     : AppTextStyles.font15LightGreenW500,
-                label: AppStrings.setLocation,
+                label: S.of(context).setLocation,
                 suffixIcon: AssetsSvg.location,
                 validator: (_) =>
-                    cubit.streetName != null ? null : AppStrings.locationError,
+                    cubit.streetName != null ? null : S.of(context).locationError,
                 onTap: () async {
                   final result = await Navigator.pushNamed(
                       context, AppRoutes.locationScreen);
@@ -96,12 +97,12 @@ class PatientFormFields extends StatelessWidget {
             CustomTextField(
               hintText: cubit.pickedDate != null
                   ? cubit.pickedDate.toString().substring(0, 10)
-                  : AppStrings.selectDateOfBirth,
+                  : S.of(context).selectDateOfBirth,
               readOnly: true,
               hintTextStyle: cubit.pickedDate != null
                   ? AppTextStyles.font20GreenW500
                   : AppTextStyles.font15LightGreenW500,
-              label: AppStrings.birthDate,
+              label: S.of(context).birthDate,
               suffixIcon: AssetsSvg.datePicker,
               validator: (_) =>
                   cubit.pickedDate != null ? null : AppStrings.dateError,
@@ -112,12 +113,12 @@ class PatientFormFields extends StatelessWidget {
             16.toHeight,
             CustomTextField(
               focusNode: cubit.passwordFocus,
-              label: AppStrings.password,
-              hintText: AppStrings.enterYourPassword,
+              label: S.of(context).password,
+              hintText:S.of(context).enterYourPassword,
               controller: cubit.passwordController,
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.password,
+                  fieldName: S.of(context).password,
                   fieldType: ValidationType.password),
               obscureText: true,
             ),

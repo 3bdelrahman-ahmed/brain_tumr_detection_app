@@ -10,6 +10,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/rigester_screen_cubit.dart';
 import '../../view_model/rigester_screen_state.dart';
 import 'clinc_form_widget.dart';
@@ -39,11 +40,11 @@ class RigesterScreenWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(AppStrings.createYourAcc,
+                  Text(S.of(context).createYourAcc,
                       style: AppTextStyles.font20GreenW500),
                   6.toHeight,
                   Text(
-                    AppStrings.welcomeAbroadSentence,
+                    S.of(context).welcomeAbroadSentence,
                     style: AppTextStyles.font15LightGreenW500,
                     textAlign: TextAlign.center,
                   ),
@@ -77,8 +78,8 @@ class RigesterScreenWidget extends StatelessWidget {
                           isLoading: state is RigesterScreenLoadingState,
                           text:
                               cubit.currentIndex == 0 || cubit.currentIndex == 2
-                                  ? AppStrings.submit
-                                  : AppStrings.next,
+                                  ? S.of(context).submit
+                                  : S.of(context).next,
                           onTap: () => {
                                 if (cubit
                                     .formKeys[cubit.currentIndex].currentState!
@@ -156,9 +157,9 @@ Widget _buildToggleSwitch(cubit) {
             doubleTapDisable: true,
             totalSwitches: 2,
             labels: [
-              AppStrings.asAPatient,
-              AppStrings.asADoctor,
-              AppStrings.asADoctor,
+              S.of(context).asAPatient,
+              S.of(context).asADoctor,
+              S.of(context).asADoctor,
             ],
             dividerColor: Colors.transparent,
             radiusStyle: true,

@@ -4,6 +4,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../../../../generated/l10n.dart';
 import '../../../utils/theme/text_styles/app_text_styles.dart';
 import '../custom_image_view.dart';
 import 'custom_heart_animation_widget.dart';
@@ -55,7 +56,7 @@ class LikeButton extends StatelessWidget {
           ),
           5.toWidth,
           Text(
-            AppStrings.like,
+            S.of(context).like,
             style: AppTextStyles.font12cyanW700,
           )
         ],

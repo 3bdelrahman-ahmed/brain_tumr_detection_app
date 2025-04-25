@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 
 class CustomMessagesTextField extends StatelessWidget {
   const CustomMessagesTextField({Key? key, required this.controller, required this.onSend}) : super(key: key);
@@ -27,7 +28,7 @@ class CustomMessagesTextField extends StatelessWidget {
               onEditingComplete: onSend,
               controller: controller,
               decoration: InputDecoration(
-                hintText: AppStrings.writeAMessage,
+                hintText: S.of(context).writeAMessage,
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 filled: true,

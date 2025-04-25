@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/utils/responsive_helper.dart';
+import '../../../../../generated/l10n.dart';
 
 class ViewReportScreen extends StatelessWidget {
   const ViewReportScreen({Key? key}) : super(key: key);
@@ -49,15 +50,15 @@ class ViewReportScreen extends StatelessWidget {
                        children:[
                         SizedBox(
                             width: 160.w,
-                            child: Text("${AppStrings.name}Youssef Ibrahim Marzouk",
+                            child: Text("${S.of(context).name}Youssef Ibrahim Marzouk",
                               style: AppTextStyles.font12BlueW700,
                             overflow: TextOverflow.ellipsis,)),
                          3.toHeight,
-                         Text("${AppStrings.gender}Male",style: AppTextStyles.font12BlueW700,),
+                         Text("${S.of(context).gender}Male",style: AppTextStyles.font12BlueW700,),
                          3.toHeight,
-                         Text("${AppStrings.age}36",style: AppTextStyles.font12BlueW700,),
+                         Text("${S.of(context).age}36",style: AppTextStyles.font12BlueW700,),
                          3.toHeight,
-                         Text("${AppStrings.submitted}10:20 AM",style: AppTextStyles.font12BlueW700,),
+                         Text("${S.of(context).submitted}10:20 AM",style: AppTextStyles.font12BlueW700,),
                          3.toHeight,
                        ],
                      ),
@@ -72,7 +73,7 @@ class ViewReportScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomButton(
-                        text: AppStrings.viewProfile,
+                        text: S.of(context).viewProfile,
                         onTap: () {},
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
@@ -82,7 +83,7 @@ class ViewReportScreen extends StatelessWidget {
                           ? 40.toWidth
                           : 20.toWidth,
                       CustomButton(
-                        text: AppStrings.openPdf,
+                        text: S.of(context).openPdf,
                         onTap: () {},
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
@@ -112,7 +113,7 @@ class ViewReportScreen extends StatelessWidget {
             ).paddingSymmetric(vertical: 10.h,horizontal: 10.w),
           ),
           SliverToBoxAdapter(
-            child: CustomButton(text: AppStrings.contactPatient, onTap: (){}).paddingSymmetric(
+            child: CustomButton(text: S.of(context).contactPatient, onTap: (){}).paddingSymmetric(
               horizontal: 20.w,
               vertical: 30.h
             ),

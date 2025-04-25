@@ -6,6 +6,8 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:brain_tumr_detection_app/features/login/presentation/view/widgets/biometric_auth_dialog_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class RemberMeWidget extends StatelessWidget {
   bool remmberMeClicked;
   final Function onChanged;
@@ -33,7 +35,7 @@ class RemberMeWidget extends StatelessWidget {
               onChanged();
             }),
         Text(
-          AppStrings.remmberMe,
+          S.of(context).remmberMe,
           style: AppTextStyles.font15GreenW500,
         ),
       ],

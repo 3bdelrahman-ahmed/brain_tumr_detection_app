@@ -11,6 +11,7 @@ import 'package:brain_tumr_detection_app/features/verification_code/presentation
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/header_text_widget.dart';
 
 class VerificationCodeScreen extends StatelessWidget {
@@ -50,7 +51,7 @@ class VerificationCodeScreen extends StatelessWidget {
                     50.toHeight,
                     CustomButton(
                         isLoading: state is SubmitVerificationCodeLoadingState,
-                        text: AppStrings.submit,
+                        text:S.of(context).submit,
                         onTap: () {
                           cubit.verifyCode(email);
                         }).paddingSymmetric(horizontal: 24.w),

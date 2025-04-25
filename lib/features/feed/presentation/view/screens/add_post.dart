@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 
 class AddPost extends StatelessWidget {
   const AddPost({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class AddPost extends StatelessWidget {
                             ),
                             10.toWidth,
                             Text(
-                              AppStrings.post,
+                              S.of(context).post,
                               style: AppTextStyles.font16BlueW700,
                             ),
                           ],
@@ -64,7 +65,7 @@ class AddPost extends StatelessWidget {
                             fillColor: AppColors.typography,
                             focusColor: AppColors.typography,
                             hintStyle: AppTextStyles.font12GreyW500,
-                            hintText: AppStrings.whatIsHappening,
+                            hintText: S.of(context).whatIsHappening,
                             border: InputBorder.none,
                           ),
                         ),
@@ -77,7 +78,7 @@ class AddPost extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomButton(
-                        text: AppStrings.cancel,
+                        text: S.of(context).cancel,
                         onTap: () {},
                         width: 80.w,
                         height: 40.w,
@@ -85,7 +86,7 @@ class AddPost extends StatelessWidget {
                         textStyle: AppTextStyles.font12BlueW500,
                       ),
                       CustomButton(
-                        text: AppStrings.post,
+                        text: S.of(context).post,
                         onTap: () {},
                         width: 80.w,
                         height: 40.w,

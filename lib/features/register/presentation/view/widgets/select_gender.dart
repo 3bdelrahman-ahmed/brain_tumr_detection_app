@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/strings/app_string.dart';
+import '../../../../../generated/l10n.dart';
 
 class SelectGender extends StatelessWidget {
   const SelectGender({Key? key}) : super(key: key);
@@ -38,10 +39,10 @@ class SelectGender extends StatelessWidget {
           controller: cubit.selectedGender,
           validator: (value) => checkFieldValidation(
               val: cubit.selectedGender.text,
-              fieldName: AppStrings.gender,
+              fieldName: S.of(context).gender,
               fieldType: ValidationType.text),
-          label: AppStrings.selectGender,
-          hintText: AppStrings.tapToSelectYourGender,
+          label: S.of(context).selectGender,
+          hintText: S.of(context).tapToSelectYourGender,
         ),
       ),
     );
@@ -49,7 +50,7 @@ class SelectGender extends StatelessWidget {
     //   crossAxisAlignment: CrossAxisAlignment.start,
     //   children: [
     //     Text(
-    //       AppStrings.selectGender,
+    //       S.of(context).selectGender,
     //       style: AppTextStyles.font15GreenW500,
     //     ),
     //     4.toHeight,

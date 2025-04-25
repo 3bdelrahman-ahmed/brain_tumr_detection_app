@@ -14,6 +14,7 @@ import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/strings/app_string.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/model/Slots.dart';
 
 class SlotCard extends StatelessWidget {
@@ -58,7 +59,7 @@ class SlotCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(AppStrings.newSlot, style: AppTextStyles.font15GreyW500),
+                      Text(S.of(context).newSlot, style: AppTextStyles.font15GreyW500),
                       25.toHeight,
                     ],
                   ),
@@ -72,7 +73,7 @@ class SlotCard extends StatelessWidget {
             child: Row(
               children: [
                 CustomButton(
-                  text: AppStrings.edit,
+                  text: S.of(context).edit,
                   textStyle: AppTextStyles.font12WhiteW500,
                   width: 90.w,
                   height: 40.w,
@@ -82,7 +83,7 @@ class SlotCard extends StatelessWidget {
                 ),
                 10.toWidth,
                 CustomButton(
-                  text: AppStrings.remove,
+                  text: S.of(context).remove,
                   textStyle: AppTextStyles.font12WhiteW500,
                   width: 90.w,
                   height: 40.w,
@@ -99,19 +100,22 @@ class SlotCard extends StatelessWidget {
 
 void showBottomSheet(BuildContext context,SlotsCubit cubit , Slot slot){
   BottomPicker.time(
+
     pickerTitle: Text(
-        AppStrings.setYourDate,
+        S.of(context).setYourDate,
         style:AppTextStyles.font16BlueW700
     ),
     onSubmit: (index) {
       cubit.editSlot(slot.id, index);
     },
+    buttonContent: Center(child: Text(S.of(context).select,style: AppTextStyles.font15WhiteW500,)),
     buttonSingleColor: AppColors.buttonsAndNav,
     onCloseButtonPressed: () {
       print('Picker closed');
     },
     initialTime: Time(
-      minutes: 23,
+      hours: 12,
+      minutes: 0,
     ),
   ).show(context);
 }

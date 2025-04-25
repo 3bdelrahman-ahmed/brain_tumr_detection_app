@@ -12,37 +12,13 @@ part 'onboarding_state.dart';
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit() : super(OnboardingInitial());
   int currentIndex = 0;
-  final List<Map<String, dynamic>> items = [
-    {
-      "image": AssetsPng.welcomeOnBoarding.toPng(),
-      "message": AppStrings.firstOnBoardingMessage,
-      "sentence": AppStrings.firstOnBoardingSentence
-    },
-    {
-      "image": AssetsPng.secondOnBoarding.toPng(),
-      "message": AppStrings.secondOnBoardingMessage,
-      "sentence": AppStrings.secondOnBoardingSentence
-    },
-    {
-      "image": AssetsPng.thirdOnBoarding.toPng(),
-      "message": AppStrings.thirdOnBoardingMessage,
-      "sentence": AppStrings.thirdOnBoardingSentence
-    },
-    {
-      "image": AssetsPng.fourthOnBoarding.toPng(),
-      "message": AppStrings.fourthOnBoardingMessage,
-      "sentence": AppStrings.fourthOnBoardingSentence
-    },
-    {
-      "image": AssetsPng.fifthOnBoarding.toPng(),
-      "message": AppStrings.fifthOnBoardingMessage,
-      "sentence": AppStrings.fifthOnBoardingSentence
-    },
-    {
-      "image": AssetsPng.sixthOnBoarding.toPng(),
-      "message": AppStrings.sixthOnBoardingMessage,
-      "sentence": AppStrings.sixthOnBoardingSentence
-    }
+  final List<String> images = [
+    AssetsPng.welcomeOnBoarding.toPng(),
+    AssetsPng.secondOnBoarding.toPng(),
+    AssetsPng.thirdOnBoarding.toPng(),
+    AssetsPng.fourthOnBoarding.toPng(),
+    AssetsPng.fifthOnBoarding.toPng(),
+    AssetsPng.sixthOnBoarding.toPng(),
   ];
   void nextScreen() {
     if (currentIndex < 5) {
