@@ -14,6 +14,7 @@ import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../foundations/validations.dart';
+import '../../../../../generated/l10n.dart';
 
 class DoctorFormWidget extends StatelessWidget {
   const DoctorFormWidget({Key? key}) : super(key: key);
@@ -34,12 +35,12 @@ class DoctorFormWidget extends StatelessWidget {
               onSubmit: (p0) {
                 FocusScope.of(context).requestFocus(cubit.userNameFocus);
               },
-              label: AppStrings.fullName,
-              hintText: AppStrings.enterYourFullName,
+              label: S.of(context).fullName,
+              hintText: S.of(context).enterYourFullName,
               controller: cubit.fullNameController,
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.fullName,
+                  fieldName: S.of(context).fullName,
                   fieldType: ValidationType.name),
             ),
             16.toHeight,
@@ -48,12 +49,12 @@ class DoctorFormWidget extends StatelessWidget {
               onSubmit: (p0) {
                 FocusScope.of(context).requestFocus(cubit.emailFocus);
               },
-              label: AppStrings.userName,
-              hintText: AppStrings.enterYourUserName,
+              label: S.of(context).userName,
+              hintText: S.of(context).enterYourFullName,
               controller: cubit.userNameController,
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.userName,
+                  fieldName: S.of(context).userName,
                   fieldType: ValidationType.name),
             ),
             16.toHeight,
@@ -62,21 +63,21 @@ class DoctorFormWidget extends StatelessWidget {
                 onSubmit: (p0) {
                   FocusScope.of(context).requestFocus(cubit.imageFocus);
                 },
-                label: AppStrings.email,
-                hintText: AppStrings.enterYourEmail,
+                label: S.of(context).email,
+                hintText: S.of(context).enterYourEmail,
                 controller: cubit.emailController,
                 validator: Validators.emailValidate),
             16.toHeight,
             CustomTextField(
-              subLabel: AppStrings.uploadYourNationalMedical,
+              subLabel: S.of(context).uploadYourNationalMedical,
               controller: cubit.licenseFrontController,
-              hintText: AppStrings.tapToAttachFile,
-              label: AppStrings.medicalCertificateFrontImage,
+              hintText: S.of(context).tapToAttachFile,
+              label: S.of(context).medicalCertificateFrontImage,
               readOnly: true,
               suffixIcon: AssetsSvg.uploadDoc,
               validator: (v) => checkFieldValidation(
                   val: cubit.licenseFrontController.text,
-                  fieldName: AppStrings.medicalCertificateFrontImage,
+                  fieldName: S.of(context).medicalCertificateFrontImage,
                   fieldType: ValidationType.text),
               onTap: () {
                 cubit.pickDocument().then((v) {
@@ -89,8 +90,8 @@ class DoctorFormWidget extends StatelessWidget {
             16.toHeight,
             CustomTextField(
               controller: cubit.licenseBackController,
-              hintText: AppStrings.tapToAttachFile,
-              label: AppStrings.medicalCertificateBackImage,
+              hintText: S.of(context).tapToAttachFile,
+              label: S.of(context).medicalCertificateFrontImage,
               readOnly: true,
               onSubmit: (p0) {
                 FocusScope.of(context).requestFocus(cubit.locationFocus);
@@ -98,7 +99,7 @@ class DoctorFormWidget extends StatelessWidget {
               suffixIcon: AssetsSvg.uploadDoc,
               validator: (v) => checkFieldValidation(
                   val: cubit.licenseBackController.text,
-                  fieldName: AppStrings.medicalCertificateBackImage,
+                  fieldName: S.of(context).medicalCertificateFrontImage,
                   fieldType: ValidationType.text),
               onTap: () {
                 cubit.pickDocument().then((v) {
@@ -118,12 +119,12 @@ class DoctorFormWidget extends StatelessWidget {
               },
               hintText: cubit.pickedDate != null
                   ? cubit.pickedDate.toString().substring(0, 10)
-                  : AppStrings.selectDateOfBirth,
+                  : S.of(context).selectDateOfBirth,
               readOnly: true,
               hintTextStyle: cubit.pickedDate != null
                   ? AppTextStyles.font20GreenW500
                   : AppTextStyles.font15LightGreenW500,
-              label: AppStrings.birthDate,
+              label: S.of(context).birthDate,
               suffixIcon: AssetsSvg.datePicker,
               validator: (_) =>
                   cubit.pickedDate != null ? null : AppStrings.dateError,
@@ -134,12 +135,12 @@ class DoctorFormWidget extends StatelessWidget {
             16.toHeight,
             CustomTextField(
               focusNode: cubit.passwordFocus,
-              label: AppStrings.password,
-              hintText: AppStrings.enterYourPassword,
+              label: S.of(context).password,
+              hintText: S.of(context).enterYourPassword,
               controller: cubit.passwordController,
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.password,
+                  fieldName: S.of(context).password,
                   fieldType: ValidationType.password),
               obscureText: true,
             ),

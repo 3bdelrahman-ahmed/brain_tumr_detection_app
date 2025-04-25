@@ -4,6 +4,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../../generated/l10n.dart';
 import 'custom_pin_form_field.dart';
 
 class CustomPinSubmissionWidget extends StatefulWidget {
@@ -76,7 +77,7 @@ class _CustomPinSubmissionWidgetState extends State<CustomPinSubmissionWidget> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return AppStrings.pinFieldError;
+                return S.of(context).pinFieldError;
               }
               return null;
             },

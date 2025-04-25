@@ -6,6 +6,8 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class BiometricAuthDialogWidget extends StatelessWidget {
   const BiometricAuthDialogWidget({super.key});
 
@@ -31,7 +33,7 @@ class BiometricAuthDialogWidget extends StatelessWidget {
         ),
         6.toHeight,
         Text(
-          AppStrings.nextTimeYouLogin,
+          S.of(context).nextTimeYouLogin,
           style: AppTextStyles.font12LightGreenW500.copyWith(fontSize: 14.sp),
           textAlign: TextAlign.center,
           maxLines: 2,
@@ -43,7 +45,7 @@ class BiometricAuthDialogWidget extends StatelessWidget {
             raduis: 12.r,
             textStyle: AppTextStyles.font15GreenW500
                 .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
-            text: AppStrings.gotIt,
+            text: S.of(context).gotIt,
             onTap: () {
               Navigator.pop(context);
             }),

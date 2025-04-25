@@ -12,6 +12,7 @@ import '../../../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../../../foundations/validations.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/login_cubit.dart';
 import 'forgot_password_sheet.dart';
 
@@ -47,8 +48,8 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               children: [
                 CustomTextField(
                     focusNode: cubit.emailFocusNode,
-                    label: AppStrings.email,
-                    hintText: AppStrings.enterYourEmail,
+                    label: S.of(context).email,
+                    hintText: S.of(context).enterYourEmail,
                     controller: cubit.emailController,
                     onSubmit: (value) {
                       FocusScope.of(context)
@@ -56,12 +57,12 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     },
                     validator: (value) => checkFieldValidation(
                         val: cubit.emailController.text,
-                        fieldName: AppStrings.email,
+                        fieldName: S.of(context).email,
                         fieldType: ValidationType.email)),
                 30.toHeight,
                 CustomTextField(
-                    label: AppStrings.password,
-                    hintText: AppStrings.enterYourPassword,
+                    label: S.of(context).password,
+                    hintText: S.of(context).enterYourPassword,
                     controller: cubit.passwordController,
                     obscureText: cubit.isObscure,
                     suffixIcon: AssetsSvg.password,
@@ -74,7 +75,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     },
                     validator: (value) => checkFieldValidation(
                         val: cubit.passwordController.text,
-                        fieldName: AppStrings.password,
+                        fieldName: S.of(context).password,
                         fieldType: ValidationType.password)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,7 +102,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                               builder: (_) => ForgotPasswordSheet(),
                             ),
                         child: Text(
-                          AppStrings.forgotPassword,
+                          S.of(context).forgotPassword,
                           style: AppTextStyles.font15LightGreenW500,
                         )),
                   ],
@@ -109,11 +110,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 6.toHeight,
                 RichText(
                     text: TextSpan(
-                        text: AppStrings.dontHaveAnAccount,
+                        text: S.of(context).dontHaveAnAccount,
                         style: AppTextStyles.font15LightGreenW500,
                         children: [
                       TextSpan(
-                          text: AppStrings.signUp,
+                          text: S.of(context).signUp,
                           style: AppTextStyles.font15GreenW500,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
@@ -123,7 +124,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 24.toHeight,
                 CustomButton(
                         isLoading: state is LoginLoadingState,
-                        text: AppStrings.login,
+                        text: S.of(context).login,
                         onTap: () {
                           cubit.login();
                         }).animate().flipV(

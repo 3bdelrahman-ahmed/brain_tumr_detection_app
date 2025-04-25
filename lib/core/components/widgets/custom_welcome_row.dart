@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
+import '../../../generated/l10n.dart';
 import '../../config/app_routing.dart';
 import 'custom_image_view.dart';
 import '../../utils/assets/assets_png.dart';
@@ -35,7 +36,7 @@ class CustomWelcomeAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppStrings.welcomeBack,
+                  S.of(context).welcomeBack,
                   style: AppTextStyles.font15LightGreenW500,
                 ),
                 SizedBox(

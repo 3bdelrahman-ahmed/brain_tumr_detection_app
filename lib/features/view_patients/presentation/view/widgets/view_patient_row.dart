@@ -9,6 +9,7 @@ import '../../../../../core/utils/responsive_helper.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../foundations/app_constants.dart';
+import '../../../../../generated/l10n.dart';
 
 class ViewPatientRow extends StatelessWidget {
   const ViewPatientRow({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class ViewPatientRow extends StatelessWidget {
                   ),
                   20.toWidth,
                   Text(
-                      "${2} ${AppStrings.session}",
+                      "${2} ${S.of(context).session}",
                       style: AppTextStyles.font12GreyW500),
                 ],
               ),
@@ -77,7 +78,7 @@ class ViewPatientRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomButton(
-                    text: AppStrings.viewProfile,
+                    text: S.of(context).viewProfile,
                     onTap: () {},
                     height: 40.h,
                     textStyle: AppTextStyles.font12WhiteW500,
@@ -87,7 +88,7 @@ class ViewPatientRow extends StatelessWidget {
                       ? 40.toWidth
                       : 20.toWidth,
                   CustomButton(
-                    text: AppStrings.chat,
+                    text: S.of(context).chat,
                     onTap: () {},
                     height: 40.h,
                     textStyle: AppTextStyles.font12WhiteW500,

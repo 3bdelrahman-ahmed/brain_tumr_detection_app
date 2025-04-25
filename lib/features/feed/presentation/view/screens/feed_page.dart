@@ -10,6 +10,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/components/widgets/custom_sliver_search_bar.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/post_card.dart';
 
 class FeedPage extends StatelessWidget {
@@ -29,7 +30,7 @@ class FeedPage extends StatelessWidget {
             CustomWelcomeAppBar(),
             SliverPersistentHeader(
               pinned: true,
-              delegate: CustomSliverSearchBar(AppStrings.searchForPosts),
+              delegate: CustomSliverSearchBar(S.of(context).searchForPosts),
             ),
             SliverPadding(padding: EdgeInsets.only(bottom: 16.h)),
             SliverList(

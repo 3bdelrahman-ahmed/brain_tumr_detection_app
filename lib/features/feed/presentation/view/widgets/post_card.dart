@@ -11,6 +11,7 @@ import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({Key? key}) : super(key: key);
@@ -67,12 +68,12 @@ class PostCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${reachFormat(480000000)} ${AppStrings.likes}",
+                    "${reachFormat(480000000)} ${S.of(context).likes}",
                     style: AppTextStyles.font12cyanW400,
                   ),
                   10.toWidth,
                   Text(
-                    "${reachFormat(690000000)} ${AppStrings.comments}",
+                    "${reachFormat(690000000)} ${S.of(context).comments}",
                     style: AppTextStyles.font12cyanW400,
                   ),
                 ],
@@ -84,8 +85,8 @@ class PostCard extends StatelessWidget {
                 children: [
                   LikeButton(onPressed: () {}, isLike: false),
                   // _buildButton(Icons.favorite, AppStrings.like),
-                  _buildButton(AssetsSvg.commentIcon, AppStrings.comment),
-                  _buildButton(AssetsSvg.saveIcon, AppStrings.save),
+                  _buildButton(AssetsSvg.commentIcon, S.of(context).comment),
+                  _buildButton(AssetsSvg.saveIcon, S.of(context).save),
                 ],
               ),
               12.toHeight,

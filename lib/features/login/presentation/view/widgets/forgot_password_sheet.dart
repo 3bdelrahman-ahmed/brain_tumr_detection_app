@@ -7,6 +7,7 @@ import '../../../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../../../core/components/widgets/custom_text_field.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class ForgotPasswordSheet extends StatelessWidget {
   const ForgotPasswordSheet({Key? key}) : super(key: key);
@@ -30,12 +31,12 @@ class ForgotPasswordSheet extends StatelessWidget {
           ),
           5.toHeight,
           Center(
-              child: Text(AppStrings.forgetYourPassword,
+              child: Text(S.of(context).forgetYourPassword,
                   style: AppTextStyles.font20GreenW500)),
           10.toHeight,
           Center(
             child: Text(
-              AppStrings.dontWorryPassword,
+              S.of(context).dontWorryPassword,
               style: AppTextStyles.font15LightGreenW500,
               textAlign: TextAlign.center,
             ),
@@ -44,14 +45,14 @@ class ForgotPasswordSheet extends StatelessWidget {
           CustomTextField(
               validator: (value) => checkFieldValidation(
                   val: value,
-                  fieldName: AppStrings.email,
+                  fieldName: S.of(context).email,
                   fieldType: ValidationType.email),
-              label: AppStrings.email,
-              hintText: AppStrings.enterYourEmail),
+              label: S.of(context).email,
+              hintText: S.of(context).enterYourEmail),
           20.toHeight,
           Center(
             child: CustomButton(
-              text: AppStrings.next,
+              text: S.of(context).next,
               onTap: () {
                 Navigator.pop(context);
               },

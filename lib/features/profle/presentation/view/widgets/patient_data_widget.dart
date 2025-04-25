@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class PatientDataWidget extends StatelessWidget {
   const PatientDataWidget({Key? key}) : super(key: key);
@@ -47,13 +48,13 @@ class PatientDataWidget extends StatelessWidget {
                   10.toHeight,
                   _buildDetailsRow(
                       AssetsSvg.locationBlue.toSVG(),
-                      AppStrings.location,
+                      S.of(context).location,
                       AppConstants.location ?? "Cairo ,Egypt"),
-                  _buildDetailsRow(AssetsSvg.gender.toSVG(), AppStrings.gender,
+                  _buildDetailsRow(AssetsSvg.gender.toSVG(), S.of(context).gender,
                       AppConstants.user?.gender ?? "Female"),
                   _buildDetailsRow(
                       AssetsSvg.date.toSVG(),
-                      AppStrings.dateOfBirth,
+                      S.of(context).dateOfBirth,
                       AppConstants.user?.dateOfBirth?.substring(0,10) ?? "1980/3/16"),
                 ],
               ),

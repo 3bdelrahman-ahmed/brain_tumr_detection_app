@@ -6,6 +6,7 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widg
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/strings/app_string.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/availabilty_canlendar.dart';
 
 class DoctorsProfile extends StatelessWidget {
@@ -41,7 +42,7 @@ class DoctorsProfile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppStrings.education,
+                    S.of(context).education,
                     style: AppTextStyles.font16BlueW700,
                   ),
                   6.toHeight,
@@ -73,7 +74,7 @@ class DoctorsProfile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppStrings.reviews,
+                    S.of(context).reviews,
                     style: AppTextStyles.font16BlueW700,
                   ),
                   6.toHeight,

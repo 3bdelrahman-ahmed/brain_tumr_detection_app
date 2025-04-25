@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class DoctorDataWidget extends StatelessWidget {
   const DoctorDataWidget({Key? key}) : super(key: key);
@@ -46,13 +47,13 @@ class DoctorDataWidget extends StatelessWidget {
                   StarsGenerator(rating: 4.23),
                   10.toHeight,
                   _buildDetailsRow(AssetsSvg.locationBlue.toSVG(),
-                      AppStrings.location, "Cairo, Egypt"),
-                  _buildDetailsRow(AssetsSvg.country.toSVG(), AppStrings.country,
+                      S.of(context).location, "Cairo, Egypt"),
+                  _buildDetailsRow(AssetsSvg.country.toSVG(), S.of(context).country,
                       "Kafr El Ababsa"),
                   _buildDetailsRow(
-                      AssetsSvg.sessions.toSVG(), AppStrings.sessions, "1500"),
+                      AssetsSvg.sessions.toSVG(), S.of(context).sessions, "1500"),
                   _buildDetailsRow(AssetsSvg.experience.toSVG(),
-                      AppStrings.experience, "10 years"),
+                      S.of(context).experience, "10 years"),
                 ],
               ),
             ),

@@ -9,6 +9,7 @@ import '../../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
   const DoctorCardAppointment({Key? key, this.name}) : super(key: key);
@@ -58,7 +59,7 @@ class DoctorCardAppointment extends StatelessWidget {
                     ),
                     5.toHeight,
                     Text(
-                      AppStrings.upComing,
+                      S.of(context).upComing,
                       style: AppTextStyles.font12LightGreenW500,
                     ),
                     5.toHeight,
@@ -77,14 +78,14 @@ class DoctorCardAppointment extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomButton(
-                text: AppStrings.cancel,
+                text: S.of(context).cancel,
                 width: 140.w,
                 height: 50.h,
                 textStyle: AppTextStyles.font15WhiteW500,
                 onTap: () {},
               ),
               CustomButton(
-                  text: AppStrings.reScheduled,
+                  text: S.of(context).reScheduled,
                   width: 140.w,
                   height: 50.h,
                   textStyle: AppTextStyles.font15WhiteW500,

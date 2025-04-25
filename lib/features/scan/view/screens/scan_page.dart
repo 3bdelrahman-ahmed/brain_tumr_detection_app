@@ -11,6 +11,7 @@ import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/strings/app_string.dart';
+import '../../../../generated/l10n.dart';
 
 class ScanPage extends StatelessWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -47,12 +48,12 @@ class ScanPage extends StatelessWidget {
                   ),
                   5.toHeight,
                   Text(
-                    AppStrings.uploadYourFileHere,
+                    S.of(context).uploadYourFileHere,
                     style: AppTextStyles.font15GreenW700,
                   ),
                   5.toHeight,
                   Text(
-                    AppStrings.supportedFiles,
+                    S.of(context).supportedFiles,
                     style: AppTextStyles.font12LightGreenW500,
                   )
                 ],
@@ -67,7 +68,7 @@ class ScanPage extends StatelessWidget {
         SliverPadding(padding: EdgeInsets.symmetric(vertical: 10.h)),
         SliverToBoxAdapter(
           child: CustomButton(
-              text: AppStrings.done,
+              text: S.of(context).done,
               onTap: () {
                 _showSuccessDialog(context);
               }).paddingSymmetric(horizontal: 30.w),
@@ -95,17 +96,17 @@ class ScanPage extends StatelessWidget {
                 ),
                 20.toHeight,
                 Text(
-                  AppStrings.mriFileUploaded,
+                  S.of(context).mriFileUploaded,
                   style: AppTextStyles.font15GreenW700,
                 ),
                 10.toHeight,
                 Text(
-                  AppStrings.youWillRecieveNotificationSoon,
+                  S.of(context).youWillRecieveNotificationSoon,
                   style: AppTextStyles.font12LightGreenW500,
                 ),
                 20.toHeight,
                 CustomButton(
-                  text: AppStrings.returnPage,
+                  text: S.of(context).returnPage,
                   onTap: () {
                     Navigator.pop(context);
                   },

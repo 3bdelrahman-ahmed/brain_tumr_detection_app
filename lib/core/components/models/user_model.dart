@@ -6,8 +6,9 @@ abstract class User {
   final String? userName;
   final String token;
   final String location;
-
+  final String role;
   User({
+    required this.role,
     required this.id,
     required this.userName,
     required this.name,

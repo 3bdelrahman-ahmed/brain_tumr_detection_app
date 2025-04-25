@@ -4,6 +4,8 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class ResendCodeWidget extends StatelessWidget {
   const ResendCodeWidget({super.key});
 
@@ -11,11 +13,11 @@ class ResendCodeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
         text: TextSpan(
-      text: AppStrings.didnotGetCode,
+      text: S.of(context).didnotGetCode,
       style: AppTextStyles.font10LightGreenW500.copyWith(fontSize: 13.sp),
       children: <TextSpan>[
         TextSpan(
-            text: AppStrings.resendCodeAgain,
+            text: S.of(context).resendCodeAgain,
 
             recognizer: TapGestureRecognizer()
               ..onTap = () {

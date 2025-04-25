@@ -12,6 +12,7 @@ import '../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../foundations/validations.dart';
+import '../../../../../generated/l10n.dart';
 
 class ClincFormWidget extends StatelessWidget {
   const ClincFormWidget({super.key});
@@ -27,7 +28,7 @@ class ClincFormWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(AppStrings.kindlyCompleteTheForm,
+                Text(S.of(context).kindlyCompleteTheForm,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font20GreenW500),
                 16.toHeight,
@@ -35,18 +36,18 @@ class ClincFormWidget extends StatelessWidget {
                     focusNode: cubit.locationFocus,
                     hintText: cubit.streetName != null
                         ? cubit.streetName!
-                        : AppStrings.setLocation,
+                        : S.of(context).setLocation,
                     readOnly: true,
                     hintTextStyle: cubit.streetName != null
                         ? AppTextStyles.font20GreenW500
                         : AppTextStyles.font15LightGreenW500,
-                    label: AppStrings.setLocation,
+                    label: S.of(context).setLocation,
                     suffixIcon: AssetsSvg.location,
                     onSubmit: (p0) => FocusScope.of(context)
                         .requestFocus(cubit.clinicPhoneNumberFocus),
                     validator: (_) => cubit.streetName != null
                         ? null
-                        : AppStrings.locationError,
+                        : S.of(context).locationError,
                     onTap: () async {
                       final result = await Navigator.pushNamed(
                           context, AppRoutes.locationScreen);
@@ -59,26 +60,26 @@ class ClincFormWidget extends StatelessWidget {
                 16.toHeight,
                 CustomTextField(
                   focusNode: cubit.clinicPhoneNumberFocus,
-                  label: AppStrings.clinicPhoneNumber,
+                  label: S.of(context).clinicPhoneNumber,
                   keyboardType: TextInputType.phone,
-                  hintText: AppStrings.enterYourClinicPhoneNumber,
+                  hintText: S.of(context).enterYourClinicPhoneNumber,
                   controller: cubit.clinicPhoneNumberController,
                   validator: (value) => checkFieldValidation(
                       val: value,
-                      fieldName: AppStrings.clinicPhoneNumber,
+                      fieldName:S.of(context).clinicPhoneNumber,
                       fieldType: ValidationType.phone),
                 ),
                 16.toHeight,
                 CustomTextField(
                   controller: cubit.clinicLicenseController,
                   focusNode: cubit.imageFocus,
-                  hintText: AppStrings.tapToAttachFile,
-                  label: AppStrings.clinicLicense,
+                  hintText: S.of(context).tapToAttachFile,
+                  label: S.of(context).clinicLicense,
                   readOnly: true,
                   suffixIcon: AssetsSvg.uploadDoc,
                   validator: (v) => checkFieldValidation(
                       val: cubit.licenseFrontController.text,
-                      fieldName: AppStrings.clinicLicense,
+                      fieldName: S.of(context).clinicLicense,
                       fieldType: ValidationType.text),
                   onTap: () {
                     cubit.pickDocument().then((v) {

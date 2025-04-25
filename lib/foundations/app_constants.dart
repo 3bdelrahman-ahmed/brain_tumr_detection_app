@@ -15,7 +15,6 @@ class AppConstants {
   static String accessToken = '';
   static User? user;
   static String? location;
-  static String? userRole = 'doctor';
   static cacheString({required String key, required dynamic value}) async {
     await AppCacheHelper.setSecuredString(key: key, value: value);
   }
@@ -100,18 +99,13 @@ class AppConstants {
   }
 
   static setBiometricToken(String token) async {
-    await AppCacheHelper.setSecuredString(
-        key: AppCacheHelper.biometricTokenKey, value: token);
+    await AppCacheHelper.setSecuredString(key: AppCacheHelper.biometricTokenKey, value: token);
     accessToken = token;
   }
-  static setUserRole(String role) async {
-    await AppCacheHelper.setSecuredString(key: AppCacheHelper.userRole, value:role);
-    userRole = role;
-  }
-
-  static Future<String?> getUserRole() async {
-    return await AppCacheHelper.getSecuredString(
-      key: AppCacheHelper.userRole,
-    );
+  static clearLogin() async{
+    accessToken = '';
+    user = null;
+    location = null;
+    await AppCacheHelper.clearAllSecuredData();
   }
 }

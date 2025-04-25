@@ -25,7 +25,6 @@ class LoginCubit extends Cubit<LoginState> {
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
   final LocalAuthentication auth = LocalAuthentication();
-
   bool rememberMe = false;
   bool isBiometricAvailable = false;
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
@@ -101,7 +100,6 @@ class LoginCubit extends Cubit<LoginState> {
 
         Navigator.pushNamedAndRemoveUntil(
             context, AppRoutes.homeScreen, (_) => false);
-
         emit(LoginSuccessState());
       }
     } catch (e) {
@@ -120,6 +118,6 @@ class LoginCubit extends Cubit<LoginState> {
 
   void changePassword(){
     isObscure = !isObscure;
-    emit(ChangePasswordState());
+    emit(ChangePasswordState(isObscure));
   }
 }

@@ -5,6 +5,7 @@ import 'package:brain_tumr_detection_app/features/chats/presentation/view_model/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/chat_tile.dart';
 class ChatListScreen extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class ChatListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(AppStrings.messages, style: AppTextStyles.font20BlueW700,),
+        title: Text(S.of(context).messages, style: AppTextStyles.font20BlueW700,),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
