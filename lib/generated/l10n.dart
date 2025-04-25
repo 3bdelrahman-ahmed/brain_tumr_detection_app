@@ -1600,6 +1600,16 @@ class S {
     );
   }
 
+  /// `Select Clinic`
+  String get selectClinic {
+    return Intl.message(
+      'Select Clinic',
+      name: 'selectClinic',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Like`
   String get like {
     return Intl.message(

@@ -9,7 +9,6 @@ class LoginRepository {
   final LoginRemoteDataSource dataSource;
   LoginRepository({required this.dataSource});
 
-
   Future<Either<ApiErrorModel, LoginResponseModel>> login(
       LoginRequestModel parameters) async {
     try {

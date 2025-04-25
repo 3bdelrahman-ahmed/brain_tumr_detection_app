@@ -7,4 +7,5 @@ class AppUrls {
   static const String registerPatient = "Auth/register/patient";
   static const String registerDoctor = "Auth/register/doctor";
   static const String verifyCode = "Auth/verifyEmail";
+  static const String getDoctorClinics = "Clinic/doctor";
 }

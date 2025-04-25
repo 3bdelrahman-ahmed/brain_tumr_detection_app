@@ -44,7 +44,7 @@ class NavigationCubit extends Cubit<NavigationState> {
         ),
       ),
       BlocProvider(
-        create: (context) => SlotsCubit(),
+        create: (context) => getIt<SlotsCubit>(),
         child: SlotsScreen(),
       ),
       BlocProvider(

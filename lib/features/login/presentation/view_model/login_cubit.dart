@@ -16,7 +16,6 @@ part 'login_state.dart';
 @injectable
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository repository;
-
   LoginCubit({required this.repository}) : super(LoginInitial());
   bool isObscure = true;
   final formKey = GlobalKey<FormState>();
@@ -36,7 +35,6 @@ class LoginCubit extends Cubit<LoginState> {
         LoginRequestModel(
             email: emailController.text, password: passwordController.text),
       );
-
       result.fold((l) {
         l.message!.showToast();
         emit(LoginErrorState());
@@ -52,7 +50,6 @@ class LoginCubit extends Cubit<LoginState> {
         AppConstants.user = r.user;
         await setLocation();
         context.navigateTo(AppRoutes.homeScreen);
-
         emit(LoginSuccessState());
       });
     }

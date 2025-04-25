@@ -1,19 +1,14 @@
 import 'package:bottom_picker/bottom_picker.dart';
-import 'package:bottom_picker/resources/arrays.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_logo_container.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/posts_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/slots_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/model/Slots.dart';
 
@@ -110,9 +105,10 @@ void showBottomSheet(BuildContext context,SlotsCubit cubit , Slot slot){
     },
     buttonContent: Center(child: Text(S.of(context).select,style: AppTextStyles.font15WhiteW500,)),
     buttonSingleColor: AppColors.buttonsAndNav,
-    onCloseButtonPressed: () {
+    onCloseButtonPressed: (){
       print('Picker closed');
     },
+    use24hFormat: true,
     initialTime: Time(
       hours: 12,
       minutes: 0,

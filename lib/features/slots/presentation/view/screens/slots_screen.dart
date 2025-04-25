@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/model/clinic.dart';
 import '../../view_model/slots_cubit.dart';
 
 class SlotsScreen extends StatelessWidget {
@@ -49,6 +50,67 @@ class SlotsScreen extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               CustomWelcomeAppBar(),
+              SliverToBoxAdapter(
+                child: state is SlotsLoading
+                    ? Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    child: CircularProgressIndicator(
+                      color: AppColors.buttonsAndNav,
+                      strokeWidth: 2.5,
+                    ),
+                  ),
+                )
+                    : Container(
+                  margin:
+                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+                  padding:
+                  EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+                  decoration: BoxDecoration(
+                    color: AppColors.background,
+                    borderRadius: BorderRadius.circular(16.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 6,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                    border: Border.all(
+                      color: AppColors.buttonsAndNav.withOpacity(0.3),
+                      width: 1.2,
+                    ),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<Clinic>(
+                      value: cubit.selectedClinic,
+                      hint: Text(
+                        S.of(context).selectClinic,
+                        style: AppTextStyles.font14BlueW500,
+                      ),
+                      icon: Icon(Icons.keyboard_arrow_down_rounded,
+                          color: AppColors.buttonsAndNav),
+                      isExpanded: true,
+                      dropdownColor: Colors.white,
+                      borderRadius: BorderRadius.circular(12.r),
+                      style: AppTextStyles.font15BlackW700,
+                      items: cubit.clinics.map((clinic) {
+                        return DropdownMenuItem(
+                          value: clinic,
+                          child: Text(
+                            clinic.address,
+                            style: AppTextStyles.font16BlueW700,
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        cubit.setSelectedClinic(value);
+                      },
+                    ),
+                  ),
+                ),
+              ),
               SliverToBoxAdapter(child: DateRangeSelector()),
               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
               SliverToBoxAdapter(child: DaySelector()),
@@ -83,7 +145,6 @@ class SlotsScreen extends StatelessWidget {
     );
   }
 }
-
 void showBottomSheet(BuildContext context, SlotsCubit cubit) {
   BottomPicker.time(
     pickerTitle:
@@ -93,15 +154,18 @@ void showBottomSheet(BuildContext context, SlotsCubit cubit) {
       S.of(context).select,
       style: AppTextStyles.font15WhiteW500,
     )),
-    onSubmit: (index) {
+    onSubmit: (index){
+      print(index);
       cubit.addSlot(index);
     },
     buttonSingleColor: AppColors.buttonsAndNav,
     onCloseButtonPressed: () {
       print('Picker closed');
     },
+    use24hFormat: true,
     initialTime: Time(
-      minutes: 23,
+      hours: 12,
+      minutes: 0,
     ),
   ).show(context);
 }
