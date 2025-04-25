@@ -197,6 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "secondOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "Your brain is unique, and so is our detection system. Using cutting-edge tech, we\'ll analyze your symptoms and help spot potential issues early. Think of it as a virtual check-up—fast, simple, and secure."),
         "select": MessageLookupByLibrary.simpleMessage("Select"),
+        "selectClinic": MessageLookupByLibrary.simpleMessage("Select Clinic"),
         "selectDateOfBirth":
             MessageLookupByLibrary.simpleMessage("Select Date of Birth"),
         "selectGender": MessageLookupByLibrary.simpleMessage("select Gender"),

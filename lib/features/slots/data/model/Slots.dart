@@ -4,3 +4,5 @@ class Slot {
 
   Slot(this.id, this.time);
 }
+
+

@@ -199,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "secondOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "دماغك فريد، ونظام الكشف لدينا أيضًا. باستخدام أحدث التقنيات، سنحلل أعراضك ونساعد في اكتشاف المشكلات المحتملة مبكرًا. اعتبرها فحصًا افتراضيًا - سريع وبسيط وآمن."),
         "select": MessageLookupByLibrary.simpleMessage("اختيار"),
+        "selectClinic": MessageLookupByLibrary.simpleMessage("اختر عيادتك"),
         "selectDateOfBirth":
             MessageLookupByLibrary.simpleMessage("اختر تاريخ الميلاد"),
         "selectGender": MessageLookupByLibrary.simpleMessage("اختر الجنس"),
