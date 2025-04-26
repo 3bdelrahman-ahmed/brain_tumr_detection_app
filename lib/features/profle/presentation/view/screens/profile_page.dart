@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
@@ -78,8 +79,8 @@ class ProfilePage extends StatelessWidget {
             leading: CustomImageView(
               svgPath: AssetsSvg.settings.toSVG(),
             ),
-            title:
-                Text(S.of(context).settings, style: AppTextStyles.font16BlueW700),
+            title: Text(S.of(context).settings,
+                style: AppTextStyles.font16BlueW700),
             onTap: () {
               Navigator.pop(context); // Close Drawer
             },
@@ -88,9 +89,12 @@ class ProfilePage extends StatelessWidget {
           _buildSettingsRow(title: S.of(context).notificationsSettings),
           _buildSettingsRow(title: S.of(context).medicalDataManagement),
           _buildSettingsRow(title: S.of(context).supportFeedback),
+          _buildSettingsRow(
+              title: S.of(context).language,
+              onTap: () => _showLanguageBottomSheet(context)),
           CustomButton(
             text: S.of(context).logOut,
-            onTap: (){
+            onTap: () {
               AppConstants.clearLogin();
               Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
             },
@@ -130,10 +134,57 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsRow({required String title}) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
-      decoration: BoxDecoration(
+  void _showLanguageBottomSheet(BuildContext context) {
+    final cubit = context.read<AppCubit>();
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.all(20.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                S.of(context).chooseLanguage, // Add it to your l10n
+                style: AppTextStyles.font16BlueW700,
+              ),
+              SizedBox(height: 20.h),
+              ListTile(
+                title: Text('English', style: AppTextStyles.font16BlueW700),
+                trailing: AppConstants.langCode
+                    ? Icon(Icons.check, color: AppColors.buttonsAndNav)
+                    : null,
+                onTap: () {
+                  cubit.changeLanguage(true);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('العربية', style: AppTextStyles.font16BlueW700),
+                trailing: AppConstants.langCode
+                    ? null
+                    : Icon(Icons.check, color: AppColors.buttonsAndNav),
+                onTap: () {
+                  cubit.changeLanguage(false);
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSettingsRow({required String title, VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: Colors.white,
           boxShadow: [
@@ -142,21 +193,23 @@ class ProfilePage extends StatelessWidget {
                 offset: Offset(0, 2),
                 blurRadius: 6,
                 spreadRadius: 2)
-          ]),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.font16BlueW700,
-          ),
-          Icon(
-            Icons.chevron_right,
-            color: AppColors.buttonsAndNav,
-          ),
-        ],
-      ),
-    ).paddingOnly(bottom: 10.h);
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: AppTextStyles.font16BlueW700,
+            ),
+            Icon(
+              Icons.chevron_right,
+              color: AppColors.buttonsAndNav,
+            ),
+          ],
+        ),
+      ).paddingOnly(bottom: 10.h),
+    );
   }
 // Widget _buildToggleOption(String label, BuildContext context , bool isOn) {
 //   final cubit = context.watch<SettingsCubit>();

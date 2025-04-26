@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "chat": MessageLookupByLibrary.simpleMessage("Chat"),
+        "chooseLanguage":
+            MessageLookupByLibrary.simpleMessage("Choose Language"),
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "Click on a day to show available time slots"),
         "clinicLicense": MessageLookupByLibrary.simpleMessage("Clinic License"),
@@ -116,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid Phone Number"),
         "kindlyCompleteTheForm": MessageLookupByLibrary.simpleMessage(
             "Kindly complete the fields below with the relevant details of your clinic."),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "letsStart": MessageLookupByLibrary.simpleMessage("Let’s Start!"),
         "like": MessageLookupByLibrary.simpleMessage("Like"),
         "likes": MessageLookupByLibrary.simpleMessage("Likes"),
