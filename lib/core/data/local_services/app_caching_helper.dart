@@ -13,6 +13,7 @@
     static const String biometricEnabled = "biometricEnabled";
     static const String rememberMe = "rememberMe";
     static const String userRole = "userRole";
+    static const String language = "language";
 
     /// Saves a [value] with a [key] in the FlutterSecureStorage.
     static setSecuredString({required String key, required dynamic value}) async {

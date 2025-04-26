@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
+        "chooseLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "انقر على اليوم لإظهار المواعيد المتاحة"),
         "clinicLicense": MessageLookupByLibrary.simpleMessage("ترخيص العيادة"),
@@ -117,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("رقم هاتف غير صالح"),
         "kindlyCompleteTheForm": MessageLookupByLibrary.simpleMessage(
             "يرجى استكمال الحقول أدناه بالتفاصيل ذات الصلة بعيادتك."),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "letsStart": MessageLookupByLibrary.simpleMessage("لنبدأ!"),
         "like": MessageLookupByLibrary.simpleMessage("إعجاب"),
         "likes": MessageLookupByLibrary.simpleMessage("إعجابات"),

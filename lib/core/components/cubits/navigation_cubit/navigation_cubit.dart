@@ -70,10 +70,7 @@ class NavigationCubit extends Cubit<NavigationState> {
         child: ScanPage(),
       ),
       DoctorsPage(),
-      BlocProvider(
-        create: (context) => getIt<SettingsCubit>(),
-        child: ProfilePage(),
-      ),
+      ProfilePage(),
     ]);
   }
 

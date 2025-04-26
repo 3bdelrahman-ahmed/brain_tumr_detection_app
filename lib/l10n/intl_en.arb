@@ -157,5 +157,7 @@
   "selectClinic" : "Select Clinic",
   "like": "Like",
   "comment": "Comment",
-  "search": "Search"
+  "search": "Search",
+  "language" : "Language",
+  "chooseLanguage" : "Choose Language"
 }

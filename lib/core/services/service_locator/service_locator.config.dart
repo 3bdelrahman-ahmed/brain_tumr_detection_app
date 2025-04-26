@@ -24,6 +24,8 @@ import '../../../features/login/presentation/view_model/login_cubit.dart'
     as _i638;
 import '../../../features/onboarding/presentation/view_model/onboarding_cubit.dart'
     as _i775;
+import '../../../features/profle/presentation/viewmodel/settings_cubit.dart'
+    as _i970;
 import '../../../features/register/data/remote/register_remote_data_source.dart'
     as _i301;
 import '../../../features/register/data/repository/register_repository.dart'
@@ -44,6 +46,7 @@ import '../../../features/verification_code/data/repository/verify_code_reposito
     as _i487;
 import '../../../features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart'
     as _i844;
+import '../../components/cubits/app_cubit/app_cubit.dart' as _i883;
 import '../../components/cubits/location_cubit/location_cubit.dart' as _i935;
 import '../../components/cubits/navigation_cubit/navigation_cubit.dart'
     as _i284;
@@ -65,8 +68,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.AppointmentCubit>(() => _i656.AppointmentCubit());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
+    gh.factory<_i970.SettingsCubit>(() => _i970.SettingsCubit());
     gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
     gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
+    gh.factory<_i883.AppCubit>(() => _i883.AppCubit());
     gh.singleton<_i1039.ChatsCubit>(() => _i1039.ChatsCubit());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
