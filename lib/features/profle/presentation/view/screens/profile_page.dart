@@ -10,11 +10,10 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/profle/presentation/view/widgets/patient_data_widget.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
-import '../../viewmodel/settings_cubit.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -69,16 +68,25 @@ class ProfilePage extends StatelessWidget {
 
   // Drawer Widget
   Widget _buildDrawer(BuildContext context) {
+    var cubit = context.read<AppCubit>();
     return Drawer(
+      backgroundColor: AppColors.white,
       width: MediaQuery.of(context).size.width -
           MediaQuery.of(context).size.width * .2,
       child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 12.w),
         children: [
           ListTile(
             leading: CustomImageView(
               svgPath: AssetsSvg.settings.toSVG(),
-            ),
+            ).animate().rotate(
+                  begin: 0.0,
+                  end: 1.0,
+                  duration: 500.ms,
+                  curve: Curves.easeInOut,
+                ),
             title: Text(S.of(context).settings,
                 style: AppTextStyles.font16BlueW700),
             onTap: () {
@@ -90,13 +98,39 @@ class ProfilePage extends StatelessWidget {
           _buildSettingsRow(title: S.of(context).medicalDataManagement),
           _buildSettingsRow(title: S.of(context).supportFeedback),
           _buildSettingsRow(
+              subSettings: [
+                ListTile(
+                  title: Text('English', style: AppTextStyles.font16BlueW700),
+                  trailing: AppConstants.langCode
+                      ? Icon(Icons.check, color: AppColors.buttonsAndNav)
+                      : null,
+                  onTap: () {
+                    cubit.changeLanguage(true);
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text('العربية', style: AppTextStyles.font16BlueW700),
+                  trailing: AppConstants.langCode
+                      ? null
+                      : Icon(Icons.check, color: AppColors.buttonsAndNav),
+                  onTap: () {
+                    cubit.changeLanguage(false);
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
               title: S.of(context).language,
               onTap: () => _showLanguageBottomSheet(context)),
           CustomButton(
             text: S.of(context).logOut,
             onTap: () {
               AppConstants.clearLogin();
-              Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.loginScreen,
+                (_) => false,
+              );
             },
             textStyle: AppTextStyles.font16BlueW700,
             backgroundColor: Colors.white,
@@ -179,54 +213,56 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsRow({required String title, VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap,
+  Widget _buildSettingsRow({
+    required String title,
+    Function()? onTap,
+    List<Widget>? subSettings, // add optional sub-settings
+  }) {
+    return GestureDetector(
+      onTap: () {
+        if (onTap != null) {
+          onTap();
+        }
+      },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w),
+        margin: EdgeInsets.only(bottom: 10.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: Offset(0, 2),
-                blurRadius: 6,
-                spreadRadius: 2)
+              color: Colors.black.withOpacity(0.1),
+              offset: Offset(0, 2),
+              blurRadius: 6,
+              spreadRadius: 2,
+            )
           ],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: AppTextStyles.font16BlueW700,
-            ),
-            Icon(
-              Icons.chevron_right,
-              color: AppColors.buttonsAndNav,
-            ),
-          ],
+        child: ExpansionTile(
+          shape: RoundedRectangleBorder(
+            side: BorderSide.none,
+            borderRadius: BorderRadius.zero,
+          ),
+          collapsedShape: RoundedRectangleBorder(
+            side: BorderSide.none,
+            borderRadius: BorderRadius.zero,
+          ),
+          title: Text(
+            title,
+            style: AppTextStyles.font16BlueW700,
+          ),
+          trailing: Icon(
+            Icons.chevron_right,
+            color: AppColors.buttonsAndNav,
+          ),
+          children: subSettings ?? [], // show sub-settings if available
         ),
-      ).paddingOnly(bottom: 10.h),
+      ).animate().slide(
+            begin: Offset(0, 1),
+            end: Offset(0, 0),
+            duration: 500.ms,
+            curve: Curves.easeOut,
+          ),
     );
   }
-// Widget _buildToggleOption(String label, BuildContext context , bool isOn) {
-//   final cubit = context.watch<SettingsCubit>();
-//
-//   return Padding(
-//     padding: EdgeInsets.only(top: 10.h),
-//     child: Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: [
-//         Text(label, style: AppTextStyles.font16BlueW700),
-//         Switch(
-//           value: isOn,
-//           activeColor: AppColors.buttonsAndNav,
-//           onChanged: (_) {},
-//         ),
-//       ],
-//     ),
-//   );
-// }
 }
