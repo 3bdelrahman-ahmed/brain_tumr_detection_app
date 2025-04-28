@@ -11,11 +11,13 @@ import '../../../../../../core/utils/extenstions/navigation_extenstions.dart';
 import '../../../../core/data/local_services/app_caching_helper.dart';
 import '../../data/models/login_model.dart';
 import '../../data/repository/login_repository.dart';
+
 part 'login_state.dart';
 
 @injectable
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository repository;
+
   LoginCubit({required this.repository}) : super(LoginInitial());
   bool isObscure = true;
   final formKey = GlobalKey<FormState>();
@@ -106,14 +108,22 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> setLocation() async {
-    List<Placemark> placeMarks = await placemarkFromCoordinates(
-        AppConstants.user?.latitude ?? 30.033333,
-        AppConstants.user?.longitude ?? 31.233334);
-    AppConstants.location =
-        "${placeMarks.first.locality} ,${placeMarks.first.country}";
+    if (AppConstants.user!.longitude! >= 90 &&
+        AppConstants.user!.latitude! >= 90) {
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(30.033333, 31.233334);
+      AppConstants.location =
+          "${placeMarks.first.locality} ,${placeMarks.first.country}";
+    } else {
+      List<Placemark> placeMarks = await placemarkFromCoordinates(
+          AppConstants.user?.latitude ?? 30.033333,
+          AppConstants.user?.longitude ?? 31.233334);
+      AppConstants.location =
+          "${placeMarks.first.locality} ,${placeMarks.first.country}";
+    }
   }
 
-  void changePassword(){
+  void changePassword() {
     isObscure = !isObscure;
     emit(ChangePasswordState(isObscure));
   }

@@ -17,7 +17,6 @@ import '../../../../../generated/l10n.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +100,7 @@ class ProfilePage extends StatelessWidget {
               subSettings: [
                 ListTile(
                   title: Text('English', style: AppTextStyles.font16BlueW700),
-                  trailing: AppConstants.langCode
+                  trailing: cubit.isEnglish
                       ? Icon(Icons.check, color: AppColors.buttonsAndNav)
                       : null,
                   onTap: () {
@@ -111,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('العربية', style: AppTextStyles.font16BlueW700),
-                  trailing: AppConstants.langCode
+                  trailing: cubit.isEnglish
                       ? null
                       : Icon(Icons.check, color: AppColors.buttonsAndNav),
                   onTap: () {
@@ -222,6 +221,7 @@ class ProfilePage extends StatelessWidget {
       onTap: () {
         if (onTap != null) {
           onTap();
+
         }
       },
       child: Container(

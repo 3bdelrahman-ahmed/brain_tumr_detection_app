@@ -1,9 +1,11 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/location_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit/navigation_cubit.dart';
+import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view_model/chats_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
@@ -38,8 +40,7 @@ class AppRoutes {
 }
 
 class AppRouter {
-  static Route<dynamic> animateRouteBuilder(
-    Widget widget, {
+  static Route<dynamic> animateRouteBuilder(Widget widget, {
     Duration? duration,
   }) {
     return buildPageRoute(widget, duration ?? 300.ms);
@@ -47,7 +48,7 @@ class AppRouter {
 
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case AppRoutes.verificationCodeScreen:  
+      case AppRoutes.verificationCodeScreen:
         return animateRouteBuilder(BlocProvider(
           create: (context) => getIt<VerificationCodeCubit>(),
           child: VerificationCodeScreen(
@@ -71,8 +72,9 @@ class AppRouter {
         );
       case AppRoutes.chatsScreen:
         return animateRouteBuilder(
-           ChatsScreen(chat:routeSettings.arguments as ChatPreview),
-        );case AppRoutes.chatsListScreen:
+          ChatsScreen(chat: routeSettings.arguments as ChatPreview),
+        );
+      case AppRoutes.chatsListScreen:
         return animateRouteBuilder(ChatListScreen());
       case AppRoutes.onBoardingScreen:
         return animateRouteBuilder(
@@ -89,7 +91,14 @@ class AppRouter {
             ),
             duration: 300.ms);
       case AppRoutes.doctorProfileScreen:
-        return animateRouteBuilder(const DoctorsProfile(), duration: 300.ms);
+        return animateRouteBuilder(
+            BlocProvider(
+              create: (context) => getIt<ShowDoctorsCubit>(),
+              child: DoctorsProfile(
+                doctorClinicModel: routeSettings.arguments as DoctorClinicModel,
+              ),
+            ),
+            duration: 300.ms);
       case AppRoutes.registerScreen:
         return animateRouteBuilder(
             BlocProvider(

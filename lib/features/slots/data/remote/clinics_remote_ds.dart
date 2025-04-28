@@ -13,5 +13,6 @@ class ClinicsRemoteDataSource {
     final response = await AppDio().get(path: AppUrls.getDoctorClinics);
     final List<dynamic> clinicsJson = response.data;
     return clinicsJson.map((json) => Clinic.fromJson(json)).toList();
+
   }
 }

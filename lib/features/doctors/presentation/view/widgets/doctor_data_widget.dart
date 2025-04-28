@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/stars_generator.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
@@ -12,7 +13,16 @@ import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class DoctorDataWidget extends StatelessWidget {
-  const DoctorDataWidget({Key? key}) : super(key: key);
+  const DoctorDataWidget(
+      {Key? key,
+      required this.name,
+      required this.rating,
+      required this.location, required this.imageUrl})
+      : super(key: key);
+  final String name;
+  final double rating;
+  final String location;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +51,17 @@ class DoctorDataWidget extends StatelessWidget {
                 children: [
                   SizedBox(height: imageOffset), // Push text below image
                   Text(
-                    "Ali Maaloul",
+                    name,
                     style: AppTextStyles.font20GreenW700,
                   ),
-                  StarsGenerator(rating: 4.23),
+                  StarsGenerator(rating: rating),
                   10.toHeight,
                   _buildDetailsRow(AssetsSvg.locationBlue.toSVG(),
-                      S.of(context).location, "Cairo, Egypt"),
-                  _buildDetailsRow(AssetsSvg.country.toSVG(), S.of(context).country,
-                      "Kafr El Ababsa"),
-                  _buildDetailsRow(
-                      AssetsSvg.sessions.toSVG(), S.of(context).sessions, "1500"),
+                      S.of(context).location, location),
+                  _buildDetailsRow(AssetsSvg.country.toSVG(),
+                      S.of(context).country, "Egypt"),
+                  _buildDetailsRow(AssetsSvg.sessions.toSVG(),
+                      S.of(context).sessions, "1500"),
                   _buildDetailsRow(AssetsSvg.experience.toSVG(),
                       S.of(context).experience, "10 years"),
                 ],
@@ -61,16 +71,13 @@ class DoctorDataWidget extends StatelessWidget {
               top: -imageOffset, // Adjust based on screen size
               start: 0,
               end: 0,
-              child: Container(
-                height: 110.w,
-                width: 110.w,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage("assets/image/maalol.jpg"),
-                    fit: BoxFit.contain,
-                  ),
+              child: Center(
+                child: Container(
+                  height: 110.w,
+                  width: 110.w,
+                  child: CustomProfileImage(
+                    imageUrl: imageUrl,
+                  )
                 ),
               ),
             ),
