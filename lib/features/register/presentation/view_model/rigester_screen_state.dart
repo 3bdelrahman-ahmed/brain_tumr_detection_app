@@ -2,10 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-sealed class RigesterScreenState extends Equatable {
-  @override
-  List<Object?> get props => [];
-}
+sealed class RigesterScreenState {}
 
 final class RigesterScreenInitial extends RigesterScreenState {}
 
@@ -13,9 +10,6 @@ final class RigesterScreenChangeForm extends RigesterScreenState {
   final int index;
 
   RigesterScreenChangeForm({required this.index});
-
-  @override
-  List<Object?> get props => [index];
 }
 
 final class RigesterScreenUpdateScreen extends RigesterScreenState {}
@@ -36,7 +30,8 @@ final class SetDoctorLicenseState extends RigesterScreenState {
   SetDoctorLicenseState({required this.fileName});
 
   @override
-  List<Object?> get props => [fileName]; // Ensure equality checks are based on fileName
+  List<Object?> get props =>
+      [fileName]; // Ensure equality checks are based on fileName
 }
 
 final class SelectGenderState extends RigesterScreenState {

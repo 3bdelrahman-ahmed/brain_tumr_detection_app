@@ -1,6 +1,20 @@
 part of 'show_doctors_cubit.dart';
 
 @immutable
-sealed class ShowDoctorsState {}
+abstract class ShowDoctorsState {}
 
-final class ShowDoctorsInitial extends ShowDoctorsState {}
+class ShowDoctorsInitial extends ShowDoctorsState {}
+
+class ShowDoctorsLoading extends ShowDoctorsState {}
+
+class ShowDoctorsLoaded extends ShowDoctorsState {
+  final List<Reviews> reviews;
+
+  ShowDoctorsLoaded(this.reviews);
+}
+
+class ShowDoctorsError extends ShowDoctorsState {
+  final String message;
+
+  ShowDoctorsError(this.message);
+}

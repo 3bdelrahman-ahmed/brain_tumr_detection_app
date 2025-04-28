@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen>
     if (AppConstants.user?.role == 'Doctor') {
       context.read<NavigationCubit>().initializeDoctorTabs();
     } else {
+      context.read<AppCubit>().getDoctorsClinics();
       context.read<NavigationCubit>().initializePatientTabs();
     }
     currentScrollController =
