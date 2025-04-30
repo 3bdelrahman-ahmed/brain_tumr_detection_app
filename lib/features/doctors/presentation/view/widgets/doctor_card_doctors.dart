@@ -2,10 +2,12 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.d
 import 'package:brain_tumr_detection_app/core/components/widgets/stars_generator.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/strings/app_string.dart';
@@ -45,7 +47,7 @@ class DoctorCardDoctors extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 ),
                 child: CustomImageView(
-                  imagePath: AssetsPng.appointmentTest.toPng(),
+                  url: doctor.doctorProfilePicture,
                   fit: BoxFit.cover,
                   width: 120.w,
                 ),
@@ -62,12 +64,7 @@ class DoctorCardDoctors extends StatelessWidget {
                     ),
                     5.toHeight,
                     Text(
-                      S.of(context).arabic,
-                      style: AppTextStyles.font12GreenW500,
-                    ),
-                    5.toHeight,
-                    Text(
-                      doctor.address,
+                      "${S.of(context).address}${doctor.address}",
                       style: AppTextStyles.font12GreenW500,
                     ),
                     5.toHeight,
@@ -76,14 +73,13 @@ class DoctorCardDoctors extends StatelessWidget {
                     CustomButton(
                       text: S.of(context).viewProfile,
                       onTap: () {
-                        // In Future we will send the Doctor to this Screen as an Argument
                         Navigator.pushNamed(
                             context, AppRoutes.doctorProfileScreen,
                             arguments: doctor);
                       },
                       textStyle: AppTextStyles.font15WhiteW500,
                       height: 44.h,
-                      width: 130.w,
+                      width: 135.w,
                     )
                   ],
                 ),

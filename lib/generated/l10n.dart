@@ -1659,6 +1659,26 @@ class S {
       args: [],
     );
   }
+
+  /// `There are no reviews available at the moment. Patients like you can help by leaving honest feedback`
+  String get noReviews {
+    return Intl.message(
+      'There are no reviews available at the moment. Patients like you can help by leaving honest feedback',
+      name: 'noReviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `address: `
+  String get address {
+    return Intl.message(
+      'address: ',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -6,15 +6,33 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/doctor_data_widget.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/reviews_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../generated/l10n.dart';
+import '../../viewmodel/show_doctors_cubit.dart';
 import '../widgets/availabilty_canlendar.dart';
 
-class DoctorsProfile extends StatelessWidget {
+class DoctorsProfile extends StatefulWidget {
   const DoctorsProfile({super.key, required this.doctorClinicModel});
 
   final DoctorClinicModel doctorClinicModel;
+
+  @override
+  State<DoctorsProfile> createState() => _DoctorsProfileState();
+}
+
+class _DoctorsProfileState extends State<DoctorsProfile> {
+  late final ShowDoctorsCubit _cubit;
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _cubit = context.read<ShowDoctorsCubit>();
+    // initial page load:
+    _cubit.fetchReviews(doctorId: widget.doctorClinicModel.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +43,10 @@ class DoctorsProfile extends StatelessWidget {
           SliverPadding(padding: EdgeInsets.symmetric(vertical: 40.h)),
           SliverToBoxAdapter(
             child: DoctorDataWidget(
-              name: doctorClinicModel.doctorFullName,
-              location: doctorClinicModel.address,
-              rating: doctorClinicModel.averageStarRating,
-              imageUrl: doctorClinicModel.doctorProfilePicture,
+              name: widget.doctorClinicModel.doctorFullName,
+              location: widget.doctorClinicModel.address,
+              rating: widget.doctorClinicModel.averageStarRating,
+              imageUrl: widget.doctorClinicModel.doctorProfilePicture,
             ).paddingSymmetric(horizontal: 19.w),
           ),
           SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
@@ -56,7 +74,7 @@ class DoctorsProfile extends StatelessWidget {
                   ),
                   6.toHeight,
                   Text(
-                    "MBBS, MD in Neurology – University of Oxford",
+                    "MBBS, MD in Neurology – University of Cairo",
                     style: AppTextStyles.font12GreenW500,
                   )
                 ],

@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "addSlots": MessageLookupByLibrary.simpleMessage("Add Slots"),
+        "address": MessageLookupByLibrary.simpleMessage("address: "),
         "age": MessageLookupByLibrary.simpleMessage("Age: "),
         "appName": MessageLookupByLibrary.simpleMessage("NeuroTum AI"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
@@ -149,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "nextTimeYouLogin": MessageLookupByLibrary.simpleMessage(
             "Next time you login, you can use your fingerprint or face ID to access your account."),
+        "noReviews": MessageLookupByLibrary.simpleMessage(
+            "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
         "notificationsSettings":
             MessageLookupByLibrary.simpleMessage("Notifications Settings"),
         "openLocationPermission": MessageLookupByLibrary.simpleMessage(

@@ -3,7 +3,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 
 class StarsGenerator extends StatelessWidget {
-  final double rating;
+  final num rating;
 
   const StarsGenerator({super.key, required this.rating});
 

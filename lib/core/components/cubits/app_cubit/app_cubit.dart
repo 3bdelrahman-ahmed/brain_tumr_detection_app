@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../foundations/app_constants.dart';
+import '../../../data/models/doctor_clinic_model.dart';
 import '../../../data/models/get_doctor_request_model.dart';
 import '../../../data/models/get_doctor_response.dart';
 import '../../../data/repository/get_doctors_clinics_repository.dart'; // Add this import
@@ -11,14 +12,13 @@ part 'app_state.dart';
 
 @injectable
 class AppCubit extends Cubit<AppState> {
-  final GetDoctorsClinicsRepository getDoctorsClinicsRepository;
+  final GetDoctorsClinicsRepository repository;
 
-  AppCubit(this.getDoctorsClinicsRepository) : super(AppInitial()) {
+  AppCubit(this.repository) : super(AppInitial()) {
     isEnglish = AppConstants.langCode;
   }
 
   bool isEnglish = true;
-  GetDoctorResponseModel? doctorsClinicsResponse;
 
   void changeLanguage(bool lang) {
     AppConstants.setLanguage(lang);
@@ -26,27 +26,51 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeLanguage(lang));
   }
 
-  Future<void> getDoctorsClinics() async {
-    print("__________________ A PATIENT ______________");
-    emit(GetDoctorsClinicsLoading());
-    final result = await getDoctorsClinicsRepository.getDoctorsClinics(
+  List<DoctorClinicModel> doctorsList = [];
+
+  // internal paging state
+  int _pageIndex = 1;
+  final int _pageSize = 10;
+  int _totalPages = 1;
+  bool _isFetching = false;
+
+  Future<void> getDoctorsClinics({required bool reset}) async {
+    if (_isFetching) return;
+    // on reset, clear list and start from page 1
+    if (reset) {
+      _pageIndex = 1;
+      doctorsList.clear();
+    } else {
+      // if no more pages, bail out
+      if (_pageIndex >= _totalPages) return;
+      _pageIndex++;
+    }
+
+    _isFetching = true;
+    emit(GetDoctorsClinicsLoading(isPaging: !reset));
+
+    final result = await repository.getDoctorsClinics(
       GetDoctorRequestModel(
-        pageSize: 10,
-        pageIndex: 1,
+        pageIndex: _pageIndex,
+        pageSize: _pageSize,
         search: '',
         long: 31.242681,
         lat: 30.091584,
       ),
     );
+
     result.fold(
-          (error) {
-        emit(GetDoctorsClinicsError(error.toString()));
+      (err) {
+        _isFetching = false;
+        emit(GetDoctorsClinicsError(err.toString()));
       },
-          (response) {
-        doctorsClinicsResponse = response;
+      (resp) {
+        // update totalPages from response
+        _totalPages = resp.totalPages;
+        doctorsList.addAll(resp.data);
+        _isFetching = false;
         emit(GetDoctorsClinicsSuccess());
       },
     );
   }
 }
-
