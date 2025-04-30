@@ -41,61 +41,73 @@ class ReviewsListWidget extends StatelessWidget {
             child: BlocBuilder<ShowDoctorsCubit, ShowDoctorsState>(
               builder: (context, state) {
                 if (state is ShowDoctorsLoading) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(
+                      child: CircularProgressIndicator(
+                    color: AppColors.buttonsAndNav,
+                  ));
                 } else if (state is ShowDoctorsLoaded) {
-                  final reviews = state.reviews;
-                  return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: reviews.length,
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    itemBuilder: (context, index) {
-                      final review = reviews[index];
-                      return Container(
-                        width: 220.w,
-                        margin: EdgeInsets.only(right: 16.w),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(12.r),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
-                              blurRadius: 10.r,
-                              offset: Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.r),
-                          child: Column(
-                            children: [
-                              CustomProfileImage(
-                                imageUrl: reviews[index].profileImage,
-                              ),
-                              8.toHeight,
-                              Text(
-                                review.patientName,
-                                style: AppTextStyles.font12BlueW500,
-                                textAlign: TextAlign.center,
-                              ),
-                              4.toHeight,
-                              StarsGenerator(rating: review.rating),
-                              8.toHeight,
-                              Expanded(
-                                child: Text(
-                                  review.comment,
-                                  style: AppTextStyles.font12GreenW700,
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                ),
+                  final reviews = context.read<ShowDoctorsCubit>().reviews;
+                  if (reviews!.isNotEmpty) {
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: reviews.length,
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      itemBuilder: (context, index) {
+                        final review = reviews[index];
+                        return Container(
+                          width: 220.w,
+                          margin: EdgeInsets.only(right: 16.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(12.r),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.05),
+                                blurRadius: 10.r,
+                                offset: Offset(0, 5),
                               ),
                             ],
                           ),
-                        ),
-                      );
-                    },
-                  );
+                          child: Padding(
+                            padding: EdgeInsets.all(10.r),
+                            child: Column(
+                              children: [
+                                CustomProfileImage(
+                                  imageUrl: review.patient.profilePicture,
+                                ),
+                                8.toHeight,
+                                Text(
+                                  review.patient.userName,
+                                  style: AppTextStyles.font12BlueW500,
+                                  textAlign: TextAlign.center,
+                                ),
+                                4.toHeight,
+                                StarsGenerator(rating: review.stars),
+                                8.toHeight,
+                                Expanded(
+                                  child: Text(
+                                    review.comment,
+                                    style: AppTextStyles.font12GreenW700,
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: Text(
+                        S.of(context).noReviews,
+                        style: AppTextStyles.font16BlueW700,
+                      ),
+                    );
+                  }
                 } else if (state is ShowDoctorsError) {
                   return Center(child: Text(state.message));
                 } else {

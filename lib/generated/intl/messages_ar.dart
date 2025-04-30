@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "addSlots": MessageLookupByLibrary.simpleMessage("إضافة مواعيد"),
+        "address": MessageLookupByLibrary.simpleMessage("العنوان: "),
         "age": MessageLookupByLibrary.simpleMessage("العمر: "),
         "appName":
             MessageLookupByLibrary.simpleMessage("نيوروتوم الذكاء الاصطناعي"),
@@ -148,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "nextTimeYouLogin": MessageLookupByLibrary.simpleMessage(
             "في المرة القادمة التي تسجل فيها الدخول، يمكنك استخدام بصمة إصبعك أو وجهك للوصول إلى حسابك."),
+        "noReviews": MessageLookupByLibrary.simpleMessage(
+            "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
         "notificationsSettings":
             MessageLookupByLibrary.simpleMessage("إعدادات الإشعارات"),
         "openLocationPermission": MessageLookupByLibrary.simpleMessage(

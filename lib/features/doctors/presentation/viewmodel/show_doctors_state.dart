@@ -7,11 +7,7 @@ class ShowDoctorsInitial extends ShowDoctorsState {}
 
 class ShowDoctorsLoading extends ShowDoctorsState {}
 
-class ShowDoctorsLoaded extends ShowDoctorsState {
-  final List<Reviews> reviews;
-
-  ShowDoctorsLoaded(this.reviews);
-}
+class ShowDoctorsLoaded extends ShowDoctorsState {}
 
 class ShowDoctorsError extends ShowDoctorsState {
   final String message;

@@ -32,49 +32,48 @@ class _NeroTumAppState extends State<NeroTumApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<ChatsCubit>(
-          create: (_) => getIt<ChatsCubit>(),
-        ),
-        BlocProvider<AppCubit>(
-          create: (_) => getIt<AppCubit>(),
-        ),
-      ],
-      child:BlocBuilder<AppCubit, AppState>(
-        builder: (context, state) {
-          final appCubit = context.read<AppCubit>();
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            navigatorKey: NavigationExtensions.navigatorKey,
-            initialRoute: AppRoutes.splashScreen,
-            onGenerateRoute: AppRouter.onGenerateRoute,
-            theme: appTheme,
-            navigatorObservers: [routeObserver],
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en'),
-              Locale('ar'),
-            ],
-            locale: appCubit.isEnglish ? const Locale('en') : const Locale('ar'),
-            builder: (context, child) {
-              return MediaQuery(
-                data: MediaQuery.of(context).size.width > 600
-                    ? MediaQuery.of(context)
-                    .copyWith(textScaler: TextScaler.linear(0.78))
-                    : MediaQuery.of(context)
-                    .copyWith(textScaler: TextScaler.linear(0.96)),
-                child: child!,
-              );
-            },
-          );
-        },
-      )
-
-    );
+        providers: [
+          BlocProvider<ChatsCubit>(
+            create: (_) => getIt<ChatsCubit>(),
+          ),
+          BlocProvider<AppCubit>(
+            create: (_) => getIt<AppCubit>(),
+          ),
+        ],
+        child: BlocBuilder<AppCubit, AppState>(
+          builder: (context, state) {
+            final appCubit = context.read<AppCubit>();
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              navigatorKey: NavigationExtensions.navigatorKey,
+              initialRoute: AppRoutes.splashScreen,
+              onGenerateRoute: AppRouter.onGenerateRoute,
+              theme: appTheme,
+              navigatorObservers: [routeObserver],
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en'),
+                Locale('ar'),
+              ],
+              locale:
+                  appCubit.isEnglish ? const Locale('en') : const Locale('ar'),
+              builder: (context, child) {
+                return MediaQuery(
+                  data: MediaQuery.of(context).size.width > 600
+                      ? MediaQuery.of(context)
+                          .copyWith(textScaler: TextScaler.linear(0.78))
+                      : MediaQuery.of(context)
+                          .copyWith(textScaler: TextScaler.linear(0.96)),
+                  child: child!,
+                );
+              },
+            );
+          },
+        ));
   }
 }
