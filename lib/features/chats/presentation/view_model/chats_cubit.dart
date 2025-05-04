@@ -1,178 +1,231 @@
 import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/core/data/network_services/api_error_handler.dart';
+import 'package:brain_tumr_detection_app/features/chats/data/models/get_all_conversations_request.dart';
+import 'package:brain_tumr_detection_app/features/chats/data/models/send_message_request.dart';
+import 'package:brain_tumr_detection_app/features/chats/data/repository/chat_repository.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import '../../data/models/MessageModel.dart';
-import '../view/screen/chat_list_screen.dart';
+import 'package:signalr_netcore/http_connection_options.dart';
+import 'package:signalr_netcore/hub_connection.dart';
+import 'package:signalr_netcore/hub_connection_builder.dart';
+import 'package:flutter/cupertino.dart';
+import '../../../../core/data/network_services/signal_r_connection.dart';
+import '../../data/models/chat_preview.dart';
+import '../../data/models/get_all_coversation_response.dart';
+import '../../data/models/message.dart';
 
 part 'chats_state.dart';
 
 @singleton
 class ChatsCubit extends Cubit<ChatsState> {
-  ChatsCubit() : super(ChatsInitial()) {
-    updateChatPreviews();
-  }
-  final List<ChatPreview> chats = [
-    ChatPreview(chatId: "1", name: 'John Doe', message: '', time: DateTime.now(), isRead: false),
-    ChatPreview(chatId: "2", name: 'Alex Martinez', message: '', time: DateTime.now(), isRead: false),
-    ChatPreview(chatId: "3", name: 'Lisa Reynolds', message: '', time: DateTime.now(), isRead: true),
-    ChatPreview(chatId: "4", name: 'Kareem Tamer', message: '', time: DateTime.now(), isRead: false),
-    ChatPreview(chatId: "5", name: 'Sara Seyam', message: '', time: DateTime.now(), isRead: false),
-    ChatPreview(chatId: "6", name: 'Ahmed Abdelhady', message: '', time: DateTime.now(), isRead: true),
-    ChatPreview(chatId: "7", name: 'Leo Messi', message: '', time: DateTime.now(), isRead: false),
-    ChatPreview(chatId: "8", name: 'Cristiano Ronaldo', message: '', time: DateTime.now(), isRead: true),
-    ChatPreview(chatId: "9", name: 'Ali Maalol', message: '', time: DateTime.now(), isRead: true),
-    ChatPreview(chatId: "10",name: 'Mazen Mohamed', message: '', time: DateTime.now(), isRead: false),
-  ];
+  final ChatRepository _chatRepository;
+  int _currentPage = 1;
+  final int _pageSize = 10;
+  bool _hasMore = true;
+  bool _isLoading = false;
+  int? currentOpenConversationId;
+  final SignalRConnection _signalRConnection;
 
-  List<MessageModel> allMessages = [
-    MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '1',
-      senderId: "${AppConstants.user?.id}",
-      receiverId: 'user2',
-      message: 'Hey, how are you?',
-      timestamp: DateTime.now(),
-      isSentByMe: true,
-      status: MessageStatus.SENT,
-    ),
-    MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '2',
-      senderId: 'user2',
-      receiverId: 'user1',
-      message: 'Did you see the report?',
-      timestamp: DateTime.now().subtract(Duration(minutes: 4)),
-      isSentByMe: false,
-      status: MessageStatus.PENDING,
-    ),MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '7',
-      senderId: 'user2',
-      receiverId: 'user1',
-      message: 'Vamooooos',
-      timestamp: DateTime.now().subtract(Duration(minutes: 4)),
-      isSentByMe: false,
-      status: MessageStatus.PENDING,
-    ),MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '7',
-      senderId: 'user2',
-      receiverId: 'user1',
-      message: 'Vamooooos',
-      timestamp: DateTime.now().subtract(Duration(minutes: 4)),
-      isSentByMe: false,
-      status: MessageStatus.PENDING,
-    ),MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '7',
-      senderId: 'user2',
-      receiverId: 'user1',
-      message: 'Come oooon',
-      timestamp: DateTime.now().subtract(Duration(minutes: 4)),
-      isSentByMe: false,
-      status: MessageStatus.PENDING,
-    ),
-    MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '3',
-      senderId: 'user2',
-      receiverId: 'user1',
-      message: 'I’m good, thanks for asking!',
-      timestamp: DateTime.now().subtract(Duration(minutes: 3)),
-      isSentByMe: false,
-      status: MessageStatus.PENDING,
-    ),
-    MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '2',
-      senderId: "${AppConstants.user?.id}",
-      receiverId: 'user3',
-      message: 'Call me when you’re free.',
-      timestamp: DateTime.now().subtract(Duration(minutes: 2)),
-      isSentByMe: true,
-      status: MessageStatus.FAILED,
-    ),
-    MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: '1',
-      senderId: 'user1',
-      receiverId: "${AppConstants.user?.id}",
-      message: 'Will do!',
-      timestamp: DateTime.now().subtract(Duration(minutes: 1)),
-      isSentByMe: false,
-      status: MessageStatus.SENT,
-    ),
-  ];
+  ChatsCubit(this._chatRepository, this._signalRConnection)
+      : super(ChatsInitial()) {}
+
+  @override
+  Future<void> close() {
+    _signalRConnection.disposeSignalR();
+    return super.close();
+  }
 
   final TextEditingController messageController = TextEditingController();
+  List<ChatPreview> chats = [];
+  List<Message> allMessages = [];
 
-  void sendMessage(String chatId, String text) {
-    if (text.trim().isEmpty) return;
-    final newMessage = MessageModel(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      chatId: chatId,
-      senderId: 'user1',
-      receiverId: 'user2',
-      message: text,
-      timestamp: DateTime.now(),
-      isSentByMe: true,
+  Future<void> initialize({bool refresh = false}) async {
+    await loadConversations(refresh: refresh);
+    await _signalRConnection
+        .initializeSignalRConnection(_handleIncomingMessage);
+    print("Hello From SignalR");
+  }
+
+  void _handleIncomingMessage(List<dynamic>? arguments) async {
+    if (arguments == null || arguments.isEmpty) return;
+
+    try {
+      final messageData = arguments[0] as Map<String, dynamic>;
+
+      final newMessage = Message(
+        id: messageData['id'],
+        senderId: messageData['senderId'].toString(),
+        content: messageData['content'],
+        sentAt: DateTime.parse(messageData['sentAt']),
+        conversationId: messageData['conversationId'],
+      );
+
+      if (newMessage.conversationId == currentOpenConversationId) {
+        allMessages = [newMessage, ...allMessages];
+      }
+
+      final index =
+          chats.indexWhere((chat) => chat.chatId == newMessage.conversationId);
+
+      if (index != -1) {
+        final updatedChat = chats[index].copyWith(
+          message: newMessage.content,
+          time: newMessage.sentAt,
+        );
+
+        final updatedChats = List<ChatPreview>.from(chats);
+        updatedChats.removeAt(index);
+        updatedChats.insert(0, updatedChat);
+        chats = updatedChats;
+        emit(ChatsLoaded(chats));
+      } else {
+        await loadConversations(refresh: true);
+      }
+    } catch (e) {
+      print("Error parsing incoming message: $e");
+    }
+  }
+
+  Future<void> loadConversations({bool refresh = false}) async {
+    chats.clear();
+    if (refresh) {
+      _currentPage = 1;
+      _hasMore = true;
+      emit(ChatsLoading());
+    }
+    _isLoading = true;
+
+    final request = GetAllConversationsRequest(
+      pageSize: _pageSize,
+      pageIndex: _currentPage,
+    );
+    final result = await _chatRepository.getAllUserConversation(request);
+
+    result.fold(
+      (error) {
+        _isLoading = false;
+        emit(ChatsError(error.message ?? ""));
+      },
+      (response) {
+        _isLoading = false;
+        _currentPage++;
+        _hasMore = response.totalPages > _currentPage;
+
+        final newChats = response.data.map((conversation) {
+          return ChatPreview(
+            user: conversation.user,
+            chatId: conversation.id,
+            name: conversation.user.fullName,
+            message: conversation.lastMessage.content,
+            time: conversation.lastMessage.sentAt,
+          );
+        }).toList();
+
+        chats = refresh ? newChats : [...chats, ...newChats];
+        emit(ChatsLoaded(chats));
+      },
+    );
+  }
+
+  Future<void> getConversationMessages(int conversationId) async {
+    currentOpenConversationId = conversationId;
+    emit(ChatsLoading());
+
+    final request = GetAllConversationsRequest(
+      pageIndex: 1,
+      pageSize: 20,
+    );
+
+    final result = await _chatRepository.getMessagesOfConversation(
+        request, conversationId);
+
+    result.fold(
+      (error) {
+        emit(ChatsError(error.message ?? "Failed to load messages"));
+      },
+      (response) {
+        allMessages = response.data.map((msg) {
+          return Message(
+            id: msg.id,
+            senderId: msg.senderId.toString(),
+            content: msg.content,
+            sentAt: msg.sentAt,
+            conversationId: msg.conversationId,
+          );
+        }).toList();
+        emit(MessagesUpdated());
+      },
+    );
+  }
+
+  Future<void> sendMessage(SendMessageRequest request) async {
+    emit(SendingMessage());
+
+    // Create a temporary pending message
+    final tempMessage = Message(
+      id: -1,
+      senderId: AppConstants.user!.id.toString(),
+      content: request.content,
+      conversationId: currentOpenConversationId!,
+      sentAt: DateTime.now(),
       status: MessageStatus.PENDING,
     );
-    allMessages.add(newMessage);
+
+    // Insert the pending message
+    allMessages = [tempMessage, ...allMessages];
     emit(MessagesUpdated());
-    Future.delayed(const Duration(seconds: 2),(){
-      final success = true;
-      final index = allMessages.indexWhere((msg) => msg.id == newMessage.id);
-      if (index != -1){
-        allMessages[index] = newMessage.copyWith(
-          status: success ? MessageStatus.SENT : MessageStatus.FAILED,
-        );
-        updateChatPreviewForChat(chatId);
-        emit(MessagesUpdated());
-      }
-    });
+
     messageController.clear();
-  }
-  void updateChatPreviews() {
-    for (int i = 0; i < chats.length; i++) {
-      final chat = chats[i];
-      final messagesForChat = allMessages.where((msg) => msg.chatId == chat.chatId).toList();
-      if (messagesForChat.isNotEmpty) {
-        messagesForChat.sort((a, b) => b.timestamp.compareTo(a.timestamp));
-        final lastMessage = messagesForChat.first;
-        chats[i] = chat.copyWith(
-          message: lastMessage.message,
-        );
-      }
-    }
 
-    emit(MessagesUpdated());
-  }
+    final response = await _chatRepository.sendMessage(request);
 
-  void updateChatPreviewForChat(String chatId) {
-    final index = chats.indexWhere((chat) => chat.chatId == chatId);
-    if (index != -1) {
-      final messagesForChat = allMessages.where((msg) => msg.chatId == chatId).toList();
-      if (messagesForChat.isNotEmpty) {
-        messagesForChat.sort((a, b) => b.timestamp.compareTo(a.timestamp));
-        final lastMessage = messagesForChat.first;
-        final updatedChat = chats[index].copyWith(
-          message: lastMessage.message,
-          time: lastMessage.timestamp,
-        );
-        // Remove the old position
-        chats.removeAt(index);
-        // Insert updated chat at the top
-        chats.insert(0, updatedChat);
+    response.fold(
+      (l) {
+        // Replace pending message with failed version
+        allMessages = allMessages.map((msg) {
+          if (msg.id == tempMessage.id && msg.status == MessageStatus.PENDING) {
+            return msg.copyWith(status: MessageStatus.FAILED);
+          }
+          return msg;
+        }).toList();
+
         emit(MessagesUpdated());
-      }
-    }
+        emit(ChatsError(l.message ?? "Failed to send message"));
+      },
+      (messageResponse) {
+        // Replace pending message with actual one from backend
+        allMessages = allMessages.map((msg) {
+          if (msg.id == tempMessage.id && msg.status == MessageStatus.PENDING) {
+            return Message(
+              id: messageResponse.id,
+              senderId: messageResponse.senderId.toString(),
+              content: messageResponse.content,
+              sentAt: messageResponse.sentAt,
+              conversationId: messageResponse.conversationId,
+              status: MessageStatus.SENT,
+            );
+          }
+          return msg;
+        }).toList();
+
+        emit(MessagesUpdated());
+
+        // Update chats preview
+        final index =
+            chats.indexWhere((c) => c.chatId == currentOpenConversationId);
+        if (index != -1) {
+          final updatedChat = chats[index].copyWith(
+            message: request.content,
+            time: DateTime.now(),
+          );
+          final updatedChats = List<ChatPreview>.from(chats);
+          updatedChats.removeAt(index);
+          updatedChats.insert(0, updatedChat);
+          chats = updatedChats;
+        }
+
+        emit(ChatsLoaded(chats));
+      },
+    );
   }
-  void openChat(String chatId) {
-    final index = chats.indexWhere((chat) => chat.chatId == chatId);
-    if (index != -1) {
-      chats[index] = chats[index].copyWith(isRead: true);
-      emit(MessagesUpdated()); // better to use same emit for UI to update cleanly
-    }
-  }}
+}

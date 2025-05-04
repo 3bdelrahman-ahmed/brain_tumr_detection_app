@@ -119,12 +119,13 @@ class AppConstants {
     }
   }
 
-  static Future getToken() async {
-    return await AppCacheHelper.getSecuredString(
+  static Future<String?> getToken() async {
+    final token = await AppCacheHelper.getSecuredString(
       key: AppCacheHelper.tokenKey,
     );
+    accessToken = token ?? ''; // Update the static accessToken
+    return token;
   }
-
   static getBiometricToken() async {
     return await AppCacheHelper.getSecuredString(
       key: AppCacheHelper.biometricTokenKey,

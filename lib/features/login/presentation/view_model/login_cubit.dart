@@ -4,11 +4,13 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_ext
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
 import '../../../../../../core/utils/extenstions/navigation_extenstions.dart';
 import '../../../../core/data/local_services/app_caching_helper.dart';
+import '../../../chats/presentation/view_model/chats_cubit.dart';
 import '../../data/models/login_model.dart';
 import '../../data/repository/login_repository.dart';
 
@@ -96,7 +98,6 @@ class LoginCubit extends Cubit<LoginState> {
       if (authenticated) {
         await AppConstants.setToken(userToken);
         await AppConstants.setUser(userDataJson);
-
         Navigator.pushNamedAndRemoveUntil(
             context, AppRoutes.homeScreen, (_) => false);
         emit(LoginSuccessState());
@@ -108,16 +109,23 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> setLocation() async {
-    if (AppConstants.user!.longitude! >= 90 &&
-        AppConstants.user!.latitude! >= 90) {
+    final latitude = AppConstants.user?.latitude;
+    final longitude = AppConstants.user?.longitude;
+
+    if (latitude == null || longitude == null) {
+      // Default coordinates (e.g. Cairo, Egypt)
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(30.033333, 31.233334);
+      AppConstants.location =
+          "${placeMarks.first.locality} ,${placeMarks.first.country}";
+    } else if (longitude >= 90 && latitude >= 90) {
       List<Placemark> placeMarks =
           await placemarkFromCoordinates(30.033333, 31.233334);
       AppConstants.location =
           "${placeMarks.first.locality} ,${placeMarks.first.country}";
     } else {
-      List<Placemark> placeMarks = await placemarkFromCoordinates(
-          AppConstants.user?.latitude ?? 30.033333,
-          AppConstants.user?.longitude ?? 31.233334);
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(latitude, longitude);
       AppConstants.location =
           "${placeMarks.first.locality} ,${placeMarks.first.country}";
     }

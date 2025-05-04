@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
+import 'package:brain_tumr_detection_app/core/data/network_services/signal_r_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ import '../../../../core/components/cubits/navigation_cubit/navigation_cubit.dar
 import '../../../../core/components/widgets/custom_profile_image.dart';
 import '../../../../core/utils/assets/assets_svg.dart';
 import '../../../../core/utils/responsive_helper.dart';
+import '../../../chats/presentation/view_model/chats_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,12 +28,14 @@ class _HomeScreenState extends State<HomeScreen>
   late ScrollController currentScrollController;
   bool isScrolling = false;
   late AnimationController _animationController;
+  late SignalRConnection signalR;
   late Animation<double> _animation;
   Timer? _scrollStopTimer;
 
   @override
   void initState() {
     super.initState();
+    context.read<ChatsCubit>().initialize(refresh: true);
     if (AppConstants.user?.role == 'Doctor') {
       context.read<NavigationCubit>().initializeDoctorTabs();
     } else {
