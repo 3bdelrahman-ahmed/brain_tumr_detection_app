@@ -1,25 +1,41 @@
 import 'package:bottom_picker/bottom_picker.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_drop_down_menu.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/posts_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
-import 'package:brain_tumr_detection_app/features/slots/data/model/Slots.dart';
-import 'package:brain_tumr_detection_app/features/slots/presentation/view/widget/days_slots.dart';
-import 'package:brain_tumr_detection_app/features/slots/presentation/view/widget/date_range_selector.dart';
 import 'package:brain_tumr_detection_app/features/slots/presentation/view/widget/slot_card.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../data/model/clinic.dart';
 import '../../view_model/slots_cubit.dart';
 
-class SlotsScreen extends StatelessWidget {
+class SlotsScreen extends StatefulWidget {
   const SlotsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SlotsScreen> createState() => _SlotsScreenState();
+}
+
+class _SlotsScreenState extends State<SlotsScreen> {
+  @override
+  void initState() {
+    fetchClinicData();
+    super.initState();
+  }
+
+  fetchClinicData() async {
+    await context.read<SlotsCubit>().loadCachedClinics();
+    context.read<SlotsCubit>().getClinics();
+    context.read<SlotsCubit>().getClinicsSlots();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,96 +64,170 @@ class SlotsScreen extends StatelessWidget {
         builder: (context, state) {
           final cubit = context.watch<SlotsCubit>();
           return CustomScrollView(
+            controller: cubit.scrollController,
             slivers: [
               CustomWelcomeAppBar(),
               SliverToBoxAdapter(
-                child: state is SlotsLoading
-                    ? Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.h),
-                    child: CircularProgressIndicator(
-                      color: AppColors.buttonsAndNav,
-                      strokeWidth: 2.5,
-                    ),
-                  ),
-                )
-                    : Container(
-                  margin:
-                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.background,
-                    borderRadius: BorderRadius.circular(16.r),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 2,
-                        blurRadius: 6,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                    border: Border.all(
-                      color: AppColors.buttonsAndNav.withOpacity(0.3),
-                      width: 1.2,
-                    ),
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<Clinic>(
-                      value: cubit.selectedClinic,
-                      hint: Text(
-                        S.of(context).selectClinic,
-                        style: AppTextStyles.font14BlueW500,
-                      ),
-                      icon: Icon(Icons.keyboard_arrow_down_rounded,
-                          color: AppColors.buttonsAndNav),
-                      isExpanded: true,
-                      dropdownColor: Colors.white,
-                      borderRadius: BorderRadius.circular(12.r),
-                      style: AppTextStyles.font15BlackW700,
-                      items: cubit.clinics.map((clinic) {
-                        return DropdownMenuItem(
-                          value: clinic,
-                          child: Text(
-                            clinic.address,
-                            style: AppTextStyles.font16BlueW700,
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (value) {
-                        cubit.setSelectedClinic(value);
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(child: DateRangeSelector()),
-              SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
-              SliverToBoxAdapter(child: DaySelector()),
-              SliverPadding(padding: EdgeInsets.symmetric(vertical: 7.h)),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final slot = cubit.slots[index];
-                    return SlotCard(
-                      slot: slot,
-                      onRemove: () {
-                        cubit.removeSlot(index);
-                      },
+                child: CustomDropDownMenu(
+                  items: cubit.clinics.map((e) {
+                    return e.address;
+                  }).toList(),
+                  hintText: S.of(context).selectClinic,
+                  selectedValue: cubit.selectedClinic?.address ??
+                      S.of(context).selectClinic,
+                  onItemSelected: (v) {
+                    final selectedClinic = cubit.clinics.firstWhere(
+                      (clinic) => clinic.address == v,
                     );
+                    cubit.setSelectedClinic(selectedClinic);
+                    cubit.getClinicsSlots();
                   },
-                  childCount: cubit.slots.length,
-                ),
+                ).paddingSymmetric(horizontal: 20.w, vertical: 10.h),
               ),
               SliverToBoxAdapter(
-                child: CustomButton(
-                  text: S.of(context).addSlots,
-                  onTap: () {
-                    showBottomSheet(context, cubit);
+                child: CustomDropDownMenu(
+                    items: AppConstants.days
+                        .map((dayMap) => dayMap.values.first)
+                        .toList(),
+                    hintText: S.of(context).chooseDay,
+                    selectedValue:
+                        AppConstants.days[cubit.selectedDayIndex].values.first,
+                    onItemSelected: (v) {
+                      final selectedDay = AppConstants.days.firstWhere(
+                        (dayMap) => dayMap.values.first == v,
+                      );
+                      cubit.setSelectedDayIndex(selectedDay.keys.first);
+                      cubit.getClinicsSlots();
+                    }).paddingSymmetric(horizontal: 20.w),
+              ),
+              // SliverToBoxAdapter(child: DateRangeSelector()),
+              // SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
+              // SliverToBoxAdapter(child: DaySelector()),
+              // SliverPadding(padding: EdgeInsets.symmetric(vertical: 7.h)),
+
+              SliverToBoxAdapter(
+                child: BlocBuilder<SlotsCubit, SlotsState>(
+                  builder: (context, state) {
+                    final hasChanges = state is SlotsChangedState
+                        ? state.hasChanges
+                        : cubit.hasChanges;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: CustomButton(
+                            backgroundColor: hasChanges
+                                ? AppColors.typography
+                                : AppColors.typographyLowOpacity,
+                            raduis: 8.r,
+                            text: S.of(context).save,
+                            onTap: () {
+                              // if (cubit.selectedClinic == null) {
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //     SnackBar(
+                              //       content: Text(
+                              //         S.of(context).selectClinic,
+                              //         style: AppTextStyles.font16BlueW700,
+                              //       ),
+                              //       backgroundColor: AppColors.background,
+                              //     ),
+                              //   );
+                              //   return;
+                              // }
+                              // showBottomSheet(context, cubit);
+                            },
+                          ),
+                        ),
+                        64.toWidth,
+                        Expanded(
+                          child: CustomButton(
+                            raduis: 8.r,
+                            text: S.of(context).addSlots,
+                            onTap: () {
+                              if (cubit.selectedClinic == null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      S.of(context).selectClinic,
+                                      style: AppTextStyles.font16BlueW700,
+                                    ),
+                                    backgroundColor: AppColors.background,
+                                  ),
+                                );
+                                return;
+                              }
+                              cubit.showTimePicker(context).then((v) {
+                                if (v != null) {
+                                  cubit.addSlot(v);
+                                }
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    );
                   },
                 ).paddingSymmetric(horizontal: 20.w, vertical: 20.h),
               ),
-              SliverPadding(padding: EdgeInsets.only(bottom: 80.h)),
+              BlocBuilder<SlotsCubit, SlotsState>(
+                builder: (context, state) {
+                  if (cubit.availableSlots.isEmpty && cubit.isLoadingSlots) {
+                    return SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          return CustomAppShimmer(
+                            height: 115.h,
+                            borderRaduis: 8.r,
+                          ).paddingSymmetric(vertical: 12.h, horizontal: 20.w);
+                        },
+                        childCount: 8,
+                      ),
+                    );
+                  } else if (cubit.availableSlots.isNotEmpty) {
+                    return SliverAnimatedList(
+                      key: cubit.listKey,
+                      initialItemCount: cubit.availableSlots.length,
+                      itemBuilder: (context, index, animation) {
+                        final slot = cubit.availableSlots[index];
+                        return SizeTransition(
+                          sizeFactor: animation,
+                          child: SlotCard(
+                            slot: slot,
+                            onRemove: () {
+                              cubit.removeSlot(index);
+                            },
+                          )
+                              .animate()
+                              .fadeIn(
+                                duration: 200.ms,
+                                curve: Curves.easeIn,
+                              )
+                              .paddingOnly(top: 8.h, bottom: 8.h),
+                        );
+                      },
+                    );
+                  } else {
+                    return SliverToBoxAdapter(
+                      child: Column(
+                        children: [
+                          LottieBuilder.asset(
+                            "assets/lotties/calendar.json",
+                            height: 200.w,
+                            width: 200.w,
+                            fit: BoxFit.contain,
+                          ),
+                          Text(
+                            S.of(context).noSlotsAvailable,
+                            style: AppTextStyles.font16GreenW400
+                                .copyWith(color: AppColors.buttonsAndNav),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                },
+              ),
+              SliverPadding(padding: EdgeInsets.only(bottom: 100.h)),
             ],
           );
         },
@@ -145,8 +235,10 @@ class SlotsScreen extends StatelessWidget {
     );
   }
 }
+
 void showBottomSheet(BuildContext context, SlotsCubit cubit) {
   BottomPicker.time(
+    titlePadding: EdgeInsets.only(top: 12.h),
     pickerTitle:
         Text(S.of(context).setYourDate, style: AppTextStyles.font16BlueW700),
     buttonContent: Center(
@@ -154,15 +246,16 @@ void showBottomSheet(BuildContext context, SlotsCubit cubit) {
       S.of(context).select,
       style: AppTextStyles.font15WhiteW500,
     )),
-    onSubmit: (index){
-      print(index);
-      cubit.addSlot(index);
+    onSubmit: (date) {
+      print("date: ${DateFormat('hh:mm').format(date).toString()}");
+      cubit.addSlot(date);
     },
     buttonSingleColor: AppColors.buttonsAndNav,
     onCloseButtonPressed: () {
       print('Picker closed');
     },
     use24hFormat: true,
+    buttonPadding: 8.h,
     initialTime: Time(
       hours: 12,
       minutes: 0,

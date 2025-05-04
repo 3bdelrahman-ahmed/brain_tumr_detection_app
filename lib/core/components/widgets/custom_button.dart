@@ -47,10 +47,13 @@ class CustomButton extends StatelessWidget {
                       circularInticatorColor ?? AppColors.background),
                 ),
               )
-            : Text(
-                text,
-                textAlign: TextAlign.center,
-                style: textStyle ?? AppTextStyles.font20WhiteW500,
+            : FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: textStyle ?? AppTextStyles.font20WhiteW500,
+                ),
               ),
       ),
     );

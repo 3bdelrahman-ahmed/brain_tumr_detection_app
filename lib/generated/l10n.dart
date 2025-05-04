@@ -60,6 +60,15 @@ class S {
     );
   }
 
+  String get noSlotsAvailable {
+    return Intl.message(
+      'No Slots Available',
+      name: 'noSlotsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Kindly complete the fields below with the relevant details of your clinic.`
   String get kindlyCompleteTheForm {
     return Intl.message(
@@ -290,6 +299,8 @@ class S {
     );
   }
 
+
+
   /// `Resend code`
   String get resendCodeAgain {
     return Intl.message(
@@ -305,6 +316,78 @@ class S {
     return Intl.message(
       'tap to select your gender',
       name: 'tapToSelectYourGender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get chooseDay{
+    return Intl.message(
+      'Choose Day',
+      name: 'chooseDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get sunday{
+    return Intl.message(
+      'Sunday',
+      name: 'sunday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get monday{
+    return Intl.message(
+      'Monday',
+      name: 'monday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get tuesday{
+    return Intl.message(
+      'Tuesday',
+      name: 'tuesday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get wednesday{
+    return Intl.message(
+      'Wednesday',
+      name: 'wednesday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get thursday{
+    return Intl.message(
+      'Thursday',
+      name: 'thursday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get friday{
+    return Intl.message(
+      'Friday',
+      name: 'friday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get saturday{
+    return Intl.message(
+      'Saturday',
+      name: 'saturday',
       desc: '',
       args: [],
     );
