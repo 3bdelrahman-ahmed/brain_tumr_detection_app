@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/core/data/local_services/hive_caching_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await HiveCachingHelper.initHive();
   await AppConstants.getLanguage(); // Detect Language BEFORE runApp
   startService();
   Bloc.observer = BlocObservers();

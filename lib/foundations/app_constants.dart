@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/data/local_services/app_caching_helper.dart';
 import '../features/login/data/models/login_model.dart';
+import '../generated/l10n.dart';
 
 class AppConstants {
   AppConstants._();
@@ -13,6 +15,8 @@ class AppConstants {
     _instance ??= AppConstants._();
     return _instance!;
   }
+
+  static  BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
 
   static bool onBoarding = false;
   static String accessToken = '';
@@ -140,4 +144,28 @@ class AppConstants {
     location = null;
     await AppCacheHelper.clearAllSecuredData();
   }
+
+  static  List<Map<int,String>> days = [
+   {
+      0: S.of(AppConstants.context).sunday,
+    },
+    {
+      1: S.of(AppConstants.context).monday,
+    },
+    {
+      2: S.of(AppConstants.context).tuesday,
+    },
+    {
+      3: S.of(AppConstants.context).wednesday,
+    },
+    {
+      4: S.of(AppConstants.context).thursday,
+    },
+    {
+      5: S.of(AppConstants.context).friday,
+    },
+    {
+      6: S.of(AppConstants.context).saturday,
+    }
+  ]; 
 }

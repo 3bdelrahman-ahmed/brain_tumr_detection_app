@@ -72,7 +72,12 @@ dependencies:
   google_maps_flutter: ^2.10.1
   geocoding: ^3.0.0
 
-  # toast
+  #local storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.5
+
+  # toast 
   fluttertoast: ^8.2.12
 
   # animated switch toggles
@@ -107,7 +112,7 @@ dev_dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
+  hive_generator: ^2.0.1
   injectable_generator: ^2.6.0
   build_runner: ^2.4.0
   flutter_launcher_icons: ^0.14.3
