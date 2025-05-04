@@ -16,6 +16,7 @@ import 'package:brain_tumr_detection_app/features/verification_code/presentation
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/chats/data/models/chat_preview.dart';
 import '../../features/login/presentation/view/screens/login_screen.dart';
 import '../../features/login/presentation/view_model/login_cubit.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
