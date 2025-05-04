@@ -18,6 +18,7 @@ class AssetsSvg {
   static const String date = "date";
   static const String gender = "gender";  
   static const String edit = "edit";
+  static const String calendar = "calendar";
   static const String settings = "settings";
   static const String person = "person";
   static const String uploadImage = "uploadImage";

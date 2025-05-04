@@ -1,4 +1,3 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/posts_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

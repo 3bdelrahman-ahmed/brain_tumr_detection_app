@@ -6,7 +6,6 @@ import '../../../generated/l10n.dart';
 import '../../config/app_routing.dart';
 import 'custom_image_view.dart';
 import '../../utils/assets/assets_png.dart';
-import '../../utils/strings/app_string.dart';
 import '../../utils/theme/text_styles/app_text_styles.dart';
 
 class CustomWelcomeAppBar extends StatelessWidget {

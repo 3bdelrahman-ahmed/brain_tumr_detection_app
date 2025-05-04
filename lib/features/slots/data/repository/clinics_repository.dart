@@ -3,18 +3,28 @@ import 'package:brain_tumr_detection_app/features/slots/data/remote/clinics_remo
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../model/clinic.dart';
+import '../../../../core/data/local_services/cached_models/clinics_model.dart';
+import '../model/available_slots.dart';
 
 @singleton
 class ClinicsRepository {
   ClinicsRemoteDataSource clinicsRemoteDataSource;
   ClinicsRepository({required this.clinicsRemoteDataSource});
-  Future<Either<ApiErrorModel, List<Clinic>>>getDoctorClinics() async {
+  Future<Either<ApiErrorModel, List<Clinic>>> getDoctorClinics() async {
     try {
       final response = await clinicsRemoteDataSource.getDoctorClinics();
       return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
     }
-    on Exception catch(e){
+  }
+
+  Future<Either<ApiErrorModel, List<AvailableSlotsModel>>> getAvailabelSlots(
+      AvailableSlotsRequestModel query) async {
+    try {
+      final response = await clinicsRemoteDataSource.getAvailableSlots(query);
+      return Right(response);
+    } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));
     }
   }
