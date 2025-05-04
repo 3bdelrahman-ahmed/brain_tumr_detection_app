@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
+        "chooseDay": MessageLookupByLibrary.simpleMessage("اختر اليوم"),
         "chooseLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "انقر على اليوم لإظهار المواعيد المتاحة"),
@@ -105,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نتائج تشخيص فورية"),
         "fourthOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "لقد وصلت نتائجك! 🚀 لا تقلق، سنشرحها لك ببساطة. بينما هذا ليس تشخيصًا نهائيًا، فهو طريقة رائعة للحصول على رؤى وفهم ما يحدث. مستعد للبدء؟"),
+        "friday": MessageLookupByLibrary.simpleMessage("الجمعة"),
         "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "fullNameMustContainOneSpace": MessageLookupByLibrary.simpleMessage(
             "يجب أن يحتوي على أحرف ومسافة واحدة بين الاسم الأول والاسم الأخير"),
@@ -137,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إدارة البيانات الطبية"),
         "medicalHistory": MessageLookupByLibrary.simpleMessage("السجل الطبي "),
         "messages": MessageLookupByLibrary.simpleMessage("الرسائل"),
+        "monday": MessageLookupByLibrary.simpleMessage("الإثنين"),
         "mriFileUploaded": MessageLookupByLibrary.simpleMessage(
             "تم رفع ملف الرنين المغناطيسي بنجاح!"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم: "),
@@ -151,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "في المرة القادمة التي تسجل فيها الدخول، يمكنك استخدام بصمة إصبعك أو وجهك للوصول إلى حسابك."),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
+        "noSlotsAvailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد مواعيد متاحة"),
         "notificationsSettings":
             MessageLookupByLibrary.simpleMessage("إعدادات الإشعارات"),
         "openLocationPermission": MessageLookupByLibrary.simpleMessage(
@@ -189,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "result": MessageLookupByLibrary.simpleMessage("النتيجة"),
         "returnPage": MessageLookupByLibrary.simpleMessage("عودة"),
         "reviews": MessageLookupByLibrary.simpleMessage("التقييمات"),
+        "saturday": MessageLookupByLibrary.simpleMessage("السبت"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "savedPosts":
             MessageLookupByLibrary.simpleMessage("المنشورات المحفوظة"),
@@ -222,6 +228,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
         "submitted": MessageLookupByLibrary.simpleMessage("تم الإرسال: "),
         "sucessOpertation": MessageLookupByLibrary.simpleMessage("عملية ناجحة"),
+        "sunday": MessageLookupByLibrary.simpleMessage("الأحد"),
         "supportFeedback":
             MessageLookupByLibrary.simpleMessage("الدعم والملاحظات"),
         "supportedFiles":
@@ -236,9 +243,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ابحث عن الطبيب المناسب"),
         "thirdOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "هل تحتاج إلى رعاية متخصصة؟ سنوصلك بأفضل الأطباء بالقرب منك بناءً على موقعك. لا مزيد من البحث المتعب أو التوتر - فقط محترفون موثوقون لمساعدتك في الخطوة التالية."),
+        "thursday": MessageLookupByLibrary.simpleMessage("الخميس"),
         "title": MessageLookupByLibrary.simpleMessage("العنوان"),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "لمساعدتك في العثور على أطباء بالقرب منك وتقديم التوصيات، نحتاج إلى معرفة موقعك."),
+        "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
         "upComing": MessageLookupByLibrary.simpleMessage("قادمة"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("قم برفع ملفك هنا"),
@@ -253,12 +262,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "viewProfile": MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "viewReport": MessageLookupByLibrary.simpleMessage("عرض التقرير"),
         "viewed": MessageLookupByLibrary.simpleMessage("تمت المشاهدة"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("الأربعاء"),
         "welcomeAbroadSentence": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك! دعنا نجهزك حتى نتمكن من مساعدتك في رحلتك نحو صحة الدماغ."),
         "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك،"),
         "whatIsHappening":
             MessageLookupByLibrary.simpleMessage("ما الذي يحدث؟"),
         "writeAMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة..."),
+        "youDontHaveChatsYet":
+            MessageLookupByLibrary.simpleMessage("لا يوجد لديك محادثات"),
         "youWillRecieveNotificationSoon": MessageLookupByLibrary.simpleMessage(
             "سوف تتلقى إشعارًا عندما يكون تقريرك جاهزًا.\nشكرًا لصبرك."),
         "yourFileIsBeingUploaded":

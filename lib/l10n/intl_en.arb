@@ -168,5 +168,8 @@
   "language" : "Language",
   "chooseLanguage" : "Choose Language",
   "noReviews" : "There are no reviews available at the moment. Patients like you can help by leaving honest feedback",
-  "address": "address: "
+  "address": "address: ",
+  "chooseDay": "Choose day",
+  "noSlotsAvailable": "No slots available",
+  "youDontHaveChatsYet" : "You dont have chats yet"
 }

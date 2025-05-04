@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "chat": MessageLookupByLibrary.simpleMessage("Chat"),
+        "chooseDay": MessageLookupByLibrary.simpleMessage("Choose day"),
         "chooseLanguage":
             MessageLookupByLibrary.simpleMessage("Choose Language"),
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
@@ -106,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Instant Diagnosis Results"),
         "fourthOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "Your results are in! 🚀 Don\'t worry, we\'ll break it down simply for you. While this isn\'t a final diagnosis, it\'s a great way to get insights and understand what\'s happening. Ready to dive in?"),
+        "friday": MessageLookupByLibrary.simpleMessage("Friday"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "fullNameMustContainOneSpace": MessageLookupByLibrary.simpleMessage(
             " must contain letters and exactly one space between first and last name"),
@@ -138,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "medicalHistory":
             MessageLookupByLibrary.simpleMessage("Medical History "),
         "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+        "monday": MessageLookupByLibrary.simpleMessage("Monday"),
         "mriFileUploaded":
             MessageLookupByLibrary.simpleMessage("MRI Uploaded Successfully!"),
         "name": MessageLookupByLibrary.simpleMessage("Name: "),
@@ -152,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Next time you login, you can use your fingerprint or face ID to access your account."),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
+        "noSlotsAvailable":
+            MessageLookupByLibrary.simpleMessage("No slots available"),
         "notificationsSettings":
             MessageLookupByLibrary.simpleMessage("Notifications Settings"),
         "openLocationPermission": MessageLookupByLibrary.simpleMessage(
@@ -189,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "result": MessageLookupByLibrary.simpleMessage("Result"),
         "returnPage": MessageLookupByLibrary.simpleMessage("Return"),
         "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
+        "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "savedPosts": MessageLookupByLibrary.simpleMessage("Saved Posts"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -224,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submitted": MessageLookupByLibrary.simpleMessage("Submitted: "),
         "sucessOpertation":
             MessageLookupByLibrary.simpleMessage("Success Operation"),
+        "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "supportFeedback":
             MessageLookupByLibrary.simpleMessage("Support & Feedback"),
         "supportedFiles":
@@ -238,9 +245,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Find the Right Doctor"),
         "thirdOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "Need expert care? We\'ll connect you with the best doctors near you based on your location. No endless searching or stress—just trusted professionals who can help you take the next step."),
+        "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "To help you find doctors near you and provide recommendations, we need to know your location."),
+        "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "upComing": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("Upload your File here"),
@@ -255,6 +264,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "viewProfile": MessageLookupByLibrary.simpleMessage("View Profile"),
         "viewReport": MessageLookupByLibrary.simpleMessage("View Report"),
         "viewed": MessageLookupByLibrary.simpleMessage("Viewed"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "welcomeAbroadSentence": MessageLookupByLibrary.simpleMessage(
             "Welcome aboard! Let’s get you set up so we can start helping you with your brain health journey."),
         "welcomeBack": MessageLookupByLibrary.simpleMessage("welcome back,"),
@@ -262,6 +272,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("What is happening?"),
         "writeAMessage":
             MessageLookupByLibrary.simpleMessage("Write a message..."),
+        "youDontHaveChatsYet":
+            MessageLookupByLibrary.simpleMessage("You dont have chats yet"),
         "youWillRecieveNotificationSoon": MessageLookupByLibrary.simpleMessage(
             "You will receive a notification once your report is ready.\nThank you for your patience."),
         "yourFileIsBeingUploaded":

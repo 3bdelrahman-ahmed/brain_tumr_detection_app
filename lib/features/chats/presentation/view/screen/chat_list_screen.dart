@@ -44,7 +44,7 @@ class ChatListScreen extends StatelessWidget {
                     animate: true,
                   ),
                   Text(
-                    "You dont have chats yet",
+                    S.of(context).youDontHaveChatsYet,
                     style: AppTextStyles.font16BlueW700,
                   )
                 ],

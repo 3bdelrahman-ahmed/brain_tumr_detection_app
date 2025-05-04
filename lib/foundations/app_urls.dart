@@ -9,11 +9,9 @@ class AppUrls {
   static const String verifyCode = "Auth/verifyEmail";
 
   //Clinic
+  static const String getClinicSlots  = "Clinic/doctor";
   static const String getDoctorClinics = "Clinic/doctor";
   static const String getAllDoctorsClinics = "Clinic";
-
-  //Review
-  static const String getClinicSlots = "Clinic/doctor";
   static const String getDoctorReview = "Review/";
 
   //Chat
