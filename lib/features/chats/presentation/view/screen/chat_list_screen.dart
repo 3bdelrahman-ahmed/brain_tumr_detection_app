@@ -1,9 +1,11 @@
+import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view_model/chats_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import '../../../../../core/components/widgets/custom_app_shimmer.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../widgets/chat_tile.dart';
@@ -29,7 +31,15 @@ class ChatListScreen extends StatelessWidget {
       body: BlocBuilder<ChatsCubit, ChatsState>(
         builder: (context, state) {
           if (state is ChatsLoading) {
-            return Center(child: CircularProgressIndicator());
+            return Column(
+              children: [
+                _chatShimmer(),
+                10.toHeight,
+                _chatShimmer(),
+                10.toHeight,
+                _chatShimmer()
+              ],
+            );
           } else if (cubit.chats.isEmpty) {
             return Center(
               child: Column(
@@ -62,4 +72,39 @@ class ChatListScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _chatShimmer(){
+ return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      CustomAppShimmer(
+        child: CircleAvatar(
+          radius: 20.r,
+        ),
+      ),
+      10.toWidth,
+      Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomAppShimmer(
+            height: 20.h,
+            width: 100.w,
+          ),
+          10.toHeight,
+          CustomAppShimmer(
+            height: 10.h,
+            width: 60.w,
+          )
+        ],
+      ),
+      Spacer(),
+      CustomAppShimmer(
+        height: 10.h,
+        width: 30.w,
+      )
+    ],
+  ).paddingSymmetric(horizontal: 15.w, vertical: 20.h);
+
 }
