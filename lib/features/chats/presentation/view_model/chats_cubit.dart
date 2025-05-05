@@ -1,17 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:brain_tumr_detection_app/core/data/network_services/api_error_handler.dart';
 import 'package:brain_tumr_detection_app/features/chats/data/models/get_all_conversations_request.dart';
 import 'package:brain_tumr_detection_app/features/chats/data/models/send_message_request.dart';
 import 'package:brain_tumr_detection_app/features/chats/data/repository/chat_repository.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:injectable/injectable.dart';
-import 'package:signalr_netcore/http_connection_options.dart';
-import 'package:signalr_netcore/hub_connection.dart';
-import 'package:signalr_netcore/hub_connection_builder.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../../core/data/network_services/signal_r_connection.dart';
 import '../../data/models/chat_preview.dart';
-import '../../data/models/get_all_coversation_response.dart';
 import '../../data/models/message.dart';
 
 part 'chats_state.dart';
@@ -25,6 +20,11 @@ class ChatsCubit extends Cubit<ChatsState> {
   bool _isLoading = false;
   int? currentOpenConversationId;
   final SignalRConnection _signalRConnection;
+  int messagePage = 1;
+  final int messagePageSize = 20;
+  bool hasMoreMessages = true;
+  bool isLoadingMessages = false;
+  bool isNewMessage = false;
 
   ChatsCubit(this._chatRepository, this._signalRConnection)
       : super(ChatsInitial()) {}
@@ -60,8 +60,11 @@ class ChatsCubit extends Cubit<ChatsState> {
         conversationId: messageData['conversationId'],
       );
 
+      isNewMessage = true;
+
       if (newMessage.conversationId == currentOpenConversationId) {
         allMessages = [newMessage, ...allMessages];
+        emit(MessagesUpdated());
       }
 
       final index =
@@ -87,8 +90,8 @@ class ChatsCubit extends Cubit<ChatsState> {
   }
 
   Future<void> loadConversations({bool refresh = false}) async {
-    chats.clear();
     if (refresh) {
+      chats.clear();
       _currentPage = 1;
       _hasMore = true;
       emit(ChatsLoading());
@@ -127,13 +130,21 @@ class ChatsCubit extends Cubit<ChatsState> {
     );
   }
 
-  Future<void> getConversationMessages(int conversationId) async {
+  Future<void> getConversationMessages(int conversationId,
+      {bool refresh = false}) async {
+    if (isLoadingMessages || (!hasMoreMessages && !refresh)) return;
+    if (refresh || allMessages.isEmpty) {
+      emit(MessagesLoading());
+      messagePage = 1;
+      hasMoreMessages = true;
+      allMessages.clear();
+    }
+    isLoadingMessages = true;
     currentOpenConversationId = conversationId;
-    emit(ChatsLoading());
 
     final request = GetAllConversationsRequest(
-      pageIndex: 1,
-      pageSize: 20,
+      pageIndex: messagePage,
+      pageSize: messagePageSize,
     );
 
     final result = await _chatRepository.getMessagesOfConversation(
@@ -141,10 +152,11 @@ class ChatsCubit extends Cubit<ChatsState> {
 
     result.fold(
       (error) {
+        isLoadingMessages = false;
         emit(ChatsError(error.message ?? "Failed to load messages"));
       },
       (response) {
-        allMessages = response.data.map((msg) {
+        final messages = response.data.map((msg) {
           return Message(
             id: msg.id,
             senderId: msg.senderId.toString(),
@@ -153,6 +165,14 @@ class ChatsCubit extends Cubit<ChatsState> {
             conversationId: msg.conversationId,
           );
         }).toList();
+
+        // Add new messages to the **end** if loading more, or replace if refreshing
+        allMessages.addAll(messages);
+
+        hasMoreMessages = response.totalPages > messagePage;
+        messagePage++;
+        isLoadingMessages = false;
+
         emit(MessagesUpdated());
       },
     );
@@ -160,7 +180,6 @@ class ChatsCubit extends Cubit<ChatsState> {
 
   Future<void> sendMessage(SendMessageRequest request) async {
     emit(SendingMessage());
-
     // Create a temporary pending message
     final tempMessage = Message(
       id: -1,
@@ -170,7 +189,7 @@ class ChatsCubit extends Cubit<ChatsState> {
       sentAt: DateTime.now(),
       status: MessageStatus.PENDING,
     );
-
+    isNewMessage = true;
     // Insert the pending message
     allMessages = [tempMessage, ...allMessages];
     emit(MessagesUpdated());

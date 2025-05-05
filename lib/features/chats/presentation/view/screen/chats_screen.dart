@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -21,18 +22,30 @@ class ChatsScreen extends StatefulWidget {
   State<ChatsScreen> createState() => _ChatsScreenState();
 }
 
-class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStateMixin {
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-  List<Message> _previousMessages = [];
+class _ChatsScreenState extends State<ChatsScreen>
+    with SingleTickerProviderStateMixin {
   ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    final chatId = widget.chat.chatId;
 
     // Get messages from the cubit
-    context.read<ChatsCubit>().getConversationMessages(chatId);
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onScroll);
+    // Initial load
+    context
+        .read<ChatsCubit>()
+        .getConversationMessages(widget.chat.chatId, refresh: true);
+  }
+
+  void _onScroll() {
+    // reverse: true flips scroll direction, so maxScrollExtent is "top" visually
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 100) {
+      // Load older messages
+      context.read<ChatsCubit>().getConversationMessages(widget.chat.chatId);
+    }
   }
 
   @override
@@ -60,35 +73,64 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
           Expanded(
             child: BlocConsumer<ChatsCubit, ChatsState>(
               listener: (context, state) {
-                // Handle new messages with animation
-                if (state is! ChatsLoading && _previousMessages.length < cubit.allMessages.length) {
-                  // If we have new messages
+                if (cubit.isNewMessage) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
-                    // Scroll to bottom when new message arrives
                     if (_scrollController.hasClients) {
                       _scrollController.animateTo(
-                        0,
+                        0.0,
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeOut,
                       );
                     }
                   });
+
+                  cubit.isNewMessage = false;
                 }
-                _previousMessages = List.from(cubit.allMessages);
               },
               builder: (context, state) {
-                if (state is ChatsLoading) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.buttonsAndNav,
-                    ),
-                  );
+                if (state is MessagesLoading) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          CustomAppShimmer(
+                            child: CircleAvatar(
+                              radius: 15.r,
+                            ),
+                          ),
+                          10.toWidth,
+                          CustomAppShimmer(
+                            height: 70.h,
+                            width: 200.w,
+                          )
+                        ],
+                      ),
+                      20.toHeight,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CustomAppShimmer(
+                            height: 70.h,
+                            width: 200.w,
+                          ),
+                          10.toWidth,
+                          CustomAppShimmer(
+                            child: CircleAvatar(
+                              radius: 15.r,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ).paddingSymmetric(horizontal: 15.w, vertical: 20.h);
                 }
-
                 return ListView.builder(
-                  key: ValueKey<int>(cubit.allMessages.length), // Force rebuild when list changes
+                  key: ValueKey<bool>(cubit.isNewMessage),
+                  // Force rebuild when list changes
                   controller: _scrollController,
-                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                   reverse: true,
                   itemCount: cubit.allMessages.length,
                   itemBuilder: (context, index) {
@@ -140,7 +182,8 @@ class AnimatedMessageBubble extends StatefulWidget {
   State<AnimatedMessageBubble> createState() => _AnimatedMessageBubbleState();
 }
 
-class _AnimatedMessageBubbleState extends State<AnimatedMessageBubble> with SingleTickerProviderStateMixin {
+class _AnimatedMessageBubbleState extends State<AnimatedMessageBubble>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
