@@ -30,7 +30,7 @@ class AppCubit extends Cubit<AppState> {
 
   // internal paging state
   int _pageIndex = 1;
-  final int _pageSize = 10;
+  final int _pageSize = 20;
   int _totalPages = 1;
   bool _isFetching = false;
 

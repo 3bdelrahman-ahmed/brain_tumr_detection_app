@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "age": MessageLookupByLibrary.simpleMessage("العمر: "),
         "appName":
             MessageLookupByLibrary.simpleMessage("نيوروتوم الذكاء الاصطناعي"),
+        "appointmentConfirmed":
+            MessageLookupByLibrary.simpleMessage("تم تأكيد الحجز"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "asADoctor": MessageLookupByLibrary.simpleMessage("كطبيب"),
         "asAPatient": MessageLookupByLibrary.simpleMessage("كمريض"),
@@ -44,12 +46,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "chooseLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "انقر على اليوم لإظهار المواعيد المتاحة"),
+        "clinic": MessageLookupByLibrary.simpleMessage("العيادة"),
         "clinicLicense": MessageLookupByLibrary.simpleMessage("ترخيص العيادة"),
         "clinicPhoneNumber":
             MessageLookupByLibrary.simpleMessage("هاتف العيادة"),
         "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
         "comments": MessageLookupByLibrary.simpleMessage("تعليقات"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+        "confirmBooking": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
         "confirmPasswordNotMatch": MessageLookupByLibrary.simpleMessage(
             "تأكيد كلمة المرور غير متطابق"),
         "contactPatient":
@@ -57,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "country": MessageLookupByLibrary.simpleMessage("البلد: "),
         "createYourAcc": MessageLookupByLibrary.simpleMessage("إنشاء حسابك"),
         "credentials": MessageLookupByLibrary.simpleMessage("الشهادات"),
+        "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "dateError": MessageLookupByLibrary.simpleMessage("تاريخ غير صالح"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد:"),
         "diagnosis": MessageLookupByLibrary.simpleMessage("التشخيص"),
@@ -178,6 +183,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pinFieldError":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رمز التحقق"),
         "pleaseEnter": MessageLookupByLibrary.simpleMessage("الرجاء إدخال "),
+        "pleaseSelectTimeSlot":
+            MessageLookupByLibrary.simpleMessage("من فضلك اختر معاد"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
             "الرجاء تحميل شهاداتك (رخصة طبية، شهادة، أو هوية المستشفى) للتحقق من حالتك كطبيب."),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
@@ -214,6 +221,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectDateOfBirth":
             MessageLookupByLibrary.simpleMessage("اختر تاريخ الميلاد"),
         "selectGender": MessageLookupByLibrary.simpleMessage("اختر الجنس"),
+        "selectTimeSlot": MessageLookupByLibrary.simpleMessage("اختر معاد"),
         "session": MessageLookupByLibrary.simpleMessage("جلسة(جلسات)"),
         "sessions": MessageLookupByLibrary.simpleMessage("الجلسات: "),
         "setLocation": MessageLookupByLibrary.simpleMessage("تحديد الموقع"),
@@ -244,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thirdOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "هل تحتاج إلى رعاية متخصصة؟ سنوصلك بأفضل الأطباء بالقرب منك بناءً على موقعك. لا مزيد من البحث المتعب أو التوتر - فقط محترفون موثوقون لمساعدتك في الخطوة التالية."),
         "thursday": MessageLookupByLibrary.simpleMessage("الخميس"),
+        "time": MessageLookupByLibrary.simpleMessage("الساعة"),
         "title": MessageLookupByLibrary.simpleMessage("العنوان"),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "لمساعدتك في العثور على أطباء بالقرب منك وتقديم التوصيات، نحتاج إلى معرفة موقعك."),
@@ -269,10 +278,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "whatIsHappening":
             MessageLookupByLibrary.simpleMessage("ما الذي يحدث؟"),
         "writeAMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة..."),
+        "yesBookNow": MessageLookupByLibrary.simpleMessage("نعم احجز الان"),
         "youDontHaveChatsYet":
             MessageLookupByLibrary.simpleMessage("لا يوجد لديك محادثات"),
         "youWillRecieveNotificationSoon": MessageLookupByLibrary.simpleMessage(
             "سوف تتلقى إشعارًا عندما يكون تقريرك جاهزًا.\nشكرًا لصبرك."),
+        "yourBookingWasSuccessfulSeeYouSoon":
+            MessageLookupByLibrary.simpleMessage("تم تأكيد حجزك , نراك قريبا"),
         "yourFileIsBeingUploaded":
             MessageLookupByLibrary.simpleMessage("جاري رفع ملفك"),
         "yourFileName": MessageLookupByLibrary.simpleMessage("اسم ملفك")

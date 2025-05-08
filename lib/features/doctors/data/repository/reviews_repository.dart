@@ -2,20 +2,43 @@ import 'package:brain_tumr_detection_app/core/data/network_services/api_error_ha
 import 'package:brain_tumr_detection_app/features/doctors/data/models/get_reviews_request_model.dart';
 import 'package:brain_tumr_detection_app/features/doctors/data/models/get_reviews_response_model.dart';
 import 'package:brain_tumr_detection_app/features/doctors/data/remote/reviews_data_source.dart';
+import 'package:brain_tumr_detection_app/features/slots/data/model/available_slots.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
-class ReviewsRepository {
-  ReviewsDataSource reviewsDataSource;
+import '../models/get_slots.dart';
 
-  ReviewsRepository(this.reviewsDataSource);
+@injectable
+class DoctorAppointmentRepository {
+  DoctorAppointmentDataSource reviewsDataSource;
+
+  DoctorAppointmentRepository(this.reviewsDataSource);
 
   Future<Either<ApiErrorModel, GetReviewsResponse>> getDoctorReview(
       GetReviewsRequestModel getReviewRequestModel, int doctorId) async {
     try {
       final response = await reviewsDataSource.getDoctorReviews(
           getReviewRequestModel, doctorId);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<Either<ApiErrorModel, List<AvailableSlotsModel>>>
+      getDoctorAvailableSlots(AvailablePatientSlotsRequestModel request) async {
+    try {
+      final response = await reviewsDataSource.getDoctorAvailableSlots(request);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<Either<ApiErrorModel, AvailablePatientSlotsResponseModel>>
+      bookAppointment(AvailablePatientSlotsRequestModel request) async {
+    try {
+      final response = await reviewsDataSource.bookAppointment(request);
       return Right(response);
     } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));

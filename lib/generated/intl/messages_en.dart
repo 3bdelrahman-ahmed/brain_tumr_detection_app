@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "address": MessageLookupByLibrary.simpleMessage("address: "),
         "age": MessageLookupByLibrary.simpleMessage("Age: "),
         "appName": MessageLookupByLibrary.simpleMessage("NeuroTum AI"),
+        "appointmentConfirmed":
+            MessageLookupByLibrary.simpleMessage("Appointment Confirmed"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "asADoctor": MessageLookupByLibrary.simpleMessage("As a Physician"),
         "asAPatient": MessageLookupByLibrary.simpleMessage("As a Patient"),
@@ -44,12 +46,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose Language"),
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "Click on a day to show available time slots"),
+        "clinic": MessageLookupByLibrary.simpleMessage("Clinic"),
         "clinicLicense": MessageLookupByLibrary.simpleMessage("Clinic License"),
         "clinicPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Clinic Phone Number"),
         "comment": MessageLookupByLibrary.simpleMessage("Comment"),
         "comments": MessageLookupByLibrary.simpleMessage("Comments"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmBooking":
+            MessageLookupByLibrary.simpleMessage("Confirm Booking"),
         "confirmPasswordNotMatch": MessageLookupByLibrary.simpleMessage(
             "Confirm password does not match"),
         "contactPatient":
@@ -58,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createYourAcc":
             MessageLookupByLibrary.simpleMessage("Create Your Account"),
         "credentials": MessageLookupByLibrary.simpleMessage("Credentials"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateError": MessageLookupByLibrary.simpleMessage("Invalid date"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth:"),
         "diagnosis": MessageLookupByLibrary.simpleMessage("Diagnosis"),
@@ -179,6 +185,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pinFieldError": MessageLookupByLibrary.simpleMessage(
             "Please enter verification code"),
         "pleaseEnter": MessageLookupByLibrary.simpleMessage("Please enter "),
+        "pleaseSelectTimeSlot":
+            MessageLookupByLibrary.simpleMessage("Please select time slot"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
             "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status."),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
@@ -213,6 +221,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectDateOfBirth":
             MessageLookupByLibrary.simpleMessage("Select Date of Birth"),
         "selectGender": MessageLookupByLibrary.simpleMessage("select Gender"),
+        "selectTimeSlot":
+            MessageLookupByLibrary.simpleMessage("Select Time Slot"),
         "session": MessageLookupByLibrary.simpleMessage("Sessions(s)"),
         "sessions": MessageLookupByLibrary.simpleMessage("Sessions: "),
         "setLocation": MessageLookupByLibrary.simpleMessage("set Location"),
@@ -246,6 +256,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thirdOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "Need expert care? We\'ll connect you with the best doctors near you based on your location. No endless searching or stress—just trusted professionals who can help you take the next step."),
         "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
+        "time": MessageLookupByLibrary.simpleMessage("Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "To help you find doctors near you and provide recommendations, we need to know your location."),
@@ -272,10 +283,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("What is happening?"),
         "writeAMessage":
             MessageLookupByLibrary.simpleMessage("Write a message..."),
+        "yesBookNow": MessageLookupByLibrary.simpleMessage("Yes, Book Now"),
         "youDontHaveChatsYet":
             MessageLookupByLibrary.simpleMessage("You dont have chats yet"),
         "youWillRecieveNotificationSoon": MessageLookupByLibrary.simpleMessage(
             "You will receive a notification once your report is ready.\nThank you for your patience."),
+        "yourBookingWasSuccessfulSeeYouSoon":
+            MessageLookupByLibrary.simpleMessage(
+                "Your booking was successful. See you soon!"),
         "yourFileIsBeingUploaded":
             MessageLookupByLibrary.simpleMessage("Your file is being uploaded"),
         "yourFileName": MessageLookupByLibrary.simpleMessage("Your File Name")

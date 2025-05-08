@@ -80,7 +80,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
     gh.factory<_i656.AppointmentCubit>(() => _i656.AppointmentCubit());
     gh.factory<_i104.ChatDataSource>(() => _i104.ChatDataSource());
-    gh.factory<_i727.ReviewsDataSource>(() => _i727.ReviewsDataSource());
+    gh.factory<_i727.DoctorAppointmentDataSource>(
+        () => _i727.DoctorAppointmentDataSource());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i970.SettingsCubit>(() => _i970.SettingsCubit());
@@ -104,20 +105,23 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i883.AppCubit(gh<_i1002.GetDoctorsClinicsRepository>()));
     gh.singleton<_i558.RegisterRepository>(() => _i558.RegisterRepository(
         dataSource: gh<_i301.RegisterRemoteDataSource>()));
+    gh.factory<_i546.DoctorAppointmentRepository>(() =>
+        _i546.DoctorAppointmentRepository(
+            gh<_i727.DoctorAppointmentDataSource>()));
     gh.factory<_i935.LocationCubit>(
         () => _i935.LocationCubit(gh<_i458.LocationService>()));
     gh.factory<_i390.ChatRepository>(
         () => _i390.ChatRepository(gh<_i104.ChatDataSource>()));
     gh.singleton<_i249.ClinicsRepository>(() => _i249.ClinicsRepository(
         clinicsRemoteDataSource: gh<_i1013.ClinicsRemoteDataSource>()));
+    gh.factory<_i761.ShowDoctorsCubit>(
+        () => _i761.ShowDoctorsCubit(gh<_i546.DoctorAppointmentRepository>()));
     gh.factory<_i5.RigesterScreenCubit>(() => _i5.RigesterScreenCubit(
         registerRepository: gh<_i558.RegisterRepository>()));
     gh.singleton<_i340.LoginRepository>(() =>
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
     gh.factory<_i354.SlotsCubit>(() =>
         _i354.SlotsCubit(clinicsRepository: gh<_i249.ClinicsRepository>()));
-    gh.factory<_i546.ReviewsRepository>(
-        () => _i546.ReviewsRepository(gh<_i727.ReviewsDataSource>()));
     gh.factory<_i638.LoginCubit>(
         () => _i638.LoginCubit(repository: gh<_i340.LoginRepository>()));
     gh.singleton<_i1039.ChatsCubit>(() => _i1039.ChatsCubit(
@@ -126,8 +130,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i844.VerificationCodeCubit>(() => _i844.VerificationCodeCubit(
         repository: gh<_i487.VerifyCodeRepository>()));
-    gh.factory<_i761.ShowDoctorsCubit>(
-        () => _i761.ShowDoctorsCubit(gh<_i546.ReviewsRepository>()));
     return this;
   }
 }

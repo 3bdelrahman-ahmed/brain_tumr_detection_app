@@ -171,5 +171,14 @@
   "address": "address: ",
   "chooseDay": "Choose day",
   "noSlotsAvailable": "No slots available",
-  "youDontHaveChatsYet" : "You dont have chats yet"
+  "youDontHaveChatsYet" : "You dont have chats yet",
+  "selectTimeSlot" : "Select Time Slot",
+  "pleaseSelectTimeSlot" : "Please select time slot",
+  "confirmBooking" : "Confirm Booking",
+  "yesBookNow" : "Yes, Book Now",
+  "clinic" :"Clinic",
+  "time" : "Time",
+  "date" : "Date",
+  "appointmentConfirmed" : "Appointment Confirmed",
+  "yourBookingWasSuccessfulSeeYouSoon" : "Your booking was successful. See you soon!"
 }

@@ -13,6 +13,8 @@ class AppUrls {
   static const String getDoctorClinics = "Clinic/doctor";
   static const String getAllDoctorsClinics = "Clinic";
   static const String getDoctorReview = "Review/";
+  static const String getAvailableSlots  = "Clinic/availableSlots/";
+  static const String bookAppointment  = "Appointment";
 
   //Chat
   static const String sendMessage = "Chat/sendMessage";

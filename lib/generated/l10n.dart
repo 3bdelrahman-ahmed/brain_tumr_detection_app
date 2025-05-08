@@ -1779,6 +1779,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Select Time Slot`
+  String get selectTimeSlot {
+    return Intl.message(
+      'Select Time Slot',
+      name: 'selectTimeSlot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select time slot`
+  String get pleaseSelectTimeSlot {
+    return Intl.message(
+      'Please select time slot',
+      name: 'pleaseSelectTimeSlot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Booking`
+  String get confirmBooking {
+    return Intl.message(
+      'Confirm Booking',
+      name: 'confirmBooking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Book Now`
+  String get yesBookNow {
+    return Intl.message(
+      'Yes, Book Now',
+      name: 'yesBookNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clinic`
+  String get clinic {
+    return Intl.message(
+      'Clinic',
+      name: 'clinic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get time {
+    return Intl.message(
+      'Time',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appointment Confirmed`
+  String get appointmentConfirmed {
+    return Intl.message(
+      'Appointment Confirmed',
+      name: 'appointmentConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your booking was successful. See you soon!`
+  String get yourBookingWasSuccessfulSeeYouSoon {
+    return Intl.message(
+      'Your booking was successful. See you soon!',
+      name: 'yourBookingWasSuccessfulSeeYouSoon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
