@@ -171,6 +171,15 @@
   "address": "العنوان: ",
   "chooseDay": "اختر اليوم",
   "noSlotsAvailable": "لا توجد مواعيد متاحة",
-  "youDontHaveChatsYet" : "لا يوجد لديك محادثات"
+  "youDontHaveChatsYet": "لا يوجد لديك محادثات",
+  "selectTimeSlot": "اختر معاد",
+  "pleaseSelectTimeSlot": "من فضلك اختر معاد",
+  "confirmBooking": "تأكيد الحجز",
+  "yesBookNow" : "نعم احجز الان",
+  "clinic" :"العيادة",
+  "time" : "الساعة",
+  "date" : "التاريخ",
+  "appointmentConfirmed" : "تم تأكيد الحجز",
+  "yourBookingWasSuccessfulSeeYouSoon" : "تم تأكيد حجزك , نراك قريبا"
 
 }
