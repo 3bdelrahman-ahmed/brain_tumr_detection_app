@@ -26,7 +26,10 @@ class StarsGenerator extends StatelessWidget {
           }),
         ),
         5.toWidth,
-        Text("${rating}",style: AppTextStyles.font12LightGreenW500,)
+        Text(
+          "${rating}",
+          style: AppTextStyles.font12LightGreenW500,
+        )
       ],
     );
   }

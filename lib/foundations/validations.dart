@@ -1,7 +1,6 @@
-
 import '../core/utils/strings/app_string.dart';
 
-enum ValidationType{
+enum ValidationType {
   none,
   email,
   text,
@@ -12,7 +11,6 @@ enum ValidationType{
   name,
   fullName,
   verificationCode,
-
 }
 
 bool isValidBirthdate(DateTime birthdate) {
@@ -50,18 +48,18 @@ bool isContainNumbers(String input) {
   }
   return false;
 }
+
 bool isValidFullName(String fullName) {
   // Regular expression to allow only letters (English & Arabic) and exactly one space between first & last name
   RegExp regex = RegExp(r'^[a-zA-Z\u0600-\u06FF]+ [a-zA-Z\u0600-\u06FF]+$');
   return regex.hasMatch(fullName);
 }
 
-RegExp emailRegex = RegExp(
-    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-);
+RegExp emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
 String? isRequired(String val, String fieldName) {
-  if (val.trim().isEmpty) {  // Trim spaces to prevent false positives
+  if (val.trim().isEmpty) {
+    // Trim spaces to prevent false positives
     return '${AppStrings.pleaseEnter} $fieldName.';
   }
   return null;
@@ -99,9 +97,6 @@ String? checkPassword(String val) {
 
   return null;
 }
-
-
-
 
 bool isValidNationalNumber(String val) {
   // Example: Validate if the number is 10-14 digits long
@@ -163,13 +158,12 @@ String? checkFieldValidation(
     }
   }
 
-
   if (fieldType == ValidationType.fullName) {
     if (isRequired(val!, fieldName) != null) {
       errorMsg = isRequired(val, fieldName);
     } else if (isContainNumbers(val)) {
       errorMsg = AppStrings.nameMustNotContainNumbers;
-    }else if (!isValidFullName(val)){
+    } else if (!isValidFullName(val)) {
       errorMsg = AppStrings.fullNameMustContainOneSpace;
     } else if (isContainSpecialCharacters(val)) {
       errorMsg = AppStrings.nameMustNotContainSpecialCharacters;
@@ -273,7 +267,6 @@ String? checkFieldValidation(
       errorMsg = AppStrings.invalidPhoneNumber;
     }
   }
-
 
   return (errorMsg != null) ? errorMsg : null;
 }

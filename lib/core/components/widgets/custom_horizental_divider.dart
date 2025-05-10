@@ -9,9 +9,7 @@ class CustomHorizentalDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(4.w),
-      decoration: BoxDecoration(
-        color: AppColors.background
-      ),
+      decoration: BoxDecoration(color: AppColors.background),
     );
   }
 }

@@ -16,7 +16,7 @@ class SelectGenderBottomSheet extends StatelessWidget {
       AppStrings.male,
       AppStrings.female,
     ];
-    return BlocBuilder<RigesterScreenCubit,RigesterScreenState>(
+    return BlocBuilder<RigesterScreenCubit, RigesterScreenState>(
       builder: (context, state) {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

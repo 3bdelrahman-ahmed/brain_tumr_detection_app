@@ -8,9 +8,9 @@ class SendMessageRequest {
   });
 
   Map<String, dynamic> toJson() => {
-    'receiverId': receiverId,
-    'content': content,
-  };
+        'receiverId': receiverId,
+        'content': content,
+      };
 
   factory SendMessageRequest.fromJson(Map<String, dynamic> json) =>
       SendMessageRequest(

@@ -1,13 +1,14 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class LocationService {
   /// Checks if location services are enabled and requests permissions.
-  Future<bool> _checkPermissions() async{
+  Future<bool> _checkPermissions() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     LocationPermission permission = await Geolocator.checkPermission();
     permission = await Geolocator.requestPermission();
-    if (!serviceEnabled){
+    if (!serviceEnabled) {
       if (permission == LocationPermission.denied) {
         if (permission == LocationPermission.denied) {
           throw Exception("Location permission denied.");
@@ -20,17 +21,18 @@ class LocationService {
     }
     return true;
   }
+
   final LocationSettings locationSettings = LocationSettings(
     accuracy: LocationAccuracy.high,
     distanceFilter: 100,
   );
+
   /// Fetches the user's current location with high accuracy.
   Future<Position> getCurrentLocation() async {
     try {
       await _checkPermissions();
       return await Geolocator.getCurrentPosition(
-        locationSettings: locationSettings
-      );
+          locationSettings: locationSettings);
     } catch (e) {
       throw Exception("Failed to get location: $e");
     }

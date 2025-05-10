@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-
-
 class DioService {
   static DioService? _instance;
   late Dio _dio;
@@ -17,10 +15,7 @@ class DioService {
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 90),
       receiveTimeout: const Duration(seconds: 30),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Language': 'en'
-      },
+      headers: {'Content-Type': 'application/json', 'Accept-Language': 'en'},
     );
 
     _dio.options = baseOptions;
@@ -45,7 +40,7 @@ class DioService {
 
   static Dio get dio => instance._dio;
 
-  Future<Map<String, String>> getHeaders({bool withToken = true}) async{
+  Future<Map<String, String>> getHeaders({bool withToken = true}) async {
     final headers = <String, String>{
       'Content-Type': 'application/json',
       // 'app-version': await getAppVersion()

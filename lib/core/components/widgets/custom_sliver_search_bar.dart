@@ -7,7 +7,7 @@ import '../../utils/strings/app_string.dart';
 import 'custom_text_field.dart';
 
 class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
- final String hintText;
+  final String hintText;
   const CustomSliverSearchBar(this.hintText, {Key? key});
   @override
   Widget build(
@@ -33,8 +33,7 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
   double get minExtent => 75.h; // Same as max for consistency
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate){
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return false;
   }
 }
-

@@ -1,20 +1,20 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/view_patients/presentation/view_model/cubit/view_patients_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/slots_cubit.dart';
 
 class DaySelector extends StatelessWidget {
   const DaySelector({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SlotsCubit, SlotsState>(
+    return BlocBuilder<ViewPatientsCubit, ViewPatientsState>(
       builder: (context, state) {
-        final cubit = context.read<SlotsCubit>();
+        final cubit = context.read<ViewPatientsCubit>();
         return Container(
           height: 45.h,
           decoration: BoxDecoration(
@@ -24,7 +24,8 @@ class DaySelector extends StatelessWidget {
           child: Row(
             children: List.generate(5, (index) {
               final day = cubit.startDate.add(Duration(days: index));
-              final isSelected = DateFormat('yyyy-MM-dd').format(cubit.selectedDay) ==
+              final isSelected =
+                  DateFormat('yyyy-MM-dd').format(cubit.selectedDay) ==
                       DateFormat('yyyy-MM-dd').format(day);
               return Expanded(
                 child: GestureDetector(

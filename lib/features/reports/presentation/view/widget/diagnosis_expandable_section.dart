@@ -10,10 +10,12 @@ import 'diagnosis_container.dart';
 
 class DiagnosisExpandableSection extends StatefulWidget {
   @override
-  State<DiagnosisExpandableSection> createState() => _DiagnosisExpandableSectionState();
+  State<DiagnosisExpandableSection> createState() =>
+      _DiagnosisExpandableSectionState();
 }
 
-class _DiagnosisExpandableSectionState extends State<DiagnosisExpandableSection> {
+class _DiagnosisExpandableSectionState
+    extends State<DiagnosisExpandableSection> {
   bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,8 @@ class _DiagnosisExpandableSectionState extends State<DiagnosisExpandableSection>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(S.of(context).diagnosis, style: AppTextStyles.font16BlueW700),
+              Text(S.of(context).diagnosis,
+                  style: AppTextStyles.font16BlueW700),
               Icon(
                 isExpanded ? Icons.expand_less : Icons.expand_more,
                 color: AppColors.buttonsAndNav,
@@ -54,7 +57,7 @@ class _DiagnosisExpandableSectionState extends State<DiagnosisExpandableSection>
             ],
           ),
           crossFadeState:
-          isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+              isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
         ),
       ],
     ).paddingSymmetric(vertical: 20.h, horizontal: 20.w);

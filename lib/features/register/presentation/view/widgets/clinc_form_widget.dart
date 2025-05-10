@@ -66,7 +66,7 @@ class ClincFormWidget extends StatelessWidget {
                   controller: cubit.clinicPhoneNumberController,
                   validator: (value) => checkFieldValidation(
                       val: value,
-                      fieldName:S.of(context).clinicPhoneNumber,
+                      fieldName: S.of(context).clinicPhoneNumber,
                       fieldType: ValidationType.phone),
                 ),
                 16.toHeight,

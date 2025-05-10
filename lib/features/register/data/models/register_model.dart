@@ -77,20 +77,20 @@ class DoctorRegisterRequestModel {
   final String dateOfBirth;
 
   DoctorRegisterRequestModel({
-   required  this.profileProfile,
-  required  this.fullName,
-   required this.userName,
-   required this.email,
-  required  this.password,
-  required  this.latitude,
-   required this.longitude,
-  required  this.phone,
-  required  this.licenseFront,
-  required  this.licenseBack,
-  required  this.cliniclicense,
-  required  this.clinicAddress,
-  required  this.dateOfBirth,
-  required  this.gender,
+    required this.profileProfile,
+    required this.fullName,
+    required this.userName,
+    required this.email,
+    required this.password,
+    required this.latitude,
+    required this.longitude,
+    required this.phone,
+    required this.licenseFront,
+    required this.licenseBack,
+    required this.cliniclicense,
+    required this.clinicAddress,
+    required this.dateOfBirth,
+    required this.gender,
   });
   Future<FormData> toFormData() async {
     FormData formData = FormData.fromMap({

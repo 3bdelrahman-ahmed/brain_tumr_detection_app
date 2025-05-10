@@ -24,14 +24,14 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
 
   Future<void> verifyCode(String email) async {
     emit(SubmitVerificationCodeLoadingState());
-    final response = await repository.verifyCode(VerificationCodeRequestModel(
-        email:email, code: code.join()));
+    final response = await repository.verifyCode(
+        VerificationCodeRequestModel(email: email, code: code.join()));
     response.fold(
       (l) {
         l.message!.showToast();
         emit(SubmitVerificationCodeErrorState());
       },
-      (r){
+      (r) {
         S.of(context).sucessOpertation.showToast();
         context.navigateTo(AppRoutes.loginScreen);
         emit(SubmitVerificationCodeSuccessState());

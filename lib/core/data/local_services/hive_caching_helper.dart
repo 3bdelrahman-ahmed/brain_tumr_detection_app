@@ -32,7 +32,7 @@ class HiveCachingHelper {
   static Future<void> saveClinics(List<Clinic> clinics) async {
     print('Saved ${clinics.length} clinics to Hive');
 
-    final box = await Hive.openBox(_clinicBox); 
+    final box = await Hive.openBox(_clinicBox);
     await box.put('clinics_list', clinics.map((e) => e).toList());
   }
 

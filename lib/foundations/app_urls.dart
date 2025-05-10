@@ -9,7 +9,7 @@ class AppUrls {
   static const String verifyCode = "Auth/verifyEmail";
 
   //Clinic
-  static const String getClinicSlots  = "Clinic/doctor";
+  static const String getClinicSlots = "Clinic/doctor";
   static const String getDoctorClinics = "Clinic/doctor";
   static const String getAllDoctorsClinics = "Clinic";
   static const String getDoctorReview = "Review/";
@@ -24,4 +24,7 @@ class AppUrls {
 
   // scan 
   static const String cancerPrediction = "cancerPrediction";
+
+  //Patient
+  static  String getPatients(String id) => "Appointment/doctor/$id";
 }

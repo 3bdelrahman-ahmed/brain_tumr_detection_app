@@ -41,7 +41,8 @@ class AppRoutes {
 }
 
 class AppRouter {
-  static Route<dynamic> animateRouteBuilder(Widget widget, {
+  static Route<dynamic> animateRouteBuilder(
+    Widget widget, {
     Duration? duration,
   }) {
     return buildPageRoute(widget, duration ?? 300.ms);

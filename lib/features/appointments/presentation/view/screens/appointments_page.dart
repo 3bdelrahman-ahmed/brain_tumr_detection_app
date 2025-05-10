@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../widgets/doctor_card.dart';
 
 class AppointmentsPage extends StatelessWidget {
-
   AppointmentsPage({Key? key}) : super(key: key);
 
   @override

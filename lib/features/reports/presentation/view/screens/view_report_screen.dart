@@ -28,44 +28,54 @@ class ViewReportScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-             decoration: BoxDecoration(
-               color: Colors.white,
-               borderRadius: BorderRadius.circular(10.r),
-               boxShadow: [
-                 BoxShadow(
-                   color: Colors.black.withOpacity(0.1),
-                   blurRadius: 6,
-                   spreadRadius: 2,
-                   offset: Offset(0, 2),
-                 ),
-               ]
-             ),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.r),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 6,
+                      spreadRadius: 2,
+                      offset: Offset(0, 2),
+                    ),
+                  ]),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children:[
-                        SizedBox(
-                            width: 160.w,
-                            child: Text("${S.of(context).name}Youssef Ibrahim Marzouk",
-                              style: AppTextStyles.font12BlueW700,
-                            overflow: TextOverflow.ellipsis,)),
-                         3.toHeight,
-                         Text("${S.of(context).gender}Male",style: AppTextStyles.font12BlueW700,),
-                         3.toHeight,
-                         Text("${S.of(context).age}36",style: AppTextStyles.font12BlueW700,),
-                         3.toHeight,
-                         Text("${S.of(context).submitted}10:20 AM",style: AppTextStyles.font12BlueW700,),
-                         3.toHeight,
-                       ],
-                     ),
-                     CustomImageView(
-                       svgPath: AssetsSvg.report.toSVG(),
-                     )
-                   ],
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                              width: 160.w,
+                              child: Text(
+                                "${S.of(context).name}Youssef Ibrahim Marzouk",
+                                style: AppTextStyles.font12BlueW700,
+                                overflow: TextOverflow.ellipsis,
+                              )),
+                          3.toHeight,
+                          Text(
+                            "${S.of(context).gender}Male",
+                            style: AppTextStyles.font12BlueW700,
+                          ),
+                          3.toHeight,
+                          Text(
+                            "${S.of(context).age}36",
+                            style: AppTextStyles.font12BlueW700,
+                          ),
+                          3.toHeight,
+                          Text(
+                            "${S.of(context).submitted}10:20 AM",
+                            style: AppTextStyles.font12BlueW700,
+                          ),
+                          3.toHeight,
+                        ],
+                      ),
+                      CustomImageView(
+                        svgPath: AssetsSvg.report.toSVG(),
+                      )
+                    ],
                   ),
                   20.toHeight,
                   Row(
@@ -77,7 +87,8 @@ class ViewReportScreen extends StatelessWidget {
                         onTap: () {},
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
-                        width: ResponsiveHelper.isTablet(context) ?120.h :100.h,
+                        width:
+                            ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
                       ),
                       ResponsiveHelper.isTablet(context)
                           ? 40.toWidth
@@ -87,36 +98,35 @@ class ViewReportScreen extends StatelessWidget {
                         onTap: () {},
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
-                        width: ResponsiveHelper.isTablet(context) ?120.h :100.h,
+                        width:
+                            ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
                       )
                     ],
                   ),
-
                 ],
-              ).paddingSymmetric(vertical: 15.h,horizontal: 20.w),
+              ).paddingSymmetric(vertical: 15.h, horizontal: 20.w),
             ).paddingSymmetric(horizontal: 10.w, vertical: 10.h),
           ),
           SliverToBoxAdapter(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 6,
-                    spreadRadius: 2,
-                    offset: Offset(0, 2),)
-                ]
-              ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.r),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 6,
+                      spreadRadius: 2,
+                      offset: Offset(0, 2),
+                    )
+                  ]),
               child: DiagnosisExpandableSection(),
-            ).paddingSymmetric(vertical: 10.h,horizontal: 10.w),
+            ).paddingSymmetric(vertical: 10.h, horizontal: 10.w),
           ),
           SliverToBoxAdapter(
-            child: CustomButton(text: S.of(context).contactPatient, onTap: (){}).paddingSymmetric(
-              horizontal: 20.w,
-              vertical: 30.h
-            ),
+            child:
+                CustomButton(text: S.of(context).contactPatient, onTap: () {})
+                    .paddingSymmetric(horizontal: 20.w, vertical: 30.h),
           )
         ],
       ),

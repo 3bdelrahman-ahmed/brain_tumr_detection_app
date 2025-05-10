@@ -93,8 +93,10 @@ class AppStrings {
   static const String credentials = "Credentials";
   static const String uploadYourNationalMedical =
       "Upload your medical license (e.g. MOH, DHA, HAAD, SCFHS, or equivalent)";
-  static const String medicalCertificateFrontImage = "Medical Certificate Front Image";
-  static const String medicalCertificateBackImage = "Medical Certificate Back Image";
+  static const String medicalCertificateFrontImage =
+      "Medical Certificate Front Image";
+  static const String medicalCertificateBackImage =
+      "Medical Certificate Back Image";
   static const String pleaseUploadYourCredentials =
       "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status.";
   static const String youWillRecieveNotificationSoon =

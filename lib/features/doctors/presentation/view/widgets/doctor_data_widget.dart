@@ -17,7 +17,8 @@ class DoctorDataWidget extends StatelessWidget {
       {Key? key,
       required this.name,
       required this.rating,
-      required this.location, required this.imageUrl})
+      required this.location,
+      required this.imageUrl})
       : super(key: key);
   final String name;
   final double rating;
@@ -73,12 +74,11 @@ class DoctorDataWidget extends StatelessWidget {
               end: 0,
               child: Center(
                 child: Container(
-                  height: 110.w,
-                  width: 110.w,
-                  child: CustomProfileImage(
-                    imageUrl: imageUrl,
-                  )
-                ),
+                    height: 110.w,
+                    width: 110.w,
+                    child: CustomProfileImage(
+                      imageUrl: imageUrl,
+                    )),
               ),
             ),
           ],

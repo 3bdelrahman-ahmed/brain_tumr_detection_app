@@ -4,12 +4,13 @@ class VerificationCodeRequestModel {
 
   VerificationCodeRequestModel({required this.email, required this.code});
 
-  factory VerificationCodeRequestModel.fromJson(Map<String, dynamic> json) => VerificationCodeRequestModel(
-      email: json['email'] as String,
-      code: json['code'] as String,
-    );
-  Map<String,dynamic>  toJson() => {
-      'email': email,
-      'token': code,
-    };
+  factory VerificationCodeRequestModel.fromJson(Map<String, dynamic> json) =>
+      VerificationCodeRequestModel(
+        email: json['email'] as String,
+        code: json['code'] as String,
+      );
+  Map<String, dynamic> toJson() => {
+        'email': email,
+        'token': code,
+      };
 }

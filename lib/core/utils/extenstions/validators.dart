@@ -1,4 +1,3 @@
-
 class Validators {
   Validators._();
   static String? nameValidate(String? value) {
@@ -7,7 +6,8 @@ class Validators {
     }
     return null;
   }
-  static String? emailValidate(String? value){
+
+  static String? emailValidate(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter an email';
     }
@@ -26,6 +26,7 @@ class Validators {
       return 'Invalid Number';
     }
   }
+
   static String? passwordValidate(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter a password';

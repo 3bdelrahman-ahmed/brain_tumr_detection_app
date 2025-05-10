@@ -72,6 +72,7 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
       );
     }
   }
+
   Widget _buildePlaceHolder() {
     return Container(
       width: widget.size ?? 24.w,

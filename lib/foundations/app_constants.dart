@@ -16,7 +16,8 @@ class AppConstants {
     return _instance!;
   }
 
-  static  BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
+  static BuildContext context =
+      NavigationExtensions.navigatorKey.currentContext!;
 
   static bool onBoarding = false;
   static String accessToken = '';
@@ -126,6 +127,7 @@ class AppConstants {
     accessToken = token ?? ''; // Update the static accessToken
     return token;
   }
+
   static getBiometricToken() async {
     return await AppCacheHelper.getSecuredString(
       key: AppCacheHelper.biometricTokenKey,
@@ -145,8 +147,8 @@ class AppConstants {
     await AppCacheHelper.clearAllSecuredData();
   }
 
-  static  List<Map<int,String>> days = [
-   {
+  static List<Map<int, String>> days = [
+    {
       0: S.of(AppConstants.context).sunday,
     },
     {
@@ -167,5 +169,5 @@ class AppConstants {
     {
       6: S.of(AppConstants.context).saturday,
     }
-  ]; 
+  ];
 }

@@ -29,7 +29,7 @@ class CommentCardWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:[
+        children: [
           CustomProfileImage(
             imageUrl: AppConstants.user!.profilePicture,
             size: 22.w,

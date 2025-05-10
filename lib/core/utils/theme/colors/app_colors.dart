@@ -6,6 +6,7 @@ class AppColors {
   static const Color background = Color(0xFFF3F7FA);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color red = Color(0xFFE32121);
   static const Color gradientBackground = Color(0xFF85989e);
   static const Color buttonsAndNav = Color(0xFF08325C);
   static const Color navSecondary = Color(0xFF005482);

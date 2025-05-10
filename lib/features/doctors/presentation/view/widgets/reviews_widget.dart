@@ -32,9 +32,7 @@ class ReviewsListWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S
-                .of(context)
-                .reviews,
+            S.of(context).reviews,
             style: AppTextStyles.font16BlueW700,
           ),
           12.toHeight,
@@ -45,15 +43,12 @@ class ReviewsListWidget extends StatelessWidget {
                 if (state is ShowDoctorsLoading) {
                   return Center(
                       child: CircularProgressIndicator(
-                        color: AppColors.buttonsAndNav,
-                      ));
-                }
-                else if (state is ShowDoctorsError) {
+                    color: AppColors.buttonsAndNav,
+                  ));
+                } else if (state is ShowDoctorsError) {
                   return Center(child: Text(state.message));
                 }
-                final reviews = context
-                    .read<ShowDoctorsCubit>()
-                    .reviews;
+                final reviews = context.read<ShowDoctorsCubit>().reviews;
                 if (reviews!.isNotEmpty) {
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -110,9 +105,7 @@ class ReviewsListWidget extends StatelessWidget {
                 } else {
                   return Center(
                     child: Text(
-                      S
-                          .of(context)
-                          .noReviews,
+                      S.of(context).noReviews,
                       style: AppTextStyles.font16BlueW700,
                     ),
                   );

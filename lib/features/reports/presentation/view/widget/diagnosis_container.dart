@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/strings/app_string.dart';
 
 class DiagnosisContainer extends StatelessWidget {
-  const DiagnosisContainer({Key? key, required this.head, required this.diagnosis}) : super(key: key);
+  const DiagnosisContainer(
+      {Key? key, required this.head, required this.diagnosis})
+      : super(key: key);
   final String head;
   final String diagnosis;
   @override
@@ -17,18 +19,21 @@ class DiagnosisContainer extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(30.r),
-          border: Border.all(
-            color: Colors.grey.withOpacity(0.5),
-            width: 1
-          )),
+          border: Border.all(color: Colors.grey.withOpacity(0.5), width: 1)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(head,style: AppTextStyles.font14BlueW700,),
+          Text(
+            head,
+            style: AppTextStyles.font14BlueW700,
+          ),
           15.toHeight,
-          Text(diagnosis,style: AppTextStyles.font15GreenW700,)
+          Text(
+            diagnosis,
+            style: AppTextStyles.font15GreenW700,
+          )
         ],
-      ).paddingSymmetric(vertical: 20.h,horizontal: 15.w),
-    ).paddingSymmetric(vertical: 15.h,horizontal: 15.w);
+      ).paddingSymmetric(vertical: 20.h, horizontal: 15.w),
+    ).paddingSymmetric(vertical: 15.h, horizontal: 15.w);
   }
 }

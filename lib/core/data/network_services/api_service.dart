@@ -99,7 +99,6 @@ class AppDio {
     }
   }
 
-
 // Read (GET)
   Future<Response> get({
     required String path,

@@ -15,7 +15,6 @@ class AvailablePatientSlotsRequestModel {
   }
 }
 
-
 class AvailablePatientSlotsResponseModel {
   final int id;
   final String date;
@@ -29,7 +28,8 @@ class AvailablePatientSlotsResponseModel {
     required this.status,
   });
 
-  factory AvailablePatientSlotsResponseModel.fromJson(Map<String, dynamic> json) {
+  factory AvailablePatientSlotsResponseModel.fromJson(
+      Map<String, dynamic> json) {
     return AvailablePatientSlotsResponseModel(
       id: json['id'],
       date: json['date'],

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'feed_state.dart';
-@injectable 
+
+@injectable
 class FeedCubit extends Cubit<FeedState> {
   FeedCubit() : super(FeedInitial());
 
-  final ScrollController feedScrollController =  ScrollController();
-
+  final ScrollController feedScrollController = ScrollController();
 }

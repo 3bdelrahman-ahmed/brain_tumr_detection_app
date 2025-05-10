@@ -7,9 +7,8 @@ import '../models/verification_code_model.dart';
 @singleton
 class VerifyCodeRemoteDataSource {
   Future<String> verifyCode(VerificationCodeRequestModel body) async {
-    final response = await AppDio().post(path: AppUrls.verifyCode,
-    data: body.toJson()
-    );
+    final response =
+        await AppDio().post(path: AppUrls.verifyCode, data: body.toJson());
     return response.data['message'];
   }
 }

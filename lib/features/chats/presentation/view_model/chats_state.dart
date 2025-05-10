@@ -5,6 +5,7 @@ abstract class ChatsState {}
 class ChatsInitial extends ChatsState {}
 
 class ChatsLoading extends ChatsState {}
+
 class MessagesLoading extends ChatsState {}
 
 class SendingMessage extends ChatsState {}

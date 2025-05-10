@@ -94,7 +94,8 @@ class ViewPatientsReport extends StatelessWidget {
                         onTap: () {},
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
-                        width: ResponsiveHelper.isTablet(context) ?120.h :100.h,
+                        width:
+                            ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
                       ),
                       ResponsiveHelper.isTablet(context)
                           ? 40.toWidth
@@ -104,15 +105,17 @@ class ViewPatientsReport extends StatelessWidget {
                             ? S.of(context).viewed
                             : S.of(context).viewReport,
                         onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.viewReportScreen);
-                        cubit.onViewReport(index);
+                          Navigator.pushNamed(
+                              context, AppRoutes.viewReportScreen);
+                          cubit.onViewReport(index);
                         },
                         backgroundColor: report.isViewed
                             ? AppColors.typography
                             : AppColors.buttonsAndNav,
                         height: 40.h,
                         textStyle: AppTextStyles.font12WhiteW500,
-                        width: ResponsiveHelper.isTablet(context) ?120.h :100.h,
+                        width:
+                            ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
                       )
                     ],
                   ),
