@@ -20,6 +20,7 @@ class ViewPatientsCubit extends Cubit<ViewPatientsState> {
 
    
   Future<void> getPatients(String clinicId, DateTime date) async {
+    patients=null;
     emit(ViewPatientsLoading());
     final result = await viewPatientsRepo.getPatients(clinicId, date);
     result.fold(

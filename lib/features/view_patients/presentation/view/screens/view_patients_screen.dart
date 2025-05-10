@@ -1,4 +1,7 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
+import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view/widgets/view_patient_row.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view_model/cubit/view_patients_cubit.dart';
@@ -39,7 +42,17 @@ class _ViewPatientsScreenState extends State<ViewPatientsScreen> {
                     delegate: SliverChildBuilderDelegate(
                   childCount:cubit.patients?.length??0 ,
                   (context, index) {
-                    return ViewPatientRow(viewPatientResponseModel: cubit.patients![index]);
+                    return  cubit.patients==null?CustomAppShimmer(
+                      height: 100.h,
+                      width: double.infinity,
+                      
+                      borderRaduis: 100,
+                    ):cubit.patients!.isEmpty? 
+                  Center(
+                    child: CustomImageView(
+                      imagePath: AssetsPng.appLogo,
+                    ),
+                  ): ViewPatientRow(viewPatientResponseModel: cubit.patients![index]);
                   },
                 ))
               ],
