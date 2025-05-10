@@ -31,8 +31,7 @@ class PatientFormFields extends StatelessWidget {
             CustomTextField(
               focusNode: cubit.fullNameFocus,
               onSubmit: (p0) {
-                FocusScope.of(context)
-                    .requestFocus(cubit.userNameFocus);
+                FocusScope.of(context).requestFocus(cubit.userNameFocus);
               },
               label: S.of(context).fullName,
               hintText: S.of(context).enterYourFullName,
@@ -45,9 +44,8 @@ class PatientFormFields extends StatelessWidget {
             16.toHeight,
             CustomTextField(
               focusNode: cubit.userNameFocus,
-              onSubmit:  (p0) {
-                FocusScope.of(context)
-                    .requestFocus(cubit.emailFocus);
+              onSubmit: (p0) {
+                FocusScope.of(context).requestFocus(cubit.emailFocus);
               },
               label: S.of(context).userName,
               hintText: S.of(context).enterYourUserName,
@@ -60,15 +58,14 @@ class PatientFormFields extends StatelessWidget {
             16.toHeight,
             //Email Picker
             CustomTextField(
-              focusNode: cubit.emailFocus,
-              onSubmit:  (p0) {
-                FocusScope.of(context)
-                    .requestFocus(cubit.passwordFocus);
-              },
-              label: S.of(context).email,
-              hintText: S.of(context).enterYourEmail,
-              controller: cubit.emailController,
-              validator: Validators.emailValidate),
+                focusNode: cubit.emailFocus,
+                onSubmit: (p0) {
+                  FocusScope.of(context).requestFocus(cubit.passwordFocus);
+                },
+                label: S.of(context).email,
+                hintText: S.of(context).enterYourEmail,
+                controller: cubit.emailController,
+                validator: Validators.emailValidate),
             16.toHeight,
             //Location Picker
             CustomTextField(
@@ -81,8 +78,9 @@ class PatientFormFields extends StatelessWidget {
                     : AppTextStyles.font15LightGreenW500,
                 label: S.of(context).setLocation,
                 suffixIcon: AssetsSvg.location,
-                validator: (_) =>
-                    cubit.streetName != null ? null : S.of(context).locationError,
+                validator: (_) => cubit.streetName != null
+                    ? null
+                    : S.of(context).locationError,
                 onTap: () async {
                   final result = await Navigator.pushNamed(
                       context, AppRoutes.locationScreen);
@@ -114,7 +112,7 @@ class PatientFormFields extends StatelessWidget {
             CustomTextField(
               focusNode: cubit.passwordFocus,
               label: S.of(context).password,
-              hintText:S.of(context).enterYourPassword,
+              hintText: S.of(context).enterYourPassword,
               controller: cubit.passwordController,
               validator: (value) => checkFieldValidation(
                   val: value,
@@ -128,7 +126,8 @@ class PatientFormFields extends StatelessWidget {
     );
   }
 
-  Future<void> _selectDate(BuildContext context, RigesterScreenCubit cubit) async {
+  Future<void> _selectDate(
+      BuildContext context, RigesterScreenCubit cubit) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),

@@ -13,5 +13,3 @@ final class ScanLoading extends ScanState {
 }
 
 final class ScanFileUploaded extends ScanState {}
-
-

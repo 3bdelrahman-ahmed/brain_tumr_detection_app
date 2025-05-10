@@ -74,8 +74,8 @@ class ChatListScreen extends StatelessWidget {
   }
 }
 
-Widget _chatShimmer(){
- return Row(
+Widget _chatShimmer() {
+  return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       CustomAppShimmer(
@@ -106,5 +106,4 @@ Widget _chatShimmer(){
       )
     ],
   ).paddingSymmetric(horizontal: 15.w, vertical: 20.h);
-
 }

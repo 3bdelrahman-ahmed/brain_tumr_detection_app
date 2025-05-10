@@ -8,35 +8,35 @@ import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 
 class CustomMessagesTextField extends StatelessWidget {
-  const CustomMessagesTextField({Key? key, required this.controller, required this.onSend}) : super(key: key);
+  const CustomMessagesTextField(
+      {Key? key, required this.controller, required this.onSend})
+      : super(key: key);
   final TextEditingController controller;
   final VoidCallback onSend;
   @override
   Widget build(BuildContext context) {
     return Row(
-      children:[
+      children: [
         Expanded(
           child: Container(
-            padding:EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.r),
-                border: Border.all(
-                    color: AppColors.buttonsAndNav
-                )
-            ),
+                border: Border.all(color: AppColors.buttonsAndNav)),
             child: TextField(
               onEditingComplete: onSend,
               controller: controller,
               decoration: InputDecoration(
                 hintText: S.of(context).writeAMessage,
                 border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 filled: true,
                 fillColor: Colors.white,
                 hintStyle: AppTextStyles.font12GreyW500,
               ),
             ),
-          ).paddingSymmetric(vertical: 5.h,horizontal: 5),
+          ).paddingSymmetric(vertical: 5.h, horizontal: 5),
         ),
         8.toWidth,
         IconButton(

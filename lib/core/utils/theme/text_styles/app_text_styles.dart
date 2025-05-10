@@ -15,17 +15,17 @@ class AppTextStyles {
     color: AppColors.typography,
     fontWeight: FontWeight.w400,
   );
-  static TextStyle font15GreenW500 =TextStyle(
+  static TextStyle font15GreenW500 = TextStyle(
     fontSize: 15.sp,
     color: AppColors.typography,
     fontWeight: FontWeight.w500,
   );
-  static TextStyle font15GreenW700 =TextStyle(
+  static TextStyle font15GreenW700 = TextStyle(
     fontSize: 15.sp,
     color: AppColors.typography,
     fontWeight: FontWeight.w700,
   );
-  static TextStyle font20GreenW700 =TextStyle(
+  static TextStyle font20GreenW700 = TextStyle(
     fontSize: 20.sp,
     color: AppColors.typography,
     fontWeight: FontWeight.w700,
@@ -110,7 +110,8 @@ class AppTextStyles {
     fontSize: 16.sp,
     color: AppColors.buttonsAndNav,
     fontWeight: FontWeight.w700,
-  );  static TextStyle font20BlueW700 = TextStyle(
+  );
+  static TextStyle font20BlueW700 = TextStyle(
     fontSize: 20.sp,
     color: AppColors.buttonsAndNav,
     fontWeight: FontWeight.w700,
@@ -156,5 +157,4 @@ class AppTextStyles {
     color: Colors.black,
     fontWeight: FontWeight.w700,
   );
-
 }

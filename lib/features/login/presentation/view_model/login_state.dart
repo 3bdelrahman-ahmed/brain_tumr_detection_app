@@ -15,7 +15,6 @@ final class ChangePasswordState extends LoginState {
   ChangePasswordState(this.visibilty);
   @override
   List<Object> get props => [visibilty];
-
 }
 
 final class LoginLoadingState extends LoginState {}

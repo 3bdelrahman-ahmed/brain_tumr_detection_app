@@ -16,7 +16,7 @@ class LocationCubit extends Cubit<LocationState> {
     fetchLocation();
   }
 
-  Future<Position> fetchLocationService() async{
+  Future<Position> fetchLocationService() async {
     return await _locationService.getCurrentLocation();
   }
 
@@ -35,7 +35,7 @@ class LocationCubit extends Cubit<LocationState> {
     }
   }
 
-  Future<String> fetchAddress(LatLng position)async{
+  Future<String> fetchAddress(LatLng position) async {
     try {
       final placeMarks =
           await placemarkFromCoordinates(position.latitude, position.longitude);
@@ -46,7 +46,8 @@ class LocationCubit extends Cubit<LocationState> {
       return "Unknown Road";
     }
   }
-  void updateLocation(LatLng newPosition) async{
+
+  void updateLocation(LatLng newPosition) async {
     String streetName = await fetchAddress(newPosition);
     CameraPosition newCameraPosition =
         CameraPosition(target: newPosition, zoom: 15);

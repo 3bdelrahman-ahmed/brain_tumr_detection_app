@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 import '../../data/model/ReportsDm.dart';
 
 part 'reports_state.dart';
+
 @injectable
 class ReportsCubit extends Cubit<ReportsState> {
   ReportsCubit() : super(ReportsInitial());
@@ -30,6 +31,4 @@ class ReportsCubit extends Cubit<ReportsState> {
     reports[index].isViewed = !reports[index].isViewed;
     emit(ReportsViewReport());
   }
-
-
 }

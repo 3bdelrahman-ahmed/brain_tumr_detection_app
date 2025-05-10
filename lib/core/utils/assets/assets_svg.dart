@@ -2,7 +2,7 @@ class AssetsSvg {
   AssetsSvg._();
   static const String searchIcon = "searchIcon";
   static const String heartIcon = "heartIcon";
-  static const String saveIcon = "saveIcon"; 
+  static const String saveIcon = "saveIcon";
   static const String commentIcon = "commentIcon";
   static const String datePicker = "datePicker";
   static const String location = "location";
@@ -14,9 +14,9 @@ class AssetsSvg {
   static const String sessions = "sessions";
   static const String locationBlue = "locationBlue";
   static const String country = "country";
-  static const String experience = "experience";  
+  static const String experience = "experience";
   static const String date = "date";
-  static const String gender = "gender";  
+  static const String gender = "gender";
   static const String edit = "edit";
   static const String calendar = "calendar";
   static const String settings = "settings";
@@ -26,16 +26,16 @@ class AssetsSvg {
   static const String uploadDoc = "upload_doc";
   static const String report = "report";
   static const String clock = "clock";
+  static const String clock2 = "mdi_clock";
   // Messages Status
   static const String checkMark = "checkMark";
   static const String pending = "pending";
   static const String failed = "failed";
+
   ///[bottom nav bar icons]
   static const String feed = "feed";
   static const String history = "history";
   static const String doctor = "doctor";
-    static const String upload = 'upload';
-    static const String doctorScan = 'doctorScan';
-
-
+  static const String upload = 'upload';
+  static const String doctorScan = 'doctorScan';
 }

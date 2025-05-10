@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:flutter/material.dart';
+
 import '../../utils/theme/colors/app_colors.dart';
 import '../../utils/theme/text_styles/app_text_styles.dart';
 
@@ -31,11 +32,12 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.h),
+        // padding: EdgeInsets.symmetric(vertical: 12.h),
         width: width ?? 300.w,
         height: height ?? 55.h,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(raduis ?? 30.r),
+
             color: backgroundColor ?? AppColors.buttonsAndNav),
         alignment: Alignment.center,
         child: (isLoading ?? false)
@@ -47,14 +49,11 @@ class CustomButton extends StatelessWidget {
                       circularInticatorColor ?? AppColors.background),
                 ),
               )
-            : FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: textStyle ?? AppTextStyles.font20WhiteW500,
-                ),
-              ),
+            : Text(
+              text,
+              textAlign: TextAlign.center,
+              style: textStyle ?? AppTextStyles.font20WhiteW500,
+            ),
       ),
     );
   }

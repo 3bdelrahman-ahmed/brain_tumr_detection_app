@@ -1,4 +1,3 @@
-
 import 'package:brain_tumr_detection_app/core/data/network_services/api_error_handler.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/data/remote/verify_code_remote_data_source.dart';
 import 'package:dartz/dartz.dart';
@@ -10,7 +9,8 @@ import '../models/verification_code_model.dart';
 class VerifyCodeRepository {
   final VerifyCodeRemoteDataSource dataSource;
   VerifyCodeRepository({required this.dataSource});
-  Future<Either<ApiErrorModel,String>> verifyCode(VerificationCodeRequestModel body) async {
+  Future<Either<ApiErrorModel, String>> verifyCode(
+      VerificationCodeRequestModel body) async {
     try {
       final String response = await dataSource.verifyCode(body);
       return Right(response);

@@ -9,5 +9,5 @@ ThemeData appTheme = ThemeData(
   bottomSheetTheme: const BottomSheetThemeData(
     backgroundColor: AppColors.white,
   ),
-   buttonTheme: const ButtonThemeData(buttonColor: AppColors.buttonsAndNav),
+  buttonTheme: const ButtonThemeData(buttonColor: AppColors.buttonsAndNav),
 );

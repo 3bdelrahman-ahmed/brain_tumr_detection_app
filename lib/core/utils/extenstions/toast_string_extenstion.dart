@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 extension ToastString on String {
-  void showToast({ToastGravity gravity = ToastGravity.BOTTOM, Color backgroundColor = AppColors.gradientBackground, Color textColor = Colors.white}) {
+  void showToast(
+      {ToastGravity gravity = ToastGravity.BOTTOM,
+      Color backgroundColor = AppColors.gradientBackground,
+      Color textColor = Colors.white}) {
     Fluttertoast.showToast(
       msg: this,
       toastLength: Toast.LENGTH_SHORT,

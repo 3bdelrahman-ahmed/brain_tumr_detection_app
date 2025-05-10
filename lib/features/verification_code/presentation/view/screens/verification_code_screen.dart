@@ -51,7 +51,7 @@ class VerificationCodeScreen extends StatelessWidget {
                     50.toHeight,
                     CustomButton(
                         isLoading: state is SubmitVerificationCodeLoadingState,
-                        text:S.of(context).submit,
+                        text: S.of(context).submit,
                         onTap: () {
                           cubit.verifyCode(email);
                         }).paddingSymmetric(horizontal: 24.w),

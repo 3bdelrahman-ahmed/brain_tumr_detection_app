@@ -14,4 +14,3 @@ final class SubmitVerificationCodeLoadingState extends VerificationCodeState {}
 final class SubmitVerificationCodeSuccessState extends VerificationCodeState {}
 
 final class SubmitVerificationCodeErrorState extends VerificationCodeState {}
-

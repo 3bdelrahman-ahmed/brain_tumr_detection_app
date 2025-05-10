@@ -221,7 +221,6 @@ class ProfilePage extends StatelessWidget {
       onTap: () {
         if (onTap != null) {
           onTap();
-
         }
       },
       child: Container(

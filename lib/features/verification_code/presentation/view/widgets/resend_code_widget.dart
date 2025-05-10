@@ -18,7 +18,6 @@ class ResendCodeWidget extends StatelessWidget {
       children: <TextSpan>[
         TextSpan(
             text: S.of(context).resendCodeAgain,
-
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 print('Resend code');

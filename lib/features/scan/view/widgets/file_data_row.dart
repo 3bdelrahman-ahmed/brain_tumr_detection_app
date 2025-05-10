@@ -35,7 +35,9 @@ class FileDataRow extends StatelessWidget {
                 GestureDetector(
                   onTap: state is ScanFilePicked
                       ? () async {
-                          final result = await OpenFile.open(cubit.file?.path,);
+                          final result = await OpenFile.open(
+                            cubit.file?.path,
+                          );
                           if (result.type != ResultType.done) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Failed to open file')),

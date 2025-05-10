@@ -87,8 +87,8 @@ void _showImagePickerOptions(BuildContext context, RigesterScreenCubit cubit) {
           ListTile(
             leading:
                 const Icon(Icons.photo_library, color: AppColors.typography),
-            title:
-                Text(S.of(context).gallery, style: AppTextStyles.font15GreenW500),
+            title: Text(S.of(context).gallery,
+                style: AppTextStyles.font15GreenW500),
             onTap: () async {
               Navigator.of(context).pop();
               final XFile? image =
@@ -101,8 +101,8 @@ void _showImagePickerOptions(BuildContext context, RigesterScreenCubit cubit) {
           ListTile(
             leading:
                 const Icon(Icons.photo_camera, color: AppColors.typography),
-            title:
-                Text(S.of(context).camera, style: AppTextStyles.font15GreenW500),
+            title: Text(S.of(context).camera,
+                style: AppTextStyles.font15GreenW500),
             onTap: () async {
               Navigator.of(context).pop();
               final XFile? image =

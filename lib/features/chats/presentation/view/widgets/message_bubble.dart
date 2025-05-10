@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class MessageBubble extends StatelessWidget {
-  const MessageBubble({Key? key, required this.message, required this.profileUrl}) : super(key: key);
+  const MessageBubble(
+      {Key? key, required this.message, required this.profileUrl})
+      : super(key: key);
   final Message message;
   final String? profileUrl;
   @override
@@ -69,7 +71,8 @@ Widget _buildMessageBubble(BuildContext context, Message message, bool isMe) {
           5.toWidth,
           if (isMe && message.status != null) ...[
             _buildStatusMessage(message.status!)
-          ]        ],
+          ]
+        ],
       )
     ],
   );

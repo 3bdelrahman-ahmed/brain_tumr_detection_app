@@ -14,11 +14,11 @@ class BiometricAuthDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,   
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,  
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        LottieBuilder.asset(  
+        LottieBuilder.asset(
           "assets/lotties/biometric_auth.json",
           width: 175.w,
           height: 175.w,

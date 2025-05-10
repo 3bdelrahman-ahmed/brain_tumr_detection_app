@@ -49,7 +49,7 @@ class AddPost extends StatelessWidget {
                         Row(
                           children: [
                             CustomProfileImage(
-                             imageUrl:AppConstants.user?.profilePicture,
+                              imageUrl: AppConstants.user?.profilePicture,
                             ),
                             10.toWidth,
                             Text(

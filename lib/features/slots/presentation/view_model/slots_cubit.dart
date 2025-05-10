@@ -54,7 +54,7 @@ class SlotsCubit extends Cubit<SlotsState> {
 
   void setSelectedClinic(Clinic? clinic) {
     selectedClinic = clinic;
-    emit(SelectedClinicChanged()); 
+    emit(SelectedClinicChanged());
   }
 
   Future<void> loadCachedClinics() async {

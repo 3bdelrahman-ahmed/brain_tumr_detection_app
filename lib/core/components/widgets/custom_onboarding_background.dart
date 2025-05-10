@@ -19,6 +19,5 @@ class CustomOnboardingBackground extends StatelessWidget {
       ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
       child: widget,
     );
-
   }
 }

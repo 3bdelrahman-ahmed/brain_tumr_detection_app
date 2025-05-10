@@ -21,8 +21,8 @@ class SignalRConnection {
             accessTokenFactory: () async {
               return AppConstants.accessToken;
             },
-           ),
-         )
+          ),
+        )
         .withAutomaticReconnect()
         .build();
 

@@ -11,7 +11,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/assets/assets_png.dart';
 import '../../utils/theme/colors/app_colors.dart';
 
-
 class CustomImageView extends StatelessWidget {
   ///[url] is required parameter for fetching network image
   String? url;
@@ -54,8 +53,7 @@ class CustomImageView extends StatelessWidget {
     this.border,
   });
 
-    static String placeHolder = AssetsPng.appLogo.toPng();
-
+  static String placeHolder = AssetsPng.appLogo.toPng();
 
   @override
   Widget build(BuildContext context) {

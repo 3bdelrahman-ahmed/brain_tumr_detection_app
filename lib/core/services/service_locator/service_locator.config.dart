@@ -54,6 +54,12 @@ import '../../../features/verification_code/data/repository/verify_code_reposito
     as _i487;
 import '../../../features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart'
     as _i844;
+import '../../../features/view_patients/data/remote/view_patients_data_source.dart'
+    as _i1070;
+import '../../../features/view_patients/data/repo/view_patients_repo.dart'
+    as _i90;
+import '../../../features/view_patients/presentation/view_model/cubit/view_patients_cubit.dart'
+    as _i199;
 import '../../components/cubits/app_cubit/app_cubit.dart' as _i883;
 import '../../components/cubits/location_cubit/location_cubit.dart' as _i935;
 import '../../components/cubits/navigation_cubit/navigation_cubit.dart'
@@ -96,6 +102,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1013.ClinicsRemoteDataSource());
     gh.singleton<_i790.VerifyCodeRemoteDataSource>(
         () => _i790.VerifyCodeRemoteDataSource());
+    gh.singleton<_i1070.ViewPatientsDataSource>(
+        () => _i1070.ViewPatientsDataSource());
+    gh.singleton<_i90.ViewPatientsRepo>(
+        () => _i90.ViewPatientsRepo(gh<_i1070.ViewPatientsDataSource>()));
     gh.factory<_i1002.GetDoctorsClinicsRepository>(() =>
         _i1002.GetDoctorsClinicsRepository(
             gh<_i585.GetDoctorsClinicsDataSource>()));
@@ -122,6 +132,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
     gh.factory<_i354.SlotsCubit>(() =>
         _i354.SlotsCubit(clinicsRepository: gh<_i249.ClinicsRepository>()));
+    gh.factory<_i199.ViewPatientsCubit>(
+        () => _i199.ViewPatientsCubit(gh<_i90.ViewPatientsRepo>()));
     gh.factory<_i638.LoginCubit>(
         () => _i638.LoginCubit(repository: gh<_i340.LoginRepository>()));
     gh.singleton<_i1039.ChatsCubit>(() => _i1039.ChatsCubit(

@@ -25,11 +25,11 @@ class ScanCubit extends Cubit<ScanState> {
       emit(ScanInitial());
       return;
     }
-   //Simulate Loading Progress
+    //Simulate Loading Progress
     emit(ScanLoading(0));
-    for (int progress = 10; progress <= 90; progress += 20){
+    for (int progress = 10; progress <= 90; progress += 20) {
       await Future.delayed(Duration(milliseconds: 300));
-      if (isCancelled){
+      if (isCancelled) {
         emit(ScanInitial()); // Stop progress if canceled
         return;
       }
@@ -37,10 +37,11 @@ class ScanCubit extends Cubit<ScanState> {
     }
     file = File(result.files.single.path!);
     fileName = result.files.single.name;
-    if (!isCancelled){
+    if (!isCancelled) {
       emit(ScanFilePicked());
     }
   }
+
   void cancelUpload() {
     isCancelled = true; // Stop progress loop
     emit(ScanInitial());

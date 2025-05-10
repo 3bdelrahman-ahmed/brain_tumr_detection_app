@@ -23,7 +23,7 @@ class ScanPage extends StatelessWidget {
         body: CustomScrollView(
       slivers: [
         CustomWelcomeAppBar(),
-        SliverPadding(padding: EdgeInsets.symmetric(vertical:15.h)),
+        SliverPadding(padding: EdgeInsets.symmetric(vertical: 15.h)),
         SliverToBoxAdapter(
           child: GestureDetector(
             onTap: () => cubit.pickFile(),
@@ -42,7 +42,7 @@ class ScanPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children:[
+                children: [
                   CustomImageView(
                     svgPath: AssetsSvg.file.toSVG(),
                   ),
