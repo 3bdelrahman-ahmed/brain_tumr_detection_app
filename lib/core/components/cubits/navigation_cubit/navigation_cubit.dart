@@ -2,7 +2,7 @@ import 'package:brain_tumr_detection_app/core/services/service_locator/service_l
 import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/cubit/feed_cubit.dart';
 import 'package:brain_tumr_detection_app/features/profle/presentation/viewmodel/settings_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/viewmodel/reports_cubit.dart';
-import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart';
+import 'package:brain_tumr_detection_app/features/scan/view_model/scan_cubit.dart';
 import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/slots_cubit.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view/screens/view_patients_screen.dart';
 import 'package:flutter/material.dart';

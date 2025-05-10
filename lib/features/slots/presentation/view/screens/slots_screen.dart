@@ -141,6 +141,7 @@ class _SlotsScreenState extends State<SlotsScreen> {
                         64.toWidth,
                         Expanded(
                           child: CustomButton(
+                            isLoading: state is AddSlotLoadingState,
                             raduis: 8.r,
                             text: S.of(context).addSlots,
                             onTap: () {

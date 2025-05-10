@@ -15,9 +15,13 @@ class AppUrls {
   static const String getDoctorReview = "Review/";
   static const String getAvailableSlots  = "Clinic/availableSlots/";
   static const String bookAppointment  = "Appointment";
+  static const String addSlot = "Clinic/slot";
 
   //Chat
   static const String sendMessage = "Chat/sendMessage";
   static const String getUserChats = "Chat";
   static const String getUserConversationMessage = "Chat/";
+
+  // scan 
+  static const String cancerPrediction = "cancerPrediction";
 }

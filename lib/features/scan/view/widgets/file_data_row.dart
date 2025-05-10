@@ -6,11 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_file/open_file.dart';
 import '../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../core/utils/assets/assets_svg.dart';
-import '../../../../core/utils/strings/app_string.dart';
 import '../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../generated/l10n.dart';
-import '../../viewmodel/scan_cubit.dart';
+import '../../view_model/scan_cubit.dart';
 
 class FileDataRow extends StatelessWidget {
   const FileDataRow({super.key});
@@ -21,24 +20,29 @@ class FileDataRow extends StatelessWidget {
     return BlocBuilder<ScanCubit, ScanState>(
       builder: (context, state) {
         return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomImageView(
               svgPath: AssetsSvg.file.toSVG(),
-              height: 30.h,
-              width: 30.h,
+              height: 30.w,
+              width: 30.w,
             ),
             5.toWidth,
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
                   onTap: state is ScanFilePicked
                       ? () async {
-                          final result = await OpenFile.open(cubit.file?.path,);
+                          final result = await OpenFile.open(
+                            cubit.file?.path,
+                          );
                           if (result.type != ResultType.done) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Failed to open file')),
+                              SnackBar(
+                                  content:
+                                      Text(S.of(context).failedToPickImage)),
                             );
                           }
                         }
@@ -46,35 +50,35 @@ class FileDataRow extends StatelessWidget {
                   child: Container(
                     width: 180.w,
                     child: Text(
-                      state is ScanFilePicked
-                          ? cubit.fileName
-                          : S.of(context).yourFileName,
+                      cubit.fileName.trim().isEmpty
+                          ? S.of(context).yourFileName
+                          : cubit.fileName,
                       textAlign: TextAlign.start,
                       style: AppTextStyles.font15GreenW700,
                     ),
                   ),
                 ),
-                15.toHeight,
-                if (state is ScanLoading)
-                  Container(
-                    alignment: AlignmentDirectional.centerStart,
-                    width: state.progress * 3.w, // Convert % to width
-                    height: 3.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.smallDetails,
-                      borderRadius: BorderRadius.circular(3),
-                    ),
-                  ),
+                // 15.toHeight,
+                // if (state is UploadScanLoadingState)
+                //   Container(
+                //     alignment: AlignmentDirectional.centerStart,
+                //     width: state.progress * 3.w,
+                //     height: 3.h,
+                //     decoration: BoxDecoration(
+                //       color: AppColors.smallDetails,
+                //       borderRadius: BorderRadius.circular(3),
+                //     ),
+                //   ),
               ],
             ),
             Spacer(),
             Row(
               children: [
-                if (state is ScanLoading)
-                  Text(
-                    "${state.progress} %",
-                    style: AppTextStyles.font15GreenW700,
-                  ),
+                // if (state is UploadScanLoadingState)
+                //   Text(
+                //     "${state.progress} %",
+                //     style: AppTextStyles.font15GreenW700,
+                //   ),
                 5.toWidth,
                 InkWell(
                   onTap: () => cubit.cancelUpload(),

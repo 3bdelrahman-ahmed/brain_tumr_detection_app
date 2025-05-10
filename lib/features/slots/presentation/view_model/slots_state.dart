@@ -43,3 +43,7 @@ class SlotsChangedState extends SlotsState {
   final bool hasChanges;
   SlotsChangedState({required this.hasChanges});
 }
+
+class AddSlotLoadingState extends SlotsState {}
+class AddSlotSuccessState extends SlotsState {}
+class AddSlotErrorState extends SlotsState {}

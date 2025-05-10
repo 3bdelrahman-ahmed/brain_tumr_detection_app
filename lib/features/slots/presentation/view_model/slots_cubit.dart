@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/data/local_services/cached_models/clinics_model.dart';
+import '../../data/model/add_slot_model.dart';
 import '../view/widget/slot_card.dart';
 
 part 'slots_state.dart';
@@ -54,7 +55,7 @@ class SlotsCubit extends Cubit<SlotsState> {
 
   void setSelectedClinic(Clinic? clinic) {
     selectedClinic = clinic;
-    emit(SelectedClinicChanged()); 
+    emit(SelectedClinicChanged());
   }
 
   Future<void> loadCachedClinics() async {
@@ -122,30 +123,47 @@ class SlotsCubit extends Cubit<SlotsState> {
     emit(SlotsListRemoved());
   }
 
-  void addSlot(TimeOfDay slotTime) {
+  Future<void> addSlot(TimeOfDay slotTime) async {
     print("slotTime: ${formatTimeTo24Hour("$slotTime")}");
+    emit(AddSlotLoadingState());
+    // final newSlot =
 
-    final newSlot = AvailableSlotsModel(
-      dayOfWeek: selectedDayIndex,
-      isAvailable: true,
-      startTime: formatTimeTo24Hour("${slotTime.hour}:${slotTime.minute}"),
+    final result = await clinicsRepository.addSlot(
+      AddSlotRequestModel(
+        clinicId: selectedClinic!.id,
+        day: selectedDayIndex,
+        startTime:
+            "${formatTimeTo24Hour("${slotTime.hour}:${slotTime.minute}").split(" ").first}:00",
+      ),
     );
 
-    final index = availableSlots.length;
+    result.fold((l) {
+      emit(AddSlotErrorState());
+      l.message?.showToast();
+    }, (r) {
+      final index = availableSlots.length;
 
-    availableSlots.insert(index, newSlot);
+      availableSlots.insert(
+          index,
+          AvailableSlotsModel(
+            dayOfWeek: r.dayOfWeek,
+            isAvailable: r.isAvailable,
+            startTime:
+                formatTimeTo24Hour("${slotTime.hour}:${slotTime.minute}"),
+          ));
 
-    listKey.currentState?.insertItem(index);
-    markSlotChanged();
+      listKey.currentState?.insertItem(index);
+      markSlotChanged();
 
-    emit(SlotsListAdded());
+      emit(SlotsListAdded());
 
-    Future.delayed(const Duration(milliseconds: 300), () {
-      scrollController.animateTo(
-        scrollController.position.maxScrollExtent + 150.h,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeOut,
-      );
+      Future.delayed(const Duration(milliseconds: 300), () {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent + 150.h,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeOut,
+        );
+      });
     });
   }
 
@@ -209,7 +227,7 @@ class SlotsCubit extends Cubit<SlotsState> {
 
       for (int i = 0; i < r.length; i++) {
         await Future.delayed(
-            const Duration(milliseconds: 50)); // slight delay for animation
+            const Duration(milliseconds: 50)); 
         availableSlots.insert(i, r[i]);
         listKey.currentState?.insertItem(i);
       }

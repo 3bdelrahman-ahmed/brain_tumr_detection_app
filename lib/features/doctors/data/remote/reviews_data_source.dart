@@ -29,8 +29,8 @@ class DoctorAppointmentDataSource {
 
   Future<AvailablePatientSlotsResponseModel> bookAppointment(
       AvailablePatientSlotsRequestModel request) async {
-    final response =
-        await AppDio().post(path: AppUrls.bookAppointment, data: request);
+    final response = await AppDio()
+        .post(path: AppUrls.bookAppointment, data: request.toJson());
     return AvailablePatientSlotsResponseModel.fromJson(response.data);
   }
 }
