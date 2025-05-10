@@ -5,12 +5,12 @@ import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/scan/view/widgets/file_data_row.dart';
-import 'package:brain_tumr_detection_app/features/scan/viewmodel/scan_cubit.dart';
+import 'package:brain_tumr_detection_app/features/scan/view_model/scan_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/strings/app_string.dart';
 import '../../../../generated/l10n.dart';
 
 class ScanPage extends StatelessWidget {
@@ -23,7 +23,7 @@ class ScanPage extends StatelessWidget {
         body: CustomScrollView(
       slivers: [
         CustomWelcomeAppBar(),
-        SliverPadding(padding: EdgeInsets.symmetric(vertical:15.h)),
+        SliverPadding(padding: EdgeInsets.symmetric(vertical: 15.h)),
         SliverToBoxAdapter(
           child: GestureDetector(
             onTap: () => cubit.pickFile(),
@@ -42,7 +42,7 @@ class ScanPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children:[
+                children: [
                   CustomImageView(
                     svgPath: AssetsSvg.file.toSVG(),
                   ),
@@ -61,61 +61,26 @@ class ScanPage extends StatelessWidget {
             ).paddingSymmetric(vertical: 20.h, horizontal: 20.w),
           ),
         ),
-        SliverPadding(padding: EdgeInsets.symmetric(vertical: 10.h)),
         SliverToBoxAdapter(
-          child: FileDataRow(),
+          child: FileDataRow().paddingSymmetric(vertical: 16.h),
         ),
-        SliverPadding(padding: EdgeInsets.symmetric(vertical: 10.h)),
         SliverToBoxAdapter(
-          child: CustomButton(
-              text: S.of(context).done,
-              onTap: () {
-                _showSuccessDialog(context);
-              }).paddingSymmetric(horizontal: 30.w),
+          child: BlocBuilder<ScanCubit, ScanState>(
+            builder: (context, state) {
+              return CustomButton(
+                  isLoading: state is UploadScanLoadingState,
+                  text: S.of(context).done,
+                  onTap: () {
+                    if (cubit.file == null) {
+                      S.of(context).pleasePickAFileToUpload.showToast();
+                      return;
+                    }
+                    cubit.uploadScan();
+                  });
+            },
+          ).paddingSymmetric(horizontal: 30.w),
         )
       ],
     ));
-  }
-
-  void _showSuccessDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
-          child: Padding(
-            padding: EdgeInsets.all(15.r),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomImageView(
-                  svgPath: AssetsSvg.done.toSVG(),
-                ),
-                20.toHeight,
-                Text(
-                  S.of(context).mriFileUploaded,
-                  style: AppTextStyles.font15GreenW700,
-                ),
-                10.toHeight,
-                Text(
-                  S.of(context).youWillRecieveNotificationSoon,
-                  style: AppTextStyles.font12LightGreenW500,
-                ),
-                20.toHeight,
-                CustomButton(
-                  text: S.of(context).returnPage,
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
   }
 }

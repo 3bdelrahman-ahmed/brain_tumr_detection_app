@@ -3,6 +3,7 @@ import 'package:brain_tumr_detection_app/foundations/app_urls.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/local_services/cached_models/clinics_model.dart';
+import '../model/add_slot_model.dart';
 import '../model/available_slots.dart';
 
 @singleton
@@ -20,5 +21,10 @@ class ClinicsRemoteDataSource {
             "${AppUrls.getClinicSlots}/${query.clinicId}/slots?day=${query.day}");
     final List<dynamic> slotsJson = response.data;
     return slotsJson.map((json) => AvailableSlotsModel.fromJson(json)).toList();
+  }
+
+  Future<AddSlotResponseModel> addSlot(AddSlotRequestModel body) async {
+    final response = await AppDio().post(path: AppUrls.addSlot, data: body);
+    return AddSlotResponseModel.fromJson(response.data); 
   }
 }

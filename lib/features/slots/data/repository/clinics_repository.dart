@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/local_services/cached_models/clinics_model.dart';
+import '../model/add_slot_model.dart';
 import '../model/available_slots.dart';
 
 @singleton
@@ -23,6 +24,16 @@ class ClinicsRepository {
       AvailableSlotsRequestModel query) async {
     try {
       final response = await clinicsRemoteDataSource.getAvailableSlots(query);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<Either<ApiErrorModel, AddSlotResponseModel>> addSlot(
+      AddSlotRequestModel body) async {
+    try {
+      final response = await clinicsRemoteDataSource.addSlot(body);
       return Right(response);
     } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));

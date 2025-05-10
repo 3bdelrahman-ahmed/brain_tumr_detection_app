@@ -42,7 +42,11 @@ import '../../../features/register/presentation/view_model/rigester_screen_cubit
     as _i5;
 import '../../../features/reports/presentation/viewmodel/reports_cubit.dart'
     as _i187;
-import '../../../features/scan/viewmodel/scan_cubit.dart' as _i109;
+import '../../../features/scan/data/remote/upload_scan_remote_data_source.dart'
+    as _i89;
+import '../../../features/scan/data/repo/upload_scan%20_repotitory.dart'
+    as _i938;
+import '../../../features/scan/view_model/scan_cubit.dart' as _i694;
 import '../../../features/slots/data/remote/clinics_remote_ds.dart' as _i1013;
 import '../../../features/slots/data/repository/clinics_repository.dart'
     as _i249;
@@ -86,12 +90,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i970.SettingsCubit>(() => _i970.SettingsCubit());
     gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
-    gh.factory<_i109.ScanCubit>(() => _i109.ScanCubit());
     gh.singleton<_i437.SignalRConnection>(() => _i437.SignalRConnection());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
     gh.singleton<_i301.RegisterRemoteDataSource>(
         () => _i301.RegisterRemoteDataSource());
+    gh.singleton<_i89.UploadScanRemoteDataSource>(
+        () => _i89.UploadScanRemoteDataSource());
     gh.singleton<_i1013.ClinicsRemoteDataSource>(
         () => _i1013.ClinicsRemoteDataSource());
     gh.singleton<_i790.VerifyCodeRemoteDataSource>(
@@ -122,6 +127,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
     gh.factory<_i354.SlotsCubit>(() =>
         _i354.SlotsCubit(clinicsRepository: gh<_i249.ClinicsRepository>()));
+    gh.singleton<_i938.UploadScanRepotitory>(() => _i938.UploadScanRepotitory(
+        uploadScanRemoteDataSource: gh<_i89.UploadScanRemoteDataSource>()));
     gh.factory<_i638.LoginCubit>(
         () => _i638.LoginCubit(repository: gh<_i340.LoginRepository>()));
     gh.singleton<_i1039.ChatsCubit>(() => _i1039.ChatsCubit(
@@ -130,6 +137,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i844.VerificationCodeCubit>(() => _i844.VerificationCodeCubit(
         repository: gh<_i487.VerifyCodeRepository>()));
+    gh.factory<_i694.ScanCubit>(
+        () => _i694.ScanCubit(repotitory: gh<_i938.UploadScanRepotitory>()));
     return this;
   }
 }

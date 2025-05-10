@@ -10,7 +10,6 @@ import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
 import '../../../../../../core/utils/extenstions/navigation_extenstions.dart';
 import '../../../../core/data/local_services/app_caching_helper.dart';
-import '../../../chats/presentation/view_model/chats_cubit.dart';
 import '../../data/models/login_model.dart';
 import '../../data/repository/login_repository.dart';
 
