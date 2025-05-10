@@ -1,5 +1,5 @@
 class Patient {
-  int? id;
+  String? id;
   String? fullName;
   String? profilePicture;
   DateTime? dateOfBirth;
@@ -18,7 +18,7 @@ class Patient {
   });
 
   factory Patient.fromJson(Map<String, dynamic> json) => Patient(
-        id: json['id'] as int?,
+        id: json['id'] as String?,
         fullName: json['fullName'] as String?,
         profilePicture: json['profilePicture'] as String?,
         dateOfBirth: json['dateOfBirth'] == null
