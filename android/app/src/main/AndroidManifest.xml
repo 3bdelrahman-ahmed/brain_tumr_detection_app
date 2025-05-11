@@ -3,6 +3,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
 
         android:label="NEUROTUM AI"
@@ -38,6 +39,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCSQlCuC0865aLNOZwiCwavPRxpmx3pid4"/>
+
+        <meta-data
+             android:name="com.google.firebase.messaging.default_notification_channel_id"
+             android:value="high_importance_channel" />
+    
 
     </application>
     <!-- Required to query activities that can process text, see:

@@ -71,6 +71,7 @@ dependencies:
   geolocator: ^13.0.2
   google_maps_flutter: ^2.10.1
   geocoding: ^3.0.0
+  geolocator_android: 4.6.1
 
   #local storage
   hive: ^2.2.3
@@ -98,6 +99,7 @@ dependencies:
   # animations
   flutter_animate: ^4.5.2
 
+
   # local auth
   local_auth: ^2.3.0
 
@@ -105,7 +107,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   intl: ^0.19.0
   bottom_picker: ^3.0.0
+
+  # firebase
   firebase_core: ^3.13.0
+  firebase_messaging: ^15.2.5
+  flutter_local_notifications: ^19.2.0
+
+  # onSignal 
+  onesignal_flutter: ^5.1.2
 
 dev_dependencies:
   flutter_test:
