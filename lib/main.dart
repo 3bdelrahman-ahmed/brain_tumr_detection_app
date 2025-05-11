@@ -15,7 +15,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await HiveCachingHelper.initHive();
-  await AppConstants.getLanguage(); // Detect Language BEFORE runApp
+  await AppConstants.getLanguage();
   startService();
   Bloc.observer = BlocObservers();
   runApp(NeroTumApp());
