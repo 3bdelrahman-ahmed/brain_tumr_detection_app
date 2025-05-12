@@ -1,0 +1,43 @@
+import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
+import 'package:flutter/material.dart';
+
+import 'notification_circular_image.dart';
+
+class NotificationCardWidget extends StatelessWidget {
+  const NotificationCardWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        NotificationCircularImage(),
+        16.toWidth,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Notification Title",
+              style: AppTextStyles.font14BlueW500.copyWith(
+                  color: AppColors.buttonsAndNav, fontWeight: FontWeight.w600),
+            ),
+            4.toHeight,
+            Text(
+              "Notification Description",
+              style: AppTextStyles.font14BlueW500.copyWith(
+                color: Colors.black.withOpacity(0.5),
+              ),
+            ),
+          ],
+        ),
+        const Spacer(),
+        Text(
+          "09:00 AM",
+          style: AppTextStyles.font10BlueW600,
+        ),
+      ],
+    );
+  }
+}
