@@ -60,6 +60,15 @@ class S {
     );
   }
 
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
 
   String get scanUploadSuccess {
     return Intl.message(

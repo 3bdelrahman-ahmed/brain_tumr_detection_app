@@ -1,33 +1,71 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'badge_service.dart';
 
 class PushNotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+final FlutterLocalNotificationsPlugin _localNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
-  Future<void> initialize() async {
-    // Request permissions (iOS)
-    NotificationSettings settings = await _fcm.requestPermission();
+ Future<void> initialize() async {
+  // Init local notifications
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
+  const InitializationSettings initSettings =
+      InitializationSettings(android: androidSettings);
+  final BadgeService _badgeService = BadgeService.instance;
 
-      // Get the token
-      String? token = await _fcm.getToken();
-      print("FCM Token: $token");
+  await _localNotificationsPlugin.initialize(initSettings);
 
-      // Handle foreground messages
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        print('Received a message while in the foreground!');
-        print('Message data: ${message.data}');
-        if (message.notification != null) {
-          print('Notification: ${message.notification!.title}');
-          print('Body: ${message.notification!.body}');
-        }
-      });
+  // FCM permissions
+  NotificationSettings settings = await _fcm.requestPermission();
 
-      // Background + terminated state
-      FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        print('Message opened app: ${message.data}');
-      });
-    }
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    print('User granted permission');
+
+    // Get the FCM token
+    String? token = await _fcm.getToken();
+    print("FCM Token: $token");
+
+    // Foreground message
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('Foreground message: ${message.data}');
+      if (message.notification != null) {
+        _showLocalNotification(message);
+           _badgeService.updateBadgeVisibility(true);
+      }
+    });
+
+    // Background/terminated
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print('App opened from notification: ${message.data}');
+    });
   }
+}
+
+Future<void> _showLocalNotification(RemoteMessage message) async {
+ const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+  'high_importance_channel',
+  'High Importance Notifications',
+  channelDescription: 'This channel is used for important notifications.',
+  importance: Importance.max,
+  priority: Priority.high,
+);
+
+
+  const NotificationDetails platformDetails =
+      NotificationDetails(android: androidDetails);
+
+  await _localNotificationsPlugin.show(
+    message.hashCode,
+    message.notification?.title ?? 'Title',
+    message.notification?.body ?? 'Body',
+    platformDetails,
+    payload: 'optional_payload',
+  );
+}
+
+
 }

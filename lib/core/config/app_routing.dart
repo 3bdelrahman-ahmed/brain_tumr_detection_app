@@ -3,7 +3,6 @@ import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
-import 'package:brain_tumr_detection_app/features/chats/presentation/view_model/chats_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/chats/data/models/chat_preview.dart';
 import '../../features/login/presentation/view/screens/login_screen.dart';
 import '../../features/login/presentation/view_model/login_cubit.dart';
+import '../../features/notification/presentation/view/screen/notification_screen.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import '../../features/onboarding/presentation/view_model/onboarding_cubit.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
@@ -38,6 +38,7 @@ class AppRoutes {
   static const String viewReportScreen = '/viewReport';
   static const String chatsScreen = '/chatsScreen';
   static const String chatsListScreen = '/chatsListScreen';
+  static const String notificationScreen = '/notification';
 }
 
 class AppRouter {
@@ -57,6 +58,11 @@ class AppRouter {
             email: routeSettings.arguments as String,
           ),
         ));
+        case AppRoutes.notificationScreen:
+        return animateRouteBuilder(
+          const NotificationScreen(),
+          duration: 300.ms,
+        );
       case AppRoutes.splashScreen:
         return animateRouteBuilder(
           const SplashScreen(),

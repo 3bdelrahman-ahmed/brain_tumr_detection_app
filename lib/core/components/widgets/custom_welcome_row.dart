@@ -1,9 +1,11 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import '../../../generated/l10n.dart';
 import '../../config/app_routing.dart';
+import '../../services/notification_service/badge_service.dart';
 import 'custom_image_view.dart';
 import '../../utils/assets/assets_png.dart';
 import '../../utils/theme/text_styles/app_text_styles.dart';
@@ -11,7 +13,8 @@ import '../../utils/theme/text_styles/app_text_styles.dart';
 class CustomWelcomeAppBar extends StatelessWidget {
   final String? userName;
 
-  const CustomWelcomeAppBar({Key? key, this.userName}) : super(key: key);
+  CustomWelcomeAppBar({Key? key, this.userName}) : super(key: key);
+  final BadgeService _badgeService = BadgeService.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +65,32 @@ class CustomWelcomeAppBar extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 10.w),
-                CustomImageView(
-                  imagePath: AssetsPng.notifications.toPng(),
-                  width: 30.w,
-                  height: 30.w,
-                ),
+                GestureDetector(
+                  onTap: () {
+                    _badgeService.updateBadgeVisibility(false);
+                    Navigator.pushNamed(context, AppRoutes.notificationScreen);
+                  },
+                  child: StreamBuilder<bool>(
+                    stream: _badgeService
+                        .badgeStream, // Listen to the badge visibility stream
+                    builder: (context, snapshot) {
+                      bool isBadgeVisible =
+                          snapshot.data ?? false; // Default to false if no data
+
+                      return Badge(
+                        backgroundColor: AppColors.error,
+                        isLabelVisible: isBadgeVisible,
+                        largeSize: 24,
+                        smallSize: 8,
+                        child: CustomImageView(
+                          imagePath: AssetsPng.notifications.toPng(),
+                          width: 30.w,
+                          height: 30.w,
+                        ),
+                      );
+                    },
+                  ),
+                )
               ],
             ),
           ],
