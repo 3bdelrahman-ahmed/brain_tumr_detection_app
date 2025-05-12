@@ -175,11 +175,15 @@
   "selectTimeSlot": "اختر معاد",
   "pleaseSelectTimeSlot": "من فضلك اختر معاد",
   "confirmBooking": "تأكيد الحجز",
-  "yesBookNow" : "نعم احجز الان",
-  "clinic" :"العيادة",
-  "time" : "الساعة",
-  "date" : "التاريخ",
-  "appointmentConfirmed" : "تم تأكيد الحجز",
-  "yourBookingWasSuccessfulSeeYouSoon" : "تم تأكيد حجزك , نراك قريبا"
-
+  "yesBookNow": "نعم احجز الان",
+  "clinic": "العيادة",
+  "time": "الساعة",
+  "date": "التاريخ",
+  "appointmentConfirmed": "تم تأكيد الحجز",
+  "yourBookingWasSuccessfulSeeYouSoon": "تم تأكيد حجزك , نراك قريبا",
+  "failedToPickImage": "تعذر اختيار ملف",
+  "pleasePickAFileToUpload": "الرجاء اختيار ملف لرفعه",
+  "resetPassword": "تغيير كلمة السر",
+  "confirmPassword": "تأكيد كلمة السر",
+  "letsResetIt": "دعنا نُعيد تعيينها لتتمكن من العودة والتركيز على ما يهم حقًا: صحتك وسلامتك."
 }

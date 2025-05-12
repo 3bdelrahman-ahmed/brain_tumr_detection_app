@@ -55,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmBooking":
             MessageLookupByLibrary.simpleMessage("Confirm Booking"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "confirmPasswordNotMatch": MessageLookupByLibrary.simpleMessage(
             "Confirm password does not match"),
         "contactPatient":
@@ -93,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYourUserName":
             MessageLookupByLibrary.simpleMessage("Enter your Username"),
         "experience": MessageLookupByLibrary.simpleMessage("Experience: "),
+        "failedToPickImage":
+            MessageLookupByLibrary.simpleMessage("Failed to pick image"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "fifthOnBoardingMessage":
             MessageLookupByLibrary.simpleMessage("Privacy First"),
@@ -128,6 +132,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kindlyCompleteTheForm": MessageLookupByLibrary.simpleMessage(
             "Kindly complete the fields below with the relevant details of your clinic."),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "letsResetIt": MessageLookupByLibrary.simpleMessage(
+            "Let’s reset it so you can get back to focusing on what really matters: your health and well-being"),
         "letsStart": MessageLookupByLibrary.simpleMessage("Let’s Start!"),
         "like": MessageLookupByLibrary.simpleMessage("Like"),
         "likes": MessageLookupByLibrary.simpleMessage("Likes"),
@@ -185,6 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pinFieldError": MessageLookupByLibrary.simpleMessage(
             "Please enter verification code"),
         "pleaseEnter": MessageLookupByLibrary.simpleMessage("Please enter "),
+        "pleasePickAFileToUpload": MessageLookupByLibrary.simpleMessage(
+            "Please pick a file to upload"),
         "pleaseSelectTimeSlot":
             MessageLookupByLibrary.simpleMessage("Please select time slot"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
@@ -199,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reportIsReady":
             MessageLookupByLibrary.simpleMessage("Report Is Ready!"),
         "resendCodeAgain": MessageLookupByLibrary.simpleMessage("Resend code"),
+        "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "result": MessageLookupByLibrary.simpleMessage("Result"),
         "returnPage": MessageLookupByLibrary.simpleMessage("Return"),
         "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),

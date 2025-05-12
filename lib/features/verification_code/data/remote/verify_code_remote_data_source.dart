@@ -11,4 +11,10 @@ class VerifyCodeRemoteDataSource {
         await AppDio().post(path: AppUrls.verifyCode, data: body.toJson());
     return response.data['message'];
   }
+
+  Future<String> verifyForgetCode(VerificationCodeRequestModel body) async {
+    final response = await AppDio()
+        .post(path: AppUrls.verifyForgetPassword, data: body.toJson());
+    return response.data['email'];
+  }
 }

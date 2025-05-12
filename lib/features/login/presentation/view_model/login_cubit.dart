@@ -24,12 +24,29 @@ class LoginCubit extends Cubit<LoginState> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final forgetPasswordController = TextEditingController();
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
   final LocalAuthentication auth = LocalAuthentication();
   bool rememberMe = false;
   bool isBiometricAvailable = false;
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
+
+  Future<void> forgetPassword() async {
+    final response =
+        await repository.forgetPassword(forgetPasswordController.text);
+    response.fold((l) {
+      l.message!.showToast();
+    }, (r) {
+      context.navigateTo(
+        AppRoutes.verificationCodeScreen,
+        arguments: {
+          'email': r,
+          'isResetPass': true,
+        },
+      );
+    });
+  }
 
   Future<void> login() async {
     if (formKey.currentState!.validate()) {
