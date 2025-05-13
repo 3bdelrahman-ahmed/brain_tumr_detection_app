@@ -101,7 +101,13 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       l.message!.showToast();
       emit(RigesterScreenErrorState());
     }, (r) async {
-      context.navigateTo(AppRoutes.verificationCodeScreen, arguments: r.email);
+      context.navigateTo(
+        AppRoutes.verificationCodeScreen,
+        arguments: {
+          'email': r.email,
+          'isResetPass': false,
+        },
+      );
       clear();
 
       emit(RigesterScreenSuccessState());
@@ -131,7 +137,13 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       l.message!.showToast();
       emit(RigesterScreenErrorState());
     }, (r) async {
-      context.navigateTo(AppRoutes.verificationCodeScreen, arguments: r.email);
+      context.navigateTo(
+        AppRoutes.verificationCodeScreen,
+        arguments: {
+          'email': r.email,
+          'isResetPass': false,
+        },
+      );
       clear();
 
       emit(RigesterScreenSuccessState());

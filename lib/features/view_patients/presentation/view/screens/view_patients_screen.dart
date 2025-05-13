@@ -1,7 +1,9 @@
+import 'package:brain_tumr_detection_app/core/components/screens/register_screen_location_widget.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view/widgets/view_patient_row.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view_model/cubit/view_patients_cubit.dart';
@@ -19,44 +21,48 @@ class ViewPatientsScreen extends StatefulWidget {
 }
 
 class _ViewPatientsScreenState extends State<ViewPatientsScreen> {
-
   @override
   void initState() {
-    context.read<ViewPatientsCubit>().getPatients('1',DateTime.now());
+    context.read<ViewPatientsCubit>().getPatients('1', DateTime.now());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    final cubit=context.read<ViewPatientsCubit>();
+    final cubit = context.read<ViewPatientsCubit>();
     return Scaffold(
       body: BlocBuilder<ViewPatientsCubit, ViewPatientsState>(
         builder: (context, state) {
           return CustomScrollView(
-              slivers: [
-                CustomWelcomeAppBar(),
-               SliverToBoxAdapter(child: DateRangeSelector()),
+            slivers: [
+              CustomWelcomeAppBar(),
+              SliverToBoxAdapter(child: DateRangeSelector()),
               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
               SliverToBoxAdapter(child: DaySelector()),
               SliverPadding(padding: EdgeInsets.symmetric(vertical: 7.h)),
-                SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                  childCount:cubit.patients?.length??0 ,
-                  (context, index) {
-                    return  cubit.patients==null?CustomAppShimmer(
-                      height: 100.h,
-                      width: double.infinity,
-                      
-                      borderRaduis: 100,
-                    ):cubit.patients!.isEmpty? 
-                  Center(
-                    child: CustomImageView(
-                      imagePath: AssetsPng.appLogo,
-                    ),
-                  ): ViewPatientRow(viewPatientResponseModel: cubit.patients![index]);
-                  },
-                ))
-              ],
-            );
+              SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                childCount: cubit.patients?.length ?? 2,
+                (context, index) {
+
+                  return cubit.patients == null
+                      ? CustomAppShimmer(
+                          height: 60.h,
+                          width: double.infinity,
+                          borderRaduis: 100.r,
+                        ).paddingSymmetric(vertical: 10.h,horizontal: 10.w)
+                      : cubit.patients!.isEmpty
+                          ? Center(
+                              child: CustomImageView(
+                                imagePath: AssetsPng.appLogo,
+                              ),
+                            )
+                          : ViewPatientRow(
+                              viewPatientResponseModel: cubit.patients![index]);
+                },
+              ))
+            ],
+          );
         },
       ),
     );

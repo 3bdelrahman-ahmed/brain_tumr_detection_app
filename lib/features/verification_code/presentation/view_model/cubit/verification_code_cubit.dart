@@ -15,6 +15,7 @@ part 'verification_code_state.dart';
 @injectable
 class VerificationCodeCubit extends Cubit<VerificationCodeState> {
   final VerifyCodeRepository repository;
+
   VerificationCodeCubit({required this.repository})
       : super(VerificationCodeInitial());
 
@@ -34,6 +35,23 @@ class VerificationCodeCubit extends Cubit<VerificationCodeState> {
       (r) {
         S.of(context).sucessOpertation.showToast();
         context.navigateTo(AppRoutes.loginScreen);
+        emit(SubmitVerificationCodeSuccessState());
+      },
+    );
+  }
+
+  Future<void> verifyForgetCode(String email) async {
+    emit(SubmitVerificationCodeLoadingState());
+    final response = await repository.verifyForgetCode(
+        VerificationCodeRequestModel(email: email, code: code.join()));
+    response.fold(
+      (l) {
+        l.message!.showToast();
+        emit(SubmitVerificationCodeErrorState());
+      },
+      (r) {
+        S.of(context).sucessOpertation.showToast();
+        context.navigateTo(AppRoutes.resetPasswordScreen);
         emit(SubmitVerificationCodeSuccessState());
       },
     );

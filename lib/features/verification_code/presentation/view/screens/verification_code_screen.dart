@@ -16,7 +16,10 @@ import '../widgets/header_text_widget.dart';
 
 class VerificationCodeScreen extends StatelessWidget {
   final String email;
-  const VerificationCodeScreen({super.key, required this.email});
+  final bool isResetPass;
+
+  const VerificationCodeScreen(
+      {super.key, required this.email, required this.isResetPass});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,10 @@ class VerificationCodeScreen extends StatelessWidget {
                         isLoading: state is SubmitVerificationCodeLoadingState,
                         text: S.of(context).submit,
                         onTap: () {
-                          cubit.verifyCode(email);
+                          print(isResetPass);
+                          isResetPass
+                              ? cubit.verifyForgetCode(email)
+                              : cubit.verifyCode(email);
                         }).paddingSymmetric(horizontal: 24.w),
                   ],
                 ),

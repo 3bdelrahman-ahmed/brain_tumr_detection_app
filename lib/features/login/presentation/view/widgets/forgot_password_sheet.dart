@@ -1,7 +1,9 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_cubit.dart';
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../../../core/components/widgets/custom_text_field.dart';
@@ -14,6 +16,7 @@ class ForgotPasswordSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<LoginCubit>();
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -43,6 +46,7 @@ class ForgotPasswordSheet extends StatelessWidget {
           ),
           20.toHeight,
           CustomTextField(
+              controller: cubit.forgetPasswordController,
               validator: (value) => checkFieldValidation(
                   val: value,
                   fieldName: S.of(context).email,
@@ -54,6 +58,7 @@ class ForgotPasswordSheet extends StatelessWidget {
             child: CustomButton(
               text: S.of(context).next,
               onTap: () {
+                cubit.forgetPassword();
                 Navigator.pop(context);
               },
             ),

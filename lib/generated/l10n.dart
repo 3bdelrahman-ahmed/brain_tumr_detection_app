@@ -79,20 +79,12 @@ class S {
     );
   }
 
+
   /// `NeuroTum AI`
   String get appName {
     return Intl.message(
       'NeuroTum AI',
       name: 'appName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get failedToPickImage {
-    return Intl.message(
-      'Failed to pick image',
-      name: 'failedToPickImage',
       desc: '',
       args: [],
     );
@@ -1903,6 +1895,56 @@ class S {
     return Intl.message(
       'Your booking was successful. See you soon!',
       name: 'yourBookingWasSuccessfulSeeYouSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to pick image`
+  String get failedToPickImage {
+    return Intl.message(
+      'Failed to pick image',
+      name: 'failedToPickImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please pick a file to upload`
+  String get pleasePickAFileToUpload {
+    return Intl.message(
+      'Please pick a file to upload',
+      name: 'pleasePickAFileToUpload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s reset it so you can get back to focusing on what really matters: your health and well-being`
+  String get letsResetIt {
+    return Intl.message(
+      'Let’s reset it so you can get back to focusing on what really matters: your health and well-being',
+      name: 'letsResetIt',
       desc: '',
       args: [],
     );
