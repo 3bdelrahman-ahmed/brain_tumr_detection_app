@@ -45,23 +45,30 @@ class ForgotPasswordSheet extends StatelessWidget {
             ),
           ),
           20.toHeight,
-          CustomTextField(
-              controller: cubit.forgetPasswordController,
-              validator: (value) => checkFieldValidation(
-                  val: value,
-                  fieldName: S.of(context).email,
-                  fieldType: ValidationType.email),
-              label: S.of(context).email,
-              hintText: S.of(context).enterYourEmail),
+          Form(
+            key: cubit.forgetPasswordFormKey,
+            child: CustomTextField(
+                controller: cubit.forgetPasswordController,
+                validator: (value) => checkFieldValidation(
+                    val: value,
+                    fieldName: S.of(context).email,
+                    fieldType: ValidationType.email),
+                label: S.of(context).email,
+                hintText: S.of(context).enterYourEmail),
+          ),
           20.toHeight,
-          Center(
-            child: CustomButton(
-              text: S.of(context).next,
-              onTap: () {
-                cubit.forgetPassword();
-                Navigator.pop(context);
-              },
-            ),
+          BlocBuilder<LoginCubit, LoginState>(
+            builder: (BuildContext context, LoginState state) {
+              return Center(
+                child: CustomButton(
+                  isLoading: state is ForgetPasswordLoadingState,
+                  text: S.of(context).next,
+                  onTap: () {
+                    cubit.forgetPassword();
+                  },
+                ),
+              );
+            },
           ),
           20.toHeight,
         ],

@@ -1929,6 +1929,16 @@ class S {
       args: [],
     );
   }
+
+  /// `ReEnter OTP code`
+  String get enterOtp {
+    return Intl.message(
+      'ReEnter OTP code',
+      name: 'enterOtp',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

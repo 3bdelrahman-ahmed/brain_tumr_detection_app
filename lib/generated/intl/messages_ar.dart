@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "education": MessageLookupByLibrary.simpleMessage("التعليم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "enterOtp": MessageLookupByLibrary.simpleMessage(
+            "اعد ادخال رمز التحقق المرسل من قبل "),
         "enterVerificationCode":
             MessageLookupByLibrary.simpleMessage("أدخل رمز التحقق"),
         "enterYourClinicPhoneNumber":
