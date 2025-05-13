@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
     
     <!-- Required permissions -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -50,11 +51,12 @@
 
         <!-- Firebase Messaging Service -->
         <service
-            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
+    android:name="com.google.firebase.messaging.FirebaseMessagingService"
+    android:exported="true"
+    tools:replace="android:exported">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+    </intent-filter>
         </service>
 
         <!-- Local Notifications: boot receivers -->
