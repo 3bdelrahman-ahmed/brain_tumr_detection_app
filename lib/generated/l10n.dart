@@ -50,6 +50,36 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+
+  String get pleasePickAFileToUpload{
+    return Intl.message(
+      'Please pick a file to upload',
+      name: 'pleasePickAFileToUpload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+
+  String get scanUploadSuccess {
+    return Intl.message(
+      'Scan Uploaded Successfully!',
+      name: 'scanUploadSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+
   /// `NeuroTum AI`
   String get appName {
     return Intl.message(

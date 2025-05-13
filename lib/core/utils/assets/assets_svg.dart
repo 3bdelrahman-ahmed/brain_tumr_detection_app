@@ -27,6 +27,7 @@ class AssetsSvg {
   static const String report = "report";
   static const String clock = "clock";
   static const String clock2 = "mdi_clock";
+  static const String notification = "notificationIcon";
   // Messages Status
   static const String checkMark = "checkMark";
   static const String pending = "pending";

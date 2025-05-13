@@ -30,6 +30,12 @@ import '../../../features/login/data/remote/login_remote_data_source.dart'
 import '../../../features/login/data/repository/login_repository.dart' as _i340;
 import '../../../features/login/presentation/view_model/login_cubit.dart'
     as _i638;
+import '../../../features/notification/data/remote/notification_remote_data_source.dart'
+    as _i624;
+import '../../../features/notification/data/repo/notification_repository.dart'
+    as _i577;
+import '../../../features/notification/presentation/view_model/cubit/notification_cubit.dart'
+    as _i7;
 import '../../../features/onboarding/presentation/view_model/onboarding_cubit.dart'
     as _i775;
 import '../../../features/profle/presentation/viewmodel/settings_cubit.dart'
@@ -102,6 +108,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i437.SignalRConnection>(() => _i437.SignalRConnection());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
+    gh.singleton<_i624.NotificationRemoteDataSource>(
+        () => _i624.NotificationRemoteDataSource());
     gh.singleton<_i301.RegisterRemoteDataSource>(
         () => _i301.RegisterRemoteDataSource());
     gh.singleton<_i89.UploadScanRemoteDataSource>(
@@ -114,6 +122,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.ViewPatientsDataSource());
     gh.singleton<_i90.ViewPatientsRepo>(
         () => _i90.ViewPatientsRepo(gh<_i1070.ViewPatientsDataSource>()));
+    gh.singleton<_i577.NotificationRepository>(() =>
+        _i577.NotificationRepository(
+            remoteDataSource: gh<_i624.NotificationRemoteDataSource>()));
     gh.factory<_i1002.GetDoctorsClinicsRepository>(() =>
         _i1002.GetDoctorsClinicsRepository(
             gh<_i585.GetDoctorsClinicsDataSource>()));
@@ -140,6 +151,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
     gh.factory<_i354.SlotsCubit>(() =>
         _i354.SlotsCubit(clinicsRepository: gh<_i249.ClinicsRepository>()));
+    gh.factory<_i7.NotificationCubit>(() => _i7.NotificationCubit(
+        notificationRepository: gh<_i577.NotificationRepository>()));
     gh.singleton<_i938.UploadScanRepotitory>(() => _i938.UploadScanRepotitory(
         uploadScanRemoteDataSource: gh<_i89.UploadScanRemoteDataSource>()));
     gh.factory<_i199.ViewPatientsCubit>(

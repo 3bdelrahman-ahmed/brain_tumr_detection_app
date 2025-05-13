@@ -1,4 +1,3 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_logo_container.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
@@ -7,7 +6,6 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/components/widgets/custom_sliver_search_bar.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
