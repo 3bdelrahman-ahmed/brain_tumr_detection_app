@@ -167,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
         "noSlotsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد مواعيد متاحة"),
+        "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
         "notificationsSettings":
             MessageLookupByLibrary.simpleMessage("إعدادات الإشعارات"),
         "openLocationPermission": MessageLookupByLibrary.simpleMessage(
