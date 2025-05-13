@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "comments": MessageLookupByLibrary.simpleMessage("تعليقات"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirmBooking": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
         "confirmPasswordNotMatch": MessageLookupByLibrary.simpleMessage(
             "تأكيد كلمة المرور غير متطابق"),
         "contactPatient":
@@ -91,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYourUserName":
             MessageLookupByLibrary.simpleMessage("أدخل اسم المستخدم الخاص بك"),
         "experience": MessageLookupByLibrary.simpleMessage("الخبرة: "),
+        "failedToPickImage":
+            MessageLookupByLibrary.simpleMessage("تعذر اختيار ملف"),
         "female": MessageLookupByLibrary.simpleMessage("أنثى"),
         "fifthOnBoardingMessage":
             MessageLookupByLibrary.simpleMessage("الخصوصية أولاً"),
@@ -127,6 +131,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kindlyCompleteTheForm": MessageLookupByLibrary.simpleMessage(
             "يرجى استكمال الحقول أدناه بالتفاصيل ذات الصلة بعيادتك."),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "letsResetIt": MessageLookupByLibrary.simpleMessage(
+            "دعنا نُعيد تعيينها لتتمكن من العودة والتركيز على ما يهم حقًا: صحتك وسلامتك."),
         "letsStart": MessageLookupByLibrary.simpleMessage("لنبدأ!"),
         "like": MessageLookupByLibrary.simpleMessage("إعجاب"),
         "likes": MessageLookupByLibrary.simpleMessage("إعجابات"),
@@ -183,6 +189,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pinFieldError":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رمز التحقق"),
         "pleaseEnter": MessageLookupByLibrary.simpleMessage("الرجاء إدخال "),
+        "pleasePickAFileToUpload":
+            MessageLookupByLibrary.simpleMessage("الرجاء اختيار ملف لرفعه"),
         "pleaseSelectTimeSlot":
             MessageLookupByLibrary.simpleMessage("من فضلك اختر معاد"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
@@ -198,6 +206,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reportIsReady": MessageLookupByLibrary.simpleMessage("التقرير جاهز!"),
         "resendCodeAgain":
             MessageLookupByLibrary.simpleMessage("إعادة إرسال الكود"),
+        "resetPassword":
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة السر"),
         "result": MessageLookupByLibrary.simpleMessage("النتيجة"),
         "returnPage": MessageLookupByLibrary.simpleMessage("عودة"),
         "reviews": MessageLookupByLibrary.simpleMessage("التقييمات"),

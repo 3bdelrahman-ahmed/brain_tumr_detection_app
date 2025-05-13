@@ -20,128 +20,134 @@ import '../../../data/model/view_patient_response_model/view_patient_response_mo
 
 class ViewPatientRow extends StatelessWidget {
   final ViewPatientResponseModel viewPatientResponseModel;
-  const ViewPatientRow({Key? key, required this.viewPatientResponseModel}) : super(key: key);
+
+  const ViewPatientRow({Key? key, required this.viewPatientResponseModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-patientTime(viewPatientResponseModel: viewPatientResponseModel),
-
-10.toWidth,
+        patientTime(viewPatientResponseModel: viewPatientResponseModel),
+        10.toWidth,
         Expanded(
-          child: Container(
-            
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(100.r),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 6,
-                  spreadRadius: 2,
-                  offset: Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Row(
+            child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(100.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 6,
+                spreadRadius: 2,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(100.r)),
+                    child: CustomImageView(
+                      width: 50.w,
+                      height: 50.w,
+                      url: AppConstants.user?.profilePicture,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  15.toWidth,
+                  Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                  width: 120.w,
+                                  child: Text(
+                                    viewPatientResponseModel
+                                            .patient!.fullName ??
+                                        '',
+                                    style: AppTextStyles.font12GreenW700,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  )),
+                              // Text(
+                              //   viewPatientResponseModel.patient!.gender ?? "Female",
+                              //   style: AppTextStyles.font12BlueW700,
+                              // ),
+                            ],
+                          ),
+                          // 20.toWidth,
+                          // Text("${viewPatientResponseModel.startTime} ${S.of(context).session}",
+                          //     style: AppTextStyles.font12GreyW500),
+                        ],
+                      ),
+                      // ResponsiveHelper.isTablet(context) ? 40.toHeight : 20.toHeight,
+                    ],
+                  )
+                ],
+              ),
+              PositionedDirectional(
+                bottom: -18.h,
+                end: 15.w,
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(100.r)),
-                      child: CustomImageView(
-                         width: 50.w,
-                      height: 50.w,
-                        url: AppConstants.user?.profilePicture,
-                        fit: BoxFit.cover,
-                      ),
+                    CustomButton(
+                      text: S.of(context).chat,
+                      onTap: () {
+                        context.navigateTo(AppRoutes.chatsScreen,
+                            arguments: ChatPreview(
+                                chatId: 0,
+                                name: viewPatientResponseModel
+                                        .patient!.fullName ??
+                                    '',
+                                time: DateTime.now(),
+                                message: '',
+                                user: User(
+                                  userName: viewPatientResponseModel
+                                          .patient!.userName ??
+                                      '',
+                                  id: viewPatientResponseModel.patient!.id
+                                      .toString(),
+                                  fullName: viewPatientResponseModel
+                                          .patient!.fullName ??
+                                      '',
+                                  profilePicture: viewPatientResponseModel
+                                      .patient!.profilePicture,
+                                )));
+                      },
+                      height: 30.h,
+                      backgroundColor: AppColors.typography,
+                      textStyle: AppTextStyles.font12WhiteW500,
+                      width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
                     ),
-                    15.toWidth,
-                    Column(
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                    width: 120.w,
-                                    child: Text(
-                                      viewPatientResponseModel.patient!.fullName??'',
-                                      style: AppTextStyles.font12GreenW700,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    )),
-                                // Text(
-                                //   viewPatientResponseModel.patient!.gender ?? "Female",
-                                //   style: AppTextStyles.font12BlueW700,
-                                // ),
-                              ],
-                            ),
-                            // 20.toWidth,
-                            // Text("${viewPatientResponseModel.startTime} ${S.of(context).session}",
-                            //     style: AppTextStyles.font12GreyW500),
-                          ],
-                        ),
-                        // ResponsiveHelper.isTablet(context) ? 40.toHeight : 20.toHeight,
-                        
-                      ],
+                    ResponsiveHelper.isTablet(context) ? 7.toWidth : 7.toWidth,
+                    CustomButton(
+                      text: S.of(context).cancel,
+                      onTap: () {},
+                      height: 30.h,
+                      backgroundColor: AppColors.red,
+                      textStyle: AppTextStyles.font12WhiteW500,
+                      width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
                     )
                   ],
                 ),
-          
-                PositionedDirectional(
-                  bottom: -18.h,
-                  end: 15.w,
-                  child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomButton(
-                                text: S.of(context).chat,
-                                onTap: () {
-
-                                  context.navigateTo(AppRoutes.chatsScreen, arguments: ChatPreview(
-                                    chatId:0,
-                                    name: viewPatientResponseModel.patient!.fullName??'',
-                                    time: DateTime.now(),
-                                    message: '',
-                                    user: User (
-                                      userName:viewPatientResponseModel.patient!.userName??'' ,
-                                      id: viewPatientResponseModel.patient!.id.toString(),
-                                      fullName: viewPatientResponseModel.patient!.fullName??'',
-                                      profilePicture: viewPatientResponseModel.patient!.profilePicture,
-                                    )
-                                  ));
-                                },
-                                height: 30.h,
-                                backgroundColor: AppColors.typography,
-                                textStyle: AppTextStyles.font12WhiteW500,
-                                width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
-                              ),
-                              ResponsiveHelper.isTablet(context) ? 7.toWidth : 7.toWidth,
-                              CustomButton(
-                                text: S.of(context).cancel,
-                                onTap: () {},
-                                height: 30.h,
-                                backgroundColor: AppColors.red,
-                                textStyle:AppTextStyles.font12WhiteW500,
-                                width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
-                              )
-                            ],
-                          ),
-                ),
-              ],
-            ),
-          )
-        ),
+              ),
+            ],
+          ),
+        )),
       ],
-    ).paddingSymmetric( horizontal: 10.w, vertical: 5.h);
+    ).paddingSymmetric(horizontal: 10.w, vertical: 5.h);
   }
 }
 
@@ -162,7 +168,7 @@ class patientTime extends StatelessWidget {
           svgPath: AssetsSvg.clock2.toSVG(),
         ),
         Text(
-         '${formatTimeTo24Hour( viewPatientResponseModel.startTime??'').split(' ')[0]}\n${formatTimeTo24Hour( viewPatientResponseModel.startTime??'').split(' ')[1]}',
+          '${formatTimeTo24Hour(viewPatientResponseModel.startTime ?? '').split(' ')[0]}\n${formatTimeTo24Hour(viewPatientResponseModel.startTime ?? '').split(' ')[1]}',
           style: AppTextStyles.font12GreenW700,
           textAlign: TextAlign.center,
         ),

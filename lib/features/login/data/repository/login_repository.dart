@@ -8,6 +8,7 @@ import '../remote/login_remote_data_source.dart';
 @singleton
 class LoginRepository {
   final LoginRemoteDataSource dataSource;
+
   LoginRepository({required this.dataSource});
 
   Future<Either<ApiErrorModel, LoginResponseModel>> login(
@@ -20,12 +21,21 @@ class LoginRepository {
     }
   }
 
-  // Future<Either<ApiErrorModel,String>> sentDiviceToken(String token) async {
-  //   try {
-  //     final respons = await dataSource.sentDeviceToken(token);
-  //     return Right(respons);
-  //   } on Exception catch (e) {
-  //     return Left(ErrorHandler.handle(e));
-  //   }
-  // }
+  Future<Either<ApiErrorModel, String>> forgetPassword(String email) async {
+    try {
+      final response = await dataSource.forgetPassword(email);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+// Future<Either<ApiErrorModel,String>> sentDiviceToken(String token) async {
+//   try {
+//     final respons = await dataSource.sentDeviceToken(token);
+//     return Right(respons);
+//   } on Exception catch (e) {
+//     return Left(ErrorHandler.handle(e));
+//   }
+// }
 }

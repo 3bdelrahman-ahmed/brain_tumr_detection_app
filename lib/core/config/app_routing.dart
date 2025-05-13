@@ -12,6 +12,7 @@ import 'package:brain_tumr_detection_app/core/components/screens/rigester__locat
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/view/screens/view_report_screen.dart';
+import 'package:brain_tumr_detection_app/features/reset_password/presentation/view/screens/reset_password.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -21,6 +22,7 @@ import '../../features/login/presentation/view/screens/login_screen.dart';
 import '../../features/login/presentation/view_model/login_cubit.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import '../../features/onboarding/presentation/view_model/onboarding_cubit.dart';
+import '../../features/reset_password/presentation/view_model/reset_password_cubit.dart';
 import '../../features/splash/presentation/view/screens/splash_screen.dart';
 import '../../features/verification_code/presentation/view/screens/verification_code_screen.dart';
 import '../services/service_locator/service_locator.dart';
@@ -38,6 +40,7 @@ class AppRoutes {
   static const String viewReportScreen = '/viewReport';
   static const String chatsScreen = '/chatsScreen';
   static const String chatsListScreen = '/chatsListScreen';
+  static const String resetPasswordScreen = '/resetPasswordScreen';
 }
 
 class AppRouter {
@@ -51,11 +54,18 @@ class AppRouter {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case AppRoutes.verificationCodeScreen:
+        final args = routeSettings.arguments as Map<String, dynamic>;
         return animateRouteBuilder(BlocProvider(
           create: (context) => getIt<VerificationCodeCubit>(),
           child: VerificationCodeScreen(
-            email: routeSettings.arguments as String,
+            email: args['email'] as String,
+            isResetPass: args['isResetPass'] as bool,
           ),
+        ));
+      case AppRoutes.resetPasswordScreen:
+        return animateRouteBuilder(BlocProvider(
+          create: (context) => getIt<ResetPasswordCubit>(),
+          child: ResetPassword(),
         ));
       case AppRoutes.splashScreen:
         return animateRouteBuilder(

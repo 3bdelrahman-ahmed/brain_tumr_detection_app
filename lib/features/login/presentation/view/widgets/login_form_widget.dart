@@ -92,15 +92,21 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                               NoSplash.splashFactory, // Disables ripple effect
                         ),
                         isSemanticButton: false,
-                        onPressed: () => showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                    top: Radius.circular(30.r)),
-                              ),
-                              builder: (_) => ForgotPasswordSheet(),
+                        onPressed: () {
+                          final loginCubit = context.read<LoginCubit>();
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(30.r)),
                             ),
+                            builder: (context) => BlocProvider.value(
+                              value: loginCubit,
+                              child: ForgotPasswordSheet(),
+                            ),
+                          );
+                        },
                         child: Text(
                           S.of(context).forgotPassword,
                           style: AppTextStyles.font15LightGreenW500,

@@ -16,4 +16,5 @@ class AssetsPng {
   static const String person = 'person';
   static const String doctorTest = 'doctor_test';
   static const String appointmentTest = 'appointment_text';
+  static const String resetPassword = 'reset_password';
 }
