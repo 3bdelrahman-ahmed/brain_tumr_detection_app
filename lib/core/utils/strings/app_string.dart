@@ -194,7 +194,7 @@ Almost there! We’ve sent a code to your email to verify your identity. Just en
       'Confirm password does not match';
   static const String invalidPhoneNumber = 'Invalid Phone Number';
   static const String verificationCodeError =
-      'Verification code must be 4 digits';
+      'Verification code must be 6 digits';
   static const String nameMustNotContainNumbers =
       'Name must not contain numbers';
   static const String nameMustNotContainSpecialCharacters =

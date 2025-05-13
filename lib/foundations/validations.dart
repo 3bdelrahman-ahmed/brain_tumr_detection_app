@@ -191,7 +191,7 @@ String? checkFieldValidation(
   if (fieldType == ValidationType.verificationCode) {
     if (isRequired(val!, fieldName) != null) {
       errorMsg = isRequired(val, fieldName);
-    } else if (!RegExp(r'^\d{4}$').hasMatch(val)) {
+    } else if (!RegExp(r'^\d{6}$').hasMatch(val)) {
       errorMsg = AppStrings.verificationCodeError;
     }
   }

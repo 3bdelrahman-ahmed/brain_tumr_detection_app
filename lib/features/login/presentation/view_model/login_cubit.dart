@@ -22,6 +22,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.repository}) : super(LoginInitial());
   bool isObscure = true;
   final formKey = GlobalKey<FormState>();
+  final forgetPasswordFormKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final forgetPasswordController = TextEditingController();
@@ -33,19 +34,23 @@ class LoginCubit extends Cubit<LoginState> {
   BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
 
   Future<void> forgetPassword() async {
-    final response =
-        await repository.forgetPassword(forgetPasswordController.text);
-    response.fold((l) {
-      l.message!.showToast();
-    }, (r) {
-      context.navigateTo(
-        AppRoutes.verificationCodeScreen,
-        arguments: {
-          'email': r,
-          'isResetPass': true,
-        },
-      );
-    });
+    if (forgetPasswordFormKey.currentState!.validate()) {
+      emit(ForgetPasswordLoadingState());
+      final response =
+          await repository.forgetPassword(forgetPasswordController.text);
+      response.fold((l) {
+        l.message!.showToast();
+        emit(LoginErrorState());
+      }, (r) {
+        context.navigateTo(
+          AppRoutes.verificationCodeScreen,
+          arguments: {
+            'email': r,
+            'isResetPass': true,
+          },
+        );
+      });
+    }
   }
 
   Future<void> login() async {

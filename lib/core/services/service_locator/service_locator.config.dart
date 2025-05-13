@@ -48,6 +48,10 @@ import '../../../features/register/presentation/view_model/rigester_screen_cubit
     as _i5;
 import '../../../features/reports/presentation/viewmodel/reports_cubit.dart'
     as _i187;
+import '../../../features/reset_password/data/remote/reset_password_data_soruce.dart'
+    as _i550;
+import '../../../features/reset_password/data/repo/reset_password_repository.dart'
+    as _i25;
 import '../../../features/reset_password/presentation/view_model/reset_password_cubit.dart'
     as _i545;
 import '../../../features/scan/data/remote/upload_scan_remote_data_source.dart'
@@ -104,7 +108,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i970.SettingsCubit>(() => _i970.SettingsCubit());
     gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
-    gh.factory<_i545.ResetPasswordCubit>(() => _i545.ResetPasswordCubit());
+    gh.factory<_i550.ResetPasswordDataSource>(
+        () => _i550.ResetPasswordDataSource());
     gh.singleton<_i437.SignalRConnection>(() => _i437.SignalRConnection());
     gh.singleton<_i609.LoginRemoteDataSource>(
         () => _i609.LoginRemoteDataSource());
@@ -143,6 +148,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i390.ChatRepository(gh<_i104.ChatDataSource>()));
     gh.singleton<_i249.ClinicsRepository>(() => _i249.ClinicsRepository(
         clinicsRemoteDataSource: gh<_i1013.ClinicsRemoteDataSource>()));
+    gh.factory<_i25.ResetPasswordRepository>(() =>
+        _i25.ResetPasswordRepository(gh<_i550.ResetPasswordDataSource>()));
     gh.factory<_i761.ShowDoctorsCubit>(
         () => _i761.ShowDoctorsCubit(gh<_i546.DoctorAppointmentRepository>()));
     gh.factory<_i5.RigesterScreenCubit>(() => _i5.RigesterScreenCubit(
@@ -157,6 +164,8 @@ extension GetItInjectableX on _i174.GetIt {
         uploadScanRemoteDataSource: gh<_i89.UploadScanRemoteDataSource>()));
     gh.factory<_i199.ViewPatientsCubit>(
         () => _i199.ViewPatientsCubit(gh<_i90.ViewPatientsRepo>()));
+    gh.factory<_i545.ResetPasswordCubit>(
+        () => _i545.ResetPasswordCubit(gh<_i25.ResetPasswordRepository>()));
     gh.factory<_i638.LoginCubit>(
         () => _i638.LoginCubit(repository: gh<_i340.LoginRepository>()));
     gh.singleton<_i1039.ChatsCubit>(() => _i1039.ChatsCubit(
