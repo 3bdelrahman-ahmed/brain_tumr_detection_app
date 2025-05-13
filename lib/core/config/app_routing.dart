@@ -42,7 +42,6 @@ class AppRoutes {
   static const String chatsListScreen = '/chatsListScreen';
   static const String notificationScreen = '/notification';
   static const String resetPasswordScreen = '/resetPasswordScreen';
-
 }
 
 class AppRouter {
@@ -64,7 +63,7 @@ class AppRouter {
             isResetPass: args['isResetPass'] as bool,
           ),
         ));
-        case AppRoutes.notificationScreen:
+      case AppRoutes.notificationScreen:
         return animateRouteBuilder(
           const NotificationScreen(),
           duration: 300.ms,

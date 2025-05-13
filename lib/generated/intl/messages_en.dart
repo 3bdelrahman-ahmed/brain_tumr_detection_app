@@ -169,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
         "noSlotsAvailable":
             MessageLookupByLibrary.simpleMessage("No slots available"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "notificationsSettings":
             MessageLookupByLibrary.simpleMessage("Notifications Settings"),
         "openLocationPermission": MessageLookupByLibrary.simpleMessage(
