@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "education": MessageLookupByLibrary.simpleMessage("Education"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "enterOtp": MessageLookupByLibrary.simpleMessage("ReEnter OTP code"),
         "enterVerificationCode":
             MessageLookupByLibrary.simpleMessage("Enter the Verification Code"),
         "enterYourClinicPhoneNumber": MessageLookupByLibrary.simpleMessage(
