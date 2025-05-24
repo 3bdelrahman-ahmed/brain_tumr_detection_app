@@ -25,6 +25,6 @@ class ClinicsRemoteDataSource {
 
   Future<AddSlotResponseModel> addSlot(AddSlotRequestModel body) async {
     final response = await AppDio().post(path: AppUrls.addSlot, data: body);
-    return AddSlotResponseModel.fromJson(response.data); 
+    return AddSlotResponseModel.fromJson(response.data);
   }
 }

@@ -10,12 +10,12 @@ class ResetPasswordRepository {
 
   ResetPasswordRepository(this.resetPasswordDataSource);
 
-  Future<Either<ApiErrorModel,String>> resetPassword(ResetPasswordRequestModel request) async{
-    try{
+  Future<Either<ApiErrorModel, String>> resetPassword(
+      ResetPasswordRequestModel request) async {
+    try {
       final response = await resetPasswordDataSource.resetPassword(request);
       return Right(response);
-    }
-    on Exception catch(e){
+    } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));
     }
   }

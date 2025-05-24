@@ -1939,6 +1939,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No notifications yet`
+  String get noNotifications {
+    return Intl.message(
+      'No notifications yet',
+      name: 'noNotifications',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

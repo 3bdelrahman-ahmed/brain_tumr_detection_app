@@ -6,6 +6,7 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
@@ -17,6 +18,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../chats/data/models/chat_preview.dart';
 import '../../../../chats/data/models/get_all_coversation_response.dart';
 import '../../../data/model/view_patient_response_model/view_patient_response_model.dart';
+import '../../view_model/cubit/view_patients_cubit.dart';
 
 class ViewPatientRow extends StatelessWidget {
   final ViewPatientResponseModel viewPatientResponseModel;
@@ -96,52 +98,64 @@ class ViewPatientRow extends StatelessWidget {
                   )
                 ],
               ),
-              PositionedDirectional(
-                bottom: -18.h,
-                end: 15.w,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomButton(
-                      text: S.of(context).chat,
-                      onTap: () {
-                        context.navigateTo(AppRoutes.chatsScreen,
-                            arguments: ChatPreview(
-                                chatId: 0,
-                                name: viewPatientResponseModel
-                                        .patient!.fullName ??
-                                    '',
-                                time: DateTime.now(),
-                                message: '',
-                                user: User(
-                                  userName: viewPatientResponseModel
-                                          .patient!.userName ??
-                                      '',
-                                  id: viewPatientResponseModel.patient!.id
-                                      .toString(),
-                                  fullName: viewPatientResponseModel
-                                          .patient!.fullName ??
-                                      '',
-                                  profilePicture: viewPatientResponseModel
-                                      .patient!.profilePicture,
-                                )));
-                      },
-                      height: 30.h,
-                      backgroundColor: AppColors.typography,
-                      textStyle: AppTextStyles.font12WhiteW500,
-                      width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
-                    ),
-                    ResponsiveHelper.isTablet(context) ? 7.toWidth : 7.toWidth,
-                    CustomButton(
-                      text: S.of(context).cancel,
-                      onTap: () {},
-                      height: 30.h,
-                      backgroundColor: AppColors.red,
-                      textStyle: AppTextStyles.font12WhiteW500,
-                      width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
-                    )
-                  ],
-                ),
+              BlocBuilder<ViewPatientsCubit, ViewPatientsState>(
+                builder: (context, state) {
+                  return PositionedDirectional(
+                              bottom: -18.h,
+                              end: 15.w,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomButton(
+                                    isLoading: state is GetConversationIdLoading,
+                                    text: S.of(context).chat,
+                                    onTap: () async {
+                                      context
+                                          .read<ViewPatientsCubit>()
+                                          .getConversationId(
+                                              viewPatientResponseModel.patient!.id.toString())
+                                          .then((conversationId) {
+                                        print('Conversation ID: $conversationId');
+                                        context.navigateTo(AppRoutes.chatsScreen,
+                                            arguments: ChatPreview(
+                                                chatId: conversationId ?? 0,
+                                                name: viewPatientResponseModel
+                                                        .patient!.fullName ??
+                                                    '',
+                                                time: DateTime.now(),
+                                                message: '',
+                                                user: User(
+                                                  userName: viewPatientResponseModel
+                                                          .patient!.userName ??
+                                                      '',
+                                                  id: viewPatientResponseModel.patient!.id
+                                                      .toString(),
+                                                  fullName: viewPatientResponseModel
+                                                          .patient!.fullName ??
+                                                      '',
+                                                  profilePicture: viewPatientResponseModel
+                                                      .patient!.profilePicture,
+                                                )));
+                                      });
+                                    },
+                                    height: 30.h,
+                                    backgroundColor: AppColors.typography,
+                                    textStyle: AppTextStyles.font12WhiteW500,
+                                    width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
+                                  ),
+                                  ResponsiveHelper.isTablet(context) ? 7.toWidth : 7.toWidth,
+                                  CustomButton(
+                                    text: S.of(context).cancel,
+                                    onTap: () {},
+                                    height: 30.h,
+                                    backgroundColor: AppColors.red,
+                                    textStyle: AppTextStyles.font12WhiteW500,
+                                    width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
+                                  )
+                                ],
+                              ),
+                            );
+                },
               ),
             ],
           ),

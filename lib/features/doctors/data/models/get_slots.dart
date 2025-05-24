@@ -2,7 +2,7 @@ class AvailablePatientSlotsRequestModel {
   final int slotId;
   final String date;
 
-    AvailablePatientSlotsRequestModel({
+  AvailablePatientSlotsRequestModel({
     required this.slotId,
     required this.date,
   });

@@ -18,10 +18,7 @@ class AddSlotRequestModel {
   }
 }
 
-
-
 class AddSlotResponseModel {
-
   final int id;
   final int dayOfWeek;
   final String startTime;

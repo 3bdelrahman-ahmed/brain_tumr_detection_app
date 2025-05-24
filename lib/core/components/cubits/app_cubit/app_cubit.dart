@@ -73,4 +73,8 @@ class AppCubit extends Cubit<AppState> {
       },
     );
   }
+
+  void sendDeviceToken(String token){
+    repository.sendDeviceToken(token); 
+  }
 }

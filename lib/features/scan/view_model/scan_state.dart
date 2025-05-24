@@ -8,7 +8,6 @@ final class ScanInitial extends ScanState {}
 final class ScanFilePicked extends ScanState {}
 
 final class UploadScanLoadingState extends ScanState {
-  
   UploadScanLoadingState();
 }
 

@@ -226,8 +226,7 @@ class SlotsCubit extends Cubit<SlotsState> {
       isLoadingSlots = false;
 
       for (int i = 0; i < r.length; i++) {
-        await Future.delayed(
-            const Duration(milliseconds: 50)); 
+        await Future.delayed(const Duration(milliseconds: 50));
         availableSlots.insert(i, r[i]);
         listKey.currentState?.insertItem(i);
       }

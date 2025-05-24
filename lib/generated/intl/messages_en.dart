@@ -166,6 +166,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "nextTimeYouLogin": MessageLookupByLibrary.simpleMessage(
             "Next time you login, you can use your fingerprint or face ID to access your account."),
+        "noNotifications":
+            MessageLookupByLibrary.simpleMessage("No notifications yet"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
         "noSlotsAvailable":
