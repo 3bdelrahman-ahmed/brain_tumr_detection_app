@@ -44,13 +44,12 @@ class _ViewPatientsScreenState extends State<ViewPatientsScreen> {
                   delegate: SliverChildBuilderDelegate(
                 childCount: cubit.patients?.length ?? 2,
                 (context, index) {
-
                   return cubit.patients == null
                       ? CustomAppShimmer(
                           height: 60.h,
                           width: double.infinity,
                           borderRaduis: 100.r,
-                        ).paddingSymmetric(vertical: 10.h,horizontal: 10.w)
+                        ).paddingSymmetric(vertical: 10.h, horizontal: 10.w)
                       : cubit.patients!.isEmpty
                           ? Center(
                               child: CustomImageView(

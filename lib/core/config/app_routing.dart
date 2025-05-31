@@ -1,5 +1,6 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/location_cubit/location_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/cubits/navigation_cubit/navigation_cubit.dart';
+import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
@@ -7,7 +8,6 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/scre
 import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
-import 'package:brain_tumr_detection_app/core/components/screens/rigester__location__screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/view/screens/view_report_screen.dart';
@@ -16,10 +16,12 @@ import 'package:brain_tumr_detection_app/features/verification_code/presentation
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/chats/data/models/chat_preview.dart';
 import '../../features/login/presentation/view/screens/login_screen.dart';
 import '../../features/login/presentation/view_model/login_cubit.dart';
 import '../../features/notification/presentation/view/screen/notification_screen.dart';
+import '../../features/notification/presentation/view_model/cubit/notification_cubit.dart';
 import '../../features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import '../../features/onboarding/presentation/view_model/onboarding_cubit.dart';
 import '../../features/reset_password/presentation/view_model/reset_password_cubit.dart';
@@ -65,7 +67,10 @@ class AppRouter {
         ));
       case AppRoutes.notificationScreen:
         return animateRouteBuilder(
-          const NotificationScreen(),
+          BlocProvider(
+            create: (context) => getIt<NotificationCubit>(),
+            child: const NotificationScreen(),
+          ),
           duration: 300.ms,
         );
       case AppRoutes.resetPasswordScreen:

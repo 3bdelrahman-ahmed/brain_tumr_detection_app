@@ -36,7 +36,7 @@ class PushNotificationService {
         print('Message body: ${message.notification?.body}');
         if (message.notification != null) {
           print('Notification title: ${message.notification?.title}');
-          print('Notification body: ${message.notification?.body}'); 
+          print('Notification body: ${message.notification?.body}');
           _showLocalNotification(message);
           _badgeService.updateBadgeVisibility(true);
         }

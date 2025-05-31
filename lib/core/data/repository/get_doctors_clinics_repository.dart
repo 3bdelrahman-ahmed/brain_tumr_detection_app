@@ -21,4 +21,14 @@ class GetDoctorsClinicsRepository {
       return Left(ErrorHandler.handle(e));
     }
   }
+
+  Future<Either<ApiErrorModel,void>>sendDeviceToken(
+      String deviceToken) async {
+    try {
+      final response = await getDoctorsClinicsDataSource.sendDeviceToken(deviceToken);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
 }

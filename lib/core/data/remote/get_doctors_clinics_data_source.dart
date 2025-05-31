@@ -14,4 +14,11 @@ class GetDoctorsClinicsDataSource {
 
     return GetDoctorResponseModel.fromJson(response.data);
   }
-}
+
+  Future<void> sendDeviceToken(String deviceToken) async {
+    await AppDio().post(
+      path: AppUrls.sendDeviceToken,
+      data: {'deviceToken': deviceToken},
+    );
+    
+  }}

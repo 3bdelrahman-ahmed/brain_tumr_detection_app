@@ -101,6 +101,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       l.message!.showToast();
       emit(RigesterScreenErrorState());
     }, (r) async {
+      
       context.navigateTo(
         AppRoutes.verificationCodeScreen,
         arguments: {

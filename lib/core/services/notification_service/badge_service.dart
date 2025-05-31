@@ -11,7 +11,8 @@ class BadgeService {
   static BadgeService get instance => _instance;
 
   // StreamController to manage the badge state
-  final StreamController<bool> _badgeStreamController = StreamController<bool>.broadcast();
+  final StreamController<bool> _badgeStreamController =
+      StreamController<bool>.broadcast();
 
   // Stream to listen to the badge state
   Stream<bool> get badgeStream => _badgeStreamController.stream;

@@ -19,6 +19,7 @@ final class ViewPatientsLoaded extends ViewPatientsState {
   @override
   List<Object> get props => [patients];
 }
+
 final class ViewPatientsError extends ViewPatientsState {
   final String error;
 
@@ -32,17 +33,13 @@ final class ChangeDays extends ViewPatientsState {
   final DateTime startDate;
   final DateTime endDate;
   final DateTime selectedDay;
-  const ChangeDays(
-    this.startDate,
-    this.endDate ,
-    this.selectedDay
-  );
+  const ChangeDays(this.startDate, this.endDate, this.selectedDay);
   @override
   List<Object> get props => [
         startDate,
         endDate,
         selectedDay,
-  ];
+      ];
 }
 
 final class SelectDay extends ViewPatientsState {
@@ -52,4 +49,29 @@ final class SelectDay extends ViewPatientsState {
 
   @override
   List<Object> get props => [day];
+}
+
+final class GetConversationIdLoading extends ViewPatientsState {
+  const GetConversationIdLoading();
+
+  @override
+  List<Object> get props => [];
+}
+
+final class GetConversationIdLoaded extends ViewPatientsState {
+  final int conversationId;
+
+  const GetConversationIdLoaded(this.conversationId);
+
+  @override
+  List<Object> get props => [conversationId];
+}
+
+final class GetConversationIdError extends ViewPatientsState {
+  final String error;
+
+  const GetConversationIdError(this.error);
+
+  @override
+  List<Object> get props => [error];
 }

@@ -202,6 +202,7 @@ Almost there! We’ve sent a code to your email to verify your identity. Just en
   static const String dateError = 'Invalid date';
   static const String phoneNumberMustBe11Digits =
       'Phone number must be 11 digits';
+  static const String noNotifications ="noNotifications";
 
   //test
 

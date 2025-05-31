@@ -165,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "nextTimeYouLogin": MessageLookupByLibrary.simpleMessage(
             "في المرة القادمة التي تسجل فيها الدخول، يمكنك استخدام بصمة إصبعك أو وجهك للوصول إلى حسابك."),
+        "noNotifications":
+            MessageLookupByLibrary.simpleMessage("لا توجد إشعارات"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
         "noSlotsAvailable":

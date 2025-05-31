@@ -45,5 +45,7 @@ class SlotsChangedState extends SlotsState {
 }
 
 class AddSlotLoadingState extends SlotsState {}
+
 class AddSlotSuccessState extends SlotsState {}
+
 class AddSlotErrorState extends SlotsState {}

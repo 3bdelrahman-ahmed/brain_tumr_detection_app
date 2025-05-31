@@ -7,32 +7,30 @@ import 'package:intl/intl.dart';
 import '../../../data/model/view_patient_response_model/view_patient_response_model.dart';
 
 part 'view_patients_state.dart';
-@injectable
 
+@injectable
 class ViewPatientsCubit extends Cubit<ViewPatientsState> {
   final ViewPatientsRepo viewPatientsRepo;
   ViewPatientsCubit(this.viewPatientsRepo) : super(ViewPatientsInitial());
- DateTime startDate = DateTime.now();
+  DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 4));
   DateTime selectedDay = DateTime.now();
-   List<ViewPatientResponseModel>? patients ;
+  List<ViewPatientResponseModel>? patients;
 
-
-   
   Future<void> getPatients(String clinicId, DateTime date) async {
-    patients=null;
+    patients = null;
     emit(ViewPatientsLoading());
     final result = await viewPatientsRepo.getPatients(clinicId, date);
     result.fold(
-      (error) => emit(ViewPatientsError(error.message??'')),
+      (error) => emit(ViewPatientsError(error.message ?? '')),
       (patients) {
         this.patients = patients;
         emit(ViewPatientsLoaded(patients));
       },
     );
-  
-}
-   String formatDate() {
+  }
+
+  String formatDate() {
     return "${DateFormat('dd MMM yyyy').format(startDate)} -"
         " ${DateFormat('dd MMM yyyy').format(endDate)}";
   }
@@ -61,11 +59,29 @@ class ViewPatientsCubit extends Cubit<ViewPatientsState> {
 
   void selectDay(DateTime day) {
     selectedDay = day;
-    getPatients('1', DateTime(
-      selectedDay.year,
-      selectedDay.month,
-      selectedDay.day,
-    ));
+    getPatients(
+        '1',
+        DateTime(
+          selectedDay.year,
+          selectedDay.month,
+          selectedDay.day,
+        ));
     emit(SelectDay(day));
+  }
+
+  Future<int?> getConversationId(String patientId) async {
+    emit(GetConversationIdLoading());
+    final response = await viewPatientsRepo.getConversationId(patientId);
+    return response.fold(
+      (error) {
+        emit(GetConversationIdError(error.message ?? ''));
+        return null;
+      },
+      (conversationId) {
+        final id = conversationId.id ?? 0;
+        emit(GetConversationIdLoaded(id));
+        return id;
+      },
+    );
   }
 }

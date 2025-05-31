@@ -187,5 +187,6 @@
   "confirmPassword": "Confirm Password",
   "letsResetIt": "Let’s reset it so you can get back to focusing on what really matters: your health and well-being",
   "notifications": "Notifications",
-  "enterOtp": "ReEnter OTP code"
+  "enterOtp": "ReEnter OTP code",
+  "noNotifications": "No notifications yet"
 }

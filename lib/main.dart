@@ -18,8 +18,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-    await FirebaseMessaging.instance.requestPermission();
-await PushNotificationService().initialize();
+  await FirebaseMessaging.instance.requestPermission();
+  await PushNotificationService().initialize();
 // OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   // Initialize with your OneSignal App ID
   // OneSignal.initialize("7befc836-c514-4a94-8039-12b89facdfec");

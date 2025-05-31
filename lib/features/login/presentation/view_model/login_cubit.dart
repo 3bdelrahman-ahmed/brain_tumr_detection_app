@@ -1,13 +1,16 @@
 import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
+
 import '../../../../../../core/utils/extenstions/navigation_extenstions.dart';
 import '../../../../core/data/local_services/app_caching_helper.dart';
 import '../../data/models/login_model.dart';
@@ -74,6 +77,12 @@ class LoginCubit extends Cubit<LoginState> {
         AppConstants.setUser(r.user!);
         AppConstants.user = r.user;
         await setLocation();
+        // Get FCM token and send it to the server
+        String? fcmToken = await FirebaseMessaging.instance.getToken();
+        if (fcmToken != null) {
+         context.read<AppCubit>().repository
+              .sendDeviceToken(fcmToken);
+        }
         context.navigateTo(AppRoutes.homeScreen);
         emit(LoginSuccessState());
       });
