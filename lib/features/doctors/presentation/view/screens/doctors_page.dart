@@ -57,10 +57,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
             controller: _scrollController,
             slivers: [
               CustomWelcomeAppBar(),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: CustomSliverSearchBar(AppStrings.searchForTherapist),
-              ),
               if (isLoading)
                 SliverFillRemaining(
                   child: Center(
