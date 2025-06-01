@@ -10,10 +10,12 @@ import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/appointment_model.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
-  const DoctorCardAppointment({Key? key, this.name}) : super(key: key);
-  final String? name;
+  const DoctorCardAppointment({Key? key,required this.appointmentData})
+      : super(key: key);
+  final AppointmentData appointmentData;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +45,9 @@ class DoctorCardAppointment extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 ),
                 child: CustomImageView(
-                  imagePath: AssetsPng.appointmentTest.toPng(),
+                  url: appointmentData.doctorProfilePicture,
                   fit: BoxFit.cover,
-                ).paddingSymmetric(vertical: 7.h, horizontal: 7.h),
+                ).paddingSymmetric(vertical: 4.h, horizontal: 4.h),
               ),
               15.toWidth,
               Container(
@@ -54,26 +56,31 @@ class DoctorCardAppointment extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name != null ? "Dr: $name" : "Dr : Hamdy Abdelfatah",
+                      "Dr : ${appointmentData.doctorName}",
                       style: AppTextStyles.font20GreenW700,
                     ),
                     5.toHeight,
                     Text(
-                      S.of(context).upComing,
+                      appointmentData.status,
                       style: AppTextStyles.font12LightGreenW500,
                     ),
                     5.toHeight,
                     Text(
-                      "February 15, 2025 10:30 AM",
+                      "${appointmentData.date}  ${appointmentData.startTime}",
                       style: AppTextStyles.font15LightGreenW500,
                     ),
                     5.toHeight,
+                    Text(
+                      "${appointmentData.address}",
+                      style: AppTextStyles.font15LightGreenW500,
+                    ),
                   ],
                 ),
               )
             ],
           ),
           25.toHeight,
+          if (appointmentData.status != "Completed" && appointmentData.status != "Cancelled")
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
