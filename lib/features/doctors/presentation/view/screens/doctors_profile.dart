@@ -8,7 +8,7 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widg
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
-import '../../viewmodel/doctors_cubit.dart';
+import '../../view_model/doctors_cubit.dart';
 import '../widgets/availabilty_canlendar.dart';
 
 class DoctorsProfile extends StatefulWidget {

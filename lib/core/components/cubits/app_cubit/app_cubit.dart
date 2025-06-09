@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 import '../../../../foundations/app_constants.dart';
 import '../../../data/models/doctor_clinic_model.dart';
 import '../../../data/models/get_doctor_request_model.dart';
-import '../../../data/models/get_doctor_response.dart';
 import '../../../data/repository/get_doctors_clinics_repository.dart'; // Add this import
 
 part 'app_state.dart';

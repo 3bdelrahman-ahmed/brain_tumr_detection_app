@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_sliver_search_bar.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
@@ -82,9 +83,9 @@ class _DoctorsPageState extends State<DoctorsPage> {
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.h),
-                    child: Center(
-                        child: CircularProgressIndicator(
-                            color: AppColors.buttonsAndNav)),
+                    child: CustomAppShimmer(
+                      height: 150.h,
+                    ),
                   ),
                 ),
               SliverPadding(padding: EdgeInsets.symmetric(vertical: 30.h)),

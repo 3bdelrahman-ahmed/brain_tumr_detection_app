@@ -5,7 +5,6 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../view_model/appointment_cubit.dart';
 import '../widgets/doctor_card.dart';
 
@@ -20,6 +19,18 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
   @override
   void initState() {
     context.read<AppointmentCubit>().getPatientAppointments();
+    context.read<AppointmentCubit>().scrollController.addListener(() {
+      if (context.read<AppointmentCubit>().scrollController.position.pixels >=
+          context
+                  .read<AppointmentCubit>()
+                  .scrollController
+                  .position
+                  .maxScrollExtent -
+              200) {
+        final cubit = context.read<AppointmentCubit>();
+        cubit.loadMoreAppointments();
+      }
+    });
     super.initState();
   }
 
@@ -27,6 +38,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
   Widget build(BuildContext context) {
     var cubit = context.read<AppointmentCubit>();
     return CustomScrollView(
+      controller: cubit.scrollController,
       shrinkWrap: true,
       slivers: [
         CustomWelcomeAppBar(),
@@ -37,23 +49,33 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
                     childCount:
-                        cubit.appointmentsResponseModel!.appointments!.length,
+                        cubit.appointmentsResponseModel!.appointments!.length +
+                            (cubit.isLoadingMore ? 1 : 0),
                     (context, index) {
-                      return Padding(
-                        padding:
-                            EdgeInsets.only(top: 16.h, left: 20.w, right: 20.w),
-                        child: DoctorCardAppointment(
-                          appointment: cubit
-                              .appointmentsResponseModel!.appointments![index],
-                        ).animate().fadeIn(
-                              duration: const Duration(milliseconds: 300),
-                            ),
-                      );
+                      return index ==
+                              cubit.appointmentsResponseModel!.appointments!
+                                  .length
+                          ? Padding(
+                              padding: EdgeInsets.only(
+                                  top: 16.h, left: 20.w, right: 20.w),
+                              child: CustomAppShimmer(
+                                height: 150.w,
+                              ),
+                            )
+                          : Padding(
+                              padding: EdgeInsets.only(
+                                  top: 16.h, left: 20.w, right: 20.w),
+                              child: DoctorCardAppointment(
+                                appointment: cubit.appointmentsResponseModel!
+                                    .appointments![index],
+                              ).animate().fadeIn(
+                                    duration: const Duration(milliseconds: 300),
+                                  ),
+                            );
                     },
                   ),
                 );
               } else {
-                // make it sliver list with empty widget
                 return SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(

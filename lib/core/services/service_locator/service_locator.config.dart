@@ -25,7 +25,7 @@ import '../../../features/doctors/data/remote/reviews_data_source.dart'
     as _i727;
 import '../../../features/doctors/data/repository/reviews_repository.dart'
     as _i546;
-import '../../../features/doctors/presentation/viewmodel/doctors_cubit.dart'
+import '../../../features/doctors/presentation/view_model/doctors_cubit.dart'
     as _i761;
 import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
     as _i1069;

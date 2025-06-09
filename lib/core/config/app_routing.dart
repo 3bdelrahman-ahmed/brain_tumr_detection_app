@@ -5,7 +5,7 @@ import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.da
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/doctors_cubit.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';

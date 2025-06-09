@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
-import '../../viewmodel/doctors_cubit.dart';
+import '../../view_model/doctors_cubit.dart';
 
 class ReviewsListWidget extends StatelessWidget {
   const ReviewsListWidget({super.key});

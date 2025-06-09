@@ -2,7 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.d
 import 'package:brain_tumr_detection_app/core/components/widgets/stars_generator.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/doctors_cubit.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';

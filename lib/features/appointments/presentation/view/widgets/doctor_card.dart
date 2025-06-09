@@ -4,13 +4,15 @@ import 'package:brain_tumr_detection_app/features/appointments/data/models/appoi
 import 'package:flutter/material.dart';
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../core/helper/functions/convert_time_slot_function.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
   Appointments appointment;
-   DoctorCardAppointment({Key? key,required this.appointment }) : super(key: key);
+  DoctorCardAppointment({Key? key, required this.appointment})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,7 @@ class DoctorCardAppointment extends StatelessWidget {
                     ),
                     5.toHeight,
                     Text(
-                      appointment.startTime ?? "09:00 AM",
+                      formatTimeTo24Hour(appointment.startTime ?? "9:00:00"),
                       style: AppTextStyles.font15LightGreenW500,
                     ),
                   ],

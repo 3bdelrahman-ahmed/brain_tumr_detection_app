@@ -4,15 +4,13 @@ import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.da
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/doctors/data/models/get_slots.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/doctors_cubit.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/slots/data/model/available_slots.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 

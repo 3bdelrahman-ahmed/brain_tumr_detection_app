@@ -8,7 +8,8 @@ import 'custom_text_field.dart';
 
 class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
   final String hintText;
-  const CustomSliverSearchBar(this.hintText, {Key? key});
+  final TextEditingController? controller;
+  const CustomSliverSearchBar(this.hintText, {Key? key, this.controller});
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -17,8 +18,10 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
           .scaffoldBackgroundColor, // Ensures it's not transparent
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
       child: CustomTextField(
+        controller: controller ?? TextEditingController(),
         validator: (value) => checkFieldValidation(
             val: value,
+          
             fieldName: AppStrings.search,
             fieldType: ValidationType.text),
         hintText: hintText,
@@ -28,9 +31,9 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 75.h; // Increased height for spacing
+  double get maxExtent => 85.h; // Increased height for spacing
   @override
-  double get minExtent => 75.h; // Same as max for consistency
+  double get minExtent => 85.h; // Same as max for consistency
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
