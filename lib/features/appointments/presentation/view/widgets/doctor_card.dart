@@ -1,19 +1,16 @@
-import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
+import 'package:brain_tumr_detection_app/features/appointments/data/models/appointments_model.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
-import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
-  const DoctorCardAppointment({Key? key, this.name}) : super(key: key);
-  final String? name;
+  Appointments appointment;
+   DoctorCardAppointment({Key? key,required this.appointment }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +40,7 @@ class DoctorCardAppointment extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 ),
                 child: CustomImageView(
-                  imagePath: AssetsPng.appointmentTest.toPng(),
+                  url: appointment.doctorProfilePicture,
                   fit: BoxFit.cover,
                 ).paddingSymmetric(vertical: 7.h, horizontal: 7.h),
               ),
@@ -54,7 +51,7 @@ class DoctorCardAppointment extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name != null ? "Dr: $name" : "Dr : Hamdy Abdelfatah",
+                      "Dr: ${appointment.doctorName ?? "Hamdy Abdelfatah"}",
                       style: AppTextStyles.font20GreenW700,
                     ),
                     5.toHeight,
@@ -64,10 +61,14 @@ class DoctorCardAppointment extends StatelessWidget {
                     ),
                     5.toHeight,
                     Text(
-                      "February 15, 2025 10:30 AM",
+                      appointment.date ?? "2023-10-01",
                       style: AppTextStyles.font15LightGreenW500,
                     ),
                     5.toHeight,
+                    Text(
+                      appointment.startTime ?? "09:00 AM",
+                      style: AppTextStyles.font15LightGreenW500,
+                    ),
                   ],
                 ),
               )

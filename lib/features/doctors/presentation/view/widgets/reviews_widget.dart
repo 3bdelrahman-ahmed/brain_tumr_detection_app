@@ -1,19 +1,21 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/stars_generator.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
-import '../../viewmodel/show_doctors_cubit.dart';
+import '../../viewmodel/doctors_cubit.dart';
 
 class ReviewsListWidget extends StatelessWidget {
   const ReviewsListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.watch<DoctorsCubit>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
       decoration: BoxDecoration(
@@ -38,18 +40,26 @@ class ReviewsListWidget extends StatelessWidget {
           12.toHeight,
           SizedBox(
             height: 170.h,
-            child: BlocBuilder<ShowDoctorsCubit, ShowDoctorsState>(
+            child: BlocBuilder<DoctorsCubit, DoctorsState>(
               builder: (context, state) {
-                if (state is ShowDoctorsLoading) {
-                  return Center(
-                      child: CircularProgressIndicator(
-                    color: AppColors.buttonsAndNav,
-                  ));
-                } else if (state is ShowDoctorsError) {
-                  return Center(child: Text(state.message));
-                }
-                final reviews = context.read<ShowDoctorsCubit>().reviews;
-                if (reviews!.isNotEmpty) {
+                if (state is ShowDoctorsLoading && cubit.reviews.isEmpty) {
+                  return ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                    itemBuilder: (context, index) {
+                      return CustomAppShimmer(
+                        width: 150.w,
+                      );
+                    },
+                    separatorBuilder: (context, index) => 12.toWidth,
+                    itemCount: 5,
+                  );
+                } else if (cubit.reviews.isNotEmpty) {
+                  final reviews = context.read<DoctorsCubit>().reviews;
+
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: reviews.length,
@@ -99,12 +109,15 @@ class ReviewsListWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                      );
+                      ).animate().fadeIn(
+                            duration: 300.ms,
+                          );
                     },
                   );
                 } else {
                   return Center(
                     child: Text(
+                      textAlign: TextAlign.center,
                       S.of(context).noReviews,
                       style: AppTextStyles.font16BlueW700,
                     ),

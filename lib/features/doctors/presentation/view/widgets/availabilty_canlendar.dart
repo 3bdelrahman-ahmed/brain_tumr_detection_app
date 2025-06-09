@@ -4,7 +4,7 @@ import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.da
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/doctors/data/models/get_slots.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/slots/data/model/available_slots.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +31,9 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<ShowDoctorsCubit>();
+    final cubit = context.read<DoctorsCubit>();
 
-    return BlocConsumer<ShowDoctorsCubit, ShowDoctorsState>(
+    return BlocConsumer<DoctorsCubit, DoctorsState>(
       listener: (context, state) {
         if (state is BookAppointmentSuccess) {
           showBookingConfirmedDialog(context);
@@ -133,7 +133,7 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
   Widget _buildImprovedTimeSlotsUI(
       BuildContext context,
       GetAvailableDoctorsSuccess state,
-      ShowDoctorsCubit cubit,
+      DoctorsCubit cubit,
       String doctorName,
       String clinic) {
     return Container(
@@ -264,7 +264,7 @@ void showBookingConfirmedDialog(BuildContext context) {
 }
 
 void showDialog(BuildContext context, AvailableSlotsModel selectedSlot,
-    ShowDoctorsCubit cubit, String doctorName, String clinic) {
+    DoctorsCubit cubit, String doctorName, String clinic) {
   showGeneralDialog(
     context: context,
     barrierDismissible: true,

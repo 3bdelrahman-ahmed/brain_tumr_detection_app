@@ -15,10 +15,10 @@ class DoctorAppointmentRepository {
   DoctorAppointmentRepository(this.reviewsDataSource);
 
   Future<Either<ApiErrorModel, GetReviewsResponse>> getDoctorReview(
-      GetReviewsRequestModel getReviewRequestModel, int doctorId) async {
+      GetReviewsRequestModel getReviewRequestModel) async {
     try {
       final response = await reviewsDataSource.getDoctorReviews(
-          getReviewRequestModel, doctorId);
+          getReviewRequestModel);
       return Right(response);
     } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));

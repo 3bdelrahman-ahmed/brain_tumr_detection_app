@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../features/appointments/presentation/view/screens/appointments_page.dart';
+import '../../../../features/appointments/presentation/view/screens/appointments_screen.dart';
+import '../../../../features/appointments/presentation/view_model/appointment_cubit.dart';
 import '../../../../features/doctors/presentation/view/screens/doctors_page.dart';
 import '../../../../features/feed/presentation/view/screens/feed_page.dart';
 import '../../../../features/profle/presentation/view/screens/profile_page.dart';
@@ -68,7 +69,10 @@ class NavigationCubit extends Cubit<NavigationState> {
           controller: getScrollController(0),
         ),
       ),
-      AppointmentsPage(),
+      BlocProvider(
+        create: (context) => getIt<AppointmentCubit>(),
+        child: AppointmentsScreen(),
+      ),
       BlocProvider(
         create: (context) => getIt<ScanCubit>(),
         child: ScanPage(),

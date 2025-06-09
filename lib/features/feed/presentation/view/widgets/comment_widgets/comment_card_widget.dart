@@ -28,6 +28,7 @@ class CommentCardWidget extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomProfileImage(
@@ -39,9 +40,11 @@ class CommentCardWidget extends StatelessWidget {
             child: CommentAuthorDataWidget(),
           ),
           12.toWidth,
-          CustomImageView(
-            svgPath: AssetsSvg.commentLikeIcon.toSVG(),
-          )
+          // Center(
+          //   child: CustomImageView(
+          //     svgPath: AssetsSvg.commentLikeIcon.toSVG(),
+          //   ),
+          // ),
         ],
       ),
     );
