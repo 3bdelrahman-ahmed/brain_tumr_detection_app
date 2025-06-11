@@ -2,16 +2,11 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.d
 import 'package:brain_tumr_detection_app/core/components/widgets/stars_generator.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
-import '../../../../../core/utils/assets/assets_png.dart';
-import '../../../../../core/utils/strings/app_string.dart';
-import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -23,7 +18,7 @@ class DoctorCardDoctors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),
@@ -40,17 +35,12 @@ class DoctorCardDoctors extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
+              CustomImageView(
+                url: doctor.doctorProfilePicture,
+                fit: BoxFit.cover,
                 width: 120.w,
                 height: 160.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                ),
-                child: CustomImageView(
-                  url: doctor.doctorProfilePicture,
-                  fit: BoxFit.cover,
-                  width: 120.w,
-                ),
+                radius: BorderRadius.all(Radius.circular(10.r)),
               ),
               15.toWidth,
               Container(
@@ -71,6 +61,7 @@ class DoctorCardDoctors extends StatelessWidget {
                     StarsGenerator(rating: doctor.averageStarRating),
                     20.toHeight,
                     CustomButton(
+                      raduis: 8.r,
                       text: S.of(context).viewProfile,
                       onTap: () {
                         Navigator.pushNamed(
@@ -88,7 +79,7 @@ class DoctorCardDoctors extends StatelessWidget {
           ),
           25.toHeight,
         ],
-      ).paddingOnly(top: 5.h),
-    );
+      ),
+    ).animate().fadeIn(duration: 300.ms);
   }
 }

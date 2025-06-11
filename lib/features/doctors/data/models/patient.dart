@@ -1,5 +1,5 @@
 class Patient {
-  int id;
+  String id;
   String fullName;
   String? profilePicture;
   DateTime dateOfBirth;

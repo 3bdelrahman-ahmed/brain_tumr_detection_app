@@ -10,9 +10,9 @@ import '../models/get_slots.dart';
 @injectable
 class DoctorAppointmentDataSource {
   Future<GetReviewsResponse> getDoctorReviews(
-      GetReviewsRequestModel getReviewRequestModel, int DoctorId) async {
+      GetReviewsRequestModel getReviewRequestModel) async {
     final response = await AppDio().get(
-        path: "${AppUrls.getDoctorReview}${DoctorId}",
+        path: "${AppUrls.getDoctorReview}${getReviewRequestModel.doctorId}",
         queryParams: getReviewRequestModel.toJson());
 
     return GetReviewsResponse.fromJson(response.data);

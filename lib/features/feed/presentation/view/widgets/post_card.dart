@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_drop_down_menu.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_like_button.dart';
@@ -5,10 +6,10 @@ import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_func
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/widgets/comment_widgets/comment_card_widget.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -112,7 +113,10 @@ class PostCard extends StatelessWidget {
           ),
         ),
       ],
-    ).paddingOnly(bottom: 32.h);
+    )
+        .paddingOnly(bottom: 32.h)
+        .animate()
+        .fadeIn(duration: Duration(milliseconds: 300));
   }
 
   Widget _buildButton(String icon, String label) {

@@ -82,10 +82,10 @@ packages:
     dependency: "direct main"
     description:
       name: bottom_picker
-      sha256: b53932bce4dbde2f8f07e2351b20424e0c4a8388ca807b4019f7b327b4a5531f
+      sha256: b83c35861314aafdef6857be1a8d900d82fa90c979a12af9b653d5d9e7d35beb
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.2.1"
   build:
     dependency: transitive
     description:

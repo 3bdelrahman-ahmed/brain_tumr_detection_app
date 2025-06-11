@@ -69,6 +69,7 @@ class ScanCubit extends Cubit<ScanState> {
   }
 
   void cancelUpload() {
+    file = null; // Clear the file
     isCancelled = true; // Stop progress loop
     emit(ScanInitial());
   }

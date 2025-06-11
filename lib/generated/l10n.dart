@@ -70,6 +70,36 @@ class S {
     );
   }
 
+  /// `no Available Slots`
+  String get noAvailableSlotsAtThisDay {
+    return Intl.message(
+      'No Available Slots at this Day',
+      name: 'noAvailableSlotsAtThisDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ContactUS`
+  String get contactUs {
+    return Intl.message(
+      'Contact Us',
+      name: 'contactUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us message`
+  String get contactUsMessage {
+    return Intl.message(
+      'If you have any questions or concerns, please feel free to reach out to us. We are here to help you.',
+      name: 'contactUsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Next`
   String get next {
     return Intl.message(
@@ -80,11 +110,80 @@ class S {
     );
   }
 
+  String get tryAgain {
+    return Intl.message(
+      'Try Again',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// 'No Data Available'
+  String get noDataAvailable {
+    return Intl.message(
+      'Clinic Name',
+      name: 'clinicName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Reports Yet`
+  String get noReportsYet {
+    return Intl.message(
+      'No Reports Yet',
+      name: 'noReportsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Doctors Found`
+  String get noDoctorsFound {
+    return Intl.message(
+      'No Doctors Found',
+      name: 'noDoctorsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Clinic License`
   String get clinicLicense {
     return Intl.message(
       'Clinic License',
       name: 'clinicLicense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `noSearchResultsFor`
+  String get noSearchResultsFor {
+    return Intl.message(
+      'No search results for ',
+      name: 'noSearchResultsFor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// noChats
+  String get noChats {
+    return Intl.message(
+      'No Chats',
+      name: 'noChats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Appointments`
+  String get noAppointments {
+    return Intl.message(
+      'No Appointments',
+      name: 'noAppointments',
       desc: '',
       args: [],
     );
@@ -1733,7 +1832,7 @@ class S {
   /// `There are no reviews available at the moment. Patients like you can help by leaving honest feedback`
   String get noReviews {
     return Intl.message(
-      'There are no reviews available at the moment. Patients like you can help by leaving honest feedback',
+      'There are no reviews available at the moment',
       name: 'noReviews',
       desc: '',
       args: [],

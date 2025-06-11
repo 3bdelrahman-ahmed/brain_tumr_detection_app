@@ -7,11 +7,9 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widg
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/reviews_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/get_slots.dart';
-import '../../viewmodel/show_doctors_cubit.dart';
+import '../../view_model/doctors_cubit.dart';
 import '../widgets/availabilty_canlendar.dart';
 
 class DoctorsProfile extends StatefulWidget {
@@ -24,14 +22,22 @@ class DoctorsProfile extends StatefulWidget {
 }
 
 class _DoctorsProfileState extends State<DoctorsProfile> {
-  late final ShowDoctorsCubit _cubit;
+  late final DoctorsCubit _cubit;
   late final ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    _cubit = context.read<ShowDoctorsCubit>();
-    _cubit.fetchReviews(doctorId: widget.doctorClinicModel.id);
+    _cubit = context.read<DoctorsCubit>();
+    _cubit.fetchReviews(doctorId: widget.doctorClinicModel.id).then((_) {
+      // Fetch available slots for the doctor when the profile is loaded
+      _cubit.fetchAvailableSlots(
+        request: AvailablePatientSlotsRequestModel(
+          slotId: widget.doctorClinicModel.id,
+          date: DateTime.now().toString().substring(0, 10),
+        ),
+      );
+    });
     _scrollController = ScrollController();
   }
 
@@ -44,7 +50,7 @@ class _DoctorsProfileState extends State<DoctorsProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<ShowDoctorsCubit, ShowDoctorsState>(
+      body: BlocListener<DoctorsCubit, DoctorsState>(
         listener: (context, state) {
           if (state is GetAvailableDoctorsSuccess) {
             // Scroll to the bottom when slots are fetched

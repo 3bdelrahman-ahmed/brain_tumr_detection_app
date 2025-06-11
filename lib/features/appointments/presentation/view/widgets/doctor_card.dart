@@ -1,21 +1,18 @@
-import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/strings/app_string.dart';
+import 'package:brain_tumr_detection_app/features/appointments/data/models/appointments_model.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
-import '../../../../../core/utils/assets/assets_png.dart';
+import '../../../../../core/helper/functions/convert_time_slot_function.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../data/models/appointment_model.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
-  const DoctorCardAppointment({Key? key,required this.appointmentData})
+  Appointments appointment;
+  DoctorCardAppointment({Key? key, required this.appointment})
       : super(key: key);
-  final AppointmentData appointmentData;
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +42,9 @@ class DoctorCardAppointment extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 ),
                 child: CustomImageView(
-                  url: appointmentData.doctorProfilePicture,
+                  url: appointment.doctorProfilePicture,
                   fit: BoxFit.cover,
-                ).paddingSymmetric(vertical: 4.h, horizontal: 4.h),
+                ).paddingSymmetric(vertical: 7.h, horizontal: 7.h),
               ),
               15.toWidth,
               Container(
@@ -56,22 +53,22 @@ class DoctorCardAppointment extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Dr : ${appointmentData.doctorName}",
+                      "Dr: ${appointment.doctorName ?? "Hamdy Abdelfatah"}",
                       style: AppTextStyles.font20GreenW700,
                     ),
                     5.toHeight,
                     Text(
-                      appointmentData.status,
+                      S.of(context).upComing,
                       style: AppTextStyles.font12LightGreenW500,
                     ),
                     5.toHeight,
                     Text(
-                      "${appointmentData.date}  ${appointmentData.startTime}",
+                      appointment.date ?? "2023-10-01",
                       style: AppTextStyles.font15LightGreenW500,
                     ),
                     5.toHeight,
                     Text(
-                      "${appointmentData.address}",
+                      formatTimeTo24Hour(appointment.startTime ?? "9:00:00"),
                       style: AppTextStyles.font15LightGreenW500,
                     ),
                   ],
@@ -80,23 +77,30 @@ class DoctorCardAppointment extends StatelessWidget {
             ],
           ),
           25.toHeight,
-          if (appointmentData.status != "Completed" && appointmentData.status != "Cancelled")
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomButton(
-                text: S.of(context).cancel,
-                width: 140.w,
-                height: 50.h,
-                textStyle: AppTextStyles.font15WhiteW500,
-                onTap: () {},
-              ),
-              CustomButton(
-                  text: S.of(context).reScheduled,
-                  width: 140.w,
+              Expanded(
+                child: CustomButton(
+                  raduis: 8.r,
+                  backgroundColor: AppColors.error,
+                  text: S.of(context).cancel,
                   height: 50.h,
                   textStyle: AppTextStyles.font15WhiteW500,
-                  onTap: () {}),
+                  onTap: () {},
+                ),
+              ),
+              10.toWidth,
+              Expanded(
+                child: CustomButton(
+                  backgroundColor: AppColors.typography,
+                  raduis: 8.r,
+                  text: S.of(context).reScheduled,
+                  height: 50.h,
+                  textStyle: AppTextStyles.font15WhiteW500,
+                  onTap: () {},
+                ),
+              ),
             ],
           )
         ],

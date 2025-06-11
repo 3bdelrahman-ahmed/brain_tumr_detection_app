@@ -12,6 +12,7 @@ class CommentAuthorDataWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        
         Text(
           AppConstants.user!.fullName!,
           style: AppTextStyles.font16BlueW700.copyWith(fontSize: 12.sp),

@@ -11,9 +11,8 @@ import '../../utils/assets/assets_png.dart';
 import '../../utils/theme/text_styles/app_text_styles.dart';
 
 class CustomWelcomeAppBar extends StatelessWidget {
-  final String? userName;
 
-  CustomWelcomeAppBar({Key? key, this.userName}) : super(key: key);
+  CustomWelcomeAppBar({Key? key,}) : super(key: key);
   final BadgeService _badgeService = BadgeService.instance;
 
   @override
@@ -72,10 +71,10 @@ class CustomWelcomeAppBar extends StatelessWidget {
                   },
                   child: StreamBuilder<bool>(
                     stream: _badgeService
-                        .badgeStream, // Listen to the badge visibility stream
+                        .badgeStream, 
                     builder: (context, snapshot) {
                       bool isBadgeVisible =
-                          snapshot.data ?? false; // Default to false if no data
+                          snapshot.data ?? false; 
 
                       return Badge(
                         backgroundColor: AppColors.error,

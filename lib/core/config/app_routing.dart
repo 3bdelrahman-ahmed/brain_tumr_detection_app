@@ -4,8 +4,9 @@ import 'package:brain_tumr_detection_app/core/components/screens/rigester__locat
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
+import 'package:brain_tumr_detection_app/features/contact_us/presentation/view_model/cubit/contact_us_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/viewmodel/show_doctors_cubit.dart';
+import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/chats/data/models/chat_preview.dart';
+import '../../features/contact_us/presentation/view/screens/contact_us_screen.dart';
 import '../../features/login/presentation/view/screens/login_screen.dart';
 import '../../features/login/presentation/view_model/login_cubit.dart';
 import '../../features/notification/presentation/view/screen/notification_screen.dart';
@@ -44,6 +46,7 @@ class AppRoutes {
   static const String chatsListScreen = '/chatsListScreen';
   static const String notificationScreen = '/notification';
   static const String resetPasswordScreen = '/resetPasswordScreen';
+  static const String contactUsScreen = '/contactUs';
 }
 
 class AppRouter {
@@ -83,6 +86,14 @@ class AppRouter {
           const SplashScreen(),
           duration: 300.ms,
         );
+      case AppRoutes.contactUsScreen:
+        return animateRouteBuilder(
+          BlocProvider(
+            create: (context) => getIt<ContactUsCubit>(),
+            child: const ContactUsScreen(),
+          ),
+          duration: 300.ms,
+        );
       case AppRoutes.addPostScreen:
         return animateRouteBuilder(
           const AddPost(),
@@ -116,7 +127,7 @@ class AppRouter {
       case AppRoutes.doctorProfileScreen:
         return animateRouteBuilder(
             BlocProvider(
-              create: (context) => getIt<ShowDoctorsCubit>(),
+              create: (context) => getIt<DoctorsCubit>(),
               child: DoctorsProfile(
                 doctorClinicModel: routeSettings.arguments as DoctorClinicModel,
               ),
