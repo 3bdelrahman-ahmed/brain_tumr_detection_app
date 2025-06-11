@@ -105,11 +105,12 @@ class DoctorCardAppointment extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    children: [
-                                      Icon(Icons.warning,
-                                          color: AppColors.error),
-                                    ],
+                                  Center(
+                                    child: Icon(
+                                      Icons.warning,
+                                      color: AppColors.error,
+                                      size: 30.r,
+                                    ),
                                   ),
                                   SizedBox(height: 12.h),
                                   Text(
@@ -118,19 +119,24 @@ class DoctorCardAppointment extends StatelessWidget {
                                   ),
                                   SizedBox(height: 24.h),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      TextButton(
-                                        onPressed: () =>
+                                      CustomButton(
+                                        text: S.of(context).cancel,
+                                        onTap: () =>
                                             Navigator.of(context).pop(),
-                                        child: Text(
-                                          S.of(context).cancel,
-                                          style: AppTextStyles.font12GreyW500,
-                                        ),
+                                        backgroundColor: AppColors.typography,
+                                        raduis: 8.r,
+                                        width: 120.w,
                                       ),
                                       12.toWidth,
-                                      TextButton(
-                                        onPressed: () {
+                                      CustomButton(
+                                        text: S.of(context).sure,
+                                        raduis: 8.r,
+                                        onTap: () {
                                           Navigator.of(context).pop();
                                           context
                                               .read<AppointmentCubit>()
@@ -140,11 +146,25 @@ class DoctorCardAppointment extends StatelessWidget {
                                               .thisAppointmentCancelledSuccessfully
                                               .showToast();
                                         },
-                                        child: Text(
-                                          S.of(context).sure,
-                                          style: AppTextStyles.font16BlueW700,
-                                        ),
-                                      ),
+                                        width: 120.w,
+                                        backgroundColor: AppColors.error,
+                                      )
+                                      // TextButton(
+                                      //   onPressed: () {
+                                      //     Navigator.of(context).pop();
+                                      //     context
+                                      //         .read<AppointmentCubit>()
+                                      //         .removeAppointment(index);
+                                      //     S
+                                      //         .of(context)
+                                      //         .thisAppointmentCancelledSuccessfully
+                                      //         .showToast();
+                                      //   },
+                                      //   child: Text(
+                                      //     S.of(context).sure,
+                                      //     style: AppTextStyles.font16BlueW700,
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ],
