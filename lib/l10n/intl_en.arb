@@ -190,5 +190,18 @@
   "letsResetIt": "Let’s reset it so you can get back to focusing on what really matters: your health and well-being",
   "notifications": "Notifications",
   "enterOtp": "ReEnter OTP code",
-  "noNotifications": "No notifications yet"
+  "noNotifications": "No notifications yet",
+  "noDataAvailable" : "No data available",
+  "noReportsYet" : "No reports yet",
+  "noDoctorsFound" : "No doctors found",
+  "noAppointments" : "No appointments",
+  "noChats" : "No chats",
+  "noSearchResultsFor" : "No search results for",
+  "tryAgain" : "Try again",
+  "noAvailableSlotsAtThisDay" : "No available slots at this day",
+  "appointmentCompleted" : "Appointment completed",
+  "appointmentCancelled" : "Appointment Cancelled",
+  "areYouSureToCancelAppointment" : "Are you sure you want to cancel this appointment",
+  "sure" : "Sure",
+  "thisAppointmentCancelledSuccessfully" : "This appointment cancelled successfully"
 }

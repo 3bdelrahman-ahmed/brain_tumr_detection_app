@@ -73,7 +73,7 @@ class CustomTextField extends StatelessWidget {
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
           },
-          maxLines: maxLines ,
+          maxLines: maxLines ?? 1,
           minLines: minLines ,
           onFieldSubmitted: onSubmit,
           focusNode: focusNode,

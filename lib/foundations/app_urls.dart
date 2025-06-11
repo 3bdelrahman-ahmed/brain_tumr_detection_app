@@ -30,6 +30,7 @@ class AppUrls {
 
   //Patient
   static String getPatients(String id) => "Appointment/doctor/$id";
+  static String getBookedAppointments = "Appointment";
   static String getConversationId(String patientId) => "Chat/user/$patientId";
   static const String getPatientAppointments = "Appointment";
 

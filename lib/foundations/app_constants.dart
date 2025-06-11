@@ -35,6 +35,7 @@ class AppConstants {
     accessToken = token;
   }
 
+
   static setLanguage(bool language) async {
     await AppCacheHelper.setSecuredString(
         key: AppCacheHelper.language, value: language.toString());

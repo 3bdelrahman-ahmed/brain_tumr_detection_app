@@ -60,7 +60,7 @@ class _CustomPinSubmissionWidgetState extends State<CustomPinSubmissionWidget> {
               FilteringTextInputFormatter.digitsOnly,
             ],
             controller:
-                _controllers[index], // Use individual controller for each field
+                _controllers[index],
             textAlign: TextAlign.center,
             keyboardType: TextInputType.number,
             style: AppTextStyles.font24GreenW500
