@@ -18,7 +18,7 @@ class DoctorsCubit extends Cubit<DoctorsState> {
   DoctorsCubit(this.repository) : super(ShowDoctorsInitial()) {}
   List<Review> reviews = [];
 
-  void fetchReviews({required int doctorId}) async {
+  Future<void> fetchReviews({required int doctorId}) async {
     emit(ShowDoctorsLoading());
 
     final request = GetReviewsRequestModel(

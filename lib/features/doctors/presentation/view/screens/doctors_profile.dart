@@ -8,6 +8,7 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widg
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/get_slots.dart';
 import '../../view_model/doctors_cubit.dart';
 import '../widgets/availabilty_canlendar.dart';
 
@@ -28,7 +29,15 @@ class _DoctorsProfileState extends State<DoctorsProfile> {
   void initState() {
     super.initState();
     _cubit = context.read<DoctorsCubit>();
-    _cubit.fetchReviews(doctorId: widget.doctorClinicModel.id);
+    _cubit.fetchReviews(doctorId: widget.doctorClinicModel.id).then((_) {
+      // Fetch available slots for the doctor when the profile is loaded
+      _cubit.fetchAvailableSlots(
+        request: AvailablePatientSlotsRequestModel(
+          slotId: widget.doctorClinicModel.id,
+          date: DateTime.now().toString().substring(0, 10),
+        ),
+      );
+    });
     _scrollController = ScrollController();
   }
 

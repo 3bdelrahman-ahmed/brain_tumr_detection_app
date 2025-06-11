@@ -70,6 +70,36 @@ class S {
     );
   }
 
+  /// `no Available Slots`
+  String get noAvailableSlotsAtThisDay {
+    return Intl.message(
+      'No Available Slots at this Day',
+      name: 'noAvailableSlotsAtThisDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ContactUS`
+  String get contactUs {
+    return Intl.message(
+      'Contact Us',
+      name: 'contactUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us message`
+  String get contactUsMessage {
+    return Intl.message(
+      'If you have any questions or concerns, please feel free to reach out to us. We are here to help you.',
+      name: 'contactUsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Next`
   String get next {
     return Intl.message(

@@ -1,15 +1,16 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_empty_widget.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_sliver_search_bar.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
+import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
+import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/doctor_card_doctors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/utils/strings/app_string.dart';
-import '../../../../../core/utils/theme/colors/app_colors.dart';
 
 class DoctorsPage extends StatefulWidget {
   const DoctorsPage({Key? key}) : super(key: key);
@@ -26,6 +27,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
   void initState() {
     super.initState();
     _cubit = context.read<AppCubit>();
+    _cubit.getDoctorsClinics(reset: true);
     _scrollController = ScrollController()..addListener(_onScroll);
   }
 
@@ -60,13 +62,23 @@ class _DoctorsPageState extends State<DoctorsPage> {
               CustomWelcomeAppBar(),
               SliverPersistentHeader(
                 pinned: true,
-                delegate: CustomSliverSearchBar(AppStrings.searchForTherapist),
+                delegate: CustomSliverSearchBar(
+                  suffixIcon: AssetsSvg.cancel,
+                      controller: _cubit.searchController,
+                  AppStrings.searchForTherapist),
               ),
               if (isLoading)
                 SliverFillRemaining(
-                  child: Center(
-                      child: CircularProgressIndicator(
-                          color: AppColors.buttonsAndNav)),
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    itemBuilder: (ctx, i) {
+                      return CustomAppShimmer(
+                        height: 150.h,
+                      ).paddingOnly(top: 13.h, left: 16.w, right: 16.w);
+                    },
+                  ),
                 )
               else
                 SliverList(
@@ -74,21 +86,26 @@ class _DoctorsPageState extends State<DoctorsPage> {
                     (ctx, i) {
                       return DoctorCardDoctors(
                         doctor: items[i],
-                      ).paddingOnly(top: 13.h, left: 20.w, right: 20.w);
+                      ).paddingOnly(top: 10.h, left: 16.w, right: 16.w);
                     },
                     childCount: items.length,
                   ),
                 ),
+                if(items.isEmpty)
+                  SliverFillRemaining(
+                  child: CustomEmptyWidget.doctors()
+                ),
               if (isLoadingMore)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
                     child: CustomAppShimmer(
                       height: 150.h,
                     ),
                   ),
                 ),
-              SliverPadding(padding: EdgeInsets.symmetric(vertical: 30.h)),
+              SliverPadding(padding: EdgeInsets.symmetric(vertical: 65.h)),
             ],
           );
         },

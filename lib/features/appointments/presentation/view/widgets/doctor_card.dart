@@ -80,19 +80,27 @@ class DoctorCardAppointment extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomButton(
-                text: S.of(context).cancel,
-                width: 140.w,
-                height: 50.h,
-                textStyle: AppTextStyles.font15WhiteW500,
-                onTap: () {},
-              ),
-              CustomButton(
-                  text: S.of(context).reScheduled,
-                  width: 140.w,
+              Expanded(
+                child: CustomButton(
+                  raduis: 8.r,
+                  backgroundColor: AppColors.error,
+                  text: S.of(context).cancel,
                   height: 50.h,
                   textStyle: AppTextStyles.font15WhiteW500,
-                  onTap: () {}),
+                  onTap: () {},
+                ),
+              ),
+              10.toWidth,
+              Expanded(
+                child: CustomButton(
+                  backgroundColor: AppColors.typography,
+                  raduis: 8.r,
+                  text: S.of(context).reScheduled,
+                  height: 50.h,
+                  textStyle: AppTextStyles.font15WhiteW500,
+                  onTap: () {},
+                ),
+              ),
             ],
           )
         ],

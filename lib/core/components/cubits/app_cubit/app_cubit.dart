@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -26,6 +27,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   List<DoctorClinicModel> doctorsList = [];
+  final TextEditingController searchController = TextEditingController();
 
   // internal paging state
   int _pageIndex = 1;
@@ -44,6 +46,7 @@ class AppCubit extends Cubit<AppState> {
       if (_pageIndex >= _totalPages) return;
       _pageIndex++;
     }
+    // Removed invalid getter for searchController
 
     _isFetching = true;
     emit(GetDoctorsClinicsLoading(isPaging: !reset));
@@ -52,9 +55,9 @@ class AppCubit extends Cubit<AppState> {
       GetDoctorRequestModel(
         pageIndex: _pageIndex,
         pageSize: _pageSize,
-        search: '',
-        long: 31.242681,
-        lat: 30.091584,
+        search: searchController.text,
+        long: AppConstants.user!.longitude ?? 31.242681,
+        lat: AppConstants.user!.latitude ?? 30.091584,
       ),
     );
 
@@ -73,7 +76,7 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
-  void sendDeviceToken(String token){
-    repository.sendDeviceToken(token); 
+  void sendDeviceToken(String token) {
+    repository.sendDeviceToken(token);
   }
 }

@@ -5,6 +5,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/components/widgets/custom_empty_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../view_model/cubit/notification_cubit.dart';
 import '../widgets/notification_card_widget.dart';
@@ -95,12 +96,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           }
 
           if (state is NotificationLoaded && cubit.notifications.isEmpty) {
-            return Center(
-              child: Text(
-                S.of(context).noNotifications,
-                style: AppTextStyles.font15BlackW700,
-              ),
-            );
+            return Center(child: CustomEmptyWidget.notifications());
           }
 
           // Main content with RefreshIndicator

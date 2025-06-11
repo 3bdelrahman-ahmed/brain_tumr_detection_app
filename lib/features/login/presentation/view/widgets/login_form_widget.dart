@@ -9,7 +9,6 @@ import '../../../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../../../core/components/widgets/custom_text_field.dart';
 import '../../../../../../../core/config/app_routing.dart';
 import '../../../../../../../core/utils/assets/assets_svg.dart';
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../../../foundations/validations.dart';
 import '../../../../../generated/l10n.dart';
@@ -131,6 +130,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 CustomButton(
                         isLoading: state is LoginLoadingState,
                         text: S.of(context).login,
+                        raduis: 8.r,
                         onTap: () {
                           cubit.login();
                         }).animate().flipV(

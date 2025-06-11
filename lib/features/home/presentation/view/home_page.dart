@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen>
           return Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              cubit.tabs[cubit.currentIndex],
+              Positioned.fill(child: cubit.tabs[cubit.currentIndex]),
               // Animated Bottom Navigation Bar
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 300),

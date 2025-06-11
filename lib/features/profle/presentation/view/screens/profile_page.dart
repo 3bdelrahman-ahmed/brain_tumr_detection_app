@@ -1,6 +1,7 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
@@ -95,7 +96,12 @@ class ProfilePage extends StatelessWidget {
           _buildSettingsRow(title: S.of(context).accountSetting),
           _buildSettingsRow(title: S.of(context).notificationsSettings),
           _buildSettingsRow(title: S.of(context).medicalDataManagement),
-          _buildSettingsRow(title: S.of(context).supportFeedback),
+          _buildSettingsRow(
+              onTap: () {
+                print("object");
+                context.navigateTo(AppRoutes.contactUsScreen);
+              },
+              title: S.of(context).supportFeedback),
           _buildSettingsRow(
               subSettings: [
                 ListTile(
@@ -214,14 +220,13 @@ class ProfilePage extends StatelessWidget {
 
   Widget _buildSettingsRow({
     required String title,
-    Function()? onTap,
+    Function? onTap,
     List<Widget>? subSettings, // add optional sub-settings
   }) {
     return GestureDetector(
       onTap: () {
-        if (onTap != null) {
-          onTap();
-        }
+        // if (onTap != null) {
+        onTap!();
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10.h),
@@ -237,24 +242,26 @@ class ProfilePage extends StatelessWidget {
             )
           ],
         ),
-        child: ExpansionTile(
-          shape: RoundedRectangleBorder(
-            side: BorderSide.none,
-            borderRadius: BorderRadius.zero,
+        child: AbsorbPointer(
+          child: ExpansionTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide.none,
+              borderRadius: BorderRadius.zero,
+            ),
+            collapsedShape: RoundedRectangleBorder(
+              side: BorderSide.none,
+              borderRadius: BorderRadius.zero,
+            ),
+            title: Text(
+              title,
+              style: AppTextStyles.font16BlueW700,
+            ),
+            trailing: Icon(
+              Icons.chevron_right,
+              color: AppColors.buttonsAndNav,
+            ),
+            children: subSettings ?? [], // show sub-settings if available
           ),
-          collapsedShape: RoundedRectangleBorder(
-            side: BorderSide.none,
-            borderRadius: BorderRadius.zero,
-          ),
-          title: Text(
-            title,
-            style: AppTextStyles.font16BlueW700,
-          ),
-          trailing: Icon(
-            Icons.chevron_right,
-            color: AppColors.buttonsAndNav,
-          ),
-          children: subSettings ?? [], // show sub-settings if available
         ),
       ).animate().slide(
             begin: Offset(0, 1),

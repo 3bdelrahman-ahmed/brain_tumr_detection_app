@@ -36,4 +36,7 @@ class AppUrls {
   //Notification
   static const String getNotifications = "Notification";
   static const String sendDeviceToken = "UserDeviceToken";
+
+  // contact us
+  static const String contactUs = "ContactUs";
 }
