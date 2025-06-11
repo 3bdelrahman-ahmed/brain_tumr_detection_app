@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Slot edited`
+  String get slotEdited {
+    return Intl.message(
+      'Slot edited',
+      name: 'slotEdited',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Set Your Time`
   String get setYourDate {
     return Intl.message(

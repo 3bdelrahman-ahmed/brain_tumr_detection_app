@@ -19,6 +19,8 @@ class AppUrls {
   static const String getAvailableSlots = "Clinic/availableSlots/";
   static const String bookAppointment = "Appointment";
   static const String addSlot = "Clinic/slot";
+  static const String deleteSlot = "Clinic/slot/";
+  static const String editSlot = "Clinic/slot/";
 
   //Chat
   static const String sendMessage = "Chat/sendMessage";

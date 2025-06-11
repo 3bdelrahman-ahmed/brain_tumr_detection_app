@@ -50,16 +50,35 @@ class _SlotsScreenState extends State<SlotsScreen> {
                   style: AppTextStyles.font16BlueW700,
                 ),
                 backgroundColor: AppColors.background,
-                action: SnackBarAction(
-                  textColor: AppColors.buttonsAndNav,
-                  label: 'Undo',
-                  onPressed: () {
-                    context.read<SlotsCubit>().undoRemove();
-                  },
-                ),
+                // action: SnackBarAction(
+                //   textColor: AppColors.buttonsAndNav,
+                //   label: 'Undo',
+                //   onPressed: () {
+                //     context.read<SlotsCubit>().undoRemove();
+                //   },
+                // ),
               ),
             );
           }
+          else           if (state is SlotsListUpdated) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  S.of(context).slotEdited,
+                  style: AppTextStyles.font16BlueW700,
+                ),
+                backgroundColor: AppColors.background,
+                // action: SnackBarAction(
+                //   textColor: AppColors.buttonsAndNav,
+                //   label: 'Undo',
+                //   onPressed: () {
+                //     context.read<SlotsCubit>().undoRemove();
+                //   },
+                // ),
+              ),
+            );
+          }
+
         },
         builder: (context, state) {
           final cubit = context.watch<SlotsCubit>();
@@ -172,7 +191,7 @@ class _SlotsScreenState extends State<SlotsScreen> {
               ),
               BlocBuilder<SlotsCubit, SlotsState>(
                 builder: (context, state) {
-                  if (cubit.availableSlots.isEmpty && cubit.isLoadingSlots) {
+                  if ((cubit.availableSlots.isEmpty && cubit.isLoadingSlots)||state is SlotsRemoveLoading) {
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) {
@@ -193,9 +212,10 @@ class _SlotsScreenState extends State<SlotsScreen> {
                         return SizeTransition(
                           sizeFactor: animation,
                           child: SlotCard(
+                            isLoading: state is SlotsRemoveLoading,
                             slot: slot,
                             onRemove: () {
-                              cubit.removeSlot(index);
+                              cubit.removeSlot(index, slot.id!);
                             },
                           )
                               .animate()

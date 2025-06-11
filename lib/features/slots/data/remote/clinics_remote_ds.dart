@@ -27,4 +27,16 @@ class ClinicsRemoteDataSource {
     final response = await AppDio().post(path: AppUrls.addSlot, data: body);
     return AddSlotResponseModel.fromJson(response.data);
   }
+
+  Future<String> deleteSlot(int slotId) async {
+    final response =
+        await AppDio().delete(path: "${AppUrls.deleteSlot}$slotId");
+    return response.data;
+  }
+
+  Future<String> edit(int slotId, String startTime) async {
+    final response = await AppDio().put(
+        path: "${AppUrls.editSlot}$slotId", data: {"startTime": startTime});
+    return response.data;
+  }
 }

@@ -25,7 +25,7 @@ final class GetCachedClinics extends SlotsState {}
 
 final class SelectedDayIndexChanged extends SlotsState {}
 
-class SlotsRemoveDay extends SlotsState {}
+class SlotsRemoveLoading extends SlotsState {}
 
 class SlotsSelectDay extends SlotsState {}
 
