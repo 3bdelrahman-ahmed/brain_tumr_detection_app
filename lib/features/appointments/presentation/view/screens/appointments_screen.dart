@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shim
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_empty_widget.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/appointments/presentation/view/widgets/doctor_card_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,6 +67,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                               padding: EdgeInsets.only(
                                   top: 16.h, left: 20.w, right: 20.w),
                               child: DoctorCardAppointment(
+                                index : index,
                                 appointment: cubit.appointmentsResponseModel!
                                     .appointments![index],
                               ).animate().fadeIn(
@@ -95,9 +97,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                   return Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
-                    child: CustomAppShimmer(
-                      height: 150.h,
-                    ),
+                    child: DoctorCardAppointmentShimmer(),
                   );
                 },
               ));

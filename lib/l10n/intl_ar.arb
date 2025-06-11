@@ -190,5 +190,18 @@
   "letsResetIt": "دعنا نُعيد تعيينها لتتمكن من العودة والتركيز على ما يهم حقًا: صحتك وسلامتك.",
   "notifications": "الاشعارات",
   "enterOtp": "اعد ادخال رمز التحقق المرسل من قبل ",
-  "noNotifications": "لا توجد إشعارات"
+  "noNotifications": "لا توجد إشعارات",
+  "noDataAvailable": "لا توجد بيانات متاحة",
+  "noReportsYet": "لا توجد تقارير حتى الآن",
+  "noDoctorsFound": "لم يتم العثور على أطباء",
+  "noAppointments": "لا توجد مواعيد",
+  "noChats": "لا توجد محادثات",
+  "noSearchResultsFor": "لا توجد نتائج بحث لـ",
+  "tryAgain": "حاول مرة أخرى",
+  "noAvailableSlotsAtThisDay": "لا توجد مواعيد متاحة في هذا اليوم",
+  "appointmentCompleted" : "اكتمل الحجز",
+  "appointmentCancelled" : "ألغي الحجز",
+  "areYouSureToCancelAppointment" : "هل انت متأكد انك تريد الغاء الحجز",
+  "sure" : "متأكد",
+  "thisAppointmentCancelledSuccessfully" : "تم الغاء الحجز بنجاح"
 }

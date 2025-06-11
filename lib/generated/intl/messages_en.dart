@@ -22,15 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "ContactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "addSlots": MessageLookupByLibrary.simpleMessage("Add Slots"),
         "address": MessageLookupByLibrary.simpleMessage("address: "),
         "age": MessageLookupByLibrary.simpleMessage("Age: "),
         "appName": MessageLookupByLibrary.simpleMessage("NeuroTum AI"),
+        "appointmentCancelled":
+            MessageLookupByLibrary.simpleMessage("Appointment Cancelled"),
+        "appointmentCompleted":
+            MessageLookupByLibrary.simpleMessage("Appointment completed"),
         "appointmentConfirmed":
             MessageLookupByLibrary.simpleMessage("Appointment Confirmed"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "areYouSureToCancelAppointment": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to cancel this appointment"),
         "asADoctor": MessageLookupByLibrary.simpleMessage("As a Physician"),
         "asAPatient": MessageLookupByLibrary.simpleMessage("As a Patient"),
         "availability": MessageLookupByLibrary.simpleMessage("Availability"),
@@ -61,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Confirm password does not match"),
         "contactPatient":
             MessageLookupByLibrary.simpleMessage("Contact Patient"),
+        "contactUsMessage": MessageLookupByLibrary.simpleMessage(
+            "If you have any questions or need assistance, feel free to reach out to us. We\'re here to help!"),
         "country": MessageLookupByLibrary.simpleMessage("Country: "),
         "createYourAcc":
             MessageLookupByLibrary.simpleMessage("Create Your Account"),
@@ -166,10 +175,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "nextTimeYouLogin": MessageLookupByLibrary.simpleMessage(
             "Next time you login, you can use your fingerprint or face ID to access your account."),
+        "noAppointments":
+            MessageLookupByLibrary.simpleMessage("No appointments"),
+        "noAvailableSlotsAtThisDay": MessageLookupByLibrary.simpleMessage(
+            "No available slots at this day"),
+        "noChats": MessageLookupByLibrary.simpleMessage("No chats"),
+        "noDataAvailable":
+            MessageLookupByLibrary.simpleMessage("No data available"),
+        "noDoctorsFound":
+            MessageLookupByLibrary.simpleMessage("No doctors found"),
         "noNotifications":
             MessageLookupByLibrary.simpleMessage("No notifications yet"),
+        "noReportsYet": MessageLookupByLibrary.simpleMessage("No reports yet"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
+        "noSearchResultsFor":
+            MessageLookupByLibrary.simpleMessage("No search results for"),
         "noSlotsAvailable":
             MessageLookupByLibrary.simpleMessage("No slots available"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
@@ -258,6 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Support & Feedback"),
         "supportedFiles":
             MessageLookupByLibrary.simpleMessage("Supported Files: pdf, png"),
+        "sure": MessageLookupByLibrary.simpleMessage("Sure"),
         "tapToAttachFile":
             MessageLookupByLibrary.simpleMessage("Tap to attach file"),
         "tapToSelectYourGender":
@@ -268,11 +290,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Find the Right Doctor"),
         "thirdOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "Need expert care? We\'ll connect you with the best doctors near you based on your location. No endless searching or stress—just trusted professionals who can help you take the next step."),
+        "thisAppointmentCancelledSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "This appointment cancelled successfully"),
         "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "To help you find doctors near you and provide recommendations, we need to know your location."),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "upComing": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "uploadYourFileHere":

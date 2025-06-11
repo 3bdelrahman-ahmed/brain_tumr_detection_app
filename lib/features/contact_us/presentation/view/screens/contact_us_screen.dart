@@ -53,7 +53,7 @@ class ContactUsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        S.of(context).contactUs,
+                        S.of(context).ContactUs,
                         style: AppTextStyles.font20BlueW700,
                       ),
                       8.toHeight,

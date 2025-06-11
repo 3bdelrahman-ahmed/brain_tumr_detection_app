@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "ContactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "addSlots": MessageLookupByLibrary.simpleMessage("إضافة مواعيد"),
@@ -29,9 +30,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "age": MessageLookupByLibrary.simpleMessage("العمر: "),
         "appName":
             MessageLookupByLibrary.simpleMessage("نيوروتوم الذكاء الاصطناعي"),
+        "appointmentCancelled":
+            MessageLookupByLibrary.simpleMessage("ألغي الحجز"),
+        "appointmentCompleted":
+            MessageLookupByLibrary.simpleMessage("اكتمل الحجز"),
         "appointmentConfirmed":
             MessageLookupByLibrary.simpleMessage("تم تأكيد الحجز"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "areYouSureToCancelAppointment": MessageLookupByLibrary.simpleMessage(
+            "هل انت متأكد انك تريد الغاء الحجز"),
         "asADoctor": MessageLookupByLibrary.simpleMessage("كطبيب"),
         "asAPatient": MessageLookupByLibrary.simpleMessage("كمريض"),
         "availability": MessageLookupByLibrary.simpleMessage("التوفر"),
@@ -60,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "تأكيد كلمة المرور غير متطابق"),
         "contactPatient":
             MessageLookupByLibrary.simpleMessage("الاتصال بالمريض"),
+        "contactUsMessage": MessageLookupByLibrary.simpleMessage(
+            "إذا كان لديك أي استفسارات أو تحتاج إلى مساعدة، لا تتردد في ارسال رسالة لنا."),
         "country": MessageLookupByLibrary.simpleMessage("البلد: "),
         "createYourAcc": MessageLookupByLibrary.simpleMessage("إنشاء حسابك"),
         "credentials": MessageLookupByLibrary.simpleMessage("الشهادات"),
@@ -165,10 +174,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "nextTimeYouLogin": MessageLookupByLibrary.simpleMessage(
             "في المرة القادمة التي تسجل فيها الدخول، يمكنك استخدام بصمة إصبعك أو وجهك للوصول إلى حسابك."),
+        "noAppointments":
+            MessageLookupByLibrary.simpleMessage("لا توجد مواعيد"),
+        "noAvailableSlotsAtThisDay": MessageLookupByLibrary.simpleMessage(
+            "لا توجد مواعيد متاحة في هذا اليوم"),
+        "noChats": MessageLookupByLibrary.simpleMessage("لا توجد محادثات"),
+        "noDataAvailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد بيانات متاحة"),
+        "noDoctorsFound":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على أطباء"),
         "noNotifications":
             MessageLookupByLibrary.simpleMessage("لا توجد إشعارات"),
+        "noReportsYet":
+            MessageLookupByLibrary.simpleMessage("لا توجد تقارير حتى الآن"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
+        "noSearchResultsFor":
+            MessageLookupByLibrary.simpleMessage("لا توجد نتائج بحث لـ"),
         "noSlotsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد مواعيد متاحة"),
         "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
@@ -256,6 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الدعم والملاحظات"),
         "supportedFiles":
             MessageLookupByLibrary.simpleMessage("الملفات المدعومة: pdf, png"),
+        "sure": MessageLookupByLibrary.simpleMessage("متأكد"),
         "tapToAttachFile":
             MessageLookupByLibrary.simpleMessage("اضغط لاضافة الملف"),
         "tapToSelectYourGender":
@@ -266,11 +289,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ابحث عن الطبيب المناسب"),
         "thirdOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "هل تحتاج إلى رعاية متخصصة؟ سنوصلك بأفضل الأطباء بالقرب منك بناءً على موقعك. لا مزيد من البحث المتعب أو التوتر - فقط محترفون موثوقون لمساعدتك في الخطوة التالية."),
+        "thisAppointmentCancelledSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم الغاء الحجز بنجاح"),
         "thursday": MessageLookupByLibrary.simpleMessage("الخميس"),
         "time": MessageLookupByLibrary.simpleMessage("الساعة"),
         "title": MessageLookupByLibrary.simpleMessage("العنوان"),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "لمساعدتك في العثور على أطباء بالقرب منك وتقديم التوصيات، نحتاج إلى معرفة موقعك."),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
         "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
         "upComing": MessageLookupByLibrary.simpleMessage("قادمة"),
         "uploadYourFileHere":
