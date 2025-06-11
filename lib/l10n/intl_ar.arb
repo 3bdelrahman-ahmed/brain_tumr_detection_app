@@ -14,6 +14,7 @@
   "newSlot": "موعد جديد",
   "addSlots": "إضافة مواعيد",
   "slotRemoved": "تم إزالة الموعد",
+  "slotEdited": "تم تعديل الموعد",
   "setYourDate": "حدد وقتك",
   "gotIt": "تم",
   "edit": "تعديل",
@@ -199,9 +200,9 @@
   "noSearchResultsFor": "لا توجد نتائج بحث لـ",
   "tryAgain": "حاول مرة أخرى",
   "noAvailableSlotsAtThisDay": "لا توجد مواعيد متاحة في هذا اليوم",
-  "appointmentCompleted" : "اكتمل الحجز",
-  "appointmentCancelled" : "ألغي الحجز",
-  "areYouSureToCancelAppointment" : "هل انت متأكد انك تريد الغاء الحجز",
-  "sure" : "متأكد",
-  "thisAppointmentCancelledSuccessfully" : "تم الغاء الحجز بنجاح"
+  "appointmentCompleted": "اكتمل الحجز",
+  "appointmentCancelled": "ألغي الحجز",
+  "areYouSureToCancelAppointment": "هل انت متأكد انك تريد الغاء الحجز",
+  "sure": "متأكد",
+  "thisAppointmentCancelledSuccessfully": "تم الغاء الحجز بنجاح"
 }

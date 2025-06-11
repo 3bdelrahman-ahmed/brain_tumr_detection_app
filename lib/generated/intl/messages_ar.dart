@@ -269,6 +269,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sixthOnBoardingMessage": MessageLookupByLibrary.simpleMessage("لنبدأ"),
         "sixthOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "هل أنت جاهز للبدء؟ سنحتاج فقط إلى بعض التفاصيل لتخصيص تجربتك. إنها سريعة وسهلة - لننطلق!"),
+        "slotEdited": MessageLookupByLibrary.simpleMessage("تم تعديل الموعد"),
         "slotRemoved": MessageLookupByLibrary.simpleMessage("تم إزالة الموعد"),
         "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
         "submitted": MessageLookupByLibrary.simpleMessage("تم الإرسال: "),

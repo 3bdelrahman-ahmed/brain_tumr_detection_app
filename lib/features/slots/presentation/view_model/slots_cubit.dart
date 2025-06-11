@@ -77,50 +77,57 @@ class SlotsCubit extends Cubit<SlotsState> {
   AvailableSlotsModel? _lastRemovedSlot;
   int? _lastRemovedIndex;
 
-  String formatDate() {
-    return "${DateFormat('dd MMM yyyy').format(startDate)} -"
-        " ${DateFormat('dd MMM yyyy').format(endDate)}";
-  }
+  //
+  // String formatDate() {
+  //   return "${DateFormat('dd MMM yyyy').format(startDate)} -"
+  //       " ${DateFormat('dd MMM yyyy').format(endDate)}";
+  // }
+  //
+  // void goToNext() {
+  //   startDate = startDate.add(const Duration(days: 5));
+  //   endDate = endDate.add(const Duration(days: 5));
+  //   selectedDay = startDate;
+  //   emit(SlotsChangeDays());
+  // }
+  //
+  // void goToPrevious() {
+  //   startDate = startDate.subtract(const Duration(days: 5));
+  //   endDate = endDate.subtract(const Duration(days: 5));
+  //   selectedDay = startDate;
+  //   emit(SlotsChangeDays());
+  // }
+  //
+  // void selectDay(DateTime day) {
+  //   selectedDay = day;
+  //   emit(SlotsSelectDay());
+  // }
 
-  void goToNext() {
-    startDate = startDate.add(const Duration(days: 5));
-    endDate = endDate.add(const Duration(days: 5));
-    selectedDay = startDate;
-    emit(SlotsChangeDays());
-  }
-
-  void goToPrevious() {
-    startDate = startDate.subtract(const Duration(days: 5));
-    endDate = endDate.subtract(const Duration(days: 5));
-    selectedDay = startDate;
-    emit(SlotsChangeDays());
-  }
-
-  void selectDay(DateTime day) {
-    selectedDay = day;
-    emit(SlotsSelectDay());
-  }
-
-  void removeSlot(int index) {
-    _lastRemovedSlot = availableSlots[index];
-    _lastRemovedIndex = index;
-
-    availableSlots.removeAt(index);
-    listKey.currentState?.removeItem(
-      index,
-      (context, animation) {
-        return SizeTransition(
-          sizeFactor: animation,
-          child: SlotCard(
-            slot: _lastRemovedSlot!,
-            onRemove: () {},
-          ).paddingOnly(top: 8.h, bottom: 8.h),
-        );
+  Future<void> removeSlot(int index, int slotId) async {
+    emit(SlotsRemoveLoading());
+    final response = await clinicsRepository.deleteSlot(slotId);
+    response.fold(
+      (l) {
+        l.message?.showToast();
       },
-      duration: const Duration(milliseconds: 300),
+      (r) {
+        availableSlots.removeAt(index);
+        listKey.currentState?.removeItem(
+          index,
+          (context, animation) {
+            return SizeTransition(
+              sizeFactor: animation,
+              child: SlotCard(
+                slot: _lastRemovedSlot!,
+                onRemove: () {},
+              ).paddingOnly(top: 8.h, bottom: 8.h),
+            );
+          },
+          duration: const Duration(milliseconds: 300),
+        );
+        // markSlotChanged();
+        emit(SlotsListRemoved());
+      },
     );
-    markSlotChanged();
-    emit(SlotsListRemoved());
   }
 
   Future<void> addSlot(TimeOfDay slotTime) async {
@@ -167,29 +174,41 @@ class SlotsCubit extends Cubit<SlotsState> {
     });
   }
 
-  void editSlot(int soltId, TimeOfDay slotTime) {
-    print("slotTime: $slotTime");
-    availableSlots.forEach((element) {
-      if (element.id == soltId) {
-        element.startTime =
-            formatTimeTo24Hour("${slotTime.hour}:${slotTime.minute}");
-      }
-    });
-    markSlotChanged();
-    emit(SlotsListUpdated());
+  Future<void> editSlot(int slotId, TimeOfDay slotTime) async {
+    final formattedTime =
+        "${slotTime.hour.toString().padLeft(2, '0')}:"
+        "${slotTime.minute.toString().padLeft(2, '0')}:00";
+
+    final result = await clinicsRepository.editSlot(slotId, formattedTime);
+
+    result.fold(
+      (l) {
+        l.message?.showToast();
+      },
+      (r) {
+        for (var element in availableSlots) {
+          if (element.id == slotId) {
+            element.startTime = formattedTime;
+          }
+        }
+        emit(SlotsListUpdated());
+      },
+    );
+
+    print("Formatted slotTime: $formattedTime");
   }
 
-  void undoRemove() {
-    if (_lastRemovedSlot != null && _lastRemovedIndex != null) {
-      availableSlots.insert(_lastRemovedIndex!, _lastRemovedSlot!);
-      listKey.currentState?.insertItem(_lastRemovedIndex!);
-      markSlotChanged();
-      _lastRemovedSlot = null;
-      _lastRemovedIndex = null;
-
-      emit(SlotsUndoRemoved());
-    }
-  }
+  // void undoRemove() {
+  //   if (_lastRemovedSlot != null && _lastRemovedIndex != null) {
+  //     availableSlots.insert(_lastRemovedIndex!, _lastRemovedSlot!);
+  //     listKey.currentState?.insertItem(_lastRemovedIndex!);
+  //     markSlotChanged();
+  //     _lastRemovedSlot = null;
+  //     _lastRemovedIndex = null;
+  //
+  //     emit(SlotsUndoRemoved());
+  //   }
+  // }
 
   Future<void> getClinicsSlots() async {
     for (int i = availableSlots.length - 1; i >= 0; i--) {
@@ -201,7 +220,7 @@ class SlotsCubit extends Cubit<SlotsState> {
           child: SlotCard(
             slot: removedSlot,
             onRemove: () {
-              removeSlot(i);
+              // removeSlot(i);
             },
           ),
         ),

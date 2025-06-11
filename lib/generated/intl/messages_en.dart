@@ -269,6 +269,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Let\'s Get Started"),
         "sixthOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "All set to begin? We\'ll need just a few details to personalize your experience. It\'s quick and easy—let\'s go!"),
+        "slotEdited": MessageLookupByLibrary.simpleMessage("Slot edited"),
         "slotRemoved": MessageLookupByLibrary.simpleMessage("Slot removed"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "submitted": MessageLookupByLibrary.simpleMessage("Submitted: "),

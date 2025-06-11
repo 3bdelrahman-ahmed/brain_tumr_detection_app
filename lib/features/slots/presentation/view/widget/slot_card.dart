@@ -16,8 +16,8 @@ import '../../../../../generated/l10n.dart';
 class SlotCard extends StatelessWidget {
   final AvailableSlotsModel slot;
   final VoidCallback onRemove;
-
-  const SlotCard({super.key, required this.slot, required this.onRemove});
+  final bool? isLoading;
+  const SlotCard({super.key, required this.slot, required this.onRemove, this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +97,7 @@ class SlotCard extends StatelessWidget {
                   textStyle: AppTextStyles.font12WhiteW500,
                   width: 90.w,
                   height: 40.w,
+                  isLoading: isLoading,
                   onTap: onRemove,
                 ),
               ],

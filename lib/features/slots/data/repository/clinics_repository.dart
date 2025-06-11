@@ -39,4 +39,24 @@ class ClinicsRepository {
       return Left(ErrorHandler.handle(e));
     }
   }
+
+  Future<Either<ApiErrorModel, String>> deleteSlot(
+      int slotId) async {
+    try {
+      final response = await clinicsRemoteDataSource.deleteSlot(slotId);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<Either<ApiErrorModel, String>> editSlot(
+      int slotId ,String startTime) async {
+    try {
+      final response = await clinicsRemoteDataSource.edit(slotId,startTime);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
 }

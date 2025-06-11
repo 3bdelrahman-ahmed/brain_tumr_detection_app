@@ -26,10 +26,10 @@ class FeedPage extends StatelessWidget {
           shrinkWrap: true,
           slivers: [
             CustomWelcomeAppBar(),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: CustomSliverSearchBar(S.of(context).searchForPosts),
-            ),
+            // SliverPersistentHeader(
+            //   pinned: true,
+            //   delegate: CustomSliverSearchBar(S.of(context).searchForPosts),
+            // ),
             SliverPadding(padding: EdgeInsets.only(bottom: 16.h)),
             SliverList(
               delegate: SliverChildBuilderDelegate(
