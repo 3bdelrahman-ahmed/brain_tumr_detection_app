@@ -225,8 +225,9 @@ class ProfilePage extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        // if (onTap != null) {
-        onTap!();
+        if (onTap != null) {
+          onTap();
+        }
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10.h),
