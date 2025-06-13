@@ -21,7 +21,7 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
         return Container(
           color: Theme.of(context)
               .scaffoldBackgroundColor, // Ensures it's not transparent
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 4.h),
           child: CustomTextField(
             onSuffixTap: () {
               context.read<AppCubit>().searchController.clear();

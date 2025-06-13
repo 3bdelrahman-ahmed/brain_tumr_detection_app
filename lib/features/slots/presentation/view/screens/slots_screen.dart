@@ -78,7 +78,6 @@ class _SlotsScreenState extends State<SlotsScreen> {
               ),
             );
           }
-
         },
         builder: (context, state) {
           final cubit = context.watch<SlotsCubit>();
