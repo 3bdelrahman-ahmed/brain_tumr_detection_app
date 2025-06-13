@@ -11,14 +11,10 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../../features/appointments/data/remote/appointment_data_source.dart'
-    as _i562;
 import '../../../features/appointments/data/remote/appointments_remote_data_source.dart'
     as _i432;
 import '../../../features/appointments/data/repo/appointments_repository.dart'
     as _i592;
-import '../../../features/appointments/data/repository/Appointments_repository.dart'
-    as _i6;
 import '../../../features/appointments/presentation/view_model/appointment_cubit.dart'
     as _i546;
 import '../../../features/chats/data/remote/chat_data_source.dart' as _i104;
@@ -116,8 +112,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i585.GetDoctorsClinicsDataSource>(
         () => _i585.GetDoctorsClinicsDataSource());
     gh.factory<_i458.LocationService>(() => _i458.LocationService());
-    gh.factory<_i562.AppointmentsDataSource>(
-        () => _i562.AppointmentsDataSource());
     gh.factory<_i104.ChatDataSource>(() => _i104.ChatDataSource());
     gh.factory<_i727.DoctorAppointmentDataSource>(
         () => _i727.DoctorAppointmentDataSource());
@@ -185,8 +179,6 @@ extension GetItInjectableX on _i174.GetIt {
         registerRepository: gh<_i558.RegisterRepository>()));
     gh.singleton<_i340.LoginRepository>(() =>
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
-    gh.factory<_i6.AppointmentsRepository>(
-        () => _i6.AppointmentsRepository(gh<_i562.AppointmentsDataSource>()));
     gh.factory<_i354.SlotsCubit>(() =>
         _i354.SlotsCubit(clinicsRepository: gh<_i249.ClinicsRepository>()));
     gh.factory<_i7.NotificationCubit>(() => _i7.NotificationCubit(
