@@ -52,8 +52,8 @@ class ScanCubit extends Cubit<ScanState> {
 
     final result = await repotitory.uploadScan(UploadScanRequestModel(
       image: file!,
-      lat: AppConstants.user?.latitude ?? 30.01,
-      long: AppConstants.user?.longitude ?? 30.01,
+      lat: AppConstants.currentLocation?.latitude ?? 30.01,
+      long: AppConstants.currentLocation?.longitude ?? 30.01,
     ));
     result.fold((l) {
       l.message!.showToast();
