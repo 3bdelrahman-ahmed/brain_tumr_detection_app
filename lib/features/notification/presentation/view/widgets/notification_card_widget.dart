@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/helper/functions/convert_time_slot_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -46,7 +47,7 @@ class NotificationCardWidget extends StatelessWidget {
         ),
         8.toWidth,
         Text(
-          "09:00 AM",
+          formatTimeTo24Hour(notification.createdAt!),
           style: AppTextStyles.font10BlueW600,
         ),
       ],

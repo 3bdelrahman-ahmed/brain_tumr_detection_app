@@ -3,7 +3,6 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_text_fie
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/contact_us/presentation/view_model/cubit/contact_us_cubit.dart';
-import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/reviews_widget.dart';
 import 'package:brain_tumr_detection_app/foundations/validations.dart';
 import 'package:brain_tumr_detection_app/generated/l10n.dart';
 import 'package:flutter/material.dart';

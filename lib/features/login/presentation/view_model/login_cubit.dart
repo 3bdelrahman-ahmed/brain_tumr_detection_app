@@ -80,10 +80,9 @@ class LoginCubit extends Cubit<LoginState> {
         // Get FCM token and send it to the server
         String? fcmToken = await FirebaseMessaging.instance.getToken();
         if (fcmToken != null) {
-         context.read<AppCubit>().repository
-              .sendDeviceToken(fcmToken);
+          context.read<AppCubit>().repository.sendDeviceToken(fcmToken);
         }
-        context.navigateTo(AppRoutes.homeScreen);
+        context.navigateToAndRemoveUntil(AppRoutes.homeScreen);
         emit(LoginSuccessState());
       });
     }

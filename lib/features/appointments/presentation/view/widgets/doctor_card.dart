@@ -1,7 +1,6 @@
 import 'package:brain_tumr_detection_app/core/helper/functions/show_default_dialog_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
 import 'package:brain_tumr_detection_app/features/appointments/data/models/appointments_model.dart';
 import 'package:brain_tumr_detection_app/features/appointments/presentation/view_model/appointment_cubit.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import '../../../../../core/helper/functions/convert_time_slot_function.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
+import 'cancel_appointment_dialog_widget.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
   Appointments appointment;
@@ -23,6 +23,7 @@ class DoctorCardAppointment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<AppointmentCubit>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
       decoration: BoxDecoration(
@@ -86,107 +87,60 @@ class DoctorCardAppointment extends StatelessWidget {
           25.toHeight,
           (appointment.status != "Completed" &&
                   appointment.status != "Cancelled")
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        raduis: 8.r,
-                        backgroundColor: AppColors.error,
-                        text: S.of(context).cancel,
-                        height: 50.h,
-                        textStyle: AppTextStyles.font15WhiteW500,
-                        onTap: () {
-                          showDefaultDialog(
-                            context,
-                            child: Padding(
-                              padding: EdgeInsets.all(20.r),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Icon(
-                                      Icons.warning,
-                                      color: AppColors.error,
-                                      size: 30.r,
-                                    ),
-                                  ),
-                                  SizedBox(height: 12.h),
-                                  Text(
-                                    S.of(context).areYouSureToCancelAppointment,
-                                    style: AppTextStyles.font20BlueW700,
-                                  ),
-                                  SizedBox(height: 24.h),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      CustomButton(
-                                        text: S.of(context).cancel,
-                                        onTap: () =>
-                                            Navigator.of(context).pop(),
-                                        backgroundColor: AppColors.typography,
-                                        raduis: 8.r,
-                                        width: 120.w,
-                                      ),
-                                      12.toWidth,
-                                      CustomButton(
-                                        text: S.of(context).sure,
-                                        raduis: 8.r,
-                                        onTap: () {
-                                          Navigator.of(context).pop();
-                                          context
-                                              .read<AppointmentCubit>()
-                                              .removeAppointment(index);
-                                          S
-                                              .of(context)
-                                              .thisAppointmentCancelledSuccessfully
-                                              .showToast();
-                                        },
-                                        width: 120.w,
-                                        backgroundColor: AppColors.error,
-                                      )
-                                      // TextButton(
-                                      //   onPressed: () {
-                                      //     Navigator.of(context).pop();
-                                      //     context
-                                      //         .read<AppointmentCubit>()
-                                      //         .removeAppointment(index);
-                                      //     S
-                                      //         .of(context)
-                                      //         .thisAppointmentCancelledSuccessfully
-                                      //         .showToast();
-                                      //   },
-                                      //   child: Text(
-                                      //     S.of(context).sure,
-                                      //     style: AppTextStyles.font16BlueW700,
-                                      //   ),
-                                      // ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
+              ? CustomButton(
+                  raduis: 8.r,
+                  backgroundColor: AppColors.error,
+                  text: S.of(context).cancel,
+                  height: 50.h,
+                  textStyle: AppTextStyles.font15WhiteW500,
+                  onTap: () {
+                    showDefaultDialog(
+                      context,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 12.h),
+                        child: BlocProvider.value(
+                          value: cubit,
+                          child: CancelAppointmentDialogWidget(index: index),
+                        ),
                       ),
-                    ),
-                    10.toWidth,
-                    Expanded(
-                      child: CustomButton(
-                        backgroundColor: AppColors.typography,
-                        raduis: 8.r,
-                        text: S.of(context).reScheduled,
-                        height: 50.h,
-                        textStyle: AppTextStyles.font15WhiteW500,
-                        onTap: () {},
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 )
+              // Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Expanded(
+              //         child: CustomButton(
+              //           raduis: 8.r,
+              //           backgroundColor: AppColors.error,
+              //           text: S.of(context).cancel,
+              //           height: 50.h,
+              //           textStyle: AppTextStyles.font15WhiteW500,
+              //           onTap: () {
+              //             showDefaultDialog(
+              //               context,
+              //               child: Padding(
+              //                 padding: EdgeInsets.all(20.r),
+              //                 child: CancelAppointmentDialogWidget(index: index),
+              //               ),
+              //             );
+              //           },
+              //         ),
+              //       ),
+              //       10.toWidth,
+              //       Expanded(
+              //         child: CustomButton(
+              //           backgroundColor: AppColors.typography,
+              //           raduis: 8.r,
+              //           text: S.of(context).reScheduled,
+              //           height: 50.h,
+              //           textStyle: AppTextStyles.font15WhiteW500,
+              //           onTap: () {},
+              //         ),
+              //       ),
+              //     ],
+              //   )
               : Container(
                   width: double.infinity,
                   padding:

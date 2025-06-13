@@ -11,3 +11,8 @@ final class AppointmentLoaded extends AppointmentState {}
 
 final class AppointmentError extends AppointmentState {}
 final class AppointmentCancelled extends AppointmentState {}
+
+
+final class DeleteAppointmentLoadingState extends AppointmentState{}
+final class DeleteAppointmentSuccessState extends AppointmentState{}
+final class DeleteAppointmentErrorState extends AppointmentState{}

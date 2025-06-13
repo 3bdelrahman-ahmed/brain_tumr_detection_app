@@ -5,7 +5,7 @@ class AppUrls {
   //Auth
   static const String login = "Auth/login";
   static const String registerPatient = "Auth/register/patient";
-  static const String registerDoctor = "Auth/register/doctor";
+  static const String registerDoctor = "Auth/register/do65ctor";
   static const String verifyCode = "Auth/verifyEmail";
   static const String forgetPassword = "Auth/forgetPassword";
   static const String verifyForgetPassword = "Auth/verifyForgetPassword";
@@ -35,6 +35,7 @@ class AppUrls {
   static String getBookedAppointments = "Appointment";
   static String getConversationId(String patientId) => "Chat/user/$patientId";
   static const String getPatientAppointments = "Appointment";
+  static const String deleteAppointment = "Appointment/cancel";
 
   //Notification
   static const String getNotifications = "Notification";

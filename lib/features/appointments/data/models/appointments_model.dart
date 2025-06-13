@@ -39,6 +39,7 @@ class AppointmentsResponseModel {
 }
 
 class Appointments {
+  int? id;
   String? date;
   String? startTime;
   String? status;
@@ -52,10 +53,12 @@ class Appointments {
       this.status,
       this.doctorName,
       this.doctorProfilePicture,
+      this.id,
       this.address});
 
   Appointments.fromJson(Map<String, dynamic> json) {
     date = json['date'];
+    id = json['id'];
     startTime = json['startTime'];
     status = json['status'];
     doctorName = json['doctorName'];

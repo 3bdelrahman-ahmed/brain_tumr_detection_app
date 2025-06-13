@@ -1,9 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
 import 'package:brain_tumr_detection_app/features/appointments/data/models/appointments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../generated/l10n.dart';
+import '../../data/models/delete_appointment_model.dart';
 import '../../data/repo/appointments_repository.dart';
 
 part 'appointment_state.dart';
@@ -87,8 +90,23 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     );
   }
 
-  void removeAppointment(int index) {
-    appointmentsResponseModel?.appointments?.removeAt(index);
-    emit(AppointmentCancelled());
+  Future<void> removeAppointment(int index, BuildContext context) async {
+    emit(DeleteAppointmentLoadingState());
+    final result = await appointmentRepository.deleteAppointment(
+      DeleteAppointmentRequestModel(
+        appointmentId: appointmentsResponseModel!.appointments![index].id!,
+      ),
+    );
+    result.fold(
+      (error) {
+        emit(DeleteAppointmentErrorState());
+      },
+      (data) {
+        appointmentsResponseModel?.appointments?.removeAt(index);
+        Navigator.pop(context);
+        S.of(context).thisAppointmentCancelledSuccessfully.showToast();
+        emit(DeleteAppointmentSuccessState());
+      },
+    );
   }
 }
