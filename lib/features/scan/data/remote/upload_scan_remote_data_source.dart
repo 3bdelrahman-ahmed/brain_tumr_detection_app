@@ -9,7 +9,7 @@ class UploadScanRemoteDataSource {
   Future<UploadScanResponseModel> uploadScan(
       UploadScanRequestModel requestModel) async {
     final response = await AppDio().post(
-        path: AppUrls.cancerPrediction, data: await requestModel.toFormData());
+        path: AppUrls.uploadScan, data: await requestModel.toFormData());
 
     return UploadScanResponseModel.fromJson(response.data);
   }

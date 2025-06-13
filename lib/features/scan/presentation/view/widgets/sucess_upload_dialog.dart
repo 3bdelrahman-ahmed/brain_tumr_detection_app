@@ -3,9 +3,10 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/components/widgets/custom_image_view.dart';
-import '../../../../core/utils/assets/assets_svg.dart';
-import '../../../../generated/l10n.dart';
+
+import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../core/utils/assets/assets_svg.dart';
+import '../../../../../generated/l10n.dart';
 
 class SucessUploadDialog extends StatelessWidget {
   const SucessUploadDialog({super.key});

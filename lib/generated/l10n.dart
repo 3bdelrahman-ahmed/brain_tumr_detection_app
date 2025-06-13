@@ -730,10 +730,10 @@ class S {
     );
   }
 
-  /// `Supported Files: pdf, png`
+  /// `Supported Files: pdf, png, jpg`
   String get supportedFiles {
     return Intl.message(
-      'Supported Files: pdf, png',
+      'Supported Files: pdf, png, jpg',
       name: 'supportedFiles',
       desc: '',
       args: [],
@@ -2105,6 +2105,16 @@ class S {
     return Intl.message(
       'This appointment cancelled successfully',
       name: 'thisAppointmentCancelledSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis`
+  String get pleaseUplaodClearImage {
+    return Intl.message(
+      'Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis',
+      name: 'pleaseUplaodClearImage',
       desc: '',
       args: [],
     );

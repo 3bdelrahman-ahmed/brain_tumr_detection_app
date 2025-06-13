@@ -70,7 +70,8 @@ import '../../../features/scan/data/remote/upload_scan_remote_data_source.dart'
     as _i89;
 import '../../../features/scan/data/repo/upload_scan%20_repotitory.dart'
     as _i938;
-import '../../../features/scan/view_model/scan_cubit.dart' as _i694;
+import '../../../features/scan/presentation/view_model/scan_cubit.dart'
+    as _i942;
 import '../../../features/slots/data/remote/clinics_remote_ds.dart' as _i1013;
 import '../../../features/slots/data/repository/clinics_repository.dart'
     as _i249;
@@ -199,8 +200,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i844.VerificationCodeCubit>(() => _i844.VerificationCodeCubit(
         repository: gh<_i487.VerifyCodeRepository>()));
-    gh.factory<_i694.ScanCubit>(
-        () => _i694.ScanCubit(repotitory: gh<_i938.UploadScanRepotitory>()));
+    gh.factory<_i942.ScanCubit>(
+        () => _i942.ScanCubit(repotitory: gh<_i938.UploadScanRepotitory>()));
     return this;
   }
 }

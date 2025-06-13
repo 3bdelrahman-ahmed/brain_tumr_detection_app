@@ -67,7 +67,7 @@
   "openLocationPermission": "Hey there! To help you find the best doctors near you, we need location access. Please enable it in settings!",
   "cancel": "Cancel",
   "reScheduled": "Rescheduled",
-  "supportedFiles": "Supported Files: pdf, png",
+  "supportedFiles": "Supported Files: pdf, png, jpg",
   "yourFileIsBeingUploaded": "Your file is being uploaded",
   "yourFileName": "Your File Name",
   "mriFileUploaded": "MRI Uploaded Successfully!",
@@ -204,5 +204,6 @@
   "appointmentCancelled" : "Appointment Cancelled",
   "areYouSureToCancelAppointment" : "Are you sure you want to cancel this appointment",
   "sure" : "Sure",
-  "thisAppointmentCancelledSuccessfully" : "This appointment cancelled successfully"
+  "thisAppointmentCancelledSuccessfully" : "This appointment cancelled successfully",
+  "pleaseUplaodClearImage" : "Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis"
 }

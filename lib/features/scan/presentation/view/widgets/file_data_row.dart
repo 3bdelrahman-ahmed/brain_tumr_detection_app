@@ -4,10 +4,10 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_file/open_file.dart';
-import '../../../../core/components/widgets/custom_image_view.dart';
-import '../../../../core/utils/assets/assets_svg.dart';
-import '../../../../core/utils/theme/text_styles/app_text_styles.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/components/widgets/custom_image_view.dart';
+import '../../../../../core/utils/assets/assets_svg.dart';
+import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/scan_cubit.dart';
 
 class FileDataRow extends StatelessWidget {
