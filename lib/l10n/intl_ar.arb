@@ -74,7 +74,7 @@
   "openLocationPermission": "مرحبًا! لمساعدتك في العثور على أفضل الأطباء بالقرب منك، نحتاج إلى إذن الموقع. يرجى تمكينه في الإعدادات!",
   "cancel": "إلغاء",
   "reScheduled": "تم إعادة الجدولة",
-  "supportedFiles": "الملفات المدعومة: pdf, png",
+  "supportedFiles": "الملفات المدعومة: , jpg , pdf, png",
   "yourFileIsBeingUploaded": "جاري رفع ملفك",
   "yourFileName": "اسم ملفك",
   "mriFileUploaded": "تم رفع ملف الرنين المغناطيسي بنجاح!",
@@ -204,5 +204,6 @@
   "appointmentCancelled": "ألغي الحجز",
   "areYouSureToCancelAppointment": "هل انت متأكد انك تريد الغاء الحجز",
   "sure": "متأكد",
-  "thisAppointmentCancelledSuccessfully": "تم الغاء الحجز بنجاح"
+  "thisAppointmentCancelledSuccessfully": "تم الغاء الحجز بنجاح",
+  "pleaseUplaodClearImage": "يرجى تحميل صورة واضحة وجيدة لجهاز الرنين المغناطيسي حتى نتمكن من تقديم تحليل أدق"
 }

@@ -8,10 +8,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-
-import '../../../core/helper/functions/show_default_dialog_function.dart';
-import '../../../generated/l10n.dart';
-import '../data/models/upload_scan_model.dart';
+import '../../../../core/helper/functions/show_default_dialog_function.dart';
+import '../../data/models/upload_scan_model.dart';
 import '../view/widgets/sucess_upload_dialog.dart';
 
 part 'scan_state.dart';
@@ -19,6 +17,7 @@ part 'scan_state.dart';
 @injectable
 class ScanCubit extends Cubit<ScanState> {
   final UploadScanRepotitory repotitory;
+
   ScanCubit({required this.repotitory}) : super(ScanInitial());
 
   File? file;

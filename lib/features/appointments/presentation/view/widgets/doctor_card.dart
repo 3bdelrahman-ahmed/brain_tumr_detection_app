@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/core/components/enum/appointment_status.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/show_default_dialog_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
@@ -23,6 +24,7 @@ class DoctorCardAppointment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final statusEnum = fromString(appointment.status);
     var cubit = context.read<AppointmentCubit>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
@@ -85,8 +87,8 @@ class DoctorCardAppointment extends StatelessWidget {
             ],
           ),
           25.toHeight,
-          (appointment.status != "Completed" &&
-                  appointment.status != "Cancelled")
+          (statusEnum != AppointmentStatus.cancelled &&
+                  statusEnum != AppointmentStatus.completed)
               ? CustomButton(
                   raduis: 8.r,
                   backgroundColor: AppColors.error,
@@ -146,7 +148,7 @@ class DoctorCardAppointment extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
                   decoration: BoxDecoration(
-                    color: appointment.status == "Completed"
+                    color: statusEnum == "Completed"
                         ? Colors.green.withOpacity(0.1)
                         : Colors.red.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10.r),
@@ -154,20 +156,20 @@ class DoctorCardAppointment extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(
-                        appointment.status == "Completed"
+                        statusEnum == AppointmentStatus.completed
                             ? Icons.check_circle
                             : Icons.cancel,
-                        color: appointment.status == "Completed"
+                        color: statusEnum == AppointmentStatus.completed
                             ? Colors.green
                             : Colors.red,
                       ),
                       10.toWidth,
                       Text(
-                        appointment.status == "Completed"
+                        statusEnum == AppointmentStatus.completed
                             ? S.of(context).appointmentCompleted
                             : S.of(context).appointmentCancelled,
                         style: AppTextStyles.font16BlueW700.copyWith(
-                          color: appointment.status == "Completed"
+                          color: statusEnum == AppointmentStatus.completed
                               ? Colors.green
                               : Colors.red,
                         ),

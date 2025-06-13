@@ -7,12 +7,13 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.d
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
-import 'package:brain_tumr_detection_app/features/scan/view/widgets/file_data_row.dart';
-import 'package:brain_tumr_detection_app/features/scan/view_model/scan_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../generated/l10n.dart';
+
+import '../../../../../generated/l10n.dart';
+import '../../view_model/scan_cubit.dart';
+import '../widgets/file_data_row.dart';
 
 class ScanPage extends StatelessWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -58,10 +59,11 @@ class ScanPage extends StatelessWidget {
                             ),
                       5.toHeight,
                       Text(
-                        S.of(context).uploadYourFileHere,
+                        S.of(context).pleaseUplaodClearImage,
+                        textAlign: TextAlign.center,
                         style: AppTextStyles.font15GreenW700,
                       ),
-                      5.toHeight,
+                      10.toHeight,
                       Text(
                         S.of(context).supportedFiles,
                         style: AppTextStyles.font12LightGreenW500,

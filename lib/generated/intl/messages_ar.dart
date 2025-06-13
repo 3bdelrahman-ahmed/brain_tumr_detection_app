@@ -220,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الرجاء اختيار ملف لرفعه"),
         "pleaseSelectTimeSlot":
             MessageLookupByLibrary.simpleMessage("من فضلك اختر معاد"),
+        "pleaseUplaodClearImage": MessageLookupByLibrary.simpleMessage(
+            "يرجى تحميل صورة واضحة وجيدة لجهاز الرنين المغناطيسي حتى نتمكن من تقديم تحليل أدق"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
             "الرجاء تحميل شهاداتك (رخصة طبية، شهادة، أو هوية المستشفى) للتحقق من حالتك كطبيب."),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
@@ -277,8 +279,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sunday": MessageLookupByLibrary.simpleMessage("الأحد"),
         "supportFeedback":
             MessageLookupByLibrary.simpleMessage("الدعم والملاحظات"),
-        "supportedFiles":
-            MessageLookupByLibrary.simpleMessage("الملفات المدعومة: pdf, png"),
+        "supportedFiles": MessageLookupByLibrary.simpleMessage(
+            "الملفات المدعومة: , jpg , pdf, png"),
         "sure": MessageLookupByLibrary.simpleMessage("متأكد"),
         "tapToAttachFile":
             MessageLookupByLibrary.simpleMessage("اضغط لاضافة الملف"),

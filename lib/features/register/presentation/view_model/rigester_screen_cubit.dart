@@ -74,6 +74,7 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   void setClinicLicense(File license) {
     clinicLicenseController.text = license.path.split('/').last;
     clinicLicenseFile = license;
+    print(clinicLicenseFile.toString());
     emit(SetClinicLiscenseState());
   }
 
@@ -101,7 +102,6 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
       l.message!.showToast();
       emit(RigesterScreenErrorState());
     }, (r) async {
-      
       context.navigateTo(
         AppRoutes.verificationCodeScreen,
         arguments: {
@@ -117,6 +117,22 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
 
   Future<void> registerDoctor() async {
     emit(RigesterScreenLoadingState());
+    print({
+      'clinicAddress': streetName,
+      'cliniclicense': clinicLicenseFile?.path,
+      'dateOfBirth': pickedDate.toString(),
+      'licenseBack': doctorLicenseBack?.path,
+      'licenseFront': doctorLicenseForont?.path,
+      'latitude': position?.latitude,
+      'longitude': position?.longitude,
+      'phone': clinicPhoneNumberController.text,
+      'profileProfile': profileImage?.path,
+      'fullName': fullNameController.text.trim(),
+      'userName': userNameController.text,
+      'email': emailController.text,
+      'password': passwordController.text,
+      'gender': selectedGender.text,
+    });
     final result =
         await registerRepository.doctorRegister(DoctorRegisterRequestModel(
       clinicAddress: streetName!,

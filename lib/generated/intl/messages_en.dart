@@ -220,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please pick a file to upload"),
         "pleaseSelectTimeSlot":
             MessageLookupByLibrary.simpleMessage("Please select time slot"),
+        "pleaseUplaodClearImage": MessageLookupByLibrary.simpleMessage(
+            "Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
             "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status."),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
@@ -278,8 +280,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "supportFeedback":
             MessageLookupByLibrary.simpleMessage("Support & Feedback"),
-        "supportedFiles":
-            MessageLookupByLibrary.simpleMessage("Supported Files: pdf, png"),
+        "supportedFiles": MessageLookupByLibrary.simpleMessage(
+            "Supported Files: pdf, png, jpg"),
         "sure": MessageLookupByLibrary.simpleMessage("Sure"),
         "tapToAttachFile":
             MessageLookupByLibrary.simpleMessage("Tap to attach file"),

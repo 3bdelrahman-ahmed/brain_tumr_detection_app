@@ -78,7 +78,7 @@ class ClincFormWidget extends StatelessWidget {
                   readOnly: true,
                   suffixIcon: AssetsSvg.uploadDoc,
                   validator: (v) => checkFieldValidation(
-                      val: cubit.licenseFrontController.text,
+                      val: cubit.clinicLicenseController.text,
                       fieldName: S.of(context).clinicLicense,
                       fieldType: ValidationType.text),
                   onTap: () {
