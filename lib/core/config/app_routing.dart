@@ -9,6 +9,8 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/scre
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
+import 'package:brain_tumr_detection_app/features/medical_history/presentation/view/screens/medical_history_screen.dart';
+import 'package:brain_tumr_detection_app/features/medical_history/presentation/view_model/medical_history_cubit.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/view/screens/view_report_screen.dart';
@@ -47,6 +49,7 @@ class AppRoutes {
   static const String notificationScreen = '/notification';
   static const String resetPasswordScreen = '/resetPasswordScreen';
   static const String contactUsScreen = '/contactUs';
+  static const String medicalHistoryScreen = '/medicalHistory';
 }
 
 class AppRouter {
@@ -73,6 +76,14 @@ class AppRouter {
           BlocProvider(
             create: (context) => getIt<NotificationCubit>(),
             child: const NotificationScreen(),
+          ),
+          duration: 300.ms,
+        );
+      case AppRoutes.medicalHistoryScreen:
+        return animateRouteBuilder(
+          BlocProvider(
+            create: (context) => getIt<MedicalHistoryCubit>(),
+            child: const MedicalHistoryScreen(),
           ),
           duration: 300.ms,
         );

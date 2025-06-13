@@ -18,6 +18,7 @@ import '../../../../../generated/l10n.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +96,11 @@ class ProfilePage extends StatelessWidget {
           ).paddingSymmetric(vertical: 20.h),
           _buildSettingsRow(title: S.of(context).accountSetting),
           _buildSettingsRow(title: S.of(context).notificationsSettings),
-          _buildSettingsRow(title: S.of(context).medicalDataManagement),
+          _buildSettingsRow(
+              title: S.of(context).medicalDataManagement,
+              onTap: () {
+                context.navigateTo(AppRoutes.medicalHistoryScreen);
+              }),
           _buildSettingsRow(
               onTap: () {
                 print("object");
