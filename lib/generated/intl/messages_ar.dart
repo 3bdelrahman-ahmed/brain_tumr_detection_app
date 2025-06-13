@@ -87,6 +87,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dontWorryPassword": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! سوف نساعدك في استعادة حسابك في أسرع وقت"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "education": MessageLookupByLibrary.simpleMessage("التعليم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "enterOtp": MessageLookupByLibrary.simpleMessage(
@@ -297,6 +299,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "thursday": MessageLookupByLibrary.simpleMessage("الخميس"),
         "time": MessageLookupByLibrary.simpleMessage("الساعة"),
         "title": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "toGetFasterResultsPleaseSetYourCurrentLocation":
+            MessageLookupByLibrary.simpleMessage(
+                "للحصول على نتائج أسرع، يرجى تعيين موقعك الحالي."),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "لمساعدتك في العثور على أطباء بالقرب منك وتقديم التوصيات، نحتاج إلى معرفة موقعك."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),

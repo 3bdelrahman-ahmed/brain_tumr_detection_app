@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../core/data/local_services/app_caching_helper.dart';
 import '../features/login/data/models/login_model.dart';
@@ -24,6 +25,7 @@ class AppConstants {
   static User? user;
   static String? location;
   static bool langCode = true;
+  static LatLng? currentLocation;
 
   static cacheString({required String key, required dynamic value}) async {
     await AppCacheHelper.setSecuredString(key: key, value: value);
@@ -34,7 +36,6 @@ class AppConstants {
         key: AppCacheHelper.tokenKey, value: token);
     accessToken = token;
   }
-
 
   static setLanguage(bool language) async {
     await AppCacheHelper.setSecuredString(
