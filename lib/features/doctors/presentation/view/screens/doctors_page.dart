@@ -3,7 +3,6 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shim
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_empty_widget.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_sliver_search_bar.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
-import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';

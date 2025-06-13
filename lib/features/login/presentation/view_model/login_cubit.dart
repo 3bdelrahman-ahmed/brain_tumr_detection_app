@@ -76,7 +76,7 @@ class LoginCubit extends Cubit<LoginState> {
         AppConstants.setToken(r.token!);
         AppConstants.setUser(r.user!);
         AppConstants.user = r.user;
-        await setLocation();
+        // await setLocation();
         // Get FCM token and send it to the server
         String? fcmToken = await FirebaseMessaging.instance.getToken();
         if (fcmToken != null) {

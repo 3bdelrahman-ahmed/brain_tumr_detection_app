@@ -94,7 +94,16 @@ class ProfilePage extends StatelessWidget {
               Navigator.pop(context); // Close Drawer
             },
           ).paddingSymmetric(vertical: 20.h),
-          _buildSettingsRow(title: S.of(context).accountSetting),
+          _buildSettingsRow(
+              onTap: () {
+                context.navigateTo(AppRoutes.editProfileScreen);
+              },
+              title: S.of(context).accountSetting),
+          _buildSettingsRow(
+              title: S.of(context).resetPassword,
+              onTap: () {
+                context.navigateTo(AppRoutes.resetPasswordScreen);
+              }),
           _buildSettingsRow(title: S.of(context).notificationsSettings),
           _buildSettingsRow(
               title: S.of(context).medicalDataManagement,
@@ -103,7 +112,6 @@ class ProfilePage extends StatelessWidget {
               }),
           _buildSettingsRow(
               onTap: () {
-                print("object");
                 context.navigateTo(AppRoutes.contactUsScreen);
               },
               title: S.of(context).supportFeedback),

@@ -47,7 +47,7 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
     } else {
       return CircleAvatar(
         radius: widget.size ?? 18.r,
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Colors.transparent,
         child: ClipOval(
           child: CachedNetworkImage(
             imageUrl: widget.imageUrl ?? "",
@@ -60,6 +60,7 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
+                shape: BoxShape.circle,
                 image: DecorationImage(
                   image: imageProvider,
                   fit: BoxFit.cover,

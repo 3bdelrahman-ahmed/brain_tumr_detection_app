@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `To get faster results, please set your current location.`
+  String get toGetFasterResultsPleaseSetYourCurrentLocation {
+    return Intl.message(
+      'To get faster results, please set your current location.',
+      name: 'toGetFasterResultsPleaseSetYourCurrentLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Biometric Authentication Enabled`
   String get biometricAuthenticationEnabled {
     return Intl.message(
@@ -165,6 +175,16 @@ class S {
     return Intl.message(
       'Remmber Me',
       name: 'remmberMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
       desc: '',
       args: [],
     );

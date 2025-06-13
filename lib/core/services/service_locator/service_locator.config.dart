@@ -33,6 +33,12 @@ import '../../../features/doctors/data/repository/reviews_repository.dart'
     as _i546;
 import '../../../features/doctors/presentation/view_model/doctors_cubit.dart'
     as _i230;
+import '../../../features/edit_profile/data/remote/edit_profile_remote_data_source.dart'
+    as _i713;
+import '../../../features/edit_profile/data/repo/edit_profile_repository.dart'
+    as _i461;
+import '../../../features/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart'
+    as _i4;
 import '../../../features/feed/presentation/view_model/cubit/feed_cubit.dart'
     as _i1069;
 import '../../../features/login/data/remote/login_remote_data_source.dart'
@@ -141,6 +147,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i790.VerifyCodeRemoteDataSource());
     gh.singleton<_i1070.ViewPatientsDataSource>(
         () => _i1070.ViewPatientsDataSource());
+    gh.singleton<_i713.EditProfileRemoteDataSource>(
+        () => _i713.EditProfileRemoteDataSource());
     gh.singleton<_i90.ViewPatientsRepo>(
         () => _i90.ViewPatientsRepo(gh<_i1070.ViewPatientsDataSource>()));
     gh.singleton<_i592.AppointmentsRepository>(() =>
@@ -179,6 +187,8 @@ extension GetItInjectableX on _i174.GetIt {
         registerRepository: gh<_i558.RegisterRepository>()));
     gh.singleton<_i340.LoginRepository>(() =>
         _i340.LoginRepository(dataSource: gh<_i609.LoginRemoteDataSource>()));
+    gh.singleton<_i461.EditProfileRepository>(() => _i461.EditProfileRepository(
+        remoteDataSource: gh<_i713.EditProfileRemoteDataSource>()));
     gh.factory<_i354.SlotsCubit>(() =>
         _i354.SlotsCubit(clinicsRepository: gh<_i249.ClinicsRepository>()));
     gh.factory<_i7.NotificationCubit>(() => _i7.NotificationCubit(
@@ -201,6 +211,8 @@ extension GetItInjectableX on _i174.GetIt {
         repository: gh<_i487.VerifyCodeRepository>()));
     gh.factory<_i694.ScanCubit>(
         () => _i694.ScanCubit(repotitory: gh<_i938.UploadScanRepotitory>()));
+    gh.factory<_i4.EditProfileCubit>(() =>
+        _i4.EditProfileCubit(repository: gh<_i461.EditProfileRepository>()));
     return this;
   }
 }

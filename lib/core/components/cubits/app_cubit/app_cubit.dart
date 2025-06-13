@@ -56,8 +56,8 @@ class AppCubit extends Cubit<AppState> {
         pageIndex: _pageIndex,
         pageSize: _pageSize,
         search: searchController.text,
-        long: AppConstants.user!.longitude ?? 31.242681,
-        lat: AppConstants.user!.latitude ?? 30.091584,
+        long: AppConstants.currentLocation!.longitude,
+        lat: AppConstants.currentLocation!.latitude,
       ),
     );
 

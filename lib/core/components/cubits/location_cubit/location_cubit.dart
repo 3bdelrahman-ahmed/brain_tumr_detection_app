@@ -1,3 +1,4 @@
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
@@ -49,6 +50,9 @@ class LocationCubit extends Cubit<LocationState> {
 
   void updateLocation(LatLng newPosition) async {
     String streetName = await fetchAddress(newPosition);
+    AppConstants.currentLocation = newPosition;
+    print(
+        "Updated Location: ${AppConstants.currentLocation!.latitude}, longitude: ${AppConstants.currentLocation!.longitude}, Street: $streetName");
     CameraPosition newCameraPosition =
         CameraPosition(target: newPosition, zoom: 15);
     print("Long : ${newPosition.longitude} + Street : ${streetName}");

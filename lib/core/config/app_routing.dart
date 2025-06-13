@@ -7,6 +7,7 @@ import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen
 import 'package:brain_tumr_detection_app/features/contact_us/presentation/view_model/cubit/contact_us_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
+import 'package:brain_tumr_detection_app/features/edit_profile/presentation/view/screens/edit_profile_screen.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/screens/add_post.dart';
 import 'package:brain_tumr_detection_app/features/home/presentation/view/home_page.dart';
 import 'package:brain_tumr_detection_app/features/medical_history/presentation/view/screens/medical_history_screen.dart';
@@ -19,9 +20,9 @@ import 'package:brain_tumr_detection_app/features/verification_code/presentation
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/chats/data/models/chat_preview.dart';
 import '../../features/contact_us/presentation/view/screens/contact_us_screen.dart';
+import '../../features/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import '../../features/login/presentation/view/screens/login_screen.dart';
 import '../../features/login/presentation/view_model/login_cubit.dart';
 import '../../features/notification/presentation/view/screen/notification_screen.dart';
@@ -38,6 +39,7 @@ class AppRoutes {
   static const String onBoardingScreen = "/onBoarding";
   static const String loginScreen = "/login";
   static const String registerScreen = '/rigester';
+  static const String editProfileScreen = '/editProfile';
   static const String locationScreen = '/location';
   static const String homeScreen = '/home';
   static const String verificationCodeScreen = '/verification_code';
@@ -76,6 +78,14 @@ class AppRouter {
           BlocProvider(
             create: (context) => getIt<NotificationCubit>(),
             child: const NotificationScreen(),
+          ),
+          duration: 300.ms,
+        );
+        case AppRoutes.editProfileScreen:
+        return animateRouteBuilder(
+          BlocProvider(
+            create: (context) => getIt<EditProfileCubit>(),
+            child: const EditProfileScreen(),
           ),
           duration: 300.ms,
         );

@@ -12,6 +12,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import '../../../../core/components/cubits/navigation_cubit/navigation_cubit.dart';
 import '../../../../core/components/widgets/custom_profile_image.dart';
+import '../../../../core/helper/functions/show_location_bottom_sheet.dart';
 import '../../../../core/utils/assets/assets_svg.dart';
 import '../../../../core/utils/responsive_helper.dart';
 import '../../../chats/presentation/view_model/chats_cubit.dart';
@@ -55,6 +56,23 @@ class _HomeScreenState extends State<HomeScreen>
       parent: _animationController,
       curve: Curves.easeInOut,
     ));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showLocationDialog().then((V) {
+        // Navigator.of(
+        //   context,
+        // ).pop();
+      });
+    });
+  }
+
+  Future<void> _showLocationDialog() async {
+    print("yues show location dialog");
+    if (AppConstants.user!.role == "Patient" &&
+        AppConstants.currentLocation == null) {
+      Future.delayed(const Duration(seconds: 2), () async {
+        await showLocationBottomSheet(context);
+      });
+    }
   }
 
   void _onScroll() {

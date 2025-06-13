@@ -25,13 +25,13 @@ class ScanPage extends StatelessWidget {
         return CustomScrollView(
           slivers: [
             CustomWelcomeAppBar(),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 15.h)),
+            // SliverPadding(padding: EdgeInsets.symmetric(vertical: 15.h)),
             SliverToBoxAdapter(
               child: GestureDetector(
                 onTap: () => cubit.pickFile(),
                 child: Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 50.h),
+                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 48.h),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.r),

@@ -89,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dontWorryPassword": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! We’ll help you get back into your account in no time"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "education": MessageLookupByLibrary.simpleMessage("Education"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterOtp": MessageLookupByLibrary.simpleMessage("ReEnter OTP code"),
@@ -297,6 +298,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "toGetFasterResultsPleaseSetYourCurrentLocation":
+            MessageLookupByLibrary.simpleMessage(
+                "To get faster results, please set your current location."),
         "toHelpYouFindDoctors": MessageLookupByLibrary.simpleMessage(
             "To help you find doctors near you and provide recommendations, we need to know your location."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
