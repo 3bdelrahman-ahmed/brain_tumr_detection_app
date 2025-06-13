@@ -120,11 +120,11 @@ class S {
     );
   }
 
-  /// `Search for therapist`
-  String get searchForTherapist {
+  /// `Search for doctor`
+  String get searchForDoctor {
     return Intl.message(
-      'Search for therapist',
-      name: 'searchForTherapist',
+      'Search for doctor',
+      name: 'searchForDoctor',
       desc: '',
       args: [],
     );
@@ -2135,6 +2135,56 @@ class S {
     return Intl.message(
       'Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis',
       name: 'pleaseUplaodClearImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Result is reviewed`
+  String get resultIsReviewed {
+    return Intl.message(
+      'Result is reviewed',
+      name: 'resultIsReviewed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Under review`
+  String get underReview {
+    return Intl.message(
+      'Under review',
+      name: 'underReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No scans available`
+  String get noScans {
+    return Intl.message(
+      'No scans available',
+      name: 'noScans',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviewed by`
+  String get reviewedBy {
+    return Intl.message(
+      'Reviewed by',
+      name: 'reviewedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detected as:`
+  String get detectedAs {
+    return Intl.message(
+      'Detected as:',
+      name: 'detectedAs',
       desc: '',
       args: [],
     );

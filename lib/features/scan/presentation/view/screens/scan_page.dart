@@ -47,16 +47,9 @@ class ScanPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      cubit.file != null
-                          ? CustomImageView(
-                              height: 175.h,
-                              width: double.infinity,
-                              file: cubit.file,
-                              radius: BorderRadius.circular(8.r),
-                            ).animate().flipH(duration: 300.ms)
-                          : CustomImageView(
-                              svgPath: AssetsSvg.file.toSVG(),
-                            ),
+                      CustomImageView(
+                        svgPath: AssetsSvg.file.toSVG(),
+                      ),
                       5.toHeight,
                       Text(
                         S.of(context).pleaseUplaodClearImage,

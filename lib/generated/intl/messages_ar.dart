@@ -75,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "dateError": MessageLookupByLibrary.simpleMessage("تاريخ غير صالح"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد:"),
+        "detectedAs":
+            MessageLookupByLibrary.simpleMessage("تم تشخيصه علي انه:"),
         "diagnosis": MessageLookupByLibrary.simpleMessage("التشخيص"),
         "didnotGetCode":
             MessageLookupByLibrary.simpleMessage("لم تستلم الكود؟ "),
@@ -191,6 +193,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا توجد تقارير حتى الآن"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
+        "noScans": MessageLookupByLibrary.simpleMessage("لا يوجد تحاليل متاحة"),
         "noSearchResultsFor":
             MessageLookupByLibrary.simpleMessage("لا توجد نتائج بحث لـ"),
         "noSlotsAvailable":
@@ -240,7 +243,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة السر"),
         "result": MessageLookupByLibrary.simpleMessage("النتيجة"),
+        "resultIsReviewed":
+            MessageLookupByLibrary.simpleMessage("النتيجة جاهزة"),
         "returnPage": MessageLookupByLibrary.simpleMessage("عودة"),
+        "reviewedBy":
+            MessageLookupByLibrary.simpleMessage("تمت المراجعة بواسطة"),
         "reviews": MessageLookupByLibrary.simpleMessage("التقييمات"),
         "saturday": MessageLookupByLibrary.simpleMessage("السبت"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
@@ -249,8 +256,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "searchForPosts":
             MessageLookupByLibrary.simpleMessage("بحث عن المنشورات"),
-        "searchForTherapist":
-            MessageLookupByLibrary.simpleMessage("ابحث عن معالج"),
         "secondDiagnosisContainer": MessageLookupByLibrary.simpleMessage(
             "يكشف تحليل التصوير بالرنين المغناطيسي عن كتلة غير طبيعية في الفص الجبهي الأيسر، بحجم حوالي 3.2 سم × 2.8 سم. تظهر المنطقة ذات الحدود غير المنتظمة وكثافة غير متجانسة، مما يشير إلى احتمال وجود ورم خبيث. يظهر الورم فرط كثافة في التصوير الموزون T2 ونقص كثافة في التصوير الموزون T1، وهو ما يميز الورم الأرومي الدبقي متعدد الأشكال (GBM). بالإضافة إلى ذلك، يشير الوذمة حول الورم وانحراف الخط الناصف (3 مم) إلى زيادة الضغط داخل الجمجمة."),
         "secondOnBoardingMessage":
@@ -306,6 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "لمساعدتك في العثور على أطباء بالقرب منك وتقديم التوصيات، نحتاج إلى معرفة موقعك."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
         "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
+        "underReview": MessageLookupByLibrary.simpleMessage("تحت المراجعة"),
         "upComing": MessageLookupByLibrary.simpleMessage("قادمة"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("قم برفع ملفك هنا"),

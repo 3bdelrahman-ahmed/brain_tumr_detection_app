@@ -45,13 +45,12 @@ class ProfilePage extends StatelessWidget {
               child: PatientDataWidget().paddingSymmetric(horizontal: 19.w),
             ),
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
-            SliverToBoxAdapter(
-              child: _buildCard(
-                title: S.of(context).medicalHistory,
-                icon: AssetsSvg.edit.toSVG(),
-              ).paddingSymmetric(horizontal: 19.w),
-            ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
+            // SliverToBoxAdapter(
+            //   child: _buildCard(
+            //     title: S.of(context).medicalHistory,
+            //     icon: AssetsSvg.edit.toSVG(),
+            //   ).paddingSymmetric(horizontal: 19.w),
+            // ),
             SliverToBoxAdapter(
               child: _buildCard(title: S.of(context).posts)
                   .paddingSymmetric(horizontal: 19.w),

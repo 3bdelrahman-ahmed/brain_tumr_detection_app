@@ -29,6 +29,7 @@ class AppUrls {
 
   // scan
   static const String uploadScan = "MriScan/upload";
+  static const String getScans = "MriScan";
 
   //Patient
   static String getPatients(String id) => "Appointment/doctor/$id";
