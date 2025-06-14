@@ -7,14 +7,17 @@ import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_func
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/colors/app_colors.dart';
 import 'package:brain_tumr_detection_app/features/feed/data/models/posts_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../../../../core/utils/assets/assets_svg.dart';
 import '../../../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+import '../../../../../foundations/app_constants.dart';
 import '../../../../../generated/l10n.dart';
 import '../../view_model/cubit/feed_cubit.dart';
+import 'comments_bottom_sheet_widget.dart';
 
 class PostCard extends StatelessWidget {
   Posts post;
@@ -96,14 +99,31 @@ class PostCard extends StatelessWidget {
                           },
                           isLike: post.isLiked!),
                       // _buildButton(Icons.favorite, AppStrings.like),
-                      _buildButton(
-                          AssetsSvg.commentIcon, S.of(context).comment),
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: AppColors.white,
+                              constraints: BoxConstraints(
+                                maxHeight: 600.h,
+                                minHeight: 600.h,
+                              ),
+                              context: context,
+                              builder: (context) {
+                                return CommentsBottomSheetWidget(
+                                    postId: post.id.toString());
+                              });
+                        },
+                        child: _buildButton(
+                            AssetsSvg.commentIcon, S.of(context).comment),
+                      ),
                       CustomSaveButton(
                           text: S.of(context).save,
                           isSaved: post.isSaved!,
                           onPressed: () {
                             cubit.toggleSavePost(post.id.toString());
                           }),
+
                       // _buildButton(AssetsSvg.saveIcon, S.of(context).save),
                     ],
                   ),
@@ -119,6 +139,31 @@ class PostCard extends StatelessWidget {
             },
           ).paddingOnly(top: 24.h),
         ),
+        if (post.userId == AppConstants.user!.id)
+          PositionedDirectional(
+            end: -4.w,
+            top: -10.h,
+            child: GestureDetector(
+              onTap: () {
+                cubit.deletePost(post.id.toString());
+              },
+              child: Container(
+                  padding: EdgeInsets.all(4.w),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 6,
+                        spreadRadius: 2,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Icon(Icons.close, color: AppColors.red, size: 20.w)),
+            ),
+          ),
         // Profile Image Positioned Above the Card
         PositionedDirectional(
           top: -48.h,

@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cu
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/profle/presentation/view/widgets/saved_posts_widget.dart';
 import 'package:brain_tumr_detection_app/features/profle/presentation/view_model/settings_cubit.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,19 @@ import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../widgets/reset_password_bottom_sheet.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    context.read<SettingsCubit>().getSavedPosts();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +65,15 @@ class ProfilePage extends StatelessWidget {
             //     icon: AssetsSvg.edit.toSVG(),
             //   ).paddingSymmetric(horizontal: 19.w),
             // ),
-            SliverToBoxAdapter(
-              child: _buildCard(title: S.of(context).posts)
-                  .paddingSymmetric(horizontal: 19.w),
-            ),
+            // SliverToBoxAdapter(
+            //   child: _buildCard(title: S.of(context).posts)
+            //       .paddingSymmetric(horizontal: 19.w),
+            // ),
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
             SliverToBoxAdapter(
-              child: _buildCard(title: S.of(context).savedPosts)
+              child: _buildCard(
+                      title: S.of(context).savedPosts,
+                      icon: AssetsSvg.mouseClick.toSVG())
                   .paddingSymmetric(horizontal: 19.w),
             ),
           ],
@@ -183,7 +197,7 @@ class ProfilePage extends StatelessWidget {
 
   Widget _buildCard({required String title, String? icon}) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5.r),
@@ -196,13 +210,29 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: AppTextStyles.font16BlueW700),
-          Spacer(),
-          if (icon != null) CustomImageView(svgPath: icon),
-        ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: 24.h,
+          maxHeight: 350.h, // Adjust as needed
+        ),
+        child: SingleChildScrollView(
+          controller: context.read<SettingsCubit>().savedPostsScrollController,
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 0),
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: AppTextStyles.font16BlueW700),
+                  Spacer(),
+                  if (icon != null) CustomImageView(svgPath: icon),
+                ],
+              ),
+              16.toHeight,
+              SavedPostsWidget(),
+            ],
+          ),
+        ),
       ),
     );
   }

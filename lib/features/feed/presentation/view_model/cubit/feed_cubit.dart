@@ -1,11 +1,15 @@
 import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/features/feed/data/models/comments_model.dart';
 import 'package:brain_tumr_detection_app/features/feed/data/models/posts_response_model.dart';
 import 'package:brain_tumr_detection_app/features/feed/data/models/toggle_save_model.dart';
 import 'package:brain_tumr_detection_app/features/feed/data/repo/feed_repository.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-
+import '../../../data/models/add_comments_model.dart';
+import '../../../data/models/delete_comment_model.dart';
+import '../../../data/models/delete_post_model.dart';
 import '../../../data/models/toggle_like_model.dart';
 part 'feed_state.dart';
 
@@ -122,7 +126,6 @@ class FeedCubit extends Cubit<FeedState> {
     );
   }
 
-
   Future<void> toggleSavePost(String postId) async {
     // toggle it manualyfirt
     final index = posts!.posts!.indexWhere((p) => p.id == postId);
@@ -144,10 +147,110 @@ class FeedCubit extends Cubit<FeedState> {
         emit(ToogleSaveSuccess(postId: postId, isSaved: post.isSaved!));
       },
     );
+  }
 
+  CommentsResponseModel? comments;
+  List<Comment> postComments = [];
+  Future<void> fetchPostComments(String postId) async {
+    comments = null; // Reset comments to fetch fresh data
+    postComments = []; // Reset post comments to fetch fresh data
+    emit(CommmentsLoading());
+    final result = await repository.fetchPostComments(
+      CommentsRequestModel(cursor: comments?.nextCursor ?? 0, postId: postId),
+    );
+    result.fold(
+      (error) {
+        emit(CommmentsError());
+      },
+      (comments) {
+        this.comments = comments;
+        postComments = comments.data ?? [];
+        emit(CommmentsLoaded());
+      },
+    );
+  }
 
-  void openFabGroup() {
+  Future<void> deleteComment(String commentId) async {
+    emit(DeleteCommentLoading());
+    final result = await repository.deleteComment(
+      DeleteCommentRequestModel(commentId: commentId),
+    );
+    result.fold(
+      (error) {
+        emit(DeleteCommentError());
+      },
+      (response) {
+        // Remove the comment from the postComments list
+        postComments
+            .removeWhere((comment) => comment.id.toString() == commentId);
+        emit(DeleteCommentSuccess(commentId: response.commentId.toString()));
+      },
+    );
+  }
+
+  Future<void> openFabGroup() async {
     isFabOpen = !isFabOpen;
     emit(FabChangeState(isFabOpen));
   }
+
+  // add comments logic
+  TextEditingController commentController = TextEditingController();
+
+  Future<void> addComment(String postId) async {
+    if (commentController.text.trim().isEmpty) return;
+
+    emit(AddCommentLoading());
+    final result = await repository.addComment(
+      AddCommentsRequestModel(
+        postId: postId,
+        comment: commentController.text.trim(),
+      ),
+    );
+    result.fold(
+      (error) {
+        emit(AddCommentError());
+      },
+      (comment) {
+        postComments.insert(
+            0,
+            Comment(
+              id: comment.id,
+              text: commentController.text,
+              createdAt: DateTime.now().toIso8601String(),
+              userId: AppConstants.user!.id,
+              userName: AppConstants.user!.fullName,
+              userProfilePicture: AppConstants.user!.profilePicture,
+            ));
+
+        emit(AddCommentSuccess(comment: comment.id.toString()));
+        commentController.clear();
+      },
+    );
+  }
+
+  validateComment(String comment) {
+    commentController.text = comment;
+    emit(CommentTextChanged(commentController.text.trim().isNotEmpty));
+  }
+
+  Future<void> deletePost(String postId) async {
+    emit(DeletePostLoading());
+    final result = await repository.deletePost(
+      DeletePostRequestModel(postId: postId),
+    );
+    result.fold(
+      (error) {
+        emit(DeletePostError());
+      },
+      (response) {
+        posts!.posts!.removeWhere((post) => post.id == postId);
+        emit(DeletePostSuccess(postId: response.postId.toString()));
+      },
+    );
+  }
+
+
+  // add post 
+  TextEditingController postTitleController = TextEditingController();
+  TextEditingController postContentController = TextEditingController();
 }

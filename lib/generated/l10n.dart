@@ -1642,11 +1642,71 @@ class S {
     );
   }
 
+  /// `Post Title`
+  String get posttitle {
+    return Intl.message(
+      'Post Title',
+      name: 'posttitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post Content`
+  String get postContent {
+    return Intl.message(
+      'Post Content',
+      name: 'postContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No comments on this post yet be the first to comment`
+  String get noCommentsOnThisPostYet {
+    return Intl.message(
+      'No comments on this post yet be the first to comment',
+      name: 'noCommentsOnThisPostYet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid Email`
   String get invalidEmail {
     return Intl.message(
       'Invalid Email',
       name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write your comment`
+  String get writeYourComment {
+    return Intl.message(
+      'Write your comment',
+      name: 'writeYourComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any saved posts yet`
+  String get noSavedPostsYet {
+    return Intl.message(
+      'You don\'t have any saved posts yet',
+      name: 'noSavedPostsYet',
       desc: '',
       args: [],
     );

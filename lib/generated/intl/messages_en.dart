@@ -83,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateError": MessageLookupByLibrary.simpleMessage("Invalid date"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth:"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "detectedAs": MessageLookupByLibrary.simpleMessage("Detected as:"),
         "diagnosis": MessageLookupByLibrary.simpleMessage("Diagnosis"),
         "didnotGetCode":
@@ -191,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noAvailableSlotsAtThisDay": MessageLookupByLibrary.simpleMessage(
             "No available slots at this day"),
         "noChats": MessageLookupByLibrary.simpleMessage("No chats"),
+        "noCommentsOnThisPostYet": MessageLookupByLibrary.simpleMessage(
+            "No comments on this post yet be the first to comment"),
         "noDataAvailable":
             MessageLookupByLibrary.simpleMessage("No data available"),
         "noDoctorsFound":
@@ -200,6 +203,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noReportsYet": MessageLookupByLibrary.simpleMessage("No reports yet"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
+        "noSavedPostsYet": MessageLookupByLibrary.simpleMessage(
+            "You don\'t have any saved posts yet"),
         "noScans": MessageLookupByLibrary.simpleMessage("No scans available"),
         "noSearchResultsFor":
             MessageLookupByLibrary.simpleMessage("No search results for"),
@@ -242,7 +247,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Please write your findings about this result. Keep in mind this will be shown to the patient."),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
+        "postContent": MessageLookupByLibrary.simpleMessage("Post Content"),
         "posts": MessageLookupByLibrary.simpleMessage("Posts"),
+        "posttitle": MessageLookupByLibrary.simpleMessage("Post Title"),
         "preparingChatWith":
             MessageLookupByLibrary.simpleMessage("Preparing chat with "),
         "profileImage": MessageLookupByLibrary.simpleMessage("Profile Image"),
@@ -357,6 +364,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("What is happening?"),
         "writeAMessage":
             MessageLookupByLibrary.simpleMessage("Write a message..."),
+        "writeYourComment":
+            MessageLookupByLibrary.simpleMessage("Write your comment"),
         "yesBookNow": MessageLookupByLibrary.simpleMessage("Yes, Book Now"),
         "youDontHaveChatsYet":
             MessageLookupByLibrary.simpleMessage("You dont have chats yet"),

@@ -23,10 +23,10 @@ class _NeroTumAppState extends State<NeroTumApp> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      routeObserver
-          .setInitialRoute(ModalRoute.of(context)?.settings.name ?? '');
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   routeObserver
+    //       .setInitialRoute(ModalRoute.of(context)?.settings.name ?? '');
+    // });
   }
 
   @override

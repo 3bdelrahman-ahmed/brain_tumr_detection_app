@@ -57,4 +57,7 @@ class AppUrls {
   static const String post = "Post";
   static const String toggleLike = "Post/toggleLike";
   static const String toggleSave = "Post/toggleSave";
+  static const String comments = "Post/comments";
+  static const String addComment = "Post/comment";
+  static const String savedPosts = "Post/saved";
 }

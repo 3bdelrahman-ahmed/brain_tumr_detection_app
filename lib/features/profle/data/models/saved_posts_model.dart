@@ -1,14 +1,14 @@
-class PostsResponseModel {
-  List<Posts>? posts;
+class SavedPostsResponseModel {
+  List<SavedPost>? posts;
   int? nextCursor;
 
-  PostsResponseModel({this.posts, this.nextCursor});
+  SavedPostsResponseModel({this.posts, this.nextCursor});
 
-  PostsResponseModel.fromJson(Map<String, dynamic> json) {
+  SavedPostsResponseModel.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      posts = <Posts>[];
+      posts = <SavedPost>[];
       json['data'].forEach((v) {
-        posts!.add(new Posts.fromJson(v));
+        posts!.add(new SavedPost.fromJson(v));
       });
     }
     nextCursor = json['nextCursor'];
@@ -24,9 +24,8 @@ class PostsResponseModel {
   }
 }
 
-class Posts {
+class SavedPost {
   int? id;
-  String? userId;
   String? title;
   String? content;
   bool? isLiked;
@@ -37,7 +36,7 @@ class Posts {
   String? userProfilePicture;
   String? createdAt;
 
-  Posts(
+  SavedPost(
       {this.id,
       this.title,
       this.content,
@@ -47,10 +46,9 @@ class Posts {
       this.commentsCount,
       this.userName,
       this.userProfilePicture,
-      this.userId,
       this.createdAt});
 
-  Posts.fromJson(Map<String, dynamic> json) {
+  SavedPost.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     content = json['content'];
@@ -61,7 +59,6 @@ class Posts {
     userName = json['userName'];
     userProfilePicture = json['userProfilePicture'];
     createdAt = json['createdAt'];
-    userId = json['userId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -76,19 +73,19 @@ class Posts {
     data['userName'] = this.userName;
     data['userProfilePicture'] = this.userProfilePicture;
     data['createdAt'] = this.createdAt;
-    data['userId'] = this.userId;
     return data;
   }
 }
 
-class PostsRequestModel {
+
+class SavedPostsRequestModel {
   int? cursor;
 
-  PostsRequestModel({this.cursor,});
+  SavedPostsRequestModel({this.cursor,});
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cursor'] = this.cursor;
-    return data;
+    return {
+      'cursor': cursor,
+    };
   }
 }

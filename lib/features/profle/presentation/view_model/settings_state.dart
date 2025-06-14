@@ -12,3 +12,14 @@ final class ForgetPasswordSuccessState extends SettingsState {}
 final class ForgetPasswordErrorState extends SettingsState {
 
 }
+
+
+final class SavedPostsLoadingState extends SettingsState {}
+final class SavedPostsSuccessState extends SettingsState {
+}
+final class SavedPostsErrorState extends SettingsState {
+
+}
+
+final class LoadMoreSavedPostsLoadingState extends SettingsState {}
+

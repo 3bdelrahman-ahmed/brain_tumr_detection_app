@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
+import 'package:brain_tumr_detection_app/features/profle/data/models/saved_posts_model.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -36,5 +37,42 @@ class SettingsCubit extends Cubit<SettingsState> {
         emit(ForgetPasswordSuccessState());
       });
     }
+  }
+
+
+  SavedPostsResponseModel? posts;
+  List<SavedPost> savedPostsList = [];
+  Future<void> getSavedPosts() async {
+
+    emit(SavedPostsLoadingState());
+    final response = await repository.getSavedPosts(
+      SavedPostsRequestModel(cursor: posts?.nextCursor ?? 0),
+    );
+    response.fold((l) {
+      emit(SavedPostsErrorState());
+    }, (r) {
+      posts = r;
+      savedPostsList = r.posts ?? [];
+      emit(SavedPostsSuccessState());
+    });
+  }
+
+final ScrollController savedPostsScrollController = ScrollController();
+  Future<void> loadMoreSavedPosts() async {
+    if (posts == null || posts!.nextCursor == 0) return;
+
+    emit(LoadMoreSavedPostsLoadingState());
+
+    final response = await repository.getSavedPosts(
+      SavedPostsRequestModel(cursor: posts!.nextCursor!),
+    );
+
+    response.fold((l) {
+      emit(SavedPostsErrorState());
+    }, (r) {
+      posts = r;
+      savedPostsList.addAll(r.posts ?? []);
+      emit(SavedPostsSuccessState());
+    });
   }
 }

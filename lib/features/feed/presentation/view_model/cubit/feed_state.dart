@@ -69,3 +69,58 @@ final class ToogleSaveError extends FeedState {
 final class FeedLoaded extends FeedState {}
 
 final class FeedError extends FeedState {}
+
+final class CommmentsLoading extends FeedState {}
+final class CommmentsLoaded extends FeedState {
+}
+final class CommmentsError extends FeedState {}
+
+class CommentTextChanged extends FeedState {
+  final bool hasText;
+
+  CommentTextChanged(this.hasText);
+}
+
+
+final class AddCommentLoading extends FeedState {}
+final class AddCommentSuccess extends FeedState {
+  final String comment;
+
+  const AddCommentSuccess({required this.comment});
+
+  @override
+  List<Object> get props => [comment];
+}
+final class AddCommentError extends FeedState {
+
+}
+
+
+final class DeleteCommentLoading extends FeedState {}
+final class DeleteCommentSuccess extends FeedState {
+  final String commentId;
+
+  const DeleteCommentSuccess({required this.commentId});
+
+  @override
+  List<Object> get props => [commentId];
+}
+final class DeleteCommentError extends FeedState {
+ 
+}
+
+
+
+final class DeletePostLoading extends FeedState {}
+final class DeletePostSuccess extends FeedState {
+  final String postId;
+
+  const DeletePostSuccess({required this.postId});
+
+  @override
+  List<Object> get props => [postId];
+}
+
+final class DeletePostError extends FeedState {
+ 
+}

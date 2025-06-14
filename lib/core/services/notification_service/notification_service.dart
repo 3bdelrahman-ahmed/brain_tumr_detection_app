@@ -26,8 +26,14 @@ class PushNotificationService {
       print('User granted permission');
 
       // Get the FCM token
-      String? token = await _fcm.getToken();
-      print("FCM Token: $token");
+      try {
+  await Future.delayed(const Duration(seconds: 2)); // allow time for FCM to initialize
+  final token = await FirebaseMessaging.instance.getToken();
+  print("🔥 FCM Token: $token");
+} catch (e) {
+  print("❌ Error fetching FCM token: $e");
+}
+
 
       // Foreground message
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {

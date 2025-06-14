@@ -2,8 +2,8 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_vi
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
-import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/cubit/feed_cubit.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
@@ -12,9 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_app_shimmer.dart';
 import '../../../../../core/components/widgets/custom_empty_widget.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
-
 import '../../../../../observers/route_observer.dart';
-import '../../../../../generated/l10n.dart';
 import '../widgets/post_card.dart';
 
 class FeedPage extends StatefulWidget {
@@ -165,36 +163,45 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   // Sub FAB 1
-                  AnimatedSlide(
-                    duration: 300.ms,
-                    offset:
-                        cubit.isFabOpen ? Offset.zero : const Offset(0, 0.3),
-                    child: AnimatedOpacity(
-                      opacity: cubit.isFabOpen ? 1 : 0,
+                  if (AppConstants.user!.role == "Patient")
+                    AnimatedSlide(
                       duration: 300.ms,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, AppRoutes.medicalHistoryScreen);
-                          cubit.openFabGroup();
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(bottom: 12.h),
-                          padding: EdgeInsets.all(10.r),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppColors.buttonsAndNav,
-                          ),
-                          child: CustomImageView(
-                            height: 24.w,
-                            width: 24.w,
-                            color: AppColors.white,
-                            svgPath: AssetsSvg.noScan.toSVG(),
+                      offset:
+                          cubit.isFabOpen ? Offset.zero : const Offset(0, 0.3),
+                      child: AnimatedOpacity(
+                        opacity: cubit.isFabOpen ? 1 : 0,
+                        duration: 300.ms,
+                        child: GestureDetector(
+                          onTap: () async {
+                            // 1. Close the FAB
+                            cubit
+                                .openFabGroup(); // or set cubit.isFabOpen = false and emit state
+
+                            // 2. Wait for the animation to complete
+                            await Future.delayed(
+                                const Duration(milliseconds: 300));
+
+                            // 3. Then navigate
+                            Navigator.pushNamed(
+                                context, AppRoutes.medicalHistoryScreen);
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(bottom: 12.h),
+                            padding: EdgeInsets.all(10.r),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.buttonsAndNav,
+                            ),
+                            child: CustomImageView(
+                              height: 24.w,
+                              width: 24.w,
+                              color: AppColors.white,
+                              svgPath: AssetsSvg.noScan.toSVG(),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
                   // Sub FAB 2
                   AnimatedSlide(
                     duration: 300.ms,
@@ -204,9 +211,17 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
                       opacity: cubit.isFabOpen ? 1 : 0,
                       duration: 300.ms,
                       child: GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          // 1. Close the FAB
+                          cubit
+                              .openFabGroup(); // or set cubit.isFabOpen = false and emit state
+
+                          // 2. Wait for the animation to complete
+                          await Future.delayed(
+                              const Duration(milliseconds: 300));
+
+                          // 3. Then navigate
                           Navigator.pushNamed(context, AppRoutes.addPostScreen);
-                          cubit.openFabGroup();
                         },
                         child: Container(
                           margin: EdgeInsets.only(bottom: 12.h),

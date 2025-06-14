@@ -10,7 +10,6 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../generated/l10n.dart';
 import '../../view_model/scan_cubit.dart';
 import '../widgets/file_data_row.dart';
@@ -91,7 +90,7 @@ class ScanPage extends StatelessWidget {
                     S.of(context).pleasePickAFileToUpload.showToast();
                     return;
                   }
-                  cubit.uploadScan();
+                  cubit.uploadScan(context);
                 },
               ).paddingSymmetric(horizontal: 30.w),
             )

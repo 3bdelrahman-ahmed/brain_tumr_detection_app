@@ -10,6 +10,7 @@ class AssetsSvg {
   static const String cancel = "cancel";
   static const String sendMessage = "sendMessage";
   static const String done = "done";
+  static const String mouseClick = "mouseClick";
   static const String password = "password";
   static const String commentLikeIcon = "commentLikeIcon";
   static const String sessions = "sessions";

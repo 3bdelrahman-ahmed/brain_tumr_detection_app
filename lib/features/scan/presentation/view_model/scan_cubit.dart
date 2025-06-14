@@ -47,7 +47,7 @@ class ScanCubit extends Cubit<ScanState> {
     emit(ScanFilePicked());
   }
 
-  Future<void> uploadScan() async {
+  Future<void> uploadScan(BuildContext context) async {
     emit(UploadScanLoadingState());
 
     final result = await repotitory.uploadScan(UploadScanRequestModel(

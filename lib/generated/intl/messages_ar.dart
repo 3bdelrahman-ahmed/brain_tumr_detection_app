@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "dateError": MessageLookupByLibrary.simpleMessage("تاريخ غير صالح"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد:"),
+        "delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "detectedAs":
             MessageLookupByLibrary.simpleMessage("تم تشخيصه علي انه:"),
         "diagnosis": MessageLookupByLibrary.simpleMessage("التشخيص"),
@@ -191,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noAvailableSlotsAtThisDay": MessageLookupByLibrary.simpleMessage(
             "لا توجد مواعيد متاحة في هذا اليوم"),
         "noChats": MessageLookupByLibrary.simpleMessage("لا توجد محادثات"),
+        "noCommentsOnThisPostYet": MessageLookupByLibrary.simpleMessage(
+            "لا توجد تعليقات على هذا المنشور حتى الآن. كن أول من يعلق!"),
         "noDataAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد بيانات متاحة"),
         "noDoctorsFound":
@@ -201,6 +204,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا توجد تقارير حتى الآن"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "لا توجد مراجعات متاحة في الوقت الحالي. يمكنك أن تساعد الآخرين من خلال مشاركة رأيك الصادق."),
+        "noSavedPostsYet": MessageLookupByLibrary.simpleMessage(
+            "لا توجد منشورات محفوظة حتى الآن. احفظ المنشورات التي تعجبك لتسهيل الوصول إليها لاحقًا."),
         "noScans": MessageLookupByLibrary.simpleMessage("لا يوجد تحاليل متاحة"),
         "noSearchResultsFor":
             MessageLookupByLibrary.simpleMessage("لا توجد نتائج بحث لـ"),
@@ -243,7 +248,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "يرجى كتابة ملاحظاتك حول هذه النتيجة. تذكر أن هذا سيظهر للمريض."),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
+        "postContent": MessageLookupByLibrary.simpleMessage("محتوى المنشور"),
         "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
+        "posttitle": MessageLookupByLibrary.simpleMessage("عنوان المنشور"),
         "preparingChatWith":
             MessageLookupByLibrary.simpleMessage(" جارٍ إعداد الدردشة مع "),
         "profileImage":
@@ -354,6 +361,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "whatIsHappening":
             MessageLookupByLibrary.simpleMessage("ما الذي يحدث؟"),
         "writeAMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة..."),
+        "writeYourComment": MessageLookupByLibrary.simpleMessage("اكتب تعليقك"),
         "yesBookNow": MessageLookupByLibrary.simpleMessage("نعم احجز الان"),
         "youDontHaveChatsYet":
             MessageLookupByLibrary.simpleMessage("لا يوجد لديك محادثات"),
