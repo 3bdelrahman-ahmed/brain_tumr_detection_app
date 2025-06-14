@@ -6,7 +6,7 @@
   "clinicPhoneNumber": "Clinic Phone Number",
   "enterYourClinicPhoneNumber": "Enter your Clinic Phone Number",
   "searchForPosts": "Search for posts",
-  "searchForTherapist": "Search for therapist",
+  "searchForDoctor": "Search for doctor",
   "upComing": "Upcoming",
   "pleaseSelectImage": "Please select an image",
   "changeLocation": "Change Location",
@@ -217,5 +217,10 @@
   "areYouSureToCancelAppointment" : "Are you sure you want to cancel this appointment",
   "sure" : "Sure",
   "thisAppointmentCancelledSuccessfully" : "This appointment cancelled successfully",
-  "pleaseUplaodClearImage" : "Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis"
+  "pleaseUplaodClearImage" : "Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis",
+  "resultIsReviewed" : "Result is reviewed",
+  "underReview" : "Under review",
+  "noScans" : "No scans available",
+  "reviewedBy" : "Reviewed by",
+  "detectedAs" : "Detected as:"
 }

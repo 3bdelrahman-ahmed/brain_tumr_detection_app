@@ -6,7 +6,7 @@
   "clinicPhoneNumber": "هاتف العيادة",
   "enterYourClinicPhoneNumber": "ادخل هاتف عيادتك",
   "searchForPosts": "بحث عن المنشورات",
-  "searchForTherapist": "ابحث عن معالج",
+  "searchForTherapist": "ابحث عن طبيب",
   "upComing": "قادمة",
   "tapToAttachFile": "اضغط لاضافة الملف",
   "biometricAuthenticationEnabled": "تم تفعيل المصادقة البيومترية",
@@ -217,5 +217,10 @@
   "areYouSureToCancelAppointment": "هل انت متأكد انك تريد الغاء الحجز",
   "sure": "متأكد",
   "thisAppointmentCancelledSuccessfully": "تم الغاء الحجز بنجاح",
-  "pleaseUplaodClearImage": "يرجى تحميل صورة واضحة وجيدة لجهاز الرنين المغناطيسي حتى نتمكن من تقديم تحليل أدق"
+  "pleaseUplaodClearImage": "يرجى تحميل صورة واضحة وجيدة لجهاز الرنين المغناطيسي حتى نتمكن من تقديم تحليل أدق",
+  "resultIsReviewed": "النتيجة جاهزة",
+  "underReview" : "تحت المراجعة",
+  "noScans": "لا يوجد تحاليل متاحة",
+  "reviewedBy": "تمت المراجعة بواسطة",
+  "detectedAs" : "تم تشخيصه علي انه:"
 }

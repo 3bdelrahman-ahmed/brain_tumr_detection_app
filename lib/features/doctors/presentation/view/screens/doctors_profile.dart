@@ -31,9 +31,12 @@ class _DoctorsProfileState extends State<DoctorsProfile> {
     _cubit = context.read<DoctorsCubit>();
     _cubit.fetchReviews(doctorId: widget.doctorClinicModel.id).then((_) {
       // Fetch available slots for the doctor when the profile is loaded
+      print(
+          "IDDDD :------------------ ${widget.doctorClinicModel.id}-----------------");
       _cubit.fetchAvailableSlots(
         request: AvailablePatientSlotsRequestModel(
-          slotId: widget.doctorClinicModel.id,
+          slotId: widget.doctorClinicModel.clinics?.first.id ??
+              widget.doctorClinicModel.id,
           date: DateTime.now().toString().substring(0, 10),
         ),
       );
@@ -72,7 +75,7 @@ class _DoctorsProfileState extends State<DoctorsProfile> {
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 40.h)),
             SliverToBoxAdapter(
               child: DoctorDataWidget(
-                name: widget.doctorClinicModel.doctorFullName,
+                name: widget.doctorClinicModel.doctorFullName!,
                 location: widget.doctorClinicModel.address,
                 rating: widget.doctorClinicModel.averageStarRating,
                 imageUrl: widget.doctorClinicModel.doctorProfilePicture,

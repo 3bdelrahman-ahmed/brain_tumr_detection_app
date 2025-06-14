@@ -85,12 +85,20 @@ class CustomEmptyWidget extends StatelessWidget {
     );
   }
 
+  factory CustomEmptyWidget.scans() {
+    return CustomEmptyWidget(
+      title: S.current.noScans,
+      svgPath: AssetsSvg.noScan.toSVG(),
+      imageSize: 100,
+    );
+  }
+
   /// Empty widget for search results
   factory CustomEmptyWidget.searchResults({String? searchTerm}) {
     return CustomEmptyWidget(
       title: S.current.noDataAvailable,
-      subtitle: searchTerm != null 
-          ? S.current.noSearchResultsFor +searchTerm
+      subtitle: searchTerm != null
+          ? S.current.noSearchResultsFor + searchTerm
           : S.current.noSearchResultsFor,
       icon: Icons.search_off,
       imageSize: 80,
@@ -110,8 +118,9 @@ class CustomEmptyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: padding ?? EdgeInsets.symmetric(horizontal: 32.w, vertical: 40.h),
-      decoration: backgroundColor != null 
+      padding:
+          padding ?? EdgeInsets.symmetric(horizontal: 32.w, vertical: 40.h),
+      decoration: backgroundColor != null
           ? BoxDecoration(color: backgroundColor)
           : null,
       child: Column(
@@ -120,9 +129,9 @@ class CustomEmptyWidget extends StatelessWidget {
         children: [
           // Image/Icon Section
           _buildImageSection(),
-          
+
           20.toHeight,
-          
+
           // Title
           if (title != null)
             Text(
@@ -132,9 +141,9 @@ class CustomEmptyWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-          
+
           if (title != null && subtitle != null) 12.toHeight,
-          
+
           // Subtitle
           if (subtitle != null)
             Padding(
@@ -149,14 +158,17 @@ class CustomEmptyWidget extends StatelessWidget {
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
-            ).animate(delay: 200.ms).fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-          
+            )
+                .animate(delay: 200.ms)
+                .fadeIn(duration: 600.ms)
+                .slideY(begin: 0.3, end: 0),
+
           // Custom child widget
           if (customChild != null) ...[
             20.toHeight,
             customChild!,
           ],
-          
+
           // Button (if enabled)
           if (showButton && onTap != null) ...[
             30.toHeight,
@@ -183,7 +195,8 @@ class CustomEmptyWidget extends StatelessWidget {
                   ),
                 ),
               ),
-            ).animate(delay: 400.ms)
+            )
+                .animate(delay: 400.ms)
                 .fadeIn(duration: 600.ms)
                 .scale(begin: Offset(0.8, 0.8), end: Offset(1.0, 1.0)),
           ],
@@ -251,11 +264,13 @@ class CustomEmptyWidget extends StatelessWidget {
         ],
       ),
       child: imageWidget,
-    ).animate()
+    )
+        .animate()
         .fadeIn(duration: 800.ms)
         .scale(begin: Offset(0.8, 0.8), end: Offset(1.0, 1.0))
         .then()
-        .shimmer(duration: 2000.ms, color: AppColors.buttonsAndNav.withOpacity(0.1));
+        .shimmer(
+            duration: 2000.ms, color: AppColors.buttonsAndNav.withOpacity(0.1));
   }
 }
 
@@ -265,6 +280,6 @@ class EmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  CustomEmptyWidget.noData();
+    return CustomEmptyWidget.noData();
   }
 }

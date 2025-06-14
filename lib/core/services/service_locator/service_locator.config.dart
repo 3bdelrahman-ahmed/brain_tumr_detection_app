@@ -46,6 +46,10 @@ import '../../../features/login/data/remote/login_remote_data_source.dart'
 import '../../../features/login/data/repository/login_repository.dart' as _i340;
 import '../../../features/login/presentation/view_model/login_cubit.dart'
     as _i638;
+import '../../../features/medical_history/data/remote/medical_history_data_source.dart'
+    as _i953;
+import '../../../features/medical_history/data/repository/medical_history_repository.dart'
+    as _i300;
 import '../../../features/medical_history/presentation/view_model/medical_history_cubit.dart'
     as _i870;
 import '../../../features/notification/data/remote/notification_remote_data_source.dart'
@@ -127,7 +131,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i727.DoctorAppointmentDataSource>(
         () => _i727.DoctorAppointmentDataSource());
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
-    gh.factory<_i870.MedicalHistoryCubit>(() => _i870.MedicalHistoryCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i970.SettingsCubit>(() => _i970.SettingsCubit());
     gh.factory<_i550.ResetPasswordDataSource>(
@@ -155,8 +158,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i713.EditProfileRemoteDataSource());
     gh.singleton<_i643.DoctorReportsRemoteDataSource>(
         () => _i643.DoctorReportsRemoteDataSource());
+    gh.singleton<_i953.MedicalHistoryDataSource>(
+        () => _i953.MedicalHistoryDataSource());
+    gh.factory<_i300.MedicalHistoryRepository>(() =>
+        _i300.MedicalHistoryRepository(
+            remoteDataSource: gh<_i953.MedicalHistoryDataSource>()));
+
     gh.singleton<_i90.ViewPatientsRepo>(
         () => _i90.ViewPatientsRepo(gh<_i1070.ViewPatientsDataSource>()));
+    gh.factory<_i870.MedicalHistoryCubit>(() => _i870.MedicalHistoryCubit(
+        medicalHistoryRepository: gh<_i300.MedicalHistoryRepository>()));
     gh.singleton<_i592.AppointmentsRepository>(() =>
         _i592.AppointmentsRepository(
             remoteDataSource: gh<_i432.AppointmentsRemoteDataSource>()));
@@ -222,6 +233,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i942.ScanCubit(repotitory: gh<_i938.UploadScanRepotitory>()));
     gh.factory<_i82.ReportsCubit>(() =>
         _i82.ReportsCubit(repository: gh<_i619.DoctorReportsRepository>()));
+
     gh.factory<_i4.EditProfileCubit>(() =>
         _i4.EditProfileCubit(repository: gh<_i461.EditProfileRepository>()));
     return this;
