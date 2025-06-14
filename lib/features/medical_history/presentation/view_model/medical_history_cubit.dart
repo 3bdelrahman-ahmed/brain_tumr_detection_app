@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
 import 'package:brain_tumr_detection_app/features/medical_history/data/model/detection_response.dart';
 import 'package:brain_tumr_detection_app/features/medical_history/data/repository/medical_history_repository.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MedicalHistoryCubit extends Cubit<MedicalHistoryState> {
   MedicalHistoryCubit({required this.medicalHistoryRepository})
       : super(MedicalHistoryInitial());
   DetectionResponse? detectionResponse;
-  int pageSize = 20;
+  int pageSize = 10;
   int pageIndex = 1;
   bool isLoadingMore = false;
   final ScrollController scrollController = ScrollController();
@@ -33,6 +34,17 @@ class MedicalHistoryCubit extends Cubit<MedicalHistoryState> {
         detectionResponse = data;
         pageIndex = data.pageIndex;
         emit(MedicalHistoryLoaded());
+      },
+    );
+  }
+
+  Future<void> getDoctorById(String DoctorId) async {
+    emit(MedicalHistoryLoading());
+    final response = await medicalHistoryRepository.getDoctorById(DoctorId);
+    response.fold(
+      (error) => emit(GetDoctorByIdError()),
+      (data) {
+        emit(GetDoctorByIdLoaded(doctorClinicModel: data));
       },
     );
   }

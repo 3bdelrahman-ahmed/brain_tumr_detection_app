@@ -5,8 +5,11 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/medical_history/data/model/detection_response.dart';
+import 'package:brain_tumr_detection_app/features/medical_history/presentation/view_model/medical_history_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/config/app_routing.dart';
 import '../../../../../core/utils/assets/assets_png.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
@@ -59,26 +62,43 @@ class _DetailedScanResultScreenState extends State<DetailedScanResultScreen> {
                     ),
                   ],
                 ),
-                child: Row(
-                  children: [
-                    CustomImageView(
-                      imagePath: AssetsPng.doctorTest.toPng(),
-                    ),
-                    16.toWidth,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.of(context).reviewedBy,
-                          style: AppTextStyles.font10BlueW600,
-                        ),
-                        Text(
-                          "Dr. Tawfik Johnson",
-                          style: AppTextStyles.font16BlueW700,
-                        ),
-                      ],
-                    ),
-                  ],
+                child: BlocConsumer<MedicalHistoryCubit, MedicalHistoryState>(
+                  listener: (context, state) {
+                    if (state is GetDoctorByIdLoaded) {
+                      Navigator.pushNamed(
+                          context, AppRoutes.doctorProfileScreen,
+                          arguments: state.doctorClinicModel);
+                    }
+                  },
+                  builder: (context, state) {
+                    return GestureDetector(
+                      onTap: () => context
+                          .read<MedicalHistoryCubit>()
+                          .getDoctorById(widget.doctorReview.doctorId),
+                      child: Row(
+                        children: [
+                          CustomProfileImage(
+                            size: 30.w,
+                            imageUrl: widget.doctorReview.doctorProfilePicture,
+                          ),
+                          16.toWidth,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                S.of(context).reviewedBy,
+                                style: AppTextStyles.font10BlueW600,
+                              ),
+                              Text(
+                                widget.doctorReview.doctorName,
+                                style: AppTextStyles.font16BlueW700,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

@@ -57,13 +57,25 @@ class DetectionItem {
 class DoctorReview {
   final String findings;
   final String reasoning;
+  final String doctorId;
+  final String doctorName;
+  final String doctorProfilePicture;
 
-  DoctorReview({required this.findings, required this.reasoning});
+  DoctorReview({
+    required this.findings,
+    required this.reasoning,
+    required this.doctorId,
+    required this.doctorName,
+    required this.doctorProfilePicture,
+  });
 
   factory DoctorReview.fromJson(Map<String, dynamic> json) {
     return DoctorReview(
       findings: json['findings'],
       reasoning: json['reasoning'],
+      doctorId: json['doctorId'],
+      doctorName: json['doctorName'],
+      doctorProfilePicture: json['doctorProfilePicture'],
     );
   }
 
@@ -71,6 +83,9 @@ class DoctorReview {
     return {
       'findings': findings,
       'reasoning': reasoning,
+      'doctorId': doctorId,
+      'doctorName': doctorName,
+      'doctorProfilePicture': doctorProfilePicture,
     };
   }
 }
