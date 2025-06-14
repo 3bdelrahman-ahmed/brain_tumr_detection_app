@@ -24,6 +24,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction? onAction;
   final FormFieldValidator<String>? validator;
   final bool? readOnly;
+  final TextStyle? labelStyle;
+  final TextStyle? subLabelStyle;
   final FocusNode? focusNode;
   final Function(String)? onChanged;
   final Function(String)? onSubmit;
@@ -36,9 +38,11 @@ class CustomTextField extends StatelessWidget {
     this.onSubmit,
     this.obscureText = false,
     this.label,
+    this.labelStyle,
     this.keyboardType = TextInputType.text,
     this.prefixIcon,
     this.suffixIcon,
+    this.subLabelStyle,
     this.onSuffixTap,
     this.hintTextStyle,
     this.maxLines,
@@ -58,14 +62,14 @@ class CustomTextField extends StatelessWidget {
         if (label != null)
           Text(
             label!,
-            style: AppTextStyles.font15LightGreenW500
+            style: labelStyle ?? AppTextStyles.font15LightGreenW500
                 .copyWith(color: AppColors.typography),
           ),
         label != null ? 2.toHeight : 4.toHeight,
         if (subLabel != null)
           Text(
             subLabel!,
-            style: AppTextStyles.font12LightGreenW500
+            style: subLabelStyle ?? AppTextStyles.font12LightGreenW500
                 .copyWith(color: AppColors.typographyLowOpacity),
           ),
         if (subLabel != null) 4.toHeight,

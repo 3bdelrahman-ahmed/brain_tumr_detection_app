@@ -23,11 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "ContactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "accept": MessageLookupByLibrary.simpleMessage("قبول"),
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "addSlots": MessageLookupByLibrary.simpleMessage("إضافة مواعيد"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان: "),
         "age": MessageLookupByLibrary.simpleMessage("العمر: "),
+        "aiModelConfedence": MessageLookupByLibrary.simpleMessage(
+            "دقة تحديد نموذج الذكاء الاصطناعي"),
         "appName":
             MessageLookupByLibrary.simpleMessage("نيوروتوم الذكاء الاصطناعي"),
         "appointmentCancelled":
@@ -48,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookNow": MessageLookupByLibrary.simpleMessage("احجز الآن"),
         "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "changeLocation": MessageLookupByLibrary.simpleMessage("تغيير الموقع"),
         "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
         "chooseDay": MessageLookupByLibrary.simpleMessage("اختر اليوم"),
         "chooseLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
@@ -137,6 +141,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "gotIt": MessageLookupByLibrary.simpleMessage("تم"),
         "heyThereLogin": MessageLookupByLibrary.simpleMessage(
             "مرحبًا! هل أنت مستعد لمواصلة من حيث توقفت؟ سجل الدخول لمواصلة رحلتك الصحية"),
+        "inCaseOfRejectingTheResulOrAcceptItPleaseProvideYourReasoning":
+            MessageLookupByLibrary.simpleMessage(
+                "في حالة رفض النتيجة أو قبولها، يرجى تقديم تفسيرك."),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("بريد إلكتروني غير صالح"),
         "invalidPhoneNumber":
@@ -220,18 +227,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnter": MessageLookupByLibrary.simpleMessage("الرجاء إدخال "),
         "pleasePickAFileToUpload":
             MessageLookupByLibrary.simpleMessage("الرجاء اختيار ملف لرفعه"),
+        "pleaseSelectImage":
+            MessageLookupByLibrary.simpleMessage("الرجاء اختيار صورة"),
         "pleaseSelectTimeSlot":
             MessageLookupByLibrary.simpleMessage("من فضلك اختر معاد"),
         "pleaseUplaodClearImage": MessageLookupByLibrary.simpleMessage(
             "يرجى تحميل صورة واضحة وجيدة لجهاز الرنين المغناطيسي حتى نتمكن من تقديم تحليل أدق"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
             "الرجاء تحميل شهاداتك (رخصة طبية، شهادة، أو هوية المستشفى) للتحقق من حالتك كطبيب."),
+        "pleaseWriteYourFindingsAboutThisResultKeepInMindThisWillBeShownToThePatient":
+            MessageLookupByLibrary.simpleMessage(
+                "يرجى كتابة ملاحظاتك حول هذه النتيجة. تذكر أن هذا سيظهر للمريض."),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
         "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
+        "preparingChatWith":
+            MessageLookupByLibrary.simpleMessage(" جارٍ إعداد الدردشة مع "),
         "profileImage":
             MessageLookupByLibrary.simpleMessage("صورة الملف الشخصي"),
         "reScheduled": MessageLookupByLibrary.simpleMessage("تم إعادة الجدولة"),
         "reasoning": MessageLookupByLibrary.simpleMessage("المنطق"),
+        "reject": MessageLookupByLibrary.simpleMessage("رفض"),
         "remmberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
         "remove": MessageLookupByLibrary.simpleMessage("إزالة"),
         "reportIsReady": MessageLookupByLibrary.simpleMessage("التقرير جاهز!"),
@@ -306,6 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "لمساعدتك في العثور على أطباء بالقرب منك وتقديم التوصيات، نحتاج إلى معرفة موقعك."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
         "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
+        "tumorType": MessageLookupByLibrary.simpleMessage("نوع الورم"),
         "upComing": MessageLookupByLibrary.simpleMessage("قادمة"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("قم برفع ملفك هنا"),
@@ -319,6 +335,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "viewProf": MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "viewProfile": MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "viewReport": MessageLookupByLibrary.simpleMessage("عرض التقرير"),
+        "viewResultImage":
+            MessageLookupByLibrary.simpleMessage("عرض نتيجة الصورة"),
         "viewed": MessageLookupByLibrary.simpleMessage("تمت المشاهدة"),
         "wednesday": MessageLookupByLibrary.simpleMessage("الأربعاء"),
         "welcomeAbroadSentence": MessageLookupByLibrary.simpleMessage(

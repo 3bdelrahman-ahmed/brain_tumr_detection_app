@@ -8,6 +8,7 @@ class AssetsSvg {
   static const String location = "location";
   static const String file = "file";
   static const String cancel = "cancel";
+  static const String sendMessage = "sendMessage";
   static const String done = "done";
   static const String password = "password";
   static const String commentLikeIcon = "commentLikeIcon";

@@ -1,10 +1,7 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/posts_row.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/strings/app_string.dart';
 
 class DiagnosisContainer extends StatelessWidget {
   const DiagnosisContainer(
@@ -18,7 +15,7 @@ class DiagnosisContainer extends StatelessWidget {
       width: 340.w,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(30.r),
+          borderRadius: BorderRadius.circular(12.r),
           border: Border.all(color: Colors.grey.withOpacity(0.5), width: 1)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

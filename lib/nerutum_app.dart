@@ -1,6 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cubit.dart';
-import 'package:brain_tumr_detection_app/features/profle/presentation/viewmodel/settings_cubit.dart';
-import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
+import 'package:brain_tumr_detection_app/features/reports/presentation/view_model/reports_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
@@ -33,6 +32,9 @@ class _NeroTumAppState extends State<NeroTumApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
+          BlocProvider<ReportsCubit>(
+            create: (_) => getIt<ReportsCubit>(),
+          ),
           BlocProvider<ChatsCubit>(
             create: (_) => getIt<ChatsCubit>(),
           ),

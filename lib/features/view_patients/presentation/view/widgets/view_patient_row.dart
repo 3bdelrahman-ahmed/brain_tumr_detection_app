@@ -101,60 +101,74 @@ class ViewPatientRow extends StatelessWidget {
               BlocBuilder<ViewPatientsCubit, ViewPatientsState>(
                 builder: (context, state) {
                   return PositionedDirectional(
-                              bottom: -18.h,
-                              end: 15.w,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomButton(
-                                    isLoading: state is GetConversationIdLoading,
-                                    text: S.of(context).chat,
-                                    onTap: () async {
-                                      context
-                                          .read<ViewPatientsCubit>()
-                                          .getConversationId(
-                                              viewPatientResponseModel.patient!.id.toString())
-                                          .then((conversationId) {
-                                        print('Conversation ID: $conversationId');
-                                        context.navigateTo(AppRoutes.chatsScreen,
-                                            arguments: ChatPreview(
-                                                chatId: conversationId ?? 0,
-                                                name: viewPatientResponseModel
-                                                        .patient!.fullName ??
-                                                    '',
-                                                time: DateTime.now(),
-                                                message: '',
-                                                user: User(
-                                                  userName: viewPatientResponseModel
-                                                          .patient!.userName ??
-                                                      '',
-                                                  id: viewPatientResponseModel.patient!.id
-                                                      .toString(),
-                                                  fullName: viewPatientResponseModel
-                                                          .patient!.fullName ??
-                                                      '',
-                                                  profilePicture: viewPatientResponseModel
-                                                      .patient!.profilePicture,
-                                                )));
-                                      });
-                                    },
-                                    height: 30.h,
-                                    backgroundColor: AppColors.typography,
-                                    textStyle: AppTextStyles.font12WhiteW500,
-                                    width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
-                                  ),
-                                  ResponsiveHelper.isTablet(context) ? 7.toWidth : 7.toWidth,
-                                  CustomButton(
-                                    text: S.of(context).cancel,
-                                    onTap: () {},
-                                    height: 30.h,
-                                    backgroundColor: AppColors.red,
-                                    textStyle: AppTextStyles.font12WhiteW500,
-                                    width: ResponsiveHelper.isTablet(context) ? 120.h : 100.h,
-                                  )
-                                ],
+                    bottom: -18.h,
+                    end: 15.w,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomButton(
+                          // isLoading: state is GetConversationIdLoading,
+                          text: S.of(context).chat,
+                          onTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              backgroundColor: AppColors.background,
+                              content: Text(
+                                "${S.of(context).preparingChatWith}${viewPatientResponseModel.patient!.fullName} .....",
+                                style: AppTextStyles.font16GreenW400,
                               ),
-                            );
+                            ));
+                            context
+                                .read<ViewPatientsCubit>()
+                                .getConversationId(viewPatientResponseModel
+                                    .patient!.id
+                                    .toString())
+                                .then((conversationId) {
+                              print('Conversation ID: $conversationId');
+                              context.navigateTo(AppRoutes.chatsScreen,
+                                  arguments: ChatPreview(
+                                      chatId: conversationId ?? 0,
+                                      name: viewPatientResponseModel
+                                              .patient!.fullName ??
+                                          '',
+                                      time: DateTime.now(),
+                                      message: '',
+                                      user: User(
+                                        userName: viewPatientResponseModel
+                                                .patient!.userName ??
+                                            '',
+                                        id: viewPatientResponseModel.patient!.id
+                                            .toString(),
+                                        fullName: viewPatientResponseModel
+                                                .patient!.fullName ??
+                                            '',
+                                        profilePicture: viewPatientResponseModel
+                                            .patient!.profilePicture,
+                                      )));
+                            });
+                          },
+                          height: 30.h,
+                          backgroundColor: AppColors.typography,
+                          textStyle: AppTextStyles.font12WhiteW500,
+                          width: ResponsiveHelper.isTablet(context)
+                              ? 120.h
+                              : 100.h,
+                        ),
+                        ResponsiveHelper.isTablet(context)
+                            ? 7.toWidth
+                            : 7.toWidth,
+                        CustomButton(
+                          text: S.of(context).cancel,
+                          onTap: () {},
+                          height: 30.h,
+                          backgroundColor: AppColors.red,
+                          textStyle: AppTextStyles.font12WhiteW500,
+                          width: ResponsiveHelper.isTablet(context)
+                              ? 120.h
+                              : 100.h,
+                        )
+                      ],
+                    ),
+                  );
                 },
               ),
             ],

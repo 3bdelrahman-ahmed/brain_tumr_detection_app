@@ -14,6 +14,7 @@ import 'package:brain_tumr_detection_app/features/medical_history/presentation/v
 import 'package:brain_tumr_detection_app/features/medical_history/presentation/view_model/medical_history_cubit.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view/screens/rigester_screen.dart';
 import 'package:brain_tumr_detection_app/features/register/presentation/view_model/rigester_screen_cubit.dart';
+import 'package:brain_tumr_detection_app/features/reports/data/model/doctor_reports_model.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/view/screens/view_report_screen.dart';
 import 'package:brain_tumr_detection_app/features/reset_password/presentation/view/screens/reset_password.dart';
 import 'package:brain_tumr_detection_app/features/verification_code/presentation/view_model/cubit/verification_code_cubit.dart';
@@ -81,7 +82,7 @@ class AppRouter {
           ),
           duration: 300.ms,
         );
-        case AppRoutes.editProfileScreen:
+      case AppRoutes.editProfileScreen:
         return animateRouteBuilder(
           BlocProvider(
             create: (context) => getIt<EditProfileCubit>(),
@@ -122,7 +123,9 @@ class AppRouter {
         );
       case AppRoutes.viewReportScreen:
         return animateRouteBuilder(
-          const ViewReportScreen(),
+          ViewReportScreen(
+            report: routeSettings.arguments as Report,
+          ),
           duration: 300.ms,
         );
       case AppRoutes.chatsScreen:

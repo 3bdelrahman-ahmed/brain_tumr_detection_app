@@ -1,6 +1,7 @@
 import 'package:brain_tumr_detection_app/core/data/network_services/api_service.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/data/local_services/cached_models/clinics_model.dart';
 import '../../../../foundations/app_urls.dart';
 import '../model/get_chat_id_model/get_chat_id_model.dart';
 import '../model/view_patient_response_model/view_patient_response_model.dart';
@@ -26,5 +27,12 @@ class ViewPatientsDataSource {
         await AppDio().get(path: AppUrls.getConversationId(patientId));
     print(response.data);
     return GetChatIdModel.fromJson(response.data);
+  }
+
+
+    Future<List<Clinic>> getDoctorClinics() async {
+    final response = await AppDio().get(path: AppUrls.getDoctorClinics);
+    final List<dynamic> clinicsJson = response.data;
+    return clinicsJson.map((json) => Clinic.fromJson(json)).toList();
   }
 }

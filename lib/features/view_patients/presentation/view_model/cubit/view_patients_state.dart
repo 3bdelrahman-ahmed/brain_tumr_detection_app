@@ -75,3 +75,13 @@ final class GetConversationIdError extends ViewPatientsState {
   @override
   List<Object> get props => [error];
 }
+
+
+final class GetClinicsLoading extends ViewPatientsState {}
+
+final class GetClinicsSuccess extends ViewPatientsState {}
+
+final class GetClinicsError extends ViewPatientsState {}
+
+final class SelectedClinicChanged extends ViewPatientsState {}
+
