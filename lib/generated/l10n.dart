@@ -2291,6 +2291,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Add a new post`
+  String get addANewPost {
+    return Intl.message(
+      'Add a new post',
+      name: 'addANewPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See your medical history`
+  String get seeMedicalHistory {
+    return Intl.message(
+      'See your medical history',
+      name: 'seeMedicalHistory',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

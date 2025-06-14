@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/screens/register_screen_location_widget.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
@@ -72,15 +73,24 @@ class _DetailedScanResultScreenState extends State<DetailedScanResultScreen> {
                   },
                   builder: (context, state) {
                     return GestureDetector(
-                      onTap: () => context
-                          .read<MedicalHistoryCubit>()
-                          .getDoctorById(widget.doctorReview.doctorId),
+                      onTap: state is GetDoctorByIdLoading
+                          ? () {}
+                          : () => context
+                              .read<MedicalHistoryCubit>()
+                              .getDoctorById(widget.doctorReview.doctorId),
                       child: Row(
                         children: [
-                          CustomProfileImage(
-                            size: 30.w,
-                            imageUrl: widget.doctorReview.doctorProfilePicture,
-                          ),
+                          state is GetDoctorByIdLoading
+                              ? CustomAppShimmer(
+                                  width: 60.w,
+                                  height: 60.w,
+                                  borderRaduis: 30.r,
+                                )
+                              : CustomProfileImage(
+                                  size: 30.w,
+                                  imageUrl:
+                                      widget.doctorReview.doctorProfilePicture,
+                                ),
                           16.toWidth,
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
