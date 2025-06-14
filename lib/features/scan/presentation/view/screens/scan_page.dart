@@ -47,10 +47,18 @@ class ScanPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomImageView(
-                        svgPath: AssetsSvg.file.toSVG(),
-                      ),
-                      5.toHeight,
+                      cubit.file != null
+                          ? CustomImageView(
+                              file: cubit.file,
+                              // width: 100.w,
+                              height: 100.w,
+                              radius: BorderRadius.circular(10.r),
+                              fit: BoxFit.cover,
+                            )
+                          : CustomImageView(
+                              svgPath: AssetsSvg.file.toSVG(),
+                            ),
+                      12.toHeight,
                       Text(
                         S.of(context).pleaseUplaodClearImage,
                         textAlign: TextAlign.center,
