@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/toast_string_extenstion.dart';
@@ -75,4 +77,21 @@ final ScrollController savedPostsScrollController = ScrollController();
       emit(SavedPostsSuccessState());
     });
   }
+  String? profilePath;
+  Future<void> uploadProfilePicture(File profilePicture, BuildContext context) async {
+    emit(UploadProfilePictureLoadingState());
+
+    final response = await repository.editProfilePicture(profilePicture);
+    response.fold(
+          (l) {
+        l.message?.showToast();
+        emit(UploadProfilePictureErrorState());
+      },
+          (r) {
+            profilePath = r;
+        emit(UploadProfilePictureSuccessState());
+      },
+    );
+  }
+
 }

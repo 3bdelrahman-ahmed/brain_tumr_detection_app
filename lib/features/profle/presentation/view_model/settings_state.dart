@@ -21,5 +21,11 @@ final class SavedPostsErrorState extends SettingsState {
 
 }
 
+
+class UploadProfilePictureLoadingState extends SettingsState {}
+class UploadProfilePictureSuccessState extends SettingsState {}
+class UploadProfilePictureErrorState extends SettingsState {}
+
+
 final class LoadMoreSavedPostsLoadingState extends SettingsState {}
 

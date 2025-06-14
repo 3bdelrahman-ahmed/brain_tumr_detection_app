@@ -151,7 +151,7 @@ class AppDio {
   // Update (PUT)
   Future<Response> put({
     required String path,
-    Map<String, dynamic>? data,
+    dynamic data,
     Map<String, dynamic>? query,
   }) async {
     try {

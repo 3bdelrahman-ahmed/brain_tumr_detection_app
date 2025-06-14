@@ -60,4 +60,7 @@ class AppUrls {
   static const String comments = "Post/comments";
   static const String addComment = "Post/comment";
   static const String savedPosts = "Post/saved";
+
+  //Account
+static const String editProfile = "Account/profilePicture";
 }

@@ -63,7 +63,7 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: imageProvider,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   alignment: Alignment.center,
                 ),
               ),
