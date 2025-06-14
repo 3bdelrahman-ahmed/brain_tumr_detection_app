@@ -10,11 +10,13 @@ part 'feed_state.dart';
 @injectable
 class FeedCubit extends Cubit<FeedState> {
   final FeedRepository repository;
+
   FeedCubit({required this.repository}) : super(FeedInitial());
 
   final ScrollController feedScrollController = ScrollController();
 
   PostsResponseModel? posts;
+  bool isFabOpen = false;
 
   Future<void> fetchFeed() async {
     emit(FeedLoading());
@@ -34,31 +36,38 @@ class FeedCubit extends Cubit<FeedState> {
   final ScrollController scrollController = ScrollController();
 
   // fetch more posts when the user scrolls to the bottom using cursor write new fn
-Future<void> fetchMorePosts() async {
-  if (posts == null || posts!.nextCursor == 0) return;
+  Future<void> fetchMorePosts() async {
+    if (posts == null || posts!.nextCursor == 0) return;
 
-  emit(FeedLoading());
+    emit(FeedLoading());
 
-  final result = await repository.getPosts(PostsRequestModel(
-    cursor: posts!.nextCursor!,
-  ));
+    final result = await repository.getPosts(PostsRequestModel(
+      cursor: posts!.nextCursor!,
+    ));
 
-  result.fold(
-    (error) {
-      emit(FeedError());
-    },
-    (feed) {
-      // Stop if no new posts or same cursor returned
-      if (feed.posts == null || feed.posts!.isEmpty || feed.nextCursor == posts!.nextCursor) {
-        posts!.nextCursor = 0; // No more pages
+    result.fold(
+      (error) {
+        emit(FeedError());
+      },
+      (feed) {
+        // Stop if no new posts or same cursor returned
+        if (feed.posts == null ||
+            feed.posts!.isEmpty ||
+            feed.nextCursor == posts!.nextCursor) {
+          posts!.nextCursor = 0; // No more pages
+          emit(FeedLoaded());
+          return;
+        }
+
+        posts!.posts!.addAll(feed.posts!);
+        posts!.nextCursor = feed.nextCursor;
         emit(FeedLoaded());
-        return;
-      }
+      },
+    );
+  }
 
-      posts!.posts!.addAll(feed.posts!);
-      posts!.nextCursor = feed.nextCursor;
-      emit(FeedLoaded());
-    },
-  );
-}
+  void openFabGroup() {
+    isFabOpen = !isFabOpen;
+    emit(FabChangeState(isFabOpen));
+  }
 }

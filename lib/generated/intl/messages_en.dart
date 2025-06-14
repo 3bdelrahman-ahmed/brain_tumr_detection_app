@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
+        "addANewPost": MessageLookupByLibrary.simpleMessage("Add a new post"),
         "addSlots": MessageLookupByLibrary.simpleMessage("Add Slots"),
         "address": MessageLookupByLibrary.simpleMessage("address: "),
         "age": MessageLookupByLibrary.simpleMessage("Age: "),
@@ -274,6 +275,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Detecting Brain Tumors"),
         "secondOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "Your brain is unique, and so is our detection system. Using cutting-edge tech, we\'ll analyze your symptoms and help spot potential issues early. Think of it as a virtual check-up—fast, simple, and secure."),
+        "seeMedicalHistory":
+            MessageLookupByLibrary.simpleMessage("See your medical history"),
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "selectClinic": MessageLookupByLibrary.simpleMessage("Select Clinic"),
         "selectDateOfBirth":
@@ -329,9 +332,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "tumorType": MessageLookupByLibrary.simpleMessage("Tumor Type"),
-
         "underReview": MessageLookupByLibrary.simpleMessage("Under review"),
-
         "upComing": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("Upload your File here"),

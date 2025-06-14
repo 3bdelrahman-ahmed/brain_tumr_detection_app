@@ -222,5 +222,7 @@
   "underReview" : "Under review",
   "noScans" : "No scans available",
   "reviewedBy" : "Reviewed by",
-  "detectedAs" : "Detected as:"
+  "detectedAs" : "Detected as:",
+  "addANewPost" : "Add a new post",
+  "seeMedicalHistory" : "See your medical history"
 }

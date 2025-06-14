@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accept": MessageLookupByLibrary.simpleMessage("قبول"),
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
+        "addANewPost": MessageLookupByLibrary.simpleMessage("اضف منشور جديد"),
         "addSlots": MessageLookupByLibrary.simpleMessage("إضافة مواعيد"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان: "),
         "age": MessageLookupByLibrary.simpleMessage("العمر: "),
@@ -277,6 +278,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الكشف عن أورام الدماغ"),
         "secondOnBoardingSentence": MessageLookupByLibrary.simpleMessage(
             "دماغك فريد، ونظام الكشف لدينا أيضًا. باستخدام أحدث التقنيات، سنحلل أعراضك ونساعد في اكتشاف المشكلات المحتملة مبكرًا. اعتبرها فحصًا افتراضيًا - سريع وبسيط وآمن."),
+        "seeMedicalHistory":
+            MessageLookupByLibrary.simpleMessage("رؤية تحاليلك السابقة"),
         "select": MessageLookupByLibrary.simpleMessage("اختيار"),
         "selectClinic": MessageLookupByLibrary.simpleMessage("اختر عيادتك"),
         "selectDateOfBirth":
@@ -327,7 +330,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
         "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
         "tumorType": MessageLookupByLibrary.simpleMessage("نوع الورم"),
-
         "underReview": MessageLookupByLibrary.simpleMessage("تحت المراجعة"),
         "upComing": MessageLookupByLibrary.simpleMessage("قادمة"),
         "uploadYourFileHere":

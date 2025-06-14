@@ -222,5 +222,7 @@
   "underReview" : "تحت المراجعة",
   "noScans": "لا يوجد تحاليل متاحة",
   "reviewedBy": "تمت المراجعة بواسطة",
-  "detectedAs" : "تم تشخيصه علي انه:"
+  "detectedAs" : "تم تشخيصه علي انه:",
+  "addANewPost" : "اضف منشور جديد",
+  "seeMedicalHistory" : "رؤية تحاليلك السابقة"
 }

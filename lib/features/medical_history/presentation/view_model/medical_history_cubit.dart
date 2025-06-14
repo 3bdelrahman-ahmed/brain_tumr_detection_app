@@ -39,7 +39,7 @@ class MedicalHistoryCubit extends Cubit<MedicalHistoryState> {
   }
 
   Future<void> getDoctorById(String DoctorId) async {
-    emit(MedicalHistoryLoading());
+    emit(GetDoctorByIdLoading());
     final response = await medicalHistoryRepository.getDoctorById(DoctorId);
     response.fold(
       (error) => emit(GetDoctorByIdError()),
