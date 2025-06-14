@@ -51,4 +51,8 @@ class AppUrls {
 
   // contact us
   static const String contactUs = "ContactUs";
+
+
+  // feed 
+  static const String post = "Post";
 }

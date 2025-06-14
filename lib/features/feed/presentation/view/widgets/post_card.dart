@@ -1,13 +1,13 @@
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_drop_down_menu.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_like_button.dart';
+import 'package:brain_tumr_detection_app/core/helper/functions/format_posts_time_function.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/feed/data/models/posts_response_model.dart';
 import 'package:brain_tumr_detection_app/features/feed/presentation/view/widgets/comment_widgets/comment_card_widget.dart';
-import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../../../../../../core/utils/assets/assets_svg.dart';
@@ -15,7 +15,8 @@ import '../../../../../../../../../core/utils/theme/text_styles/app_text_styles.
 import '../../../../../generated/l10n.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({Key? key}) : super(key: key);
+  Posts post;
+  PostCard({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +41,23 @@ class PostCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Ali Maaloul",
+                post.userName ?? "",
                 style: AppTextStyles.font10GreenW700,
               ),
               Text(
-                "Today at 1:58 am",
+                formatPostTime(post.createdAt ?? ""),
                 style: AppTextStyles.font10LightGreenW500,
               ),
               10.toHeight,
               Text(
-                "Low-Grade Glioma",
+                post.title ?? "",
                 style: AppTextStyles.font20GreenW700,
               ),
               5.toHeight,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Text(
-                  "Hi everyone, I recently got my MRI results, and the AI flagged something unusual. Has anyone here had experience with a low-grade glioma?",
+                  post.content ?? "",
                   textAlign: TextAlign.center,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
@@ -69,12 +70,12 @@ class PostCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${reachFormat(480000000)} ${S.of(context).likes}",
+                    "${reachFormat(post.likesCount ?? 0)} ${S.of(context).likes}",
                     style: AppTextStyles.font12cyanW400,
                   ),
                   10.toWidth,
                   Text(
-                    "${reachFormat(690000000)} ${S.of(context).comments}",
+                    "${reachFormat(post.commentsCount ?? 0)} ${S.of(context).comments}",
                     style: AppTextStyles.font12cyanW400,
                   ),
                 ],
@@ -108,7 +109,7 @@ class PostCard extends StatelessWidget {
           child: Center(
             child: CustomProfileImage(
               size: 32,
-              imageUrl: AppConstants.user!.profilePicture,
+              imageUrl: post.userProfilePicture,
             ),
           ),
         ),
