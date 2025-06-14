@@ -55,12 +55,26 @@ class _FeedPageState extends State<FeedPage> {
                 slivers: [
                   CustomWelcomeAppBar(),
                   SliverToBoxAdapter(
-                    child: CustomAppShimmer(
-                      height: 220.h,
-                      width: double.infinity,
-                      borderRaduis: 12.r,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: CustomAppShimmer(
+                        height: 220.h,
+                        width: double.infinity,
+                        borderRaduis: 12.r,
+                      ),
                     ),
                   ),
+                  SliverPadding(padding: EdgeInsets.only(bottom: 16.h)),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: CustomAppShimmer(
+                        height: 220.h,
+                        width: double.infinity,
+                        borderRaduis: 12.r,
+                      ),
+                    ),
+                  )
                 ],
               );
             }
