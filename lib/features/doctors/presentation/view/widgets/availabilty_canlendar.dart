@@ -40,7 +40,7 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
         }
       },
       builder: (context, state) {
-        return Column(children: [
+        return Column(children:[
           // Calendar UI
           Container(
             margin: EdgeInsets.all(16.w),
@@ -142,8 +142,12 @@ class _DoctorCalendarScreenState extends State<DoctorCalendarScreen> {
                   }),
             )
           else if (state is GetAvailableDoctorsSuccess)
-            _buildImprovedTimeSlotsUI(context, state, cubit,
-                widget.doctor.doctorFullName, widget.doctor.address)
+            _buildImprovedTimeSlotsUI(
+                context,
+                state,
+                cubit,
+                widget.doctor.doctorFullName ?? widget.doctor.fullName!,
+                widget.doctor.address)
           else
             Container(
               height: 50.h,

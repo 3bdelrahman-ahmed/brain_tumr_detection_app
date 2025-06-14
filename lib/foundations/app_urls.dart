@@ -21,6 +21,7 @@ class AppUrls {
   static const String addSlot = "Clinic/slot";
   static const String deleteSlot = "Clinic/slot/";
   static const String editSlot = "Clinic/slot/";
+  static const String getDoctorById = "Doctor/";
 
   //Chat
   static const String sendMessage = "Chat/sendMessage";
@@ -29,6 +30,7 @@ class AppUrls {
 
   // scan
   static const String uploadScan = "MriScan/upload";
+  static const String getScans = "MriScan";
 
   //Patient
   static String getPatients(String id) => "Appointment/doctor/$id";

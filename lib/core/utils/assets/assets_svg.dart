@@ -28,6 +28,7 @@ class AssetsSvg {
   static const String clock = "clock";
   static const String clock2 = "mdi_clock";
   static const String notification = "notificationIcon";
+  static const String noScan = "scanIcon";
   // Messages Status
   static const String checkMark = "checkMark";
   static const String pending = "pending";

@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateError": MessageLookupByLibrary.simpleMessage("Invalid date"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth:"),
+        "detectedAs": MessageLookupByLibrary.simpleMessage("Detected as:"),
         "diagnosis": MessageLookupByLibrary.simpleMessage("Diagnosis"),
         "didnotGetCode":
             MessageLookupByLibrary.simpleMessage("Didn\'t get the code? "),
@@ -190,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noReportsYet": MessageLookupByLibrary.simpleMessage("No reports yet"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
+        "noScans": MessageLookupByLibrary.simpleMessage("No scans available"),
         "noSearchResultsFor":
             MessageLookupByLibrary.simpleMessage("No search results for"),
         "noSlotsAvailable":
@@ -237,16 +239,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "resendCodeAgain": MessageLookupByLibrary.simpleMessage("Resend code"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "result": MessageLookupByLibrary.simpleMessage("Result"),
+        "resultIsReviewed":
+            MessageLookupByLibrary.simpleMessage("Result is reviewed"),
         "returnPage": MessageLookupByLibrary.simpleMessage("Return"),
+        "reviewedBy": MessageLookupByLibrary.simpleMessage("Reviewed by"),
         "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
         "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "savedPosts": MessageLookupByLibrary.simpleMessage("Saved Posts"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "searchForDoctor":
+            MessageLookupByLibrary.simpleMessage("Search for doctor"),
         "searchForPosts":
             MessageLookupByLibrary.simpleMessage("Search for posts"),
-        "searchForTherapist":
-            MessageLookupByLibrary.simpleMessage("Search for therapist"),
         "secondDiagnosisContainer": MessageLookupByLibrary.simpleMessage(
             "The MRI scan analysis reveals an abnormal mass in the left frontal lobe, measuring approximately 3.2 cm x 2.8 cm. The segmented region exhibits irregular borders and heterogeneous intensity, indicating possible malignancy. The tumor appears hyperintense on T2-weighted imaging and hypointense on T1-weighted imaging, which is characteristic of glioblastoma multiforme (GBM). Additionally, peritumoral edema and midline shift (3mm) suggest increased intracranial pressure."),
         "secondOnBoardingMessage":
@@ -307,6 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "To help you find doctors near you and provide recommendations, we need to know your location."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
+        "underReview": MessageLookupByLibrary.simpleMessage("Under review"),
         "upComing": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("Upload your File here"),

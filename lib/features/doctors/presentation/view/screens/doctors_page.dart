@@ -10,6 +10,7 @@ import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widg
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/strings/app_string.dart';
+import '../../../../../generated/l10n.dart';
 
 class DoctorsPage extends StatefulWidget {
   const DoctorsPage({Key? key}) : super(key: key);
@@ -64,7 +65,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                 delegate: CustomSliverSearchBar(
                   suffixIcon: AssetsSvg.cancel,
                       controller: _cubit.searchController,
-                  AppStrings.searchForTherapist),
+                  S.of(context).searchForDoctor),
               ),
               if (isLoading)
                 SliverFillRemaining(

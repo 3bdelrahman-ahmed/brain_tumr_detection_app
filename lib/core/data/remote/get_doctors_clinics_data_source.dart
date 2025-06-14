@@ -20,5 +20,4 @@ class GetDoctorsClinicsDataSource {
       path: AppUrls.sendDeviceToken,
       data: {'deviceToken': deviceToken},
     );
-    
   }}
