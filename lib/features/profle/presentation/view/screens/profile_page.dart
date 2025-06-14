@@ -15,6 +15,7 @@ import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_s
 import 'package:brain_tumr_detection_app/features/profle/presentation/view/widgets/patient_data_widget.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../widgets/reset_password_bottom_sheet.dart';
@@ -337,3 +338,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
+
+
+
