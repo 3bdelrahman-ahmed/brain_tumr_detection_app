@@ -8,6 +8,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import '../../../data/models/add_comments_model.dart';
+import '../../../data/models/add_post_model.dart';
 import '../../../data/models/delete_comment_model.dart';
 import '../../../data/models/delete_post_model.dart';
 import '../../../data/models/toggle_like_model.dart';
@@ -21,7 +22,6 @@ class FeedCubit extends Cubit<FeedState> {
 
   final ScrollController feedScrollController = ScrollController();
 
-  PostsResponseModel? posts;
   bool isFabOpen = false;
 
   int cursor = 0;
@@ -44,6 +44,7 @@ class FeedCubit extends Cubit<FeedState> {
   }
 
   final ScrollController scrollController = ScrollController();
+  PostsResponseModel? posts;
 
   // fetch more posts when the user scrolls to the bottom using cursor write new fn
   Future<void> fetchMorePosts() async {
@@ -61,15 +62,15 @@ class FeedCubit extends Cubit<FeedState> {
       },
       (feed) {
         // Stop if no new posts or same cursor returned
-        if (feed.posts == null ||
-            feed.posts!.isEmpty ||
-            feed.nextCursor == posts!.nextCursor) {
+        if (feed.posts!.isEmpty) {
+          print("yes is empty");
           posts!.nextCursor = 0; // No more pages
           emit(FeedLoaded());
           return;
         }
 
         posts!.posts!.addAll(feed.posts!);
+        print("posts length ${posts!.posts!.length} ");
         posts!.nextCursor = feed.nextCursor;
         emit(FeedLoaded());
       },
@@ -233,7 +234,7 @@ class FeedCubit extends Cubit<FeedState> {
     emit(CommentTextChanged(commentController.text.trim().isNotEmpty));
   }
 
-  Future<void> deletePost(String postId) async {
+  Future<void> deletePost(String postId, BuildContext context) async {
     emit(DeletePostLoading());
     final result = await repository.deletePost(
       DeletePostRequestModel(postId: postId),
@@ -243,14 +244,38 @@ class FeedCubit extends Cubit<FeedState> {
         emit(DeletePostError());
       },
       (response) {
-        posts!.posts!.removeWhere((post) => post.id == postId);
+        Navigator.pop(context);
+        posts!.posts!.removeWhere((post) => post.id.toString() == postId);
         emit(DeletePostSuccess(postId: response.postId.toString()));
       },
     );
   }
 
-
-  // add post 
+  // add post
   TextEditingController postTitleController = TextEditingController();
   TextEditingController postContentController = TextEditingController();
+  final addPostFormKey = GlobalKey<FormState>();
+  Future<void> addPost(BuildContext context) async {
+    if (addPostFormKey.currentState?.validate() != true) return;
+
+    emit(AddPostLoading());
+    final result = await repository.addPost(
+      AddPostRequestModel(
+        title: postTitleController.text.trim(),
+        content: postContentController.text.trim(),
+      ),
+    );
+    result.fold(
+      (error) {
+        emit(AddPostError());
+      },
+      (post) {
+        emit(AddPostSuccess(postId: post.postId.toString()));
+        postTitleController.clear();
+        postContentController.clear();
+        Navigator.of(context, rootNavigator: true)
+            .pop(); // Close the add post dialog
+      },
+    );
+  }
 }

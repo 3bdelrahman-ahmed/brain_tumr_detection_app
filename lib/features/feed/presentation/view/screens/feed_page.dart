@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_app_shimmer.dart';
 import '../../../../../core/components/widgets/custom_empty_widget.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../observers/route_observer.dart';
 import '../widgets/post_card.dart';
 
@@ -110,7 +111,7 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
                   CustomWelcomeAppBar(),
                   SliverToBoxAdapter(
                     child: CustomEmptyWidget(
-                      title: "No posts available",
+                      title: S.of(context).noPostsYet,
                     ),
                   ),
                 ],
@@ -142,7 +143,7 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
                         child: PostCard(post: posts[index]),
                       );
                     },
-                    childCount: cubit.posts!.nextCursor != null
+                    childCount: cubit.posts!.nextCursor != 0
                         ? posts.length + 1
                         : posts.length,
                   ),

@@ -24,6 +24,7 @@ class EditProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        automaticallyImplyLeading: false,
         shadowColor: Colors.transparent,
         centerTitle: true,
         title: Text(

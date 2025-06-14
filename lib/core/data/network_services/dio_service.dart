@@ -15,7 +15,10 @@ class DioService {
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 90),
       receiveTimeout: const Duration(seconds: 30),
-      headers: {'Content-Type': 'application/json', 'Accept-Language': 'en'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': AppConstants.langCode ? 'en' : 'ar'
+      },
     );
 
     _dio.options = baseOptions;

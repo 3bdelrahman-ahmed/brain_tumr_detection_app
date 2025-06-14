@@ -4,6 +4,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/like_button/cus
 import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_save_button.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/format_posts_time_function.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_function.dart';
+import 'package:brain_tumr_detection_app/core/helper/functions/show_default_dialog_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
@@ -18,6 +19,8 @@ import '../../../../../foundations/app_constants.dart';
 import '../../../../../generated/l10n.dart';
 import '../../view_model/cubit/feed_cubit.dart';
 import 'comments_bottom_sheet_widget.dart';
+import 'delete_post_dialog_widget.dart';
+import 'expaned_post_content_widget.dart';
 
 class PostCard extends StatelessWidget {
   Posts post;
@@ -50,7 +53,8 @@ class PostCard extends StatelessWidget {
                 children: [
                   Text(
                     post.userName ?? "",
-                    style: AppTextStyles.font10GreenW700,
+                    style:
+                        AppTextStyles.font10GreenW700.copyWith(fontSize: 16.sp),
                   ),
                   Text(
                     formatPostTime(post.createdAt ?? ""),
@@ -62,16 +66,22 @@ class PostCard extends StatelessWidget {
                     style: AppTextStyles.font20GreenW700,
                   ),
                   5.toHeight,
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: Text(
-                      post.content ?? "",
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.font12LightGreenW500,
-                    ),
+                  ExpandablePostText(
+                    text: post.content ?? "",
+                    style: AppTextStyles.font12LightGreenW500
+                        .copyWith(fontSize: 16.sp),
                   ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  //   child: Text(
+                  //     post.content ?? "",
+                  //     textAlign: TextAlign.center,
+                  //     maxLines: 3,
+                  //     overflow: TextOverflow.ellipsis,
+                  //     style: AppTextStyles.font12LightGreenW500
+                  //         .copyWith(fontSize: 16.sp),
+                  //   ),
+                  // ),
                   30.toHeight,
                   // Likes and Comments Counter
                   Row(
@@ -145,7 +155,14 @@ class PostCard extends StatelessWidget {
             top: -10.h,
             child: GestureDetector(
               onTap: () {
-                cubit.deletePost(post.id.toString());
+                showDefaultDialog(context,
+                    child: BlocProvider.value(
+                      value: cubit,
+                      child: DeletePostDialogWidget(
+                        postId: post.id.toString(),
+                      ),
+                    ));
+                // cubit.deletePost(post.id.toString());
               },
               child: Container(
                   padding: EdgeInsets.all(4.w),
