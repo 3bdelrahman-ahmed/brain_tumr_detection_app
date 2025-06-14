@@ -2,41 +2,41 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-
 import '../../../../generated/l10n.dart';
 import '../../../utils/assets/assets_svg.dart';
-import '../../../utils/theme/colors/app_colors.dart';
 import '../../../utils/theme/text_styles/app_text_styles.dart';
 import '../custom_image_view.dart';
 import 'custom_heart_animation_widget.dart';
 
-class LikeButton extends StatefulWidget {
-  final bool isLike;
+class CustomSaveButton extends StatefulWidget {
+  final bool isSaved;
   final double? width;
   final double? height;
   final Color? color;
+  final String? text;
   final VoidCallback? onPressed;
 
-  const LikeButton({
+  const CustomSaveButton({
     super.key,
-    required this.isLike,
+    required this.isSaved,
     this.onPressed,
     this.width,
     this.height,
     this.color,
+    this.text,
   });
 
   @override
-  State<LikeButton> createState() => _LikeButtonState();
+  State<CustomSaveButton> createState() => _CustomSaveButtonState();
 }
 
-class _LikeButtonState extends State<LikeButton> {
+class _CustomSaveButtonState extends State<CustomSaveButton> {
   late bool _isLike;
 
   @override
   void initState() {
     super.initState();
-    _isLike = widget.isLike;
+    _isLike = widget.isSaved;
   }
 
   void _handleTap() {
@@ -47,10 +47,10 @@ class _LikeButtonState extends State<LikeButton> {
   }
 
   @override
-  void didUpdateWidget(covariant LikeButton oldWidget) {
+  void didUpdateWidget(covariant CustomSaveButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.isLike != widget.isLike) {
-      _isLike = widget.isLike;
+    if (oldWidget.isSaved != widget.isSaved) {
+      _isLike = widget.isSaved;
     }
   }
 
@@ -78,16 +78,16 @@ class _LikeButtonState extends State<LikeButton> {
                 svgPath:
                     // _isLike
                     //     ?
-                    AssetsSvg.heartIcon.toSVG(),
+                    AssetsSvg.saveIcon.toSVG(),
                 // : AssetsSvg.heartIcon.toSVG(),
-                color: _isLike ? AppColors.error : widget.color,
+                color: _isLike ? Colors.amber : widget.color,
                 onTap: _handleTap,
               ),
             ),
           ),
           5.toWidth,
           Text(
-            S.of(context).like,
+         widget.text??   S.of(context).like,
             style: AppTextStyles.font12cyanW700,
           )
         ],

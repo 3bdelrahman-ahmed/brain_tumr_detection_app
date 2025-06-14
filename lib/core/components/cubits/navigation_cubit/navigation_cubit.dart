@@ -1,5 +1,4 @@
 import 'package:brain_tumr_detection_app/core/services/service_locator/service_locator.dart';
-import 'package:brain_tumr_detection_app/features/feed/presentation/view_model/cubit/feed_cubit.dart';
 import 'package:brain_tumr_detection_app/features/profle/presentation/view_model/settings_cubit.dart';
 import 'package:brain_tumr_detection_app/features/reports/presentation/view_model/reports_cubit.dart';
 import 'package:brain_tumr_detection_app/features/slots/presentation/view_model/slots_cubit.dart';
@@ -7,7 +6,6 @@ import 'package:brain_tumr_detection_app/features/view_patients/presentation/vie
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../../../features/appointments/presentation/view/screens/appointments_screen.dart';
 import '../../../../features/appointments/presentation/view_model/appointment_cubit.dart';
 import '../../../../features/doctors/presentation/view/screens/doctors_page.dart';
@@ -40,11 +38,8 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void initializeDoctorTabs() {
     tabs.addAll([
-      BlocProvider(
-        create: (context) => getIt<FeedCubit>(),
-        child: FeedPage(
-          controller: getScrollController(0),
-        ),
+      FeedPage(
+        controller: getScrollController(0),
       ),
       BlocProvider(
         create: (context) => getIt<SlotsCubit>(),
@@ -67,11 +62,8 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void initializePatientTabs() {
     tabs.addAll([
-      BlocProvider(
-        create: (context) => getIt<FeedCubit>(),
-        child: FeedPage(
-          controller: getScrollController(0),
-        ),
+      FeedPage(
+        controller: getScrollController(0),
       ),
       BlocProvider(
         create: (context) => getIt<AppointmentCubit>(),

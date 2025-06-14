@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_app_shimmer.dart';
 import '../../../../../core/components/widgets/custom_empty_widget.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+import '../../../../../observers/route_observer.dart';
 import '../widgets/post_card.dart';
 
 class FeedPage extends StatefulWidget {
@@ -23,8 +24,31 @@ class FeedPage extends StatefulWidget {
   State<FeedPage> createState() => _FeedPageState();
 }
 
-class _FeedPageState extends State<FeedPage> {
+class _FeedPageState extends State<FeedPage> with RouteAware {
   late FeedCubit cubit;
+
+  // fetch again
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    cubit = context.read<FeedCubit>();
+    routeObserver.subscribe(
+        this, ModalRoute.of(context)! as PageRoute<dynamic>);
+  }
+
+  // @override
+  // void didPush() {
+  //   super.didPush();
+  //   cubit = context.read<FeedCubit>();
+  //   cubit.fetchFeed();
+  // }
+
+  @override
+  void didPopNext() {
+    super.didPopNext();
+    cubit = context.read<FeedCubit>();
+    cubit.fetchFeed();
+  }
 
   @override
   void initState() {
@@ -114,7 +138,7 @@ class _FeedPageState extends State<FeedPage> {
                       }
                       return Padding(
                         padding:
-                            EdgeInsets.only(top: 16.h, left: 20.w, right: 20.w),
+                            EdgeInsets.only(top: 40.h, left: 16.w, right: 16.w),
                         child: PostCard(post: posts[index]),
                       );
                     },

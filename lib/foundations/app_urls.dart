@@ -55,4 +55,6 @@ class AppUrls {
 
   // feed 
   static const String post = "Post";
+  static const String toggleLike = "Post/toggleLike";
+  static const String toggleSave = "Post/toggleSave";
 }

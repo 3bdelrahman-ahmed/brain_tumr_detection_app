@@ -4,6 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../models/posts_response_model.dart';
+import '../models/toggle_like_model.dart';
+import '../models/toggle_save_model.dart';
 @singleton
 class FeedRepository {
   final FeedRemoteDataSourec remoteDataSource;
@@ -13,6 +15,26 @@ class FeedRepository {
   Future<Either<ApiErrorModel, PostsResponseModel>> getPosts(PostsRequestModel query) async {
     try {
       final response = await remoteDataSource.getPosts(query);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+
+  Future<Either<ApiErrorModel, ToggleLikeResponseModel>> toggleLike(ToggleLikeRequestModel request) async {
+    try {
+      final response = await remoteDataSource.toggleLike(request);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+
+  Future<Either<ApiErrorModel, ToggleSaveResponseModel>> toggleSave(ToggleSaveRequestModel request) async {
+    try {
+      final response = await remoteDataSource.toggleSave(request);
       return Right(response);
     } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));
