@@ -1,20 +1,21 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
-import 'package:brain_tumr_detection_app/features/login/presentation/view_model/login_cubit.dart';
-import 'package:brain_tumr_detection_app/foundations/validations.dart';
+import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
+import 'package:brain_tumr_detection_app/features/profle/presentation/view_model/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../../core/components/widgets/custom_button.dart';
-import '../../../../../../../core/components/widgets/custom_text_field.dart';
-import '../../../../../../../core/utils/theme/text_styles/app_text_styles.dart';
+
+import '../../../../../core/components/widgets/custom_button.dart';
+import '../../../../../core/components/widgets/custom_text_field.dart';
+import '../../../../../foundations/validations.dart';
 import '../../../../../generated/l10n.dart';
 
-class ForgotPasswordSheet extends StatelessWidget {
-  const ForgotPasswordSheet({Key? key}) : super(key: key);
+class ChangePasswordBottomSheet extends StatelessWidget {
+  const ChangePasswordBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
+    final cubit = context.read<SettingsCubit>();
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -55,14 +56,14 @@ class ForgotPasswordSheet extends StatelessWidget {
                 hintText: S.of(context).enterYourEmail),
           ),
           20.toHeight,
-          BlocBuilder<LoginCubit, LoginState>(
-            builder: (BuildContext context, LoginState state) {
+          BlocBuilder<SettingsCubit, SettingsState> (
+            builder: (BuildContext context, SettingsState state) {
               return Center(
                 child: CustomButton(
                   isLoading: state is ForgetPasswordLoadingState,
                   text: S.of(context).next,
                   onTap: () {
-                    cubit.forgetPassword();
+                    cubit.forgetPassword(context);
                   },
                 ),
               );

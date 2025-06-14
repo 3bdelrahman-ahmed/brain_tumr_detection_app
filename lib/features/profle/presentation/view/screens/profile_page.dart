@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/cubits/app_cubit/app_cu
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_button.dart';
 import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/navigation_extenstions.dart';
+import 'package:brain_tumr_detection_app/features/profle/presentation/view_model/settings_cubit.dart';
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
+import '../widgets/reset_password_bottom_sheet.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -69,6 +71,7 @@ class ProfilePage extends StatelessWidget {
   // Drawer Widget
   Widget _buildDrawer(BuildContext context) {
     var cubit = context.read<AppCubit>();
+    var settingsCubit = context.read<SettingsCubit>();
     return Drawer(
       backgroundColor: AppColors.white,
       width: MediaQuery.of(context).size.width -
@@ -107,14 +110,27 @@ class ProfilePage extends StatelessWidget {
           _buildSettingsRow(
               title: S.of(context).resetPassword,
               onTap: () {
-                context.navigateTo(AppRoutes.resetPasswordScreen);
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(30.r)),
+                  ),
+                  builder: (context) => BlocProvider.value(
+                    value: settingsCubit,
+                    child: ChangePasswordBottomSheet(),
+                  ),
+                );
+                // context.navigateTo(AppRoutes.resetPasswordScreen);
               }),
           _buildSettingsRow(title: S.of(context).notificationsSettings),
-          _buildSettingsRow(
-              title: S.of(context).medicalDataManagement,
-              onTap: () {
-                context.navigateTo(AppRoutes.medicalHistoryScreen);
-              }),
+          if (AppConstants.user!.role == "Patient")
+            _buildSettingsRow(
+                title: S.of(context).medicalDataManagement,
+                onTap: () {
+                  context.navigateTo(AppRoutes.medicalHistoryScreen);
+                }),
           _buildSettingsRow(
               onTap: () {
                 context.navigateTo(AppRoutes.contactUsScreen);

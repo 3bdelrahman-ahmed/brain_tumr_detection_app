@@ -45,7 +45,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
             Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
           } else {
             AppConstants.getToken().then((val) {
-              if (val.toString().isNotEmpty && AppConstants.getUser() != null) {
+              if (val.toString().isNotEmpty && AppConstants.user != null) {
                 Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
               } else {
                 Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);

@@ -25,7 +25,7 @@ void main() async {
   // Use this method to prompt for push notifications.
   // We recommend removing this method after testing and instead use In-App Messages to prompt for notification permission.
   // OneSignal.Notifications.requestPermission(false);
-
+  await AppConstants.getUser();
   await HiveCachingHelper.initHive();
   await AppConstants.getLanguage();
   startService();

@@ -42,6 +42,7 @@ class ResetPassword extends StatelessWidget {
             CustomAuthContainerWidget(
               child: ResetPasswordForm(),
             ).paddingSymmetric(horizontal: 10.w),
+            32.toHeight,
           ],
         ),
       ),

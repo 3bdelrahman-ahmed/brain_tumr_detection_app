@@ -146,7 +146,7 @@ class AppConstants {
     accessToken = '';
     user = null;
     location = null;
-    await AppCacheHelper.clearAllSecuredData();
+    await AppCacheHelper.clearSecuredData(AppCacheHelper.user);
   }
 
   static List<Map<int, String>> days = [
