@@ -8,6 +8,7 @@ import 'core/services/service_locator/service_locator.dart';
 import 'core/utils/extenstions/navigation_extenstions.dart';
 import 'core/utils/theme/app_theme/app_theme.dart';
 import 'features/chats/presentation/view_model/chats_cubit.dart';
+import 'features/feed/presentation/view_model/cubit/feed_cubit.dart';
 import 'generated/l10n.dart';
 import 'observers/route_observer.dart';
 
@@ -40,6 +41,9 @@ class _NeroTumAppState extends State<NeroTumApp> {
           ),
           BlocProvider<AppCubit>(
             create: (_) => getIt<AppCubit>(),
+          ),
+          BlocProvider<FeedCubit>(
+            create: (_) => getIt<FeedCubit>(),
           ),
         ],
         child: BlocBuilder<AppCubit, AppState>(
