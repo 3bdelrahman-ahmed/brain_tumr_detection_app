@@ -14,6 +14,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/config/app_routing.dart';
 import '../../../../core/utils/extenstions/navigation_extenstions.dart';
+import '../../../../generated/l10n.dart';
 
 @injectable
 class RigesterScreenCubit extends Cubit<RigesterScreenState> {
@@ -86,6 +87,10 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   }
 
   Future<void> registerPatient() async {
+    if (profileImage == null) {
+      S.of(context).pleaseSelectImage.showToast();
+      return;
+    }
     emit(RigesterScreenLoadingState());
     final result = await registerRepository.patientRegister(
         PatientRegisterRequestModel(
@@ -116,6 +121,10 @@ class RigesterScreenCubit extends Cubit<RigesterScreenState> {
   }
 
   Future<void> registerDoctor() async {
+    if (profileImage == null) {
+      S.of(context).pleaseSelectImage.showToast();
+      return;
+    }
     emit(RigesterScreenLoadingState());
     print({
       'clinicAddress': streetName,

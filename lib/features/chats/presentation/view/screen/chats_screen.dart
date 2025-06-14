@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -61,6 +62,25 @@ class _ChatsScreenState extends State<ChatsScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leadingWidth: 95.w,
+        leading: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 24.w,
+                color: AppColors.buttonsAndNav,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            CustomProfileImage(
+              imageUrl: widget.chat.user.profilePicture,
+              size: 24.r,
+            ),
+          ],
+        ),
         title: Text(widget.chat.name, style: AppTextStyles.font20BlueW700),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -70,7 +90,7 @@ class _ChatsScreenState extends State<ChatsScreen>
       ),
       body: Column(
         children: [
-          Expanded(
+          Expanded( 
             child: BlocConsumer<ChatsCubit, ChatsState>(
               listener: (context, state) {
                 if (cubit.isNewMessage) {

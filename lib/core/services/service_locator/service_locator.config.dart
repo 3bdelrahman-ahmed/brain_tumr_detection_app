@@ -68,8 +68,12 @@ import '../../../features/register/data/repository/register_repository.dart'
     as _i558;
 import '../../../features/register/presentation/view_model/rigester_screen_cubit.dart'
     as _i5;
-import '../../../features/reports/presentation/viewmodel/reports_cubit.dart'
-    as _i187;
+import '../../../features/reports/data/remote/doctor_reports_remote_data_source.dart'
+    as _i643;
+import '../../../features/reports/data/repo/doctor_reports_repository.dart'
+    as _i619;
+import '../../../features/reports/presentation/view_model/reports_cubit.dart'
+    as _i82;
 import '../../../features/reset_password/data/remote/reset_password_data_soruce.dart'
     as _i550;
 import '../../../features/reset_password/data/repo/reset_password_repository.dart'
@@ -129,7 +133,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1069.FeedCubit>(() => _i1069.FeedCubit());
     gh.factory<_i775.OnboardingCubit>(() => _i775.OnboardingCubit());
     gh.factory<_i970.SettingsCubit>(() => _i970.SettingsCubit());
-    gh.factory<_i187.ReportsCubit>(() => _i187.ReportsCubit());
     gh.factory<_i550.ResetPasswordDataSource>(
         () => _i550.ResetPasswordDataSource());
     gh.singleton<_i437.SignalRConnection>(() => _i437.SignalRConnection());
@@ -153,11 +156,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.ViewPatientsDataSource());
     gh.singleton<_i713.EditProfileRemoteDataSource>(
         () => _i713.EditProfileRemoteDataSource());
+    gh.singleton<_i643.DoctorReportsRemoteDataSource>(
+        () => _i643.DoctorReportsRemoteDataSource());
     gh.singleton<_i953.MedicalHistoryDataSource>(
         () => _i953.MedicalHistoryDataSource());
     gh.factory<_i300.MedicalHistoryRepository>(() =>
         _i300.MedicalHistoryRepository(
             remoteDataSource: gh<_i953.MedicalHistoryDataSource>()));
+
     gh.singleton<_i90.ViewPatientsRepo>(
         () => _i90.ViewPatientsRepo(gh<_i1070.ViewPatientsDataSource>()));
     gh.factory<_i870.MedicalHistoryCubit>(() => _i870.MedicalHistoryCubit(
@@ -206,6 +212,9 @@ extension GetItInjectableX on _i174.GetIt {
         notificationRepository: gh<_i577.NotificationRepository>()));
     gh.singleton<_i938.UploadScanRepotitory>(() => _i938.UploadScanRepotitory(
         uploadScanRemoteDataSource: gh<_i89.UploadScanRemoteDataSource>()));
+    gh.singleton<_i619.DoctorReportsRepository>(() =>
+        _i619.DoctorReportsRepository(
+            remoteDataSource: gh<_i643.DoctorReportsRemoteDataSource>()));
     gh.factory<_i199.ViewPatientsCubit>(
         () => _i199.ViewPatientsCubit(gh<_i90.ViewPatientsRepo>()));
     gh.factory<_i545.ResetPasswordCubit>(
@@ -222,6 +231,9 @@ extension GetItInjectableX on _i174.GetIt {
         repository: gh<_i487.VerifyCodeRepository>()));
     gh.factory<_i942.ScanCubit>(
         () => _i942.ScanCubit(repotitory: gh<_i938.UploadScanRepotitory>()));
+    gh.factory<_i82.ReportsCubit>(() =>
+        _i82.ReportsCubit(repository: gh<_i619.DoctorReportsRepository>()));
+
     gh.factory<_i4.EditProfileCubit>(() =>
         _i4.EditProfileCubit(repository: gh<_i461.EditProfileRepository>()));
     return this;

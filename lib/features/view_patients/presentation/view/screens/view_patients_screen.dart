@@ -1,8 +1,6 @@
-import 'package:brain_tumr_detection_app/core/components/screens/register_screen_location_widget.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_app_shimmer.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_empty_widget.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_welcome_row.dart';
-import 'package:brain_tumr_detection_app/core/utils/assets/assets_png.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/view_patients/presentation/view/widgets/view_patient_row.dart';
@@ -10,6 +8,8 @@ import 'package:brain_tumr_detection_app/features/view_patients/presentation/vie
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/components/widgets/custom_drop_down_menu.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../slots/presentation/view/widget/date_range_selector.dart';
 import '../../../../slots/presentation/view/widget/days_slots.dart';
 
@@ -23,8 +23,19 @@ class ViewPatientsScreen extends StatefulWidget {
 class _ViewPatientsScreenState extends State<ViewPatientsScreen> {
   @override
   void initState() {
-    context.read<ViewPatientsCubit>().getPatients('1', DateTime.now());
+    featchData();
     super.initState();
+  }
+
+  Future<void> featchData() async {
+    final cubit = context.read<ViewPatientsCubit>();
+    await cubit.getClinics();
+    if (cubit.clinics.isNotEmpty) {
+      await cubit.getPatients(
+        cubit.selectedClinic!.id.toString(),
+        DateTime.now(),
+      );
+    }
   }
 
   @override
@@ -40,26 +51,46 @@ class _ViewPatientsScreenState extends State<ViewPatientsScreen> {
               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5.h)),
               SliverToBoxAdapter(child: DaySelector()),
               SliverPadding(padding: EdgeInsets.symmetric(vertical: 7.h)),
+              SliverToBoxAdapter(
+                child: CustomDropDownMenu(
+                  items: cubit.clinics.map((e) {
+                    return e.address;
+                  }).toList(),
+                  hintText: S.of(context).selectClinic,
+                  selectedValue: cubit.selectedClinic?.address ??
+                      S.of(context).selectClinic,
+                  onItemSelected: (v) {
+                    final selectedClinic = cubit.clinics.firstWhere(
+                      (clinic) => clinic.address == v,
+                    );
+                    cubit.setSelectedClinic(selectedClinic);
+                    cubit.getPatients(
+                      selectedClinic.id.toString(),
+                      DateTime.now(),
+                    );
+                  },
+                ).paddingSymmetric(horizontal: 20.w, vertical: 10.h),
+              ),
               SliverList(
                   delegate: SliverChildBuilderDelegate(
-                childCount: cubit.patients?.length ?? 2,
+                childCount:
+                    cubit.patients.isEmpty && state is ViewPatientsLoading
+                        ? 2
+                        : cubit.patients.length,
                 (context, index) {
-                  return cubit.patients == null
+                  return cubit.patients.isEmpty && state is ViewPatientsLoading
                       ? CustomAppShimmer(
-                          height: 60.h,
+                          height: 80.h,
                           width: double.infinity,
-                          borderRaduis: 100.r,
+                          borderRaduis: 8.r,
                         ).paddingSymmetric(vertical: 10.h, horizontal: 10.w)
-                      : cubit.patients!.isEmpty
-                          ? Center(
-                              child: CustomImageView(
-                                imagePath: AssetsPng.appLogo,
-                              ),
-                            )
-                          : ViewPatientRow(
-                              viewPatientResponseModel: cubit.patients![index]);
+                      : ViewPatientRow(
+                              viewPatientResponseModel: cubit.patients[index])
+                          .paddingSymmetric(vertical: 16.h);
                 },
-              ))
+              )),
+              if (cubit.patients.isEmpty && state is! ViewPatientsLoading)
+                SliverFillRemaining(child: CustomEmptyWidget.appointments()),
             ],
           );
         },

@@ -140,11 +140,91 @@ class S {
     );
   }
 
+  /// `Please select an image`
+  String get pleaseSelectImage {
+    return Intl.message(
+      'Please select an image',
+      name: 'pleaseSelectImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Location`
+  String get changeLocation {
+    return Intl.message(
+      'Change Location',
+      name: 'changeLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Tap to attach file`
   String get tapToAttachFile {
     return Intl.message(
       'Tap to attach file',
       name: 'tapToAttachFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AI Model Confidence`
+  String get aiModelConfedence {
+    return Intl.message(
+      'AI Model Confidence',
+      name: 'aiModelConfedence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Result Image`
+  String get viewResultImage {
+    return Intl.message(
+      'View Result Image',
+      name: 'viewResultImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message(
+      'Accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message(
+      'Reject',
+      name: 'reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tumor Type`
+  String get tumorType {
+    return Intl.message(
+      'Tumor Type',
+      name: 'tumorType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preparing chat with `
+  String get preparingChatWith {
+    return Intl.message(
+      'Preparing chat with ',
+      name: 'preparingChatWith',
       desc: '',
       args: [],
     );
@@ -170,11 +250,33 @@ class S {
     );
   }
 
+  /// `In case of rejecting the result or accepting it, please provide your reasoning.`
+  String get inCaseOfRejectingTheResulOrAcceptItPleaseProvideYourReasoning {
+    return Intl.message(
+      'In case of rejecting the result or accepting it, please provide your reasoning.',
+      name: 'inCaseOfRejectingTheResulOrAcceptItPleaseProvideYourReasoning',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Remmber Me`
   String get remmberMe {
     return Intl.message(
       'Remmber Me',
       name: 'remmberMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please write your findings about this result. Keep in mind this will be shown to the patient.`
+  String
+      get pleaseWriteYourFindingsAboutThisResultKeepInMindThisWillBeShownToThePatient {
+    return Intl.message(
+      'Please write your findings about this result. Keep in mind this will be shown to the patient.',
+      name:
+          'pleaseWriteYourFindingsAboutThisResultKeepInMindThisWillBeShownToThePatient',
       desc: '',
       args: [],
     );

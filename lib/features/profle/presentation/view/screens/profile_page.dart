@@ -98,6 +98,12 @@ class ProfilePage extends StatelessWidget {
                 context.navigateTo(AppRoutes.editProfileScreen);
               },
               title: S.of(context).accountSetting),
+          if (AppConstants.user!.role == "Patient")
+            _buildSettingsRow(
+                title: S.of(context).changeLocation,
+                onTap: () {
+                  context.navigateTo(AppRoutes.locationScreen);
+                }),
           _buildSettingsRow(
               title: S.of(context).resetPassword,
               onTap: () {

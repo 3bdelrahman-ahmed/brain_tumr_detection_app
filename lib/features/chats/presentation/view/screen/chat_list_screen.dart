@@ -10,7 +10,18 @@ import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../widgets/chat_tile.dart';
 
-class ChatListScreen extends StatelessWidget {
+class ChatListScreen extends StatefulWidget {
+  @override
+  State<ChatListScreen> createState() => _ChatListScreenState();
+}
+
+class _ChatListScreenState extends State<ChatListScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ChatsCubit>().loadConversations(refresh: true);
+  }
+
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ChatsCubit>();

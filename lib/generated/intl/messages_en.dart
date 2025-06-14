@@ -23,11 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "ContactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "addSlots": MessageLookupByLibrary.simpleMessage("Add Slots"),
         "address": MessageLookupByLibrary.simpleMessage("address: "),
         "age": MessageLookupByLibrary.simpleMessage("Age: "),
+        "aiModelConfedence":
+            MessageLookupByLibrary.simpleMessage("AI Model Confidence"),
         "appName": MessageLookupByLibrary.simpleMessage("NeuroTum AI"),
         "appointmentCancelled":
             MessageLookupByLibrary.simpleMessage("Appointment Cancelled"),
@@ -47,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changeLocation":
+            MessageLookupByLibrary.simpleMessage("Change Location"),
         "chat": MessageLookupByLibrary.simpleMessage("Chat"),
         "chooseDay": MessageLookupByLibrary.simpleMessage("Choose day"),
         "chooseLanguage":
@@ -138,6 +143,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "gotIt": MessageLookupByLibrary.simpleMessage("Got it"),
         "heyThereLogin": MessageLookupByLibrary.simpleMessage(
             "Hey there! Ready to pick up where you left off ? Log in to continue your health journey"),
+        "inCaseOfRejectingTheResulOrAcceptItPleaseProvideYourReasoning":
+            MessageLookupByLibrary.simpleMessage(
+                "In case of rejecting the result or accepting it, please provide your reasoning."),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid Email"),
         "invalidPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Invalid Phone Number"),
@@ -221,17 +229,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnter": MessageLookupByLibrary.simpleMessage("Please enter "),
         "pleasePickAFileToUpload": MessageLookupByLibrary.simpleMessage(
             "Please pick a file to upload"),
+        "pleaseSelectImage":
+            MessageLookupByLibrary.simpleMessage("Please select an image"),
         "pleaseSelectTimeSlot":
             MessageLookupByLibrary.simpleMessage("Please select time slot"),
         "pleaseUplaodClearImage": MessageLookupByLibrary.simpleMessage(
             "Please upload a clear and high-quality MRI scan image so we can provide a more accurate analysis"),
         "pleaseUploadYourCredentials": MessageLookupByLibrary.simpleMessage(
             "Please upload your credentials (medical license, certification, or hospital ID) to verify your physician status."),
+        "pleaseWriteYourFindingsAboutThisResultKeepInMindThisWillBeShownToThePatient":
+            MessageLookupByLibrary.simpleMessage(
+                "Please write your findings about this result. Keep in mind this will be shown to the patient."),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
         "posts": MessageLookupByLibrary.simpleMessage("Posts"),
+        "preparingChatWith":
+            MessageLookupByLibrary.simpleMessage("Preparing chat with "),
         "profileImage": MessageLookupByLibrary.simpleMessage("Profile Image"),
         "reScheduled": MessageLookupByLibrary.simpleMessage("Rescheduled"),
         "reasoning": MessageLookupByLibrary.simpleMessage("Reasoning"),
+        "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "remmberMe": MessageLookupByLibrary.simpleMessage("Remmber Me"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "reportIsReady":
@@ -312,7 +328,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "To help you find doctors near you and provide recommendations, we need to know your location."),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
+        "tumorType": MessageLookupByLibrary.simpleMessage("Tumor Type"),
+
         "underReview": MessageLookupByLibrary.simpleMessage("Under review"),
+
         "upComing": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "uploadYourFileHere":
             MessageLookupByLibrary.simpleMessage("Upload your File here"),
@@ -326,6 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "viewProf": MessageLookupByLibrary.simpleMessage("View Profile"),
         "viewProfile": MessageLookupByLibrary.simpleMessage("View Profile"),
         "viewReport": MessageLookupByLibrary.simpleMessage("View Report"),
+        "viewResultImage":
+            MessageLookupByLibrary.simpleMessage("View Result Image"),
         "viewed": MessageLookupByLibrary.simpleMessage("Viewed"),
         "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "welcomeAbroadSentence": MessageLookupByLibrary.simpleMessage(
