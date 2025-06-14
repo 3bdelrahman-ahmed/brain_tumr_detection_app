@@ -18,9 +18,7 @@ class ReportsScreen extends StatefulWidget {
 }
 
 class _ReportsScreenState extends State<ReportsScreen> with RouteAware {
-
-
-    @override
+  @override
   void didPopNext() {
     // Called when coming back to this screen
     super.didPopNext();
@@ -30,7 +28,8 @@ class _ReportsScreenState extends State<ReportsScreen> with RouteAware {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context)! as PageRoute<dynamic>);
+    routeObserver.subscribe(
+        this, ModalRoute.of(context)! as PageRoute<dynamic>);
   }
 
   @override
@@ -80,8 +79,7 @@ class _ReportsScreenState extends State<ReportsScreen> with RouteAware {
                 );
               },
             ));
-          } else if (state is GetAssignedScansSuccess ||
-              cubit.reports!.reports!.isNotEmpty) {
+          } else if (cubit.reports!.reports!.isNotEmpty) {
             return SliverList(
                 delegate: SliverChildBuilderDelegate(
               childCount: cubit.reports!.reports!.length +
