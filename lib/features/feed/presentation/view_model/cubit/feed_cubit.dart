@@ -12,11 +12,13 @@ part 'feed_state.dart';
 @singleton
 class FeedCubit extends Cubit<FeedState> {
   final FeedRepository repository;
+
   FeedCubit({required this.repository}) : super(FeedInitial());
 
   final ScrollController feedScrollController = ScrollController();
 
   PostsResponseModel? posts;
+  bool isFabOpen = false;
 
   int cursor = 0;
 
@@ -142,5 +144,10 @@ class FeedCubit extends Cubit<FeedState> {
         emit(ToogleSaveSuccess(postId: postId, isSaved: post.isSaved!));
       },
     );
+
+
+  void openFabGroup() {
+    isFabOpen = !isFabOpen;
+    emit(FabChangeState(isFabOpen));
   }
 }

@@ -37,7 +37,7 @@ class DoctorClinicModel {
     return DoctorClinicModel(
       id: json['id'],
       address: clinicsList?.first.address ?? json['address'],
-      phoneNumber: clinicsList?.first.phoneNumber ?? json['phoneNumber'],
+      phoneNumber: json['doctorPhoneNumber'] ?? json['phoneNumber'],
       doctorProfilePicture: json['doctorProfilePicture'] ?? json['profilePicture'],
       averageStarRating: (json['averageStarRating'] as num).toDouble(),
       doctorFullName: json['doctorFullName'] ?? json['fullName'],

@@ -18,12 +18,13 @@ class DoctorDataWidget extends StatelessWidget {
       required this.name,
       required this.rating,
       required this.location,
-      required this.imageUrl})
+      required this.imageUrl, this.phoneNumber})
       : super(key: key);
   final String name;
   final double rating;
   final String location;
   final String? imageUrl;
+  final String? phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +66,8 @@ class DoctorDataWidget extends StatelessWidget {
                       S.of(context).sessions, "1500"),
                   _buildDetailsRow(AssetsSvg.experience.toSVG(),
                       S.of(context).experience, "10 years"),
+                  _buildDetailsRow(AssetsSvg.experience.toSVG(),
+                      "${S.of(context).clinicPhoneNumber}: ", phoneNumber??"01122224564"),
                 ],
               ),
             ),

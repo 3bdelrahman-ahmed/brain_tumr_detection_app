@@ -12,7 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_app_shimmer.dart';
 import '../../../../../core/components/widgets/custom_empty_widget.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
+
 import '../../../../../observers/route_observer.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/post_card.dart';
 
 class FeedPage extends StatefulWidget {
@@ -153,31 +155,97 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
           },
         ),
 
-        /// Floating Action Button (FAB)
-        Positioned(
-          bottom: 100.h,
-          right: 20.w,
-          child: Tooltip(
-            message: "Add a new post",
-            textStyle: AppTextStyles.font12BlueW700,
-            // preferBelow: false,
-            decoration: BoxDecoration(color: AppColors.background),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.addPostScreen);
-              },
-              child: Container(
-                padding: EdgeInsets.all(10.r),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.buttonsAndNav,
-                ),
-                child: CustomImageView(
-                  svgPath: AssetsSvg.plus.toSVG(),
-                ),
+        // FAB Group
+        BlocBuilder<FeedCubit, FeedState>(
+          builder: (context, state) {
+            return Positioned(
+              bottom: 100.h,
+              right: 20.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  // Sub FAB 1
+                  AnimatedSlide(
+                    duration: 300.ms,
+                    offset:
+                        cubit.isFabOpen ? Offset.zero : const Offset(0, 0.3),
+                    child: AnimatedOpacity(
+                      opacity: cubit.isFabOpen ? 1 : 0,
+                      duration: 300.ms,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.medicalHistoryScreen);
+                          cubit.openFabGroup();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 12.h),
+                          padding: EdgeInsets.all(10.r),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.buttonsAndNav,
+                          ),
+                          child: CustomImageView(
+                            height: 24.w,
+                            width: 24.w,
+                            color: AppColors.white,
+                            svgPath: AssetsSvg.noScan.toSVG(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Sub FAB 2
+                  AnimatedSlide(
+                    duration: 300.ms,
+                    offset:
+                        cubit.isFabOpen ? Offset.zero : const Offset(0, 0.3),
+                    child: AnimatedOpacity(
+                      opacity: cubit.isFabOpen ? 1 : 0,
+                      duration: 300.ms,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRoutes.addPostScreen);
+                          cubit.openFabGroup();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 12.h),
+                          padding: EdgeInsets.all(10.r),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.buttonsAndNav,
+                          ),
+                          child: CustomImageView(
+                            height: 24.w,
+                            width: 24.w,
+                            svgPath: AssetsSvg.plus.toSVG(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Main FAB
+                  GestureDetector(
+                    onTap: () {
+                      cubit.openFabGroup();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12.r),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.buttonsAndNav,
+                      ),
+                      child: Icon(
+                        cubit.isFabOpen ? Icons.close : Icons.menu,
+                        color: AppColors.white,
+                        size: 24.r,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ).animate().flipH(duration: 500.ms),
-          ),
+            );
+          },
         ),
       ],
     );
