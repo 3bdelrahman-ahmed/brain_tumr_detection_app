@@ -42,6 +42,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "areYouSureToCancelAppointment": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to cancel this appointment"),
+        "areYouSureYouWantToDeleteYourPost":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to delete your post?"),
+        "areYouSureyouWantToLogOut": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out?"),
         "asADoctor": MessageLookupByLibrary.simpleMessage("As a Physician"),
         "asAPatient": MessageLookupByLibrary.simpleMessage("As a Patient"),
         "availability": MessageLookupByLibrary.simpleMessage("Availability"),
@@ -200,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No doctors found"),
         "noNotifications":
             MessageLookupByLibrary.simpleMessage("No notifications yet"),
+        "noPostsYet": MessageLookupByLibrary.simpleMessage(
+            "No posts yet, be the first to post"),
         "noReportsYet": MessageLookupByLibrary.simpleMessage("No reports yet"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
             "There are no reviews available at the moment. Patients like you can help by leaving honest feedback"),
@@ -246,6 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseWriteYourFindingsAboutThisResultKeepInMindThisWillBeShownToThePatient":
             MessageLookupByLibrary.simpleMessage(
                 "Please write your findings about this result. Keep in mind this will be shown to the patient."),
+        "posst": MessageLookupByLibrary.simpleMessage("Post"),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
         "postContent": MessageLookupByLibrary.simpleMessage("Post Content"),
         "posts": MessageLookupByLibrary.simpleMessage("Posts"),
@@ -254,6 +262,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Preparing chat with "),
         "profileImage": MessageLookupByLibrary.simpleMessage("Profile Image"),
         "reScheduled": MessageLookupByLibrary.simpleMessage("Rescheduled"),
+        "readLess": MessageLookupByLibrary.simpleMessage("Read Less"),
+        "readMore": MessageLookupByLibrary.simpleMessage("Read More"),
         "reasoning": MessageLookupByLibrary.simpleMessage("Reasoning"),
         "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "remmberMe": MessageLookupByLibrary.simpleMessage("Remmber Me"),

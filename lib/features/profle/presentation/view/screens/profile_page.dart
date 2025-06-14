@@ -98,12 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ListTile(
             leading: CustomImageView(
               svgPath: AssetsSvg.settings.toSVG(),
-            ).animate().rotate(
-                  begin: 0.0,
-                  end: 1.0,
-                  duration: 500.ms,
-                  curve: Curves.easeInOut,
-                ),
+            ),
             title: Text(S.of(context).settings,
                 style: AppTextStyles.font16BlueW700),
             onTap: () {
@@ -112,7 +107,12 @@ class _ProfilePageState extends State<ProfilePage> {
           ).paddingSymmetric(vertical: 20.h),
           _buildSettingsRow(
               onTap: () {
-                context.navigateTo(AppRoutes.editProfileScreen);
+                // Navigator.pop(context); // First close the drawer
+                // WidgetsBinding.instance.addPostFrameCallback((_) {
+                //   if (mounted) {
+                //     context.navigateTo(AppRoutes.editProfileScreen);
+                //   }
+                // });
               },
               title: S.of(context).accountSetting),
           if (AppConstants.user!.role == "Patient")
@@ -288,52 +288,46 @@ class _ProfilePageState extends State<ProfilePage> {
     List<Widget>? subSettings, // add optional sub-settings
   }) {
     return GestureDetector(
-      onTap: () {
-        if (onTap != null) {
-          onTap();
-        }
-      },
-      child: Container(
-        margin: EdgeInsets.only(bottom: 10.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              offset: Offset(0, 2),
-              blurRadius: 6,
-              spreadRadius: 2,
-            )
-          ],
-        ),
-        child: AbsorbPointer(
-          child: ExpansionTile(
-            shape: RoundedRectangleBorder(
-              side: BorderSide.none,
-              borderRadius: BorderRadius.zero,
-            ),
-            collapsedShape: RoundedRectangleBorder(
-              side: BorderSide.none,
-              borderRadius: BorderRadius.zero,
-            ),
-            title: Text(
-              title,
-              style: AppTextStyles.font16BlueW700,
-            ),
-            trailing: Icon(
-              Icons.chevron_right,
-              color: AppColors.buttonsAndNav,
-            ),
-            children: subSettings ?? [], // show sub-settings if available
+        onTap: () {
+          if (onTap != null) {
+            onTap();
+          }
+        },
+        child: Container(
+          margin: EdgeInsets.only(bottom: 10.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.r),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                offset: Offset(0, 2),
+                blurRadius: 6,
+                spreadRadius: 2,
+              )
+            ],
           ),
-        ),
-      ).animate().slide(
-            begin: Offset(0, 1),
-            end: Offset(0, 0),
-            duration: 500.ms,
-            curve: Curves.easeOut,
+          child: AbsorbPointer(
+            child: ExpansionTile(
+              shape: RoundedRectangleBorder(
+                side: BorderSide.none,
+                borderRadius: BorderRadius.zero,
+              ),
+              collapsedShape: RoundedRectangleBorder(
+                side: BorderSide.none,
+                borderRadius: BorderRadius.zero,
+              ),
+              title: Text(
+                title,
+                style: AppTextStyles.font16BlueW700,
+              ),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: AppColors.buttonsAndNav,
+              ),
+              children: subSettings ?? [], // show sub-settings if available
+            ),
           ),
-    );
+        ));
   }
 }

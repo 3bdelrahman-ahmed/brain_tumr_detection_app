@@ -43,6 +43,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "areYouSureToCancelAppointment": MessageLookupByLibrary.simpleMessage(
             "هل انت متأكد انك تريد الغاء الحجز"),
+        "areYouSureYouWantToDeleteYourPost":
+            MessageLookupByLibrary.simpleMessage(
+                "هل أنت متأكد أنك تريد حذف منشورك؟"),
+        "areYouSureyouWantToLogOut": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد تسجيل الخروج؟"),
         "asADoctor": MessageLookupByLibrary.simpleMessage("كطبيب"),
         "asAPatient": MessageLookupByLibrary.simpleMessage("كمريض"),
         "availability": MessageLookupByLibrary.simpleMessage("التوفر"),
@@ -200,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على أطباء"),
         "noNotifications":
             MessageLookupByLibrary.simpleMessage("لا توجد إشعارات"),
+        "noPostsYet": MessageLookupByLibrary.simpleMessage(
+            "لا توجد منشورات حتى الآن. كن أول من ينشر!"),
         "noReportsYet":
             MessageLookupByLibrary.simpleMessage("لا توجد تقارير حتى الآن"),
         "noReviews": MessageLookupByLibrary.simpleMessage(
@@ -247,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseWriteYourFindingsAboutThisResultKeepInMindThisWillBeShownToThePatient":
             MessageLookupByLibrary.simpleMessage(
                 "يرجى كتابة ملاحظاتك حول هذه النتيجة. تذكر أن هذا سيظهر للمريض."),
+        "posst": MessageLookupByLibrary.simpleMessage("منشور"),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
         "postContent": MessageLookupByLibrary.simpleMessage("محتوى المنشور"),
         "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
@@ -256,6 +264,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileImage":
             MessageLookupByLibrary.simpleMessage("صورة الملف الشخصي"),
         "reScheduled": MessageLookupByLibrary.simpleMessage("تم إعادة الجدولة"),
+        "readLess": MessageLookupByLibrary.simpleMessage("اقرأ أقل"),
+        "readMore": MessageLookupByLibrary.simpleMessage("اقرأ المزيد"),
         "reasoning": MessageLookupByLibrary.simpleMessage("المنطق"),
         "reject": MessageLookupByLibrary.simpleMessage("رفض"),
         "remmberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),

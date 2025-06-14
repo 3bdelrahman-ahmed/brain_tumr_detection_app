@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../models/add_comments_model.dart';
+import '../models/add_post_model.dart';
 import '../models/comments_model.dart';
 import '../models/delete_comment_model.dart';
 import '../models/delete_post_model.dart';
@@ -75,6 +76,15 @@ class FeedRepository {
   Future<Either<ApiErrorModel, DeletePostResponseModel>> deletePost(DeletePostRequestModel request) async {
     try {
       final response = await remoteDataSource.deletePost(request);
+      return Right(response);
+    } on Exception catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+
+  Future<Either<ApiErrorModel, AddPostResponseModel>> addPost(AddPostRequestModel request) async {
+    try {
+      final response = await remoteDataSource.addPost(request);
       return Right(response);
     } on Exception catch (e) {
       return Left(ErrorHandler.handle(e));

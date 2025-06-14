@@ -1,5 +1,4 @@
 import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';

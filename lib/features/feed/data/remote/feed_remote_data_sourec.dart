@@ -8,6 +8,7 @@ import 'package:brain_tumr_detection_app/features/feed/data/models/toggle_save_m
 import 'package:brain_tumr_detection_app/foundations/app_urls.dart';
 import 'package:injectable/injectable.dart';
 
+import '../models/add_post_model.dart';
 import '../models/delete_post_model.dart';
 
 @singleton
@@ -66,5 +67,13 @@ class FeedRemoteDataSourec {
       path: "${AppUrls.post}/${request.postId}",
     );
     return DeletePostResponseModel.fromJson(response.data);
+  }
+
+  Future<AddPostResponseModel> addPost(AddPostRequestModel request) async {
+    final response = await AppDio().post(
+      path: AppUrls.post,
+      data: request.toJson(),
+    );
+    return AddPostResponseModel.fromJson(response.data);
   }
 }

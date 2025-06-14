@@ -11,6 +11,10 @@ final class FeedInitial extends FeedState {}
 
 final class FeedLoading extends FeedState {}
 
+final class FeedLoadingMore extends FeedState {
+
+}
+
 final class FabChangeState extends FeedState {
   final bool isFabOpen;
 
@@ -124,3 +128,15 @@ final class DeletePostSuccess extends FeedState {
 final class DeletePostError extends FeedState {
  
 }
+
+
+final class AddPostLoading extends FeedState {}
+final class AddPostSuccess extends FeedState {
+  final String postId;
+
+  const AddPostSuccess({required this.postId});
+
+  @override
+  List<Object> get props => [postId];
+}
+final class AddPostError extends FeedState {}

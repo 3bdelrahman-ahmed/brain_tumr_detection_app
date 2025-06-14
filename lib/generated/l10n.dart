@@ -1492,6 +1492,56 @@ class S {
     );
   }
 
+  /// `Read More`
+  String get readMore {
+    return Intl.message(
+      'Read More',
+      name: 'readMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read Less`
+  String get readLess {
+    return Intl.message(
+      'Read Less',
+      name: 'readLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No posts yet, be the first to post`
+  String get noPostsYet {
+    return Intl.message(
+      'No posts yet, be the first to post',
+      name: 'noPostsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete your post?`
+  String get areYouSureYouWantToDeleteYourPost {
+    return Intl.message(
+      'Are you sure you want to delete your post?',
+      name: 'areYouSureYouWantToDeleteYourPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out?`
+  String get areYouSureyouWantToLogOut {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'areYouSureyouWantToLogOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Welcome to NeuroTum`
   String get firstOnBoardingMessage {
     return Intl.message(
@@ -1687,6 +1737,16 @@ class S {
     return Intl.message(
       'Delete',
       name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post`
+  String get posst {
+    return Intl.message(
+      'Post',
+      name: 'posst',
       desc: '',
       args: [],
     );

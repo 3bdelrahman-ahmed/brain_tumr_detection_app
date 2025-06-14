@@ -3,9 +3,6 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_empty_wi
 import 'package:brain_tumr_detection_app/features/medical_history/presentation/view/widgets/scan_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
-import 'package:brain_tumr_detection_app/core/utils/assets/assets_svg.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/features/medical_history/presentation/view_model/medical_history_cubit.dart';
@@ -30,20 +27,17 @@ class _MedicalHistoryScreenState extends State<MedicalHistoryScreen> {
     _cubit.getPatientScans();
 
     // Attach scroll listener
-    context
-        .read<MedicalHistoryCubit>()
-        .scrollController
-        .addListener(() {
+    context.read<MedicalHistoryCubit>().scrollController.addListener(() {
       if (context
-          .read<MedicalHistoryCubit>()
-          .scrollController
-          .position
-          .pixels >=
-          context
               .read<MedicalHistoryCubit>()
               .scrollController
               .position
-              .maxScrollExtent -
+              .pixels >=
+          context
+                  .read<MedicalHistoryCubit>()
+                  .scrollController
+                  .position
+                  .maxScrollExtent -
               200) {
         final cubit = context.read<MedicalHistoryCubit>();
         cubit.loadMoreScans();
@@ -51,25 +45,29 @@ class _MedicalHistoryScreenState extends State<MedicalHistoryScreen> {
     });
   }
 
-  @override
-  void dispose() {
-    _cubit.scrollController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _cubit.scrollController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+          // leading: IconButton(
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //     },
+          //     icon: Icon(Icons.arrow_back)),
           backgroundColor: AppColors.background,
           elevation: 0,
           centerTitle: true,
           title: Text(
-            S
-                .of(context)
-                .medicalDataManagement,
+            S.of(context).medicalDataManagement,
             style:
-            AppTextStyles.font16BlueW700.copyWith(color: AppColors.black),
+                AppTextStyles.font16BlueW700.copyWith(color: AppColors.black),
           )),
       body: BlocBuilder<MedicalHistoryCubit, MedicalHistoryState>(
         builder: (context, state) {
