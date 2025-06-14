@@ -17,7 +17,7 @@ class DioService {
       receiveTimeout: const Duration(seconds: 30),
       headers: {
         'Content-Type': 'application/json',
-        'Accept-Language': AppConstants.langCode ? 'en' : 'ar'
+        'Accept-Language': AppConstants.langCode ? 'en' : 'en'
       },
     );
 
