@@ -10,6 +10,7 @@ class AppUrls {
   static const String forgetPassword = "Auth/forgetPassword";
   static const String verifyForgetPassword = "Auth/verifyForgetPassword";
   static const String resetPassword = "Auth/resetPassword";
+  static const String addReview = "review";
 
   //Clinic
   static const String getClinicSlots = "Clinic/doctor";

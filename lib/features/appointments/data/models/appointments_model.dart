@@ -41,6 +41,7 @@ class AppointmentsResponseModel {
 class Appointments {
   int? id;
   String? date;
+  int? doctorId;
   String? startTime;
   String? status;
   String? doctorName;
@@ -51,6 +52,7 @@ class Appointments {
       {this.date,
       this.startTime,
       this.status,
+      this.doctorId,
       this.doctorName,
       this.doctorProfilePicture,
       this.id,
@@ -61,9 +63,11 @@ class Appointments {
     id = json['id'];
     startTime = json['startTime'];
     status = json['status'];
+    doctorId = json['doctorId'];
     doctorName = json['doctorName'];
     doctorProfilePicture = json['doctorProfilePicture'];
     address = json['address'];
+    print("doctorID : $doctorId");
   }
 
   Map<String, dynamic> toJson() {
@@ -72,6 +76,7 @@ class Appointments {
     data['startTime'] = this.startTime;
     data['status'] = this.status;
     data['doctorName'] = this.doctorName;
+    data['doctorId'] = this.doctorId;
     data['doctorProfilePicture'] = this.doctorProfilePicture;
     data['address'] = this.address;
     return data;

@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "addANewPost": MessageLookupByLibrary.simpleMessage("Add a new post"),
+        "addReview": MessageLookupByLibrary.simpleMessage("Add Review"),
         "addSlots": MessageLookupByLibrary.simpleMessage("Add Slots"),
         "address": MessageLookupByLibrary.simpleMessage("address: "),
         "age": MessageLookupByLibrary.simpleMessage("Age: "),
@@ -386,6 +387,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Your booking was successful. See you soon!"),
         "yourFileIsBeingUploaded":
             MessageLookupByLibrary.simpleMessage("Your file is being uploaded"),
-        "yourFileName": MessageLookupByLibrary.simpleMessage("Your File Name")
+        "yourFileName": MessageLookupByLibrary.simpleMessage("Your File Name"),
+        "yourReview": MessageLookupByLibrary.simpleMessage("Your Review")
       };
 }

@@ -12,6 +12,7 @@ import '../../../../../core/helper/functions/convert_time_slot_function.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
+import 'add_review_dialog_widget.dart';
 import 'cancel_appointment_dialog_widget.dart';
 
 class DoctorCardAppointment extends StatelessWidget {
@@ -143,6 +144,7 @@ class DoctorCardAppointment extends StatelessWidget {
               //       ),
               //     ],
               //   )
+
               : Container(
                   width: double.infinity,
                   padding:
@@ -177,6 +179,25 @@ class DoctorCardAppointment extends StatelessWidget {
                     ],
                   ),
                 ),
+          if (statusEnum == AppointmentStatus.completed) 16.toHeight,
+          if (statusEnum == AppointmentStatus.completed)
+            CustomButton(
+                raduis: 8.r,
+                text: S.of(context).addReview,
+                onTap: () {
+                  Future.microtask(() {
+                    showDefaultDialog(
+                      context,
+                      child: Padding(
+                        padding: EdgeInsets.all(20.r),
+                        child: BlocProvider.value(
+                          value: cubit,
+                          child: AddReviewDialogWidget(doctorId: appointment.doctorId! ,),
+                        ),
+                      ),
+                    );
+                  });
+                })
         ],
       ).paddingOnly(top: 5.h),
     );

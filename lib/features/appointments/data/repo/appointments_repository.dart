@@ -4,6 +4,7 @@ import 'package:brain_tumr_detection_app/features/appointments/data/models/delet
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../models/review_model.dart';
 import '../remote/appointments_remote_data_source.dart';
 
 @singleton
@@ -25,6 +26,16 @@ class AppointmentsRepository {
   Future<Either<ApiErrorModel,DeleteAppointmentResponseModel>> deleteAppointment(DeleteAppointmentRequestModel query)async{
     try {
       final response = await remoteDataSource.deleteAppointment(query);
+      return Right(response);
+    } on Exception catch (error) {
+      return Left(ErrorHandler.handle(error));
+    }
+  }
+
+  Future<Either<ApiErrorModel, ReviewResponseModel>> addReview(
+      ReviewRequestModel query) async {
+    try {
+      final response = await remoteDataSource.addReview(query);
       return Right(response);
     } on Exception catch (error) {
       return Left(ErrorHandler.handle(error));
