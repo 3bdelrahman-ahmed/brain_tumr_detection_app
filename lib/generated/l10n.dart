@@ -1512,6 +1512,26 @@ class S {
     );
   }
 
+  /// `Add Review`
+  String get addReview {
+    return Intl.message(
+      'Add Review',
+      name: 'addReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Review`
+  String get yourReview {
+    return Intl.message(
+      'Your Review',
+      name: 'yourReview',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No posts yet, be the first to post`
   String get noPostsYet {
     return Intl.message(

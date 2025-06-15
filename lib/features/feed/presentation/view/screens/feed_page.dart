@@ -47,8 +47,13 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
   @override
   void didPopNext() {
     super.didPopNext();
-    cubit = context.read<FeedCubit>();
-    cubit.fetchFeed();
+
+    if (!mounted) return;
+
+    Future.microtask(() {
+      if (!mounted) return;
+      context.read<FeedCubit>().fetchFeed();
+    });
   }
 
   @override
@@ -59,7 +64,7 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
 
     cubit.scrollController.addListener(() {
       if (cubit.scrollController.position.pixels >=
-              cubit.scrollController.position.maxScrollExtent - 100 &&
+              cubit.scrollController.position.maxScrollExtent &&
           cubit.state is! FeedLoading &&
           cubit.posts?.nextCursor != null &&
           cubit.posts!.nextCursor != 0) {
@@ -139,7 +144,7 @@ class _FeedPageState extends State<FeedPage> with RouteAware {
                       }
                       return Padding(
                         padding:
-                            EdgeInsets.only(top: 40.h, left: 16.w, right: 16.w),
+                            EdgeInsets.only(top: 48.h, left: 16.w, right: 16.w),
                         child: PostCard(post: posts[index]),
                       );
                     },

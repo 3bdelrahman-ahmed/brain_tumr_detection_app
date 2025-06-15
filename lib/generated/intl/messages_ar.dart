@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "addANewPost": MessageLookupByLibrary.simpleMessage("اضف منشور جديد"),
+        "addReview": MessageLookupByLibrary.simpleMessage("إضافة مراجعة"),
         "addSlots": MessageLookupByLibrary.simpleMessage("إضافة مواعيد"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان: "),
         "age": MessageLookupByLibrary.simpleMessage("العمر: "),
@@ -381,6 +382,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تأكيد حجزك , نراك قريبا"),
         "yourFileIsBeingUploaded":
             MessageLookupByLibrary.simpleMessage("جاري رفع ملفك"),
-        "yourFileName": MessageLookupByLibrary.simpleMessage("اسم ملفك")
+        "yourFileName": MessageLookupByLibrary.simpleMessage("اسم ملفك"),
+        "yourReview": MessageLookupByLibrary.simpleMessage("مراجعتك")
       };
 }

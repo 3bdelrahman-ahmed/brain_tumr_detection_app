@@ -16,3 +16,16 @@ final class AppointmentCancelled extends AppointmentState {}
 final class DeleteAppointmentLoadingState extends AppointmentState{}
 final class DeleteAppointmentSuccessState extends AppointmentState{}
 final class DeleteAppointmentErrorState extends AppointmentState{}
+
+
+final class AddReviewLoadingState extends AppointmentState{}
+final class AddReviewSuccessState extends AppointmentState{}
+final class AddReviewErrorState extends AppointmentState{}
+
+final class ReviewRatingChangedState extends AppointmentState {
+  final int rating;
+
+  ReviewRatingChangedState(this.rating);
+
+  
+}

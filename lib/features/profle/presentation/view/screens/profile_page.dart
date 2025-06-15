@@ -108,19 +108,22 @@ class _ProfilePageState extends State<ProfilePage> {
           ).paddingSymmetric(vertical: 20.h),
           _buildSettingsRow(
               onTap: () {
-                // Navigator.pop(context); // First close the drawer
-                // WidgetsBinding.instance.addPostFrameCallback((_) {
-                //   if (mounted) {
-                //     context.navigateTo(AppRoutes.editProfileScreen);
-                //   }
-                // });
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (mounted) {
+                    context.navigateTo(AppRoutes.editProfileScreen);
+                  }
+                });
               },
               title: S.of(context).accountSetting),
           if (AppConstants.user!.role == "Patient")
             _buildSettingsRow(
                 title: S.of(context).changeLocation,
                 onTap: () {
-                  context.navigateTo(AppRoutes.locationScreen);
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (mounted) {
+                      context.navigateTo(AppRoutes.locationScreen);
+                    }
+                  });
                 }),
           _buildSettingsRow(
               title: S.of(context).resetPassword,
@@ -332,6 +335,3 @@ class _ProfilePageState extends State<ProfilePage> {
         ));
   }
 }
-
-
-

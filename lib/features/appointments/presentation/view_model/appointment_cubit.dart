@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../data/models/delete_appointment_model.dart';
+import '../../data/models/review_model.dart';
 import '../../data/repo/appointments_repository.dart';
 
 part 'appointment_state.dart';
@@ -108,5 +109,37 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         emit(DeleteAppointmentSuccessState());
       },
     );
+  }
+
+  TextEditingController reviewController = TextEditingController();
+  int stars = 0;
+  final reviewFormKey = GlobalKey<FormState>();
+  setrating(int rating) {
+    stars = rating;
+    print("Rating changed: $stars");
+    emit(ReviewRatingChangedState(stars));
+  }
+
+  Future<void> addReview(int appointmentId, BuildContext context) async {
+    if (reviewFormKey.currentState!.validate()) {
+      emit(AddReviewLoadingState());
+      final result = await appointmentRepository.addReview(
+        ReviewRequestModel(
+          doctorId: appointmentId.toString(),
+          rating: stars,
+          comment: reviewController.text.trim(),
+        ),
+      );
+      result.fold(
+        (error) {
+          emit(AddReviewErrorState());
+        },
+        (data) {
+          Navigator.pop(context);
+          reviewController.clear();
+          emit(AddReviewSuccessState());
+        },
+      );
+    }
   }
 }
