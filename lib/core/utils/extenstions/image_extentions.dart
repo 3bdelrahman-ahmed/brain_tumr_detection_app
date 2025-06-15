@@ -1,13 +1,7 @@
-
-
 extension SvgFixedExtension on String {
-  String toSVG() =>
-      'assets/svg/$this.svg';
-
+  String toSVG() => 'assets/svg/$this.svg';
 }
 
 extension PngFixedExtenstion on String {
-  String toPng() =>
-      'assets/image/$this.png';
-} 
-
+  String toPng() => 'assets/image/$this.png';
+}

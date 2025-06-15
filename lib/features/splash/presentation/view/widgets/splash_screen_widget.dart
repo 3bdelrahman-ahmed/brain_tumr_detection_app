@@ -1,28 +1,59 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/components/widgets/custom_onboarding_background.dart';
+import 'package:brain_tumr_detection_app/core/config/app_routing.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/image_extentions.dart';
-import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
-import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
+import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
+import 'package:brain_tumr_detection_app/foundations/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../../core/utils/assets/assets_png.dart';
 
-class SplashScreenWidget extends StatelessWidget {
+class SplashScreenWidget extends StatefulWidget {
   const SplashScreenWidget({super.key});
 
   @override
+  State<SplashScreenWidget> createState() => _SplashScreenWidgetState();
+}
+
+class _SplashScreenWidgetState extends State<SplashScreenWidget> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      navigateToHome();
+    });
+    // navigateToHome();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: CustomImageView(
-            imagePath: AssetsPng.appLogo.toPng(),
-          ),
-        ),
-        Text(
-          "NEROTUM AI",
-          style: AppTextStyles.font24GreenW500,
-        ).paddingAll(20)
-      ],
+    return CustomOnboardingBackground(
+        widget: Center(
+      child: CustomImageView(
+        imagePath: AssetsPng.appLogo.toPng(),
+        height: 250.h,
+      ).animate().fadeIn(duration: Duration(seconds: 2)),
+    ));
+  }
+
+  void navigateToHome() {
+    Future.delayed(
+      const Duration(seconds: 4),
+      () async {
+        AppConstants.getOnBoardingBoolean().then((value) {
+          if (!value) {
+            Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreen);
+          } else {
+            AppConstants.getToken().then((val) {
+              if (val.toString().isNotEmpty && AppConstants.user != null) {
+                Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
+              } else {
+                Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
+              }
+            });
+          }
+        });
+      },
     );
   }
 }

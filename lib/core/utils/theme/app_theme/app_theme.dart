@@ -6,5 +6,8 @@ ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.background,
   primaryColor: AppColors.buttonsAndNav,
   fontFamily: "Poppins",
-   buttonTheme: const ButtonThemeData(buttonColor: AppColors.buttonsAndNav),
+  bottomSheetTheme: const BottomSheetThemeData(
+    backgroundColor: AppColors.white,
+  ),
+  buttonTheme: const ButtonThemeData(buttonColor: AppColors.buttonsAndNav),
 );

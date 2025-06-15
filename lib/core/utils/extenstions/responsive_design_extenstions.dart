@@ -21,5 +21,6 @@ extension ResponsiveExtensions on num {
   /// Get empty width space based on screen width
   Widget get toWidth => SizedBox(width: w);
 
-  static BuildContext get _context => NavigationExtensions.navigatorKey.currentContext!;
+  static BuildContext get _context =>
+      NavigationExtensions.navigatorKey.currentContext!;
 }

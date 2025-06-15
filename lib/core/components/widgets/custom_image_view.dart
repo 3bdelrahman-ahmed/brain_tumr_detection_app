@@ -11,7 +11,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/assets/assets_png.dart';
 import '../../utils/theme/colors/app_colors.dart';
 
-
 class CustomImageView extends StatelessWidget {
   ///[url] is required parameter for fetching network image
   String? url;
@@ -54,8 +53,7 @@ class CustomImageView extends StatelessWidget {
     this.border,
   });
 
-    static String placeHolder = AssetsPng.appLogo.toPng();
-
+  static String placeHolder = AssetsPng.appLogo.toPng();
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +68,12 @@ class CustomImageView extends StatelessWidget {
   Widget _buildWidget(context) {
     return Padding(
       padding: margin ?? EdgeInsets.zero,
-      child: InkWell(
-        onTap: onTap,
-        child: _buildCircleImage(),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: _buildCircleImage(),
+        ),
       ),
     );
   }
@@ -105,22 +106,25 @@ class CustomImageView extends StatelessWidget {
   }
 
   Widget _buildePlaceHolder() {
-    return Container(
-      width: width,
-      height: height,
-      decoration: const BoxDecoration(
-        color: Color(0xFFEEEEEE),
-      ),
-      child: Center(
-        child: SizedBox(
-          width: 30.w,
-          height: 30.w,
-          child: CircularProgressIndicator(
-            color: AppColors.buttonsAndNav,
-            backgroundColor: AppColors.buttonsAndNav.withAlpha(55),
-            // value: .1,
+    return Material(
+      color: Colors.transparent,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: const BoxDecoration(
+          color: Color(0xFFEEEEEE),
+        ),
+        child: Center(
+          child: SizedBox(
+            width: 30.w,
+            height: 30.w,
+            child: CircularProgressIndicator(
+              color: AppColors.buttonsAndNav,
+              backgroundColor: AppColors.buttonsAndNav.withAlpha(55),
+              // value: .1,
 
-            strokeCap: StrokeCap.round,
+              strokeCap: StrokeCap.round,
+            ),
           ),
         ),
       ),

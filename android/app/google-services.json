@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "106502764517",
+    "project_id": "nuerotum",
+    "storage_bucket": "nuerotum.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106502764517:android:d21239d0525d187b00a10c",
+        "android_client_info": {
+          "package_name": "com.example.brain_tumr_detection_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVlHHiSHqG4-JQ2W-zTP63Ra3_xlHrMBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
