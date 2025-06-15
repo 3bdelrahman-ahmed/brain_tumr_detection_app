@@ -18,8 +18,8 @@ class GetDoctorRequestModel {
       pageSize: json['pageSize'],
       pageIndex: json['pageIndex'],
       search: json['search'],
-      long: json['long'],
-      lat: json['lat'],
+      long: json['longitude'],
+      lat: json['latitude'],
     );
   }
 
@@ -28,8 +28,8 @@ class GetDoctorRequestModel {
       'pageSize': pageSize,
       'pageIndex': pageIndex,
       'search': search,
-      'long': long,
-      'lat': lat,
+      'longitude': long,
+      'latitude': lat,
     };
   }
 }
