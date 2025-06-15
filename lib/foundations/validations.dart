@@ -1,3 +1,7 @@
+import 'package:brain_tumr_detection_app/generated/l10n.dart';
+import 'package:flutter/material.dart';
+
+import '../core/utils/extenstions/navigation_extenstions.dart';
 import '../core/utils/strings/app_string.dart';
 
 enum ValidationType {
@@ -56,11 +60,11 @@ bool isValidFullName(String fullName) {
 }
 
 RegExp emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
-
+BuildContext context = NavigationExtensions.navigatorKey.currentContext!;
 String? isRequired(String val, String fieldName) {
   if (val.trim().isEmpty) {
     // Trim spaces to prevent false positives
-    return '${AppStrings.pleaseEnter} $fieldName.';
+    return '${S.of(context).pleaseEnter} $fieldName.';
   }
   return null;
 }

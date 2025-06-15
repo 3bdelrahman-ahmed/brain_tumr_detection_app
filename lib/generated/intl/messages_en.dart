@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "addANewPost": MessageLookupByLibrary.simpleMessage("Add a new post"),
+        "addClinic": MessageLookupByLibrary.simpleMessage("Add Clinic"),
         "addReview": MessageLookupByLibrary.simpleMessage("Add Review"),
         "addSlots": MessageLookupByLibrary.simpleMessage("Add Slots"),
         "address": MessageLookupByLibrary.simpleMessage("address: "),
@@ -66,9 +67,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "Click on a day to show available time slots"),
         "clinic": MessageLookupByLibrary.simpleMessage("Clinic"),
+        "clinicAddedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Clinic added successfully"),
         "clinicLicense": MessageLookupByLibrary.simpleMessage("Clinic License"),
         "clinicPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Clinic Phone Number"),
+        "clinicsManagement":
+            MessageLookupByLibrary.simpleMessage("Clinics Management"),
         "comment": MessageLookupByLibrary.simpleMessage("Comment"),
         "comments": MessageLookupByLibrary.simpleMessage("Comments"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),

@@ -125,6 +125,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     }
                   });
                 }),
+          if (AppConstants.user!.role == "Doctor")
+            _buildSettingsRow(
+                title: S.of(context).clinicsManagement,
+                onTap: () {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (mounted) {
+                      context.navigateTo(AppRoutes.clinicManagement);
+                    }
+                  });
+                }),
           _buildSettingsRow(
               title: S.of(context).resetPassword,
               onTap: () {

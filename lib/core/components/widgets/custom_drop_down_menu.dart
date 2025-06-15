@@ -71,10 +71,12 @@ class CustomDropDownMenuState extends State<CustomDropDownMenu> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(item,
-                        textAlign: TextAlign.start,
-                        style: AppTextStyles.font15BlackW700
-                            .copyWith(fontSize: 16.sp))
+                    Flexible(
+                      child: Text(item,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.font15BlackW700
+                              .copyWith(fontSize: 16.sp)),
+                    )
                   ],
                 ),
                 if (item != widget.items[widget.items.length - 1])
