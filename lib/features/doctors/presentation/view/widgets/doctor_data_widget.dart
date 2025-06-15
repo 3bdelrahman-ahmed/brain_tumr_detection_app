@@ -18,7 +18,8 @@ class DoctorDataWidget extends StatelessWidget {
       required this.name,
       required this.rating,
       required this.location,
-      required this.imageUrl, this.phoneNumber})
+      required this.imageUrl,
+      this.phoneNumber})
       : super(key: key);
   final String name;
   final double rating;
@@ -62,12 +63,14 @@ class DoctorDataWidget extends StatelessWidget {
                       S.of(context).location, location),
                   _buildDetailsRow(AssetsSvg.country.toSVG(),
                       S.of(context).country, "Egypt"),
-                  _buildDetailsRow(AssetsSvg.sessions.toSVG(),
-                      S.of(context).sessions, "1500"),
-                  _buildDetailsRow(AssetsSvg.experience.toSVG(),
-                      S.of(context).experience, "10 years"),
-                  _buildDetailsRow(AssetsSvg.experience.toSVG(),
-                      "${S.of(context).clinicPhoneNumber}: ", phoneNumber??"01122224564"),
+                  // _buildDetailsRow(AssetsSvg.sessions.toSVG(),
+                  //     S.of(context).sessions, "1500"),
+                  // _buildDetailsRow(AssetsSvg.experience.toSVG(),
+                  //     S.of(context).experience, "10 years"),
+                  _buildDetailsRow(
+                      AssetsSvg.experience.toSVG(),
+                      "${S.of(context).clinicPhoneNumber}: ",
+                      phoneNumber ?? "01122224564"),
                 ],
               ),
             ),

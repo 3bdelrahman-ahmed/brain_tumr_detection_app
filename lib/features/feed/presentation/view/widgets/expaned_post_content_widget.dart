@@ -1,6 +1,7 @@
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/helper/functions/arabic_or_english_function.dart';
 import '../../../../../generated/l10n.dart';
 
 class ExpandablePostText extends StatefulWidget {
@@ -42,6 +43,7 @@ class _ExpandablePostTextState extends State<ExpandablePostText> {
             maxLines: _expanded ? null : 3,
             overflow: _expanded ? TextOverflow.visible : TextOverflow.ellipsis,
             style: widget.style.copyWith(fontSize: 16.sp),
+            textDirection: getTextDirection(widget.text),
           ),
           if (isOverflowing)
             GestureDetector(

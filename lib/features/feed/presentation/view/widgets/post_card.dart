@@ -2,6 +2,7 @@ import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_vi
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_profile_image.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_like_button.dart';
 import 'package:brain_tumr_detection_app/core/components/widgets/like_button/custom_save_button.dart';
+import 'package:brain_tumr_detection_app/core/helper/functions/arabic_or_english_function.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/format_posts_time_function.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/reach_format_function.dart';
 import 'package:brain_tumr_detection_app/core/helper/functions/show_default_dialog_function.dart';
@@ -64,10 +65,13 @@ class PostCard extends StatelessWidget {
                   Text(
                     post.title ?? "",
                     style: AppTextStyles.font20GreenW700,
+                    textAlign: TextAlign.center,
+                    textDirection: getTextDirection(post.title ?? ""),
                   ),
                   5.toHeight,
                   ExpandablePostText(
                     text: post.content ?? "",
+                    
                     style: AppTextStyles.font12LightGreenW500
                         .copyWith(fontSize: 16.sp),
                   ),

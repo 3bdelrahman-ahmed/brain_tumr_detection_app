@@ -54,7 +54,7 @@ class CustomDropDownMenuState extends State<CustomDropDownMenu> {
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       constraints: BoxConstraints(
-          minWidth: MediaQuery.of(context).size.width - 40.w, maxHeight: 224.h),
+          minWidth: MediaQuery.of(context).size.width - 80.w, maxHeight: 224.h),
       onSelected: (String value) {
         setState(() {
           widget.selectedValue = value;
