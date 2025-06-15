@@ -24,6 +24,7 @@ class AppUrls {
   static const String editSlot = "Clinic/slot/";
   static const String assignedScans = "MriScan/assignedScans";
   static const String getDoctorById = "Doctor/";
+  static const String addClinic = "Clinic";
 
 
   //Chat

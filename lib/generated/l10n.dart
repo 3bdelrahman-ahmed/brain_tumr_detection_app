@@ -1502,11 +1502,41 @@ class S {
     );
   }
 
+  /// `Clinic added successfully`
+  String get clinicAddedSuccessfully {
+    return Intl.message(
+      'Clinic added successfully',
+      name: 'clinicAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Read Less`
   String get readLess {
     return Intl.message(
       'Read Less',
       name: 'readLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clinics Management`
+  String get clinicsManagement {
+    return Intl.message(
+      'Clinics Management',
+      name: 'clinicsManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Clinic`
+  String get addClinic {
+    return Intl.message(
+      'Add Clinic',
+      name: 'addClinic',
       desc: '',
       args: [],
     );

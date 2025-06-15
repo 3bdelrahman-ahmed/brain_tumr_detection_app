@@ -21,6 +21,12 @@ import '../../../features/chats/data/remote/chat_data_source.dart' as _i104;
 import '../../../features/chats/data/repository/chat_repository.dart' as _i390;
 import '../../../features/chats/presentation/view_model/chats_cubit.dart'
     as _i1039;
+import '../../../features/clincs_management/data/remote/clinic_management_remote_data_source.dart'
+    as _i127;
+import '../../../features/clincs_management/data/repo/clinic_management_repository.dart'
+    as _i355;
+import '../../../features/clincs_management/presentation/view_model/cubit/clinics_management_cubit.dart'
+    as _i257;
 import '../../../features/contact_us/data/remote/contact_us_remote_data_source.dart'
     as _i1045;
 import '../../../features/contact_us/data/repo/contact_us_repository.dart'
@@ -170,6 +176,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i187.FeedRemoteDataSourec>(
         () => _i187.FeedRemoteDataSourec());
     gh.singleton<_i94.PostSignalRService>(() => _i94.PostSignalRService());
+    gh.singleton<_i127.ClinicManagementRemoteDataSource>(
+        () => _i127.ClinicManagementRemoteDataSource());
     gh.factory<_i300.MedicalHistoryRepository>(() =>
         _i300.MedicalHistoryRepository(
             remoteDataSource: gh<_i953.MedicalHistoryDataSource>()));
@@ -197,8 +205,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i546.DoctorAppointmentRepository>(() =>
         _i546.DoctorAppointmentRepository(
             gh<_i727.DoctorAppointmentDataSource>()));
+    gh.singleton<_i355.ClinicManagementRepository>(() =>
+        _i355.ClinicManagementRepository(
+            remoteDataSource: gh<_i127.ClinicManagementRemoteDataSource>()));
     gh.singleton<_i950.ContactUsRepository>(() => _i950.ContactUsRepository(
         remoteDataSource: gh<_i1045.ContactUsRemoteDataSource>()));
+    gh.factory<_i257.ClinicsManagementCubit>(() => _i257.ClinicsManagementCubit(
+        repository: gh<_i355.ClinicManagementRepository>()));
     gh.factory<_i935.LocationCubit>(
         () => _i935.LocationCubit(gh<_i458.LocationService>()));
     gh.factory<_i390.ChatRepository>(

@@ -4,6 +4,7 @@ import 'package:brain_tumr_detection_app/core/components/screens/rigester__locat
 import 'package:brain_tumr_detection_app/core/data/models/doctor_clinic_model.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chat_list_screen.dart';
 import 'package:brain_tumr_detection_app/features/chats/presentation/view/screen/chats_screen.dart';
+import 'package:brain_tumr_detection_app/features/clincs_management/presentation/view/screen/add_clinic_screen.dart';
 import 'package:brain_tumr_detection_app/features/contact_us/presentation/view_model/cubit/contact_us_cubit.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/screens/doctors_profile.dart';
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view_model/doctors_cubit.dart';
@@ -24,6 +25,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/chats/data/models/chat_preview.dart';
+import '../../features/clincs_management/presentation/view_model/cubit/clinics_management_cubit.dart';
 import '../../features/contact_us/presentation/view/screens/contact_us_screen.dart';
 import '../../features/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import '../../features/login/presentation/view/screens/login_screen.dart';
@@ -41,6 +43,7 @@ class AppRoutes {
   static const String splashScreen = "/splash";
   static const String onBoardingScreen = "/onBoarding";
   static const String loginScreen = "/login";
+  static const String clinicManagement = "/clinicManagement";
   static const String registerScreen = '/rigester';
   static const String editProfileScreen = '/editProfile';
   static const String locationScreen = '/location';
@@ -82,6 +85,15 @@ class AppRouter {
           BlocProvider(
             create: (context) => getIt<NotificationCubit>(),
             child: const NotificationScreen(),
+          ),
+          duration: 300.ms,
+        );
+
+      case AppRoutes.clinicManagement:
+        return animateRouteBuilder(
+          BlocProvider(
+            create: (context) => getIt<ClinicsManagementCubit>(),
+            child: const AddClinicScreen(),
           ),
           duration: 300.ms,
         );

@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSetting":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "addANewPost": MessageLookupByLibrary.simpleMessage("اضف منشور جديد"),
+        "addClinic": MessageLookupByLibrary.simpleMessage("إضافة عيادة"),
         "addReview": MessageLookupByLibrary.simpleMessage("إضافة مراجعة"),
         "addSlots": MessageLookupByLibrary.simpleMessage("إضافة مواعيد"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان: "),
@@ -65,9 +66,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "clickOnTheDayToShow": MessageLookupByLibrary.simpleMessage(
             "انقر على اليوم لإظهار المواعيد المتاحة"),
         "clinic": MessageLookupByLibrary.simpleMessage("العيادة"),
+        "clinicAddedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تمت إضافة العيادة بنجاح"),
         "clinicLicense": MessageLookupByLibrary.simpleMessage("ترخيص العيادة"),
         "clinicPhoneNumber":
             MessageLookupByLibrary.simpleMessage("هاتف العيادة"),
+        "clinicsManagement":
+            MessageLookupByLibrary.simpleMessage("إدارة العيادات"),
         "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
         "comments": MessageLookupByLibrary.simpleMessage("تعليقات"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
