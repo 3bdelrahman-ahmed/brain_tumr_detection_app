@@ -32,6 +32,16 @@ class FullScreenImageViewer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Display the original image in a smaller size
+                    Expanded(
+                      child: CustomImageView(
+                        url: imageUrl,
+                        // width: MediaQuery.of(context).size.width * 0.9,
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    12.toWidth,
+
                     if (orginalImageUrl.isNotEmpty)
                       Expanded(
                         child: CustomImageView(
@@ -41,15 +51,6 @@ class FullScreenImageViewer extends StatelessWidget {
                           fit: BoxFit.contain,
                         ),
                       ),
-                    12.toWidth,
-                    Expanded(
-                      child: CustomImageView(
-                        url: imageUrl,
-                        // width: MediaQuery.of(context).size.width * 0.9,
-                        height: MediaQuery.of(context).size.height * 0.8,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:brain_tumr_detection_app/core/components/widgets/custom_image_view.dart';
+import 'package:brain_tumr_detection_app/core/helper/functions/format_posts_time_function.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/nb_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_design_extenstions.dart';
 import 'package:brain_tumr_detection_app/core/utils/theme/text_styles/app_text_styles.dart';
@@ -79,7 +80,7 @@ class ViewReportScreen extends StatelessWidget {
                             ),
                             3.toHeight,
                             Text(
-                              "${S.of(context).submitted}${formatTimeTo24Hour(report.uploadDate ?? "")}",
+                              "${S.of(context).submitted}${formatPostTime(report.uploadDate ?? "")}",
                               style: AppTextStyles.font12BlueW700,
                             ),
                             3.toHeight,

@@ -26,6 +26,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        
         BlocBuilder<LocationCubit, LocationState>(
           builder: (context, state) {
             if (state is LocationLoading) {

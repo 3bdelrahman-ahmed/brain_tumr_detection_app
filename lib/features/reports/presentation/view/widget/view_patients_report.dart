@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_image_view.dart';
 import '../../../../../core/config/app_routing.dart';
-import '../../../../../core/utils/responsive_helper.dart';
 import '../../../../../core/utils/theme/colors/app_colors.dart';
 import '../../../../../core/utils/theme/text_styles/app_text_styles.dart';
 import '../../../../../foundations/app_constants.dart';
@@ -98,10 +97,8 @@ class ViewPatientsReport extends StatelessWidget {
                           ? S.of(context).viewed
                           : S.of(context).viewReport,
                       onTap: () {
-                        Navigator.pushNamed(
-                            context, AppRoutes.viewReportScreen,
-                            arguments: report
-                            );
+                        Navigator.pushNamed(context, AppRoutes.viewReportScreen,
+                            arguments: report);
                         cubit.onViewReport(index);
                       },
                       backgroundColor: report.isViewed ?? false
