@@ -67,6 +67,7 @@ The app currently uses a TensorFlow Lite (TFLite) model for on-device inference.
 
 📬 Contact
 Developed by @3bdelrahman-ahmed
+Developed by @youssef7221
 ---
 
 Feel free to open an issue or reach out with suggestions or improvements!
