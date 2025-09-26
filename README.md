@@ -101,7 +101,6 @@ flutter_svg: ^2.x.x           # SVG asset support
 
 ## 📱 Screenshots
 
-> **Note**: Add screenshots of your app here showing:
 > - Home screen with brain scan upload
 <img width="720" height="1280" alt="Screenshot_1758902402" src="https://github.com/user-attachments/assets/252fcf8b-102b-4a0f-a6fd-2ef98e4160a2" />
 
