@@ -11,16 +11,18 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
   final String hintText;
   final String? suffixIcon;
   final TextEditingController? controller;
+
   const CustomSliverSearchBar(this.hintText,
       {Key? key, this.controller, this.suffixIcon});
+
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return Container(
-          color: Theme.of(context)
-              .scaffoldBackgroundColor, // Ensures it's not transparent
+          height: maxExtent, // Explicit height to prevent geometry issues
+          color: Theme.of(context).scaffoldBackgroundColor,
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 4.h),
           child: CustomTextField(
             onSuffixTap: () {
@@ -56,12 +58,13 @@ class CustomSliverSearchBar extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 85.h; // Increased height for spacing
+  double get maxExtent => 85.0.h;
+
   @override
-  double get minExtent => 85.h; // Same as max for consistency
+  double get minExtent => 85.0.h;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
+    return oldDelegate != this;
   }
 }

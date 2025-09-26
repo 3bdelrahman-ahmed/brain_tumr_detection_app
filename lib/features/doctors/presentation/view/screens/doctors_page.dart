@@ -9,7 +9,6 @@ import 'package:brain_tumr_detection_app/core/utils/extenstions/responsive_desig
 import 'package:brain_tumr_detection_app/features/doctors/presentation/view/widgets/doctor_card_doctors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/strings/app_string.dart';
 import '../../../../../generated/l10n.dart';
 
 class DoctorsPage extends StatefulWidget {
@@ -50,64 +49,87 @@ class _DoctorsPageState extends State<DoctorsPage> {
     return Scaffold(
       body: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
-          final items = _cubit.doctorsList;
-          final isLoading =
-              state is GetDoctorsClinicsLoading && !state.isPaging;
-          final isLoadingMore =
-              state is GetDoctorsClinicsLoading && state.isPaging;
+          try {
+            final items = _cubit.doctorsList;
+            final isLoading =
+                state is GetDoctorsClinicsLoading && !state.isPaging;
+            final isLoadingMore =
+                state is GetDoctorsClinicsLoading && state.isPaging;
 
-          return CustomScrollView(
-            controller: _scrollController,
-            slivers: [
-              CustomWelcomeAppBar(),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: CustomSliverSearchBar(
-                  suffixIcon: AssetsSvg.cancel,
-                      controller: _cubit.searchController,
-                  S.of(context).searchForDoctor),
-              ),
-              if (isLoading)
-                SliverFillRemaining(
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 10,
-                    itemBuilder: (ctx, i) {
-                      return CustomAppShimmer(
-                        height: 150.h,
-                      ).paddingOnly(top: 13.h, left: 16.w, right: 16.w);
-                    },
-                  ),
-                )
-              else
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (ctx, i) {
-                      return DoctorCardDoctors(
-                        doctor: items[i],
-                      ).paddingOnly(top: 10.h, left: 16.w, right: 16.w);
-                    },
-                    childCount: items.length,
-                  ),
+            return CustomScrollView(
+              controller: _scrollController,
+              slivers: [
+                CustomWelcomeAppBar(),
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: CustomSliverSearchBar(S.of(context).searchForDoctor,
+                      suffixIcon: AssetsSvg.cancel,
+                      controller: _cubit.searchController),
                 ),
-                if(items.isEmpty)
+                if (isLoading)
                   SliverFillRemaining(
-                  child: CustomEmptyWidget.doctors()
-                ),
-              if (isLoadingMore)
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-                    child: CustomAppShimmer(
-                      height: 150.h,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 10,
+                      itemBuilder: (ctx, i) {
+                        return CustomAppShimmer(
+                          height: 150.h,
+                        ).paddingOnly(top: 13.h, left: 16.w, right: 16.w);
+                      },
+                    ),
+                  )
+                else
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (ctx, i) {
+                        // Add bounds checking to prevent index out of range errors
+                        if (i < 0 || i >= items.length) {
+                          return const SizedBox.shrink();
+                        }
+                        return DoctorCardDoctors(
+                          doctor: items[i],
+                        ).paddingOnly(top: 10.h, left: 16.w, right: 16.w);
+                      },
+                      childCount: items.length,
                     ),
                   ),
-                ),
-              SliverPadding(padding: EdgeInsets.symmetric(vertical: 65.h)),
-            ],
-          );
+                if (items.isEmpty)
+                  SliverFillRemaining(child: CustomEmptyWidget.doctors()),
+                if (isLoadingMore)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 16.h, horizontal: 16.w),
+                      child: CustomAppShimmer(
+                        height: 150.h,
+                      ),
+                    ),
+                  ),
+                SliverPadding(padding: EdgeInsets.symmetric(vertical: 65.h)),
+              ],
+            );
+          } catch (e) {
+            // Fallback UI in case of rendering errors
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.error_outline, size: 64, color: Colors.grey),
+                  SizedBox(height: 16),
+                  Text(
+                    'Something went wrong',
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () => _cubit.getDoctorsClinics(reset: true),
+                    child: Text('Retry'),
+                  ),
+                ],
+              ),
+            );
+          }
         },
       ),
     );
