@@ -1,4 +1,4 @@
-# 🧠 Brain Tumor Detection App
+# 🧠 Brain Tumor Detection App (NeuroTum AI)
 
 A comprehensive Flutter application for brain tumor detection and medical consultation, featuring AI-powered analysis and doctor connectivity.
 
