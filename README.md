@@ -103,16 +103,16 @@ flutter_svg: ^2.x.x           # SVG asset support
 
 > **Note**: Add screenshots of your app here showing:
 > - Home screen with brain scan upload
-<img width="1080" height="2340" alt="Screenshot_1758902402" src="https://github.com/user-attachments/assets/252fcf8b-102b-4a0f-a6fd-2ef98e4160a2" />
+<img width="720" height="1280" alt="Screenshot_1758902402" src="https://github.com/user-attachments/assets/252fcf8b-102b-4a0f-a6fd-2ef98e4160a2" />
 
 > - Doctor listing page
-<img width="1080" height="2340" alt="Screenshot_1758899491" src="https://github.com/user-attachments/assets/7367aeae-98fb-4c65-bc90-99fb54811ae9" />
+<img width="720" height="1280" alt="Screenshot_1758899491" src="https://github.com/user-attachments/assets/7367aeae-98fb-4c65-bc90-99fb54811ae9" />
 
 > - AI analysis results
-<img width="740" height="1110" alt="image" src="https://github.com/user-attachments/assets/3f82a8ca-49e8-4de9-937e-7b63d93861ba" />
+<img width="720" height="1280" alt="image" src="https://github.com/user-attachments/assets/3f82a8ca-49e8-4de9-937e-7b63d93861ba" />
 
 > - Doctor profile pages
-<img width="1080" height="2340" alt="Screenshot_1758902922" src="https://github.com/user-attachments/assets/d7d00666-4285-49de-9b8e-05c9b426f2e4" />
+<img width="720" height="1280" alt="Screenshot_1758902922" src="https://github.com/user-attachments/assets/d7d00666-4285-49de-9b8e-05c9b426f2e4" />
 
 ## 🔧 Configuration
 
